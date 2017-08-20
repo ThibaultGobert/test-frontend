@@ -8,7 +8,7 @@ class App extends React.Component {
     return (
       <div className="container-fluid">
         <Header />
-        <h1>Leerplatform</h1>
+        {this.props.children}
       </div>
     );
   }
