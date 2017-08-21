@@ -16,10 +16,10 @@ class LessonsPage extends React.Component {
     this.updateSearchFields = this.updateSearchFields.bind(this);
   }
 
-  updateSearchFields(event) {
-    const field = event.target.name;
+  updateSearchFields(event, data) {
+    const {name, value} = data;
     let searchFields = Object.assign({}, this.state.searchFields);
-    searchFields[field] = event.target.value;
+    searchFields[name] = value;
     return this.setState({searchFields: searchFields});
   }
 
@@ -28,8 +28,8 @@ class LessonsPage extends React.Component {
   render() {
     //const {lessons} = this.props;
     return(
-      <div>
-        <h1>Manage Lessons</h1>
+      <div className="wrapper">
+        <h1>Overzicht lessen</h1>
         <LessonsForm onChange={this.updateSearchFields}/>
       </div>
     );
@@ -47,6 +47,6 @@ function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(lessonActions, dispatch)
   };
-}
-*/
+}*/
+
 export default LessonsPage;
