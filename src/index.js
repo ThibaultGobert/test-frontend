@@ -11,6 +11,7 @@ import '../node_modules/semantic/dist/semantic.min.css';
 
 const store = configureStore();
 
+// Provider: when store changes --> this re-renders all the necessary components
 render(
   <Provider store={store}>
     <Router history={browserHistory} routes={routes} />
