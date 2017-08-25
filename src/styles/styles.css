@@ -71,5 +71,11 @@
   display: block;
 }
 
+.toast {
+  opacity: 1 !important;
+  border: none !important;
+  box-shadow: none;
+}
+
 
 /*TODO: better css structure */

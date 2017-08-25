@@ -5,6 +5,7 @@ import HomePage from './components/home/HomePage';
 import LessonsPage from "./components/manage/LessonsPage";
 import OverviewPage from "./components/teacherprofile/OverviewPage";
 import LoginPage from "./components/auth/LoginPage";
+import checkAuth from './functions/checkAuth';
 
 export default (
   <Route path="/" component={App}>
