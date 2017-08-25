@@ -1,7 +1,13 @@
+@font-face {
+  font-family: sribbleFont;
+  src:
+    url('./../../fonts/scribblebox.ttf');
+}
+
 .wrapper {
   max-width: 1200px;
-  margin: 2em auto;
-  padding: 1em;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 
@@ -11,6 +17,58 @@
   background-position: center;
   background-repeat: no-repeat;
   height: 200px;
+}
+
+.header-bar {
+  background: rgb(38,45,52);
+  padding: 1em 2em;
+  border-bottom: 4px solid #D92B2F;
+  position: relative;
+}
+
+.header-bar button {
+  float: right;
+}
+
+.header-bar .logo {
+  height: 85px;
+}
+
+.header-lockup {
+  position: absolute;
+  left: 50px;
+  top: -10px;
+  z-index: 100;
+}
+
+.header-bar .welcome-message {
+  position: relative;
+  font-family: sribbleFont;
+  color: #F2F2F2;
+  top: -30px;
+  left: 20px;
+  font-size: 40px;
+  -webkit-font-smoothing: antialiased;
+}
+
+.page {
+  padding: 2em;
+}
+
+.clearfix:after {
+  clear: both;
+  content: ".";
+  display: block;
+  height: 0;
+  visibility: hidden;
+}
+
+.clearfix {
+  display: inline-block;
+}
+
+.clearfix {
+  display: block;
 }
 
 

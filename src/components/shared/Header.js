@@ -1,11 +1,23 @@
 import React from 'react';
 import { Link, IndexLink } from 'react-router';
+import {Button} from 'semantic-ui-react';
 
 const Header = () => {
   return (
     <div className="header">
       <div className="banner">
 
+      </div>
+      <div className="header-bar">
+        <div className="wrapper">
+          <div className="header-lockup">
+            <img className="logo" src={require('./../../../images/logo.png')} />
+            <span className="welcome-message">Hey Simon De Gheselle</span>
+          </div>
+
+          <Button primary>Uitloggen</Button>
+        </div>
+        <div className="clearfix"></div>
       </div>
 
       <nav>
