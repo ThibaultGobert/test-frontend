@@ -28,7 +28,7 @@ class LessonsPage extends React.Component {
   render() {
     //const {lessons} = this.props;
     return(
-      <div className="wrapper">
+      <div className="container">
         <h1>Overzicht lessen</h1>
         <LessonsForm onChange={this.updateSearchFields}/>
       </div>

@@ -8,7 +8,9 @@ class App extends React.Component {
     return (
       <div className="container-fluid">
         <Header />
-        {this.props.children}
+        <div className="page wrapper">
+          {this.props.children}
+        </div>
       </div>
     );
   }

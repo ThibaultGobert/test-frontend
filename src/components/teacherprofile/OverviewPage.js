@@ -2,6 +2,8 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import Accordeon from "../shared/Accordeon";
+import { Divider } from 'semantic-ui-react'
+
 
 class OverviewPage extends React.Component {
   // init state + bind functions
@@ -28,8 +30,9 @@ class OverviewPage extends React.Component {
   render() {
     //const {lessons} = this.props;
     return(
-      <div className="wrapper">
+      <div className="container">
         <h1>Overzicht lessen</h1>
+        <Divider/>
         <Accordeon panels={this.state.panels}/>
       </div>
     );
