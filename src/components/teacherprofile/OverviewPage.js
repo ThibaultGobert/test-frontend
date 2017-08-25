@@ -2,7 +2,8 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import Accordeon from "../shared/Accordeon";
-import { Divider } from 'semantic-ui-react'
+import { Divider } from 'semantic-ui-react';
+import * as lessonActions from '../../actions/lesson';
 
 
 class OverviewPage extends React.Component {
@@ -22,6 +23,8 @@ class OverviewPage extends React.Component {
         }
       ]
     };
+
+    console.log(this.props);
   }
 
 
@@ -40,9 +43,9 @@ class OverviewPage extends React.Component {
 }
 
 // redux connect and related functions
-/*function mapStateToProps(state, ownProps) {
+function mapStateToProps(state, ownProps) {
   return {
-    lessons: state.lessons
+    state: state
   };
 }
 
@@ -50,6 +53,6 @@ function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(lessonActions, dispatch)
   };
-}*/
+}
 
-export default OverviewPage;
+export default connect(mapStateToProps, mapDispatchToProps)(OverviewPage);

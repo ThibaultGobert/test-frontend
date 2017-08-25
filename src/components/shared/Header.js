@@ -3,6 +3,7 @@ import { Link, IndexLink } from 'react-router';
 import {Button} from 'semantic-ui-react';
 
 const Header = () => {
+
   return (
     <div className="header">
       <div className="banner">
@@ -40,5 +41,9 @@ const Header = () => {
     </div>
   );
 };
+
+function isEmpty(obj) {
+  return Object.keys(obj).length === 0 && obj.constructor === Object
+}
 
 export default Header;
