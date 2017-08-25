@@ -42,7 +42,7 @@ class LoginPage extends React.Component {
 
   render() {
     return(
-      <div>
+      <div className="login-form">
         <LoginForm
           onChange={this.onLoginChange}
           onSubmit={this.onLoginSubmit}

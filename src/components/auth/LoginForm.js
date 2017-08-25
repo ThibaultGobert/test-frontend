@@ -17,7 +17,7 @@ const LoginForm = ({onSubmit, onChange, error, loading, errorMessage}) => {
           header="Login mislukt"
           content={errorMessage}
         />
-        <Form.Button>Login</Form.Button>
+        <Form.Button primary>Login</Form.Button>
       </Form>
     );
 };
