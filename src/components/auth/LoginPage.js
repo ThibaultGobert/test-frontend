@@ -37,8 +37,15 @@ class LoginPage extends React.Component {
     this.props.actions.login(this.state.credentials).then(() => {
       this.setState({loading: false});
       toastr.success('Logged in');
-      this.context.router.push('/teacherprofile/overview'); // Redirect to courses page after save
+      if (this.props.loggedIn.role == "STUDENT") {
+        this.context.router.push('/studentprofile/clan'); // Redirect to courses page after save
+      } else if (this.props.loggedIn.role == "TEACHER") {
+        this.context.router.push('/teacherprofile/overview'); // Redirect to courses page after save
+      } else {
+        this.context.router.push('/adminprofile/overview'); // Redirect to courses page after save
+      }
     }).catch(error => {
+      console.log(error);
       this.setState({loading: false});
       this.setState({error: true, errorMessage: error});
     });

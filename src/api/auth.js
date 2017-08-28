@@ -10,9 +10,8 @@ class AuthApi {
         'Access-Control-Allow-Origin': '*',
         'x-username': credentials.username,
         'x-password': credentials.password
-      },
+      }
     }).then(response => {
-      sessionStorage.setItem('jwt', response.data.token);
       return response.data;
     }).catch(error => {
       throw "Geen geldige username - paswoord combinatie";

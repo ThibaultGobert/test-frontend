@@ -2,12 +2,13 @@ import * as types from '../actions/types';
 import initialState from './initialState';
 
 export default function authReducer(state = initialState.loggedIn, action) {
+
   switch (action.type) {
     case types.LOGIN_SUCCES:
-      return !!sessionStorage.jwt;
+      return action.user;
 
     case types.LOGOUT:
-      return !!sessionStorage.jwt;
+      return {};
 
     default:
       return state;

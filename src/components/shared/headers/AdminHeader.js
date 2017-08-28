@@ -41,10 +41,8 @@ class Header extends React.Component {
         <nav>
           <div className="ui attached stackable menu">
             <div className="ui container">
-              <Link to="/teacherprofile/lessons" className="item" activeClassName="active"><i
-                className="grid layout icon"></i> Lessons</Link>
-              <Link to="/teacherprofile/overview" className="item" activeClassName="active"><i
-                className="grid layout icon"></i> Lessenoverzicht</Link>
+              <Link to="/adminprofile/overview" className="item" activeClassName="active"><i
+                className="grid layout icon"></i> Overzicht</Link>
             </div>
           </div>
 

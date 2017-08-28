@@ -15,7 +15,9 @@ const store = configureStore();
 // Provider: when store changes --> this re-renders all the necessary components
 render(
   <Provider store={store}>
-    <Router history={browserHistory} routes={routes} />
+    <Router history={browserHistory}>
+      {routes(store)}
+    </Router>
   </Provider>,
   document.getElementById('app')
 );

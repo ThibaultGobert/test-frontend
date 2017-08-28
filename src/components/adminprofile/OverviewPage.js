@@ -2,7 +2,7 @@ import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 
-class ChallengesPage extends React.Component {
+class OverviewPage extends React.Component {
   constructor(props, context) {
     super(props, context);
   }
@@ -10,13 +10,13 @@ class ChallengesPage extends React.Component {
   render() {
     return (
       <div>
-        <h1>Jouw clan - alle lessen</h1>
+        <h1>Adminoverview</h1>
       </div>
     );
   }
 }
 
-ChallengesPage.propTypes = {};
+OverviewPage.propTypes = {};
 
 function mapStateToProps(state, ownProps) {
   return {
@@ -31,4 +31,4 @@ function mapStateToProps(state, ownProps) {
   };
 }*/
 
-export default connect(mapStateToProps)(ChallengesPage);
+export default connect(mapStateToProps)(OverviewPage);

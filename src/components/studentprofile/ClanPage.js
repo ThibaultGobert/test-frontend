@@ -11,7 +11,7 @@ class ClanPage extends React.Component {
   render() {
     return(
       <div>
-        <h1>Jouw clan pagina - met alle lessen</h1>
+        <h1>Jouw challenges</h1>
       </div>
     );
   }

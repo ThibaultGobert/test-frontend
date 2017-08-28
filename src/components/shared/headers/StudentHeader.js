@@ -30,7 +30,7 @@ class Header extends React.Component {
           <div className="wrapper">
             <div className="header-lockup">
               <img className="logo" src={require('../../../../images/logo.png')}/>
-              <span className="welcome-message">Hey Simon De Gheselle</span>
+              <span className="welcome-message">Hey {this.props.loggedIn.fullname}</span>
             </div>
 
             <Button primary onClick={this.logOut}>Uitloggen</Button>
