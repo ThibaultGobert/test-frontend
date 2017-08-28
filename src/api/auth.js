@@ -12,6 +12,7 @@ class AuthApi {
         'x-password': credentials.password
       },
     }).then(response => {
+      sessionStorage.setItem('jwt', response.data.token);
       return response.data;
     }).catch(error => {
       throw "Geen geldige username - paswoord combinatie";
@@ -20,3 +21,5 @@ class AuthApi {
 }
 
 export default AuthApi;
+
+// TODO: send pasword and username in a JSON body instead of using custom headers

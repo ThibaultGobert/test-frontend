@@ -10,7 +10,7 @@ const LoginForm = ({onSubmit, onChange, error, loading, errorMessage}) => {
         </Form.Field>
         <Form.Field>
           <label>Paswoord</label>
-          <input placeholder="paswoord" onChange={onChange} name="password"/>
+          <input type="password" placeholder="paswoord" onChange={onChange} name="password"/>
         </Form.Field>
         <Message
           error

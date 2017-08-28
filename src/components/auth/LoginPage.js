@@ -11,8 +11,10 @@ class LoginPage extends React.Component {
     super(props, context);
 
     this.state = {
-      username: '',
-      password: '',
+      credentials: {
+        username: '',
+        password: '',
+      },
       error: false,
       loading: false,
       errorMessage: '',
@@ -24,13 +26,15 @@ class LoginPage extends React.Component {
 
   onLoginChange(event) {
     let field = event.target.name;
-    this.setState({[field]: event.target.value});
+    const credentials = Object.assign({}, this.state.credentials);
+    credentials[field] = event.target.value;
+    this.setState({credentials: credentials});
   }
 
   onLoginSubmit(event) {
     event.preventDefault();
     this.setState({loading: true});
-    this.props.actions.login(this.state).then(() => {
+    this.props.actions.login(this.state.credentials).then(() => {
       this.setState({loading: false});
       toastr.success('Logged in');
       this.context.router.push('/teacherprofile/overview'); // Redirect to courses page after save

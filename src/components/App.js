@@ -6,11 +6,9 @@ import {connect} from 'react-redux';
 class App extends React.Component {
 
   render() {
-    let loggedIn = !isEmpty(this.props.loggedIn);
-    console.log(loggedIn);
     return (
       <div className="container-fluid">
-        {loggedIn && <Header/>}
+        {this.props.loggedIn && <Header/>}
         <div className="page wrapper">
           {this.props.children}
         </div>
@@ -27,10 +25,6 @@ function mapStateToProps(state, ownProps) {
   return {
     loggedIn: state.loggedIn
   };
-}
-
-function isEmpty(obj) {
-  return Object.keys(obj).length === 0 && obj.constructor === Object;
 }
 
 export default connect(mapStateToProps)(App);

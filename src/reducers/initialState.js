@@ -1,4 +1,4 @@
 export default {
   ajaxCallsInProgress: 0,
-  loggedIn: {}
+  loggedIn: !!sessionStorage.jwt
 };
