@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 import App from './components/App';
 import HomePage from './components/home/HomePage';
-import LessonsPage from "./components/manage/LessonsPage";
+import LessonsPage from "./components/teacherprofile/LessonsPage";
 import OverviewPage from "./components/teacherprofile/OverviewPage";
 import LoginPage from "./components/auth/LoginPage";
 import checkAuth from './functions/checkAuth';

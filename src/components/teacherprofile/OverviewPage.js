@@ -23,8 +23,6 @@ class OverviewPage extends React.Component {
         }
       ]
     };
-
-    console.log(this.props);
   }
 
 
