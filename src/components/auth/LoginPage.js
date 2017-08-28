@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import toastr from 'toastr';
+import * as roles from '../../constants/roles';
 
 class LoginPage extends React.Component {
   constructor(props, context) {
@@ -37,11 +38,11 @@ class LoginPage extends React.Component {
     this.props.actions.login(this.state.credentials).then(() => {
       this.setState({loading: false});
       toastr.success('Logged in');
-      if (this.props.loggedIn.role == "STUDENT") {
+      if (this.props.loggedIn.role == roles.STUDENT_ROLE) {
         this.context.router.push('/studentprofile/clan'); // Redirect to courses page after save
-      } else if (this.props.loggedIn.role == "TEACHER") {
+      } else if (this.props.loggedIn.role == roles.TEACHER_ROLE) {
         this.context.router.push('/teacherprofile/overview'); // Redirect to courses page after save
-      } else {
+      } else if (this.props.loggedIn.role == roles.ADMIN_ROLE){
         this.context.router.push('/adminprofile/overview'); // Redirect to courses page after save
       }
     }).catch(error => {
