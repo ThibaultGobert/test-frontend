@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import Accordeon from "../shared/Accordeon";
 import { Divider } from 'semantic-ui-react';
-import * as lessonActions from '../../actions/lesson';
+import * as lessonActions from '../../actions/courses';
 
 
 class OverviewPage extends React.Component {

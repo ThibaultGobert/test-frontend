@@ -21,6 +21,5 @@ export function login(credentials) {
 }
 
 export function logOut() {
-  sessionStorage.removeItem('jwt');
   return {type: types.LOGOUT};
 }

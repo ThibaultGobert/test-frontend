@@ -1,4 +1,5 @@
 export default {
   ajaxCallsInProgress: 0,
-  loggedIn: {}
+  loggedIn: {},
+  courses: []
 };

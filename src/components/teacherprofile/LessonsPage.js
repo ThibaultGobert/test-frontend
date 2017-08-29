@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import * as lessonActions from '../../actions/lesson';
+import * as lessonActions from '../../actions/courses';
 import LessonsForm from "./LessonsForm";
 
 class LessonsPage extends React.Component {
