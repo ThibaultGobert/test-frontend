@@ -32,6 +32,7 @@ class ClassGroupsPage extends React.Component {
           location: course.location.name,
         },
         content: {
+          id: course.id,
           headteacher: {
             name: course.headteacher.name,
             email: course.headteacher.email,

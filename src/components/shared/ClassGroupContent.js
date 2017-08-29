@@ -1,7 +1,9 @@
 import React from 'react';
-import { Grid, Divider, Segment, Button } from 'semantic-ui-react';
+import {Link} from 'react-router';
+import { Grid, Segment, Button } from 'semantic-ui-react';
 
 const ClassGroupContent = ({content}) => {
+  let buttonKey = "button" + content.id;
   return (
     <Grid className="class-group-details">
       <Grid.Row className="full-width">
@@ -55,7 +57,9 @@ const ClassGroupContent = ({content}) => {
           </Segment>
         </Grid.Column>
         <Grid.Column width={2}>
-          <Button primary>Klaslijst</Button>
+          <Link to={'/teacherprofile/classlist/' + content.id} key={buttonKey}>
+            <Button primary>Klaslijst</Button>
+          </Link>
         </Grid.Column>
      </Grid.Row>
     </Grid>
