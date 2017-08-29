@@ -10,7 +10,6 @@ class App extends React.Component {
 
   render() {
     let loggedIn = this.props.loggedIn;
-    console.log(loggedIn);
     return (
       <div className="container-fluid">
         {!isEmpty(loggedIn) && loggedIn.role == "TEACHER" && <TeacherHeader/>}
