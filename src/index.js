@@ -8,8 +8,10 @@ import './styles/styles.css';
 import '../node_modules/toastr/build/toastr.min.css';
 import '../node_modules/semantic/dist/semantic.min.css';
 import Preloader from "./Preloader";
+import {loadCourses} from "./actions/courses";
 
 const store = configureStore();
+store.dispatch(loadCourses());
 
 // Provider: when store changes --> this re-renders all the necessary components
 render(
