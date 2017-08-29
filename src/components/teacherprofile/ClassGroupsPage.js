@@ -10,39 +10,19 @@ class ClassGroupsPage extends React.Component {
   // init state + bind functions
   constructor(props, context) {
     super(props, context);
-    let panels = props.courses.map((course) => {
-      return {
-        title: {
-          group: course.clan,
-          level: course.level,
-          day: course.day,
-          time: course.starttime + ' - ' + course.endtime,
-          location: course.location.name,
-        },
-        content: {
-          headteacher: {
-            name: course.headteacher.name,
-            email: course.headteacher.email,
-            contact: course.headteacher.contact
-          },
-          assistents: course.assistents,
-          location: {
-            address: course.location.address,
-            city: course.location.city,
-            organisation: course.location.organisation,
-            room: course.location.room
-          }
-        }
-      };
-    });
-
     this.state = {
-      panels: panels
+      panels: this.mapToPanels(props)
     };
   }
 
   componentWillReceiveProps(nextProps) {
-    let panels = nextProps.courses.map((course) => {
+    let panels = this.mapToPanels(nextProps);
+    this.setState({panels: panels});
+  }
+
+
+  mapToPanels(data) {
+    let panels = data.courses.map((course) => {
       return {
         title: {
           group: course.clan,
@@ -67,12 +47,10 @@ class ClassGroupsPage extends React.Component {
         }
       };
     });
-
-    this.setState({panels: panels});
+    return panels;
   }
 
-
-  // render function --> typically calling child component, here is markup inline
+// render function --> typically calling child component, here is markup inline
   render() {
     //const {lessons} = this.props;
     return(
