@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Table, Menu, Icon, Segment, Input } from 'semantic-ui-react';
-import capitalize from 'lodash/capitalize';
-import flatten from 'lodash/flatten';
-import orderBy from 'lodash/orderBy';
-import debounce from 'lodash/debounce';
+import {orderBy, flatten, capitalize, debounce} from 'lodash';
 
 const dataParser = (obj) => {
   if(!obj) return [{}];
@@ -60,8 +57,6 @@ const dataParser = (obj) => {
 *
 * pageLimit: How many results per page do you want to show? default is 15
 *
-*
-* Overall this is a good starting point, needs some extra stuff, but it'll work for now.
 */
 class DataTable extends Component {
 
@@ -94,7 +89,6 @@ class DataTable extends Component {
     this.search = this.search.bind(this);
     this.paginate = this.paginate.bind(this);
     this.setPagedData = this.setPagedData.bind(this);
-    this.debouncedSearch = this.debouncedSearch.bind(this);
     this.onSearch = this.onSearch.bind(this);
   }
 
@@ -153,18 +147,17 @@ class DataTable extends Component {
   }
 
   sort(sort, key, data) {
-
     let newSort = false;
 
     if(!sort[key]) {
       sort[key] = 'ascending';
-      newSort = true
+      newSort = true;
     }
 
     if (sort[key] === 'ascending' && !newSort) {
-      sort[key] = 'descending'
+      sort[key] = 'descending';
     } else if(sort[key] === 'descending'){
-      delete sort[key]
+      delete sort[key];
     }
 
     let sortedData = flatten(this.orignalPagedData);
@@ -179,7 +172,6 @@ class DataTable extends Component {
         sortedData: orderBy(sortedData, sortKeys, direction)
       };
     }
-
     return ({
       sort,
       sortedData
@@ -194,6 +186,11 @@ class DataTable extends Component {
     return this.search(sortedData, this.state.query);
   }
 
+  onSearch(event, term) {
+    this.setState(Object.assign(this.state, {query: term.value}));
+    this.search(flatten(this.orignalPagedData), this.state.query);
+  }
+
   search(data, query) {
     let searchedData = data;
 
@@ -201,9 +198,8 @@ class DataTable extends Component {
       const regex = new RegExp(query, 'i');
       searchedData = data.filter(row => Object.values(row).some(prop => regex.test(prop)));
     } else {
-      searchedData = this.data;
+      searchedData = data;
     }
-
     return this.setPagedData(searchedData);
   }
 
@@ -227,20 +223,13 @@ class DataTable extends Component {
     return this.state.sort[key] ? `sorted ${this.state.sort[key]}` : '';
   }
 
-  debouncedSearch() {
-    return debounce((data, query) => (this.search(data, query)), 250);
-  }
 
-  onSearch(event, term) {
-    this.setState(Object.assign(this.state, {query: term.value}));
-    this.debouncedSearch(flatten(this.pagedData), this.state.query);
-  }
 
   render() {
     return (
       <div>
         <Segment attached='top' floated="right">
-          <Input icon='search' value={this.state.query || ''} onChange={this.onSearch} placeholder='Search...' />
+          <Input icon='search' value={this.state.query || ''} onChange={this.onSearch} placeholder='Zoek...' />
         </Segment>
         <Table celled attached className='sortable'>
           <Table.Header>
