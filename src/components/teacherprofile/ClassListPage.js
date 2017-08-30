@@ -19,50 +19,73 @@ class CoursesPage extends React.Component {
 
   // render function --> typically calling child component, here is markup inline
   render() {
+    let columns = [
+      {
+        defaults: "",
+        display: "Naam",
+        key: "name",
+        type: "string"
+      },
+      {
+        defaults: "",
+        display: "Leeftijd",
+        key: "age",
+        type: "number"
+      },
+      {
+        defaults: "",
+        display: "Leerjaar",
+        key: "grade",
+        type: "number"
+      },
+      {
+        defaults: "",
+        display: "Naam ouder",
+        key: "parent_name",
+        type: "string"
+      },
+      {
+        defaults: "",
+        display: "Contact ouder",
+        key: "parent_contact",
+        type: "string"
+      },
+      {
+        defaults: "",
+        display: "Username scratch",
+        key: "usernames_scratch",
+        type: "string"
+      },
+      {
+        defaults: "",
+        display: "Username leerplatform",
+        key: "usernames_platform",
+        type: "string"
+      },
+    ];
+    let data = this.props.course.classlist.map(student => {
+      return {
+        name: student.firstName + ' ' + student.surName,
+        age: student.age,
+        grade: student.grade,
+        parent_name: student.parent.firstName + ' ' + student.parent.surName,
+        parent_contact: student.parent.contact,
+        usernames_scratch: student.usernames.scratch,
+        usernames_platform: student.usernames.platform
+      }
+    });
     return (
       <div className="class-list">
         <Button labelPosition='left' icon='left chevron' content='Terug' onClick={this.redirectToClassGroups}/>
-
-        <h1>Klaslijst {this.props.course.name} </h1>
-        <Table celled>
-          <Table.Header>
-            <Table.Row>
-              <Table.HeaderCell>Naam</Table.HeaderCell>
-              <Table.HeaderCell>Leeftijd</Table.HeaderCell>
-              <Table.HeaderCell>Leerjaar</Table.HeaderCell>
-              <Table.HeaderCell>Naam ouder</Table.HeaderCell>
-              <Table.HeaderCell>Contact ouder</Table.HeaderCell>
-              <Table.HeaderCell>Username scratch</Table.HeaderCell>
-              <Table.HeaderCell>Username leerplatform</Table.HeaderCell>
-
-            </Table.Row>
-          </Table.Header>
-
-          <Table.Body>
-            {
-              this.props.course.classlist.map(student => {
-                return (
-                  <Table.Row>
-                    <Table.Cell>{student.firstName} {student.surName}</Table.Cell>
-                    <Table.Cell>{student.age}</Table.Cell>
-                    <Table.Cell>{student.grade}</Table.Cell>
-                    <Table.Cell>{student.parent.firstName} {student.parent.surName}</Table.Cell>
-                    <Table.Cell>{student.parent.contact}</Table.Cell>
-                    <Table.Cell>{student.usernames.scratch}</Table.Cell>
-                    <Table.Cell>{student.usernames.platform}</Table.Cell>
-                  </Table.Row>
-                );
-              })
-            }
-          </Table.Body>
-        </Table>
+        <div className="class-list-header">
+          <h1>Klaslijst {this.props.course.name} </h1>
+          <Button className="download-classlist" disabled>Download klaslijst</Button>
+        </div>
+       <DataTable data={data} columns={columns}/>
       </div>
     );
   }
 }
-
-//        <DataTable data={this.props.course.classlist}/>
-
 
 function getCourseById(courses, id) {
   const course = courses.filter(course => course.id == id);

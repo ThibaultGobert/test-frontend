@@ -126,6 +126,27 @@
   padding: 0 !important;
 }
 
+.class-list .ui.top.floated.segment.right {
+  border-width: 0;
+  border-bottom-width: 1px;
+}
+
+.class-list .ui.top.floated.segment.right .input {
+  float: right;
+}
+
+.download-classlist {
+  float: right;
+}
+
+.class-list-header h1 {
+  display: inline-block;
+  margin-bottom: 0;
+}
+
+.class-list-header {
+  margin-top: 1.5em;
+}
 
 
 /*TODO: better css structure */
