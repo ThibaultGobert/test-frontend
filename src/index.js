@@ -8,7 +8,7 @@ import './styles/styles.css';
 import Preloader from "./Preloader";
 
 const store = configureStore();
-
+export default store;
 // Provider: when store changes --> this re-renders all the necessary components
 render(
   <Preloader store={store}/>,

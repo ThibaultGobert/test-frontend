@@ -1,5 +1,5 @@
 import * as types from './types';
-import lessonApi from '../api/mockLessons';
+import lessonApi from '../api/lessons';
 import {ajaxCallError, beginAjaxCall} from "./ajaxStatus";
 
 export function loadLessonsSuccess(lessons) {
@@ -22,10 +22,10 @@ export function loadLessons(type) {
   };
 }
 
-export function loadLessonSlides(lessonId){
+export function loadLessonSlides(type, lessonId){
   return function(dispatch) {
     dispatch(beginAjaxCall());
-    return lessonApi.getLessonSlides(lessonId).then(lessonInfo => {
+    return lessonApi.getLessonSlides(type, lessonId).then(lessonInfo => {
       dispatch(loadLessonSlidesSuccess(lessonInfo));
     }).catch(error => {
       dispatch(ajaxCallError());

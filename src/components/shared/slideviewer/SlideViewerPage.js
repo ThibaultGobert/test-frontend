@@ -21,7 +21,7 @@ class SlideViewerPage extends React.Component {
   }
 
   componentWillMount() {
-    this.props.actions.loadLessonSlides(this.props.lesson.id).then(() => {
+    this.props.actions.loadLessonSlides(this.props.lesson.type, this.props.lesson.id).then(() => {
       this.setState({
         loadedSlides: true
       });
