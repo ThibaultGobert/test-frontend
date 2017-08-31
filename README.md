@@ -10,9 +10,9 @@
 
 ## Extensions
 Install following chrome extensions
- - React Developer Tools: Adds React debugging tools to the Chrome Developer Tools.
- - Redux DevTools: Redux DevTools for debugging application's state changes.
- - Allow-Control-Allow-Origin: * Allows to you request any site with ajax from any source. Adds to response 'Allow-Control-Allow-Origin: \*'
+1. React Developer Tools: Adds React debugging tools to the Chrome Developer Tools.
+2. Redux DevTools: Redux DevTools for debugging application's state changes.
+3. Allow-Control-Allow-Origin: * Allows to you request any site with ajax from any source. Adds to response 'Allow-Control-Allow-Origin: \*'
 
 ## Development
 1. Create new branch from development
