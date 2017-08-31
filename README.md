@@ -8,6 +8,12 @@
 2. install the dependencies with `npm install`
 3. Run the app locally with `npm start -s`. This will start the build process: compile the code into a single javascript file, serve it on a local webserver and automatically run tests and linting tests. Executing this command will also continue to watch all your files. Every time you make changes to one of your files, the project will be rebuilt.
 
+## Extensions
+Install following chrome extensions
+ - React Developer Tools: Adds React debugging tools to the Chrome Developer Tools.
+ - Redux DevTools: Redux DevTools for debugging application's state changes.
+ - Allow-Control-Allow-Origin: * Allows to you request any site with ajax from any source. Adds to response 'Allow-Control-Allow-Origin: \*'
+
 ## Development
 1. Create new branch from development
 2. Create pull request when merging back into development
