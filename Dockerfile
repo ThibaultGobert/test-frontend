@@ -1,19 +1,11 @@
-FROM node:6.9.4
+FROM node:latest
 
-RUN useradd --user-group --create-home --shell /bin/false app
+RUN mkdir /usr/src/app
+WORKDIR /usr/src/app
 
-ENV HOME=/home/app
-
-COPY package.json npm-shrinkwrap.json tools/ $HOME/workoutlogger/
-RUN chown -R app:app $HOME/*
-
-USER app
-WORKDIR $HOME/workoutlogger
+COPY . /usr/src/app
 RUN npm install
 
-USER root
-COPY . $HOME/workoutlogger
-RUN chown -R app:app $HOME/*
-USER app
+EXPOSE 3000
 
 CMD ["npm", "start", "-s"]
