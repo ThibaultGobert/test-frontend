@@ -67,7 +67,7 @@ class CoursesPage extends React.Component {
       return {
         name: student.firstName + ' ' + student.surName,
         age: student.age,
-        grade: student.grade,
+        grade: student.grade + 'de',
         parent_name: student.parent.firstName + ' ' + student.parent.surName,
         parent_contact: student.parent.contact,
         usernames_scratch: student.usernames.scratch,
