@@ -11,6 +11,7 @@ import ClanPage from "./components/studentprofile/ClanPage";
 import AdminOverviewPage from "./components/adminprofile/OverviewPage";
 import ChallengesPage from "./components/studentprofile/ChallengesPage";
 import HomeworkPage from "./components/studentprofile/HomeworkPage";
+import SlideViewerPage from "./components/shared/slideviewer/SlideViewerPage";
 
 export default (store) => {
   return (
@@ -22,13 +23,16 @@ export default (store) => {
         <Route path="/teacherprofile/classlist/:id" component={ClassListPage}/>
       </Route>
       <Route path="/studentprofile" onEnter={requireAuth(store)}>
-        <Route path="/studentprofile/challenges" component={ClanPage}/>
-        <Route path="/studentprofile/clan" component={ChallengesPage}/>
+        <Route path="/studentprofile/challenges" component={ChallengesPage}/>
+        <Route path="/studentprofile/clan" component={ClanPage}/>
         <Route path="/studentprofile/homework" component={HomeworkPage}/>
 
       </Route>
       <Route path="/adminprofile" onEnter={requireAuth(store)}>
         <Route path="/adminprofile/overview" component={AdminOverviewPage}/>
+      </Route>
+      <Route path="/slideviewer" onEnter={requireAuth(store)}>
+        <Route path="/slideviewer/:id" component={SlideViewerPage}/>
       </Route>
       <Route path="login" component={LoginPage}/>
     </Route>

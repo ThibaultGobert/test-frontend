@@ -149,4 +149,80 @@
 }
 
 
+.cards{
+  padding-top: 25px;
+  padding-bottom: 10px;
+  clear:both;
+  width: 100%;
+}
+.cardholder{
+  margin-bottom: 20px;
+  padding: 0;
+  float:left;
+  margin-right: 15px;
+  clear: right;
+}
+.cardholder > a > img {
+  display : block;
+  margin : auto;
+}
+
+.spectacle-deck {
+  z-index: 100;
+  text-align: left;
+}
+
+.spectacle-deck svg {
+  fill: #333 !important;
+}
+
+.close-presentation {
+  position: absolute;
+  right: 10px;
+  top:10px;
+  cursor: pointer;
+  font-size: 2.5em !important;
+  z-index: 200;
+}
+
+.slide-show {
+  min-width: 100%;
+  min-height: 100%;
+  background: #fff;
+  position: absolute;
+  left: 0;
+  z-index: 100;
+  top: 0;
+}
+
+.slide-show-content {
+  max-width: 1200px;
+  margin: auto auto;
+  margin-top: 10em;
+}
+
+.control-button {
+  position: absolute;
+  top: 45%;
+}
+
+.control-button {
+  font-size: 3em !important;
+}
+
+.control-button img {
+  height: 70px;
+}
+
+.control-button.left {
+  left: 20px;
+}
+
+.control-button.right {
+  right: 20px;
+}
+
+.loader {
+  z-index: 2000;
+}
 /*TODO: better css structure */

@@ -2,16 +2,24 @@ import React from 'react';
 import {PropTypes} from 'prop-types';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
+import * as lessonActions from '../../actions/lessons';
+import * as slideshowTypes from '../../constants/slideshowTypes';
+import LessonList from "./LessonList";
 
 class HomeworkPage extends React.Component {
   constructor(props, context) {
     super(props, context);
   }
 
+  componentWillMount() {
+    this.props.actions.loadLessons(slideshowTypes.HOME);
+  }
+
   render() {
     return (
       <div>
-        <h1>Jouw extra uitdaging</h1>
+        <h1>De thuisversies</h1>
+        <LessonList lessons={this.props.lessons}/>
       </div>
     );
   }
@@ -21,15 +29,15 @@ HomeworkPage.propTypes = {};
 
 function mapStateToProps(state, ownProps) {
   return {
-    state: state
+    lessons: state.lessons
   };
 }
 
 
-/* function mapDispatchToProps(dispatch) {
+function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(actions, dispatch)
+    actions: bindActionCreators(lessonActions, dispatch)
   };
-}*/
+}
 
-export default connect(mapStateToProps)(HomeworkPage);
+export default connect(mapStateToProps, mapDispatchToProps)(HomeworkPage);

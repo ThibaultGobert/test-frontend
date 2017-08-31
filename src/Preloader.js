@@ -9,11 +9,11 @@ export default class Preloader extends React.Component {
 
   constructor() {
     super()
-    this.state = { rehydrated: false }
+    this.state = { rehydrated: false}
   }
 
   componentWillMount(){
-    persistStore(this.props.store, {whitelist: ['loggedIn']}, () => {
+    persistStore(this.props.store, {whitelist: ['loggedIn', 'courses', 'lessons']}, () => {
       this.setState({ rehydrated: true });
     });
   }
