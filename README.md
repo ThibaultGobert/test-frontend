@@ -21,8 +21,8 @@ Install following chrome extensions
 ## Dependencies
 **Dependency**|**Description**
 :-----:|:-----:
-React|composable, reusable components
-Redux|Unidirectional data flows, immutable state, hot reloading, time-travel debugging https://facebook.github.io/react/docs/
+React|composable, reusable components https://facebook.github.io/react/docs/
+Redux|Unidirectional data flows, immutable state, hot reloading, time-travel debugging
 React Router|React routing library
 Babel|Compiles ES6 to ES5, with newer versions of node this might be excluded
 Webpack|pundles npm packages into a single file
