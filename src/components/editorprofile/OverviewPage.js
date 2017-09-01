@@ -1,6 +1,5 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
 import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
 
 class OverviewPage extends React.Component {
   constructor(props, context) {
@@ -10,7 +9,7 @@ class OverviewPage extends React.Component {
   render() {
     return (
       <div>
-        <h1>Adminoverview</h1>
+        <h1>Editoroverview</h1>
       </div>
     );
   }
@@ -23,12 +22,5 @@ function mapStateToProps(state, ownProps) {
     state: state
   };
 }
-
-
-/*function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(actions, dispatch)
-  };
-}*/
 
 export default connect(mapStateToProps)(OverviewPage);

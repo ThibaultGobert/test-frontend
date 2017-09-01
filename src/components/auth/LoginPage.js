@@ -43,7 +43,7 @@ class LoginPage extends React.Component {
       } else if (this.props.loggedIn.role == roles.TEACHER_ROLE) {
         this.context.router.push('/teacherprofile/overview'); // Redirect to courses page after save
       } else if (this.props.loggedIn.role == roles.ADMIN_ROLE){
-        this.context.router.push('/adminprofile/overview'); // Redirect to courses page after save
+        this.context.router.push('/editorprofile/overview'); // Redirect to courses page after save
       }
     }).catch(error => {
       this.setState({loading: false});
