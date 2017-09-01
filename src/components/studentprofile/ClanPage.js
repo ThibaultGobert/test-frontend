@@ -25,7 +25,10 @@ class ClanPage extends React.Component {
   }
 }
 
-ClanPage.propTypes = {};
+ClanPage.propTypes = {
+  actions: PropTypes.object.isRequired,
+  lessons: PropTypes.arrayOf(PropTypes.object)
+};
 
 function mapStateToProps(state, ownProps) {
   return {

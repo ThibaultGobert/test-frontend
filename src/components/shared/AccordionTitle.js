@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Grid } from 'semantic-ui-react';
 
 const AccordionTitle = ({fields}) => {
@@ -16,6 +17,10 @@ const AccordionTitle = ({fields}) => {
         </Grid.Row>
       </Grid>
     );
+};
+
+AccordionTitle.propTypes = {
+  fields: PropTypes.object.isRequired
 };
 
 export default AccordionTitle;

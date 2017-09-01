@@ -1,19 +1,19 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { Table, Menu, Icon, Segment, Input } from 'semantic-ui-react';
-import {orderBy, flatten, capitalize, debounce} from 'lodash';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { Table, Menu, Icon, Segment, Input } from "semantic-ui-react";
+import {orderBy, flatten, capitalize} from "lodash";
 
 const dataParser = (obj) => {
   if(!obj) return [{}];
 
   const nativeDefaults = {
-    string: '',
+    string: "",
     date: new Date(),
     number: 0,
     boolean: false,
   };
 
-  const headerObject = (key, display, type, def) => ({ key, type, display, defaults: def })
+  const headerObject = (key, display, type, def) => ({ key, type, display, defaults: def });
 
   const supportedNativeTypes = [String, Date, Number, Boolean];
 
@@ -38,21 +38,21 @@ const dataParser = (obj) => {
 * figure out what type of fields are in it and format it to the correct "schema".
 *
 * Example Schema:[{
-*	key: 'name', // the key of the object
-*	type: 'string', // native type of the data
-*	display: 'Name' // the column header
-*	defaults: 'N/A' // if a value is not found what should we show? Can be anything but needs to be a resolved value
-*	accessor: (fullObject, key) => {} // optional: if theirs some special way to access the data or if it's nested use an accessor function
-*	decorator: (value) => {} // optional: after a value has been retrieved (either by the default object[key] or with an accessor) it'll be passed to this function, i.e. formating time stamps with MomentJS
+*	key: "name", // the key of the object
+*	type: "string", // native type of the data
+*	display: "Name" // the column header
+*	defaults: "N/A" // if a value is not found what should we show? Can be anything but needs to be a resolved value
+*	accessor: (fullObject, key) => {} // optional: if theirs some special way to access the data or if it"s nested use an accessor function
+*	decorator: (value) => {} // optional: after a value has been retrieved (either by the default object[key] or with an accessor) it"ll be passed to this function, i.e. formating time stamps with MomentJS
 * }, {...}, {...}]
 *
 * renderHeaderRow: The function called to render the header row with the data provided by the columns schema. A default is provided but if you want to change the headers or nest them.
 * The function is passed 3 params, the columns array, the onClick handler for handling the sorting logic and the classNameGenerator for adding the ascending/descending header class.
-* Note: It's possible to override the onClick handler but make sure to call it after your own logic if you want the default sorting to work.
+* Note: It"s possible to override the onClick handler but make sure to call it after your own logic if you want the default sorting to work.
 *
 * renderBodyRow: This is the function your probably going to want to override. The default function thakes the column and renders the data.
-* First, if there is a accessor function it uses that to grab the data (use column schema definition above) if theres not then it's a simple (data[key] || defaults)
-* Second, if there's a decorator, it... decorates...
+* First, if there is a accessor function it uses that to grab the data (use column schema definition above) if theres not then it"s a simple (data[key] || defaults)
+* Second, if there"s a decorator, it... decorates...
 * Lastly, it renders the Table.Cell with the value
 *
 * pageLimit: How many results per page do you want to show? default is 15
@@ -127,10 +127,10 @@ class DataTable extends Component {
   defaultRenderBodyRow(data, index) {
     return (<Table.Row key={index}>
       {this.columns.map(({key, defaults, accessor, decorator}, idx) => {
-        if (!data) return <Table.Cell key={idx}/>
-        let value = (accessor) ? accessor(data, key) : (data[key] || defaults)
-        if (decorator) value = decorator(value)
-        return (<Table.Cell key={idx}>{value}</Table.Cell>)
+        if (!data) return <Table.Cell key={idx}/>;
+        let value = (accessor) ? accessor(data, key) : (data[key] || defaults);
+        if (decorator) value = decorator(value);
+        return (<Table.Cell key={idx}>{value}</Table.Cell>);
       })}
     </Table.Row>);
   }
@@ -139,8 +139,8 @@ class DataTable extends Component {
     let newIndex = this.state.index;
 
     if (index === newIndex) return null;
-    else if (index === 'next') newIndex++;
-    else if (index === 'back') newIndex--;
+    else if (index === "next") newIndex++;
+    else if (index === "back") newIndex--;
     else newIndex = index;
 
     this.setState({ data: this.pagedData[newIndex], index: newIndex });
@@ -150,13 +150,13 @@ class DataTable extends Component {
     let newSort = false;
 
     if(!sort[key]) {
-      sort[key] = 'ascending';
+      sort[key] = "ascending";
       newSort = true;
     }
 
-    if (sort[key] === 'ascending' && !newSort) {
-      sort[key] = 'descending';
-    } else if(sort[key] === 'descending'){
+    if (sort[key] === "ascending" && !newSort) {
+      sort[key] = "descending";
+    } else if(sort[key] === "descending"){
       delete sort[key];
     }
 
@@ -166,7 +166,7 @@ class DataTable extends Component {
 
     if(sortKeys.length > 0){
       sortedData = flatten(data);
-      const direction = Object.values(sort).map(direction => direction === 'ascending' ? 'asc' : 'desc');
+      const direction = Object.values(sort).map(direction => direction === "ascending" ? "asc" : "desc");
       return {
         sort,
         sortedData: orderBy(sortedData, sortKeys, direction)
@@ -194,8 +194,8 @@ class DataTable extends Component {
   search(data, query) {
     let searchedData = data;
 
-    if(data && Array.isArray(data) && query && query !== ''){
-      const regex = new RegExp(query, 'i');
+    if(data && Array.isArray(data) && query && query !== ""){
+      const regex = new RegExp(query, "i");
       searchedData = data.filter(row => Object.values(row).some(prop => regex.test(prop)));
     } else {
       searchedData = data;
@@ -220,7 +220,7 @@ class DataTable extends Component {
   }
 
   headerClass(key) {
-    return this.state.sort[key] ? `sorted ${this.state.sort[key]}` : '';
+    return this.state.sort[key] ? `sorted ${this.state.sort[key]}` : "";
   }
 
 
@@ -228,10 +228,10 @@ class DataTable extends Component {
   render() {
     return (
       <div>
-        <Segment attached='top' floated="right">
-          <Input icon='search' value={this.state.query || ''} onChange={this.onSearch} placeholder='Zoek...' />
+        <Segment attached="top" floated="right">
+          <Input icon="search" value={this.state.query || ""} onChange={this.onSearch} placeholder="Zoek..." />
         </Segment>
-        <Table celled attached className='sortable'>
+        <Table celled attached className="sortable">
           <Table.Header>
             {this.columns && this.renderHeader(this.columns, this.onSort, this.headerClass)}
           </Table.Header>
@@ -242,23 +242,23 @@ class DataTable extends Component {
           <Table.Footer>
             <Table.Row>
               <Table.HeaderCell colSpan={this.columns.length}>
-                <Menu floated='right' pagination>
+                <Menu floated="right" pagination>
                   {this.state.index !== 0 && this.pagedData.length > 1 &&
-                  <Menu.Item onClick={() => this.pageChange('back')} as='a' icon>
-                    <Icon name='left chevron' />
+                  <Menu.Item onClick={() => this.pageChange("back")} as="a" icon>
+                    <Icon name="left chevron" />
                   </Menu.Item>
                   }
                   {this.pagedData.map((dataSet, index) => {
-                    const active = index === this.state.index
+                    const active = index === this.state.index;
                     return (
-                      <Menu.Item key={index} active={active} onClick={() => this.pageChange(index)} as='a'>
+                      <Menu.Item key={index} active={active} onClick={() => this.pageChange(index)} as="a">
                         {index + 1}
                       </Menu.Item>
-                    )
+                    );
                   })}
                   {this.state.index + 1 < this.pagedData.length &&
-                  <Menu.Item onClick={() => this.pageChange('next')} as='a' icon>
-                    <Icon name='right chevron' />
+                  <Menu.Item onClick={() => this.pageChange("next")} as="a" icon>
+                    <Icon name="right chevron" />
                   </Menu.Item>
                   }
                 </Menu>
@@ -284,6 +284,6 @@ DataTable.propTypes = {
     accessor: PropTypes.func,
     decorator: PropTypes.func,
   })),
-}
+};
 
 export default DataTable;

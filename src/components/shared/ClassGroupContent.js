@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router';
+import PropTypes from 'prop-types';
 import { Grid, Segment, Button } from 'semantic-ui-react';
 
 const ClassGroupContent = ({content}) => {
@@ -29,8 +30,9 @@ const ClassGroupContent = ({content}) => {
             <Grid>
               {
                 content.assistents.map((assistent) => {
+                  const gridRowKey = "gridrowAssistent-" + assistent.name;
                   return (
-                    <Grid.Row >
+                    <Grid.Row key={gridRowKey}>
                       <Grid.Column width={3}>
                         {assistent.name}
                       </Grid.Column>
@@ -64,6 +66,10 @@ const ClassGroupContent = ({content}) => {
      </Grid.Row>
     </Grid>
   );
+};
+
+ClassGroupContent.propTypes = {
+  content: PropTypes.object
 };
 
 export default ClassGroupContent;

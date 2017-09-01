@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {browserHistory} from 'react-router';
 import SlideViewer from './SlideViewer';
-import {Icon, Loader} from 'semantic-ui-react';
+import {Loader} from 'semantic-ui-react';
 import * as lessonActions from '../../../actions/lessons';
 import toastr from 'toastr';
 
@@ -16,10 +16,6 @@ class SlideViewerPage extends React.Component {
     };
   }
 
-  redirectToOverview() {
-    browserHistory.goBack();
-  }
-
   componentWillMount() {
     this.props.actions.loadLessonSlides(this.props.lesson.type, this.props.lesson.id).then(() => {
       this.setState({
@@ -29,6 +25,10 @@ class SlideViewerPage extends React.Component {
       toastr.error(error);
       browserHistory.goBack();
     });
+  }
+
+  redirectToOverview() {
+    browserHistory.goBack();
   }
 
   render() {
@@ -53,7 +53,10 @@ class SlideViewerPage extends React.Component {
   }
 }
 
-SlideViewerPage.propTypes = {};
+SlideViewerPage.propTypes = {
+  actions: PropTypes.object.isRequired,
+  lesson: PropTypes.object.isRequired,
+};
 
 function getLessonById(lessons, id) {
   const lesson = lessons.filter(lesson => lesson.id == id);

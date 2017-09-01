@@ -11,7 +11,10 @@ const MultipleSelectInput = ({options, onChange, label, name, placeholder}) => (
 
 MultipleSelectInput.propTypes = {
   options: PropTypes.arrayOf(PropTypes.object),
-  onChange: PropTypes.func.isRequired
+  onChange: PropTypes.func.isRequired,
+  label: PropTypes.string,
+  name: PropTypes.string.isRequired,
+  placeholder: PropTypes.string
 };
 
 export default MultipleSelectInput;
