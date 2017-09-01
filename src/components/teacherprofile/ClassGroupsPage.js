@@ -6,7 +6,6 @@ import Accordion from "../shared/Accordion";
 import {Loader, Dimmer} from 'semantic-ui-react';
 import * as courseActions from '../../actions/courses';
 
-
 class ClassGroupsPage extends React.Component {
   // init state + bind functions
   constructor(props, context) {

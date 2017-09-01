@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Table, Menu, Icon, Segment, Input } from "semantic-ui-react";
-import {orderBy, flatten, capitalize, debounce} from "lodash";
+import {orderBy, flatten, capitalize} from "lodash";
 
 const dataParser = (obj) => {
   if(!obj) return [{}];
