@@ -1,12 +1,13 @@
-import React, {PropTypes} from 'react';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
-import * as courseActions from '../../actions/courses';
-import {browserHistory} from 'react-router';
-import {Table, Button} from 'semantic-ui-react';
+import React from "react";
+import PropTypes from "prop-types";
+import {connect} from "react-redux";
+import {bindActionCreators} from "redux";
+import * as courseActions from "../../actions/courses";
+import {browserHistory} from "react-router";
+import {Button} from "semantic-ui-react";
 import DataTable from "../shared/DataTable";
 
-class CoursesPage extends React.Component {
+class ClassListPage extends React.Component {
   // init state + bind functions
   constructor(props, context) {
     super(props, context);
@@ -65,18 +66,18 @@ class CoursesPage extends React.Component {
     ];
     let data = this.props.course.classlist.map(student => {
       return {
-        name: student.firstName + ' ' + student.surName,
+        name: student.firstName + " " + student.surName,
         age: student.age,
-        grade: student.grade + 'de',
-        parent_name: student.parent.firstName + ' ' + student.parent.surName,
+        grade: student.grade + "de",
+        parent_name: student.parent.firstName + " " + student.parent.surName,
         parent_contact: student.parent.contact,
         usernames_scratch: student.usernames.scratch,
         usernames_platform: student.usernames.platform
-      }
+      };
     });
     return (
       <div className="class-list">
-        <Button labelPosition='left' icon='left chevron' content='Terug' onClick={this.redirectToClassGroups}/>
+        <Button labelPosition="left" icon="left chevron" content="Terug" onClick={this.redirectToClassGroups}/>
         <div className="class-list-header">
           <h1>Klaslijst {this.props.course.name} </h1>
           <Button className="download-classlist" disabled>Download klaslijst</Button>
@@ -95,6 +96,11 @@ function getCourseById(courses, id) {
   return null;
 }
 
+ClassListPage.propTypes = {
+  actions: PropTypes.object.isRequired,
+  course: PropTypes.object,
+};
+
 // redux connect and related functions
 function mapStateToProps(state, ownProps) {
   const courseId = ownProps.params.id; // from path /course/:id
@@ -112,4 +118,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CoursesPage);
+export default connect(mapStateToProps, mapDispatchToProps)(ClassListPage);

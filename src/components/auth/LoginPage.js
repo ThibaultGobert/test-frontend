@@ -46,7 +46,6 @@ class LoginPage extends React.Component {
         this.context.router.push('/adminprofile/overview'); // Redirect to courses page after save
       }
     }).catch(error => {
-      console.log(error);
       this.setState({loading: false});
       this.setState({error: true, errorMessage: error});
     });
@@ -66,6 +65,11 @@ class LoginPage extends React.Component {
     );
   }
 }
+
+LoginPage.propTypes = {
+  actions: PropTypes.object.isRequired,
+  loggedIn: PropTypes.object.isRequired,
+};
 
 LoginPage.contextTypes = {
   router: PropTypes.object

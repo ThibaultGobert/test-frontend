@@ -195,6 +195,10 @@
   top: 0;
 }
 
+.slide-show h1 {
+  margin-bottom: 1.5em;
+}
+
 .slide-show-content {
   max-width: 1200px;
   margin: auto auto;
@@ -225,4 +229,4 @@
 .loader {
   z-index: 2000;
 }
-/*TODO: better css structure */
+/*TODO: better css structure --> USE SASS INSTEAD OF CSS*/

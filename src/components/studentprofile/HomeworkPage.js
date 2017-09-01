@@ -25,7 +25,10 @@ class HomeworkPage extends React.Component {
   }
 }
 
-HomeworkPage.propTypes = {};
+HomeworkPage.propTypes = {
+  actions: PropTypes.object.isRequired,
+  lessons: PropTypes.arrayOf(PropTypes.object)
+};
 
 function mapStateToProps(state, ownProps) {
   return {

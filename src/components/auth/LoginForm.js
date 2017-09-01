@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {Form, Message} from 'semantic-ui-react';
 
 const LoginForm = ({onSubmit, onChange, error, loading, errorMessage}) => {
@@ -20,6 +21,14 @@ const LoginForm = ({onSubmit, onChange, error, loading, errorMessage}) => {
         <Form.Button primary>Login</Form.Button>
       </Form>
     );
+};
+
+LoginForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
+  error: PropTypes.bool,
+  loading: PropTypes.bool,
+  errorMessage: PropTypes.string
 };
 
 export default LoginForm;
