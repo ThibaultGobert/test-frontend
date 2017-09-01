@@ -18,6 +18,7 @@ const routes = (store) => {
       <IndexRoute component={HomePage}/>
       <Route path="/teacherprofile" onEnter={requireAuth(store)}>
         <Route path="/teacherprofile/overview" component={TeacherOverviewPage}/>
+        <Route path="/teacherprofile/calendar" component={ClassListPage}/>
         <Route path="/teacherprofile/classlist/:id" component={ClassListPage}/>
       </Route>
       <Route path="/studentprofile" onEnter={requireAuth(store)}>
