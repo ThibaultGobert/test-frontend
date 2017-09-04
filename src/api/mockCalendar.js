@@ -13,6 +13,7 @@ const calendar = [
         "id": 2981,
         "startdate": "11-09-2017 13:00",
         "enddate": "11-09-2017 18:00",
+        "name":"Workshop",
       }
     ]
   },
@@ -28,70 +29,70 @@ const calendar = [
         "startdate": "23-09-2017 11:00",
         "enddate": "23-09-2017 12:30",
         "order": 10,
-        "name": "Eddy"
+        "name":"Herhalingsles",
       },
       {
         "id": 1882,
         "startdate": "30-09-2017 11:00",
         "enddate": "30-09-2017 12:30",
         "order": 1,
-        "name": "Les 1"
+        "name":"Flappy Droid",
       },
       {
         "id": 1883,
         "startdate": "07-10-2017 11:00",
         "enddate": "07-10-2017 12:30",
         "order": 2,
-        "name": "Les 2"
+        "name":"Variabelen",
       },
       {
         "id": 1884,
         "startdate": "14-10-2017 11:00",
         "enddate": "14-10-2017 12:30",
         "order": 3,
-        "name": "Les 3"
+        "name":"Lokale en Globale variabelen",
       },
       {
         "id": 1885,
         "startdate": "21-10-2017 11:00",
         "enddate": "21-10-2017 12:30",
         "order": 4,
-        "name": "Les 4"
+        "name":"Monstertje klop!",
       },
       {
         "id": 1886,
         "startdate": "18-11-2017 11:00",
         "enddate": "18-11-2017 12:30",
         "order": 5,
-        "name": "Les 5"
+        "name":"Vlieg op klok",
       },
       {
         "id": 1887,
         "startdate": "25-11-2017 11:00",
         "enddate": "25-11-2017 12:30",
         "order": 6,
-        "name": "Les 6"
+        "name":"Methodes",
       },
       {
         "id": 1888,
         "startdate": "02-12-2017 11:00",
         "enddate": "02-12-2017 12:30",
         "order": 7,
-        "name": "Les 7"
+        "name":"Stapsgewijze verfijning",
       },
       {
         "id": 1889,
         "startdate": "09-12-2017 11:00",
         "enddate": "09-12-2017 12:30",
         "order": 8,
-        "name": "Les 8"
+        "name":"Parameters",
       },
       {
         "id": 1890,
         "startdate": "16-12-2017 11:00",
         "enddate": "16-12-2017 12:30",
         "order": 9,
-        "name": "Les 9"
+        "name": "Toonmoment"
       }
     ]
   }

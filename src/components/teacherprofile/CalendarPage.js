@@ -34,12 +34,14 @@ class LessonDatePage extends React.Component {
     let lessons = data.map(course => {
       return course.lessons.map(lesson => {
         let element =Object.assign(lesson, {
-            "name": course.name,
+            "course_name": course.name,
             "program_type": course.program_type,
             "clan": course.clan,
-            "level": course.level
+            "level": course.level,
           });
-
+        element.name = lesson.clan && lesson.level ?
+          lesson.clan.charAt(0) + lesson.level + ': ' + lesson.name :
+          lesson.name;
         element.start = this.createDate(lesson.startdate);
         element.end = this.createDate(lesson.enddate);
         return element;

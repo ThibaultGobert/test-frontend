@@ -3,11 +3,26 @@ import PropTypes from 'prop-types';
 import BigCalendar from 'react-big-calendar';
 import moment from 'moment';
 import Toolbar from './CalendarToolbar';
+import {Modal, Header, Image} from 'semantic-ui-react';
+import CalendarDetails from "./CalendarDetails";
 
 class Calendar extends React.Component {
   constructor(props, context) {
     super(props, context);
     BigCalendar.momentLocalizer(moment); // or globalizeLocalizer
+    this.showEventDetails = this.showEventDetails.bind(this);
+    this.onDetailsClose = this.onDetailsClose.bind(this);
+    this.state= {
+      insert: false
+    };
+  }
+
+  showEventDetails(event){
+    this.setState({insert:true, event: event});
+  }
+
+  onDetailsClose() {
+    this.setState({insert:false, event: null});
   }
 
   render() {
@@ -15,22 +30,31 @@ class Calendar extends React.Component {
       toolbar: Toolbar
     };
 
+    let views = ['month', 'week', 'day'];
+
     return (
-      <div className="calendar">
-        <BigCalendar
-          culture="nl"
-          events={this.props.dates}
-          titleAccessor="name"
-          defaultView="week"
-          components={components}
-          defaultDate={new Date()}
-          onSelectEvent={event => alert(event.name)}
-          onSelectSlot={(slotInfo) => alert(
-            `selected slot: \n\nstart ${slotInfo.start.toLocaleString()} ` +
-            `\nend: ${slotInfo.end.toLocaleString()}`
-          )}
+      <div className="calendar-wrapper">
+        { this.state.insert &&
+        <CalendarDetails
+          event={this.state.event}
+          onDetailsClose={this.onDetailsClose}
+          isOpen={this.state.insert}
         />
-    </div>
+        }
+
+        <div className="calendar">
+          <BigCalendar
+            views={views}
+            culture="nl"
+            events={this.props.dates}
+            titleAccessor="name"
+            defaultView="week"
+            components={components}
+            defaultDate={new Date()}
+            onSelectEvent={event => this.showEventDetails(event)}
+          />
+        </div>
+      </div>
     );
   }
 }

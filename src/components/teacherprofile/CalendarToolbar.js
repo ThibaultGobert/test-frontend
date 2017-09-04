@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Icon, Button, Label} from 'semantic-ui-react';
+import {Button, Label} from 'semantic-ui-react';
 import {navigate, messages} from "../../constants/calendar";
 import cn from 'classnames';
 
@@ -28,7 +28,7 @@ class CalendarToolbar extends React.Component {
             <img src={require('../../../images/calendar/right-arrow.png')} onClick={() => this.navigate(navigate.NEXT)}/>
           </span>
           <span className="calendar-label">
-            <Label primary>{label}</Label>
+            <Label>{label}</Label>
           </span>
         </div>
         <div className="clearfix" />
