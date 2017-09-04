@@ -12,13 +12,20 @@ class App extends React.Component {
   render() {
     let loggedIn = this.props.loggedIn;
     return (
-      <div className="container-fluid">
+
+      <div className="full-container">
+
         {!isEmpty(loggedIn) && loggedIn.role == userRoles.TEACHER_ROLE && <TeacherHeader/>}
         {!isEmpty(loggedIn) && loggedIn.role == userRoles.ADMIN_ROLE && <AdminHeader/>}
         {!isEmpty(loggedIn) && loggedIn.role == userRoles.STUDENT_ROLE && <StudentHeader/>}
 
-        <div className="page wrapper">
-          {this.props.children}
+        <div className="page-wrapper">
+          <div className="page">
+            {this.props.children}
+          </div>
+        </div>
+        <div className="footer">
+
         </div>
       </div>
     );

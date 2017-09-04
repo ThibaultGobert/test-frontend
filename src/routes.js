@@ -11,6 +11,7 @@ import EditorOverviewPage from "./components/editorprofile/OverviewPage";
 import ChallengesPage from "./components/studentprofile/ChallengesPage";
 import HomeworkPage from "./components/studentprofile/HomeworkPage";
 import SlideViewerPage from "./components/shared/slideviewer/SlideViewerPage";
+import CalendarPage from "./components/teacherprofile/CalendarPage";
 
 const routes = (store) => {
   return (
@@ -18,7 +19,7 @@ const routes = (store) => {
       <IndexRoute component={HomePage}/>
       <Route path="/teacherprofile" onEnter={requireAuth(store)}>
         <Route path="/teacherprofile/overview" component={TeacherOverviewPage}/>
-        <Route path="/teacherprofile/calendar" component={ClassListPage}/>
+        <Route path="/teacherprofile/calendar" component={CalendarPage}/>
         <Route path="/teacherprofile/classlist/:id" component={ClassListPage}/>
       </Route>
       <Route path="/studentprofile" onEnter={requireAuth(store)}>

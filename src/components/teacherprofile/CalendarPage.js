@@ -2,30 +2,77 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import PropTypes from 'prop-types';
-import {Loader, Dimmer} from 'semantic-ui-react';
-import * as courseActions from '../../actions/courses';
+import {Loader, Dimmer, Divider} from 'semantic-ui-react';
+import * as calendarActions from '../../actions/calendar';
+import Calendar from './Calendar';
+import _ from 'lodash';
 
 class LessonDatePage extends React.Component {
   // init state + bind functions
   constructor(props, context) {
     super(props, context);
+    this.state = {
+      datesLoaded: false
+    };
   }
 
   componentDidMount() {
-    this.props.actions.loadLessons();
+    this.props.actions.loadCalendar();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.calendar.length > 0) {
+      let dates = this.mapToDates(nextProps.calendar);
+      this.setState({
+        dates: dates,
+        datesLoaded: true
+      });
+    }
+  }
+
+  mapToDates(data) {
+    let lessons = data.map(course => {
+      return course.lessons.map(lesson => {
+        let element =Object.assign(lesson, {
+            "name": course.name,
+            "program_type": course.program_type,
+            "clan": course.clan,
+            "level": course.level
+          });
+
+        element.start = this.createDate(lesson.startdate);
+        element.end = this.createDate(lesson.enddate);
+        return element;
+      });
+    });
+    lessons = _.flatten(lessons);
+    return lessons;
+  }
+
+  createDate(dateString) {
+    let splitted = dateString.split(' ');
+    const hour = splitted[1].split(':')[0];
+    const minutes = splitted[1].split(':')[1];
+    let dayMonthYear = splitted[0].split('-');
+    const day = dayMonthYear[0];
+    const month = parseInt(dayMonthYear[1]);
+    const year = dayMonthYear[2];
+    let date = new Date(year, month - 1, day, hour, minutes);
+    return date;
   }
 
   render() {
     if (this.props.isLoading) {
-      <Dimmer active>
+      return (<Dimmer active>
         <Loader size="medium">Loading</Loader>
-      </Dimmer>
+      </Dimmer>);
     }
 
     return(
       <div className="container">
-        <h1>Lesdata</h1>
-
+        <h1>Jouw kalender</h1>
+        <p>Bekijk hier de lessen en klik door op een les om de details ervan te zien</p>
+        {this.state.datesLoaded && <Calendar dates={this.state.dates}/>}
       </div>
     );
   }
@@ -40,13 +87,26 @@ LessonDatePage.propTypes = {
 function mapStateToProps(state, ownProps) {
   return {
     isLoading: state.ajaxCallsInProgress > 0,
+    calendar: state.calendar
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(courseActions, dispatch)
+    actions: bindActionCreators(calendarActions, dispatch)
   };
+}
+
+function findByKey(obj, key) {
+  if (_.has(obj, key))
+    return [obj[key]];
+
+  var res = [];
+  _.forEach(obj, function(v) {
+    if (typeof v == "object" && (v = findByKey(v, key)).length)
+      res.push.apply(res, v);
+  });
+  return res;
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(LessonDatePage);

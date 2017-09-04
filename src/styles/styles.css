@@ -4,7 +4,7 @@
     url('./../../fonts/scribblebox.ttf');
 }
 
-.wrapper {
+.page {
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
@@ -228,5 +228,28 @@
 
 .loader {
   z-index: 2000;
+}
+
+.calendar {
+  height: 800px;
+  margin-bottom: 50px;
+  margin-top: 50px;
+}
+
+.calendar-toolbar {
+  margin-bottom: 1em;
+}
+
+.calendar-toolbar .view-type {
+  float: right;
+}
+
+.calendar-toolbar img {
+  cursor: pointer;
+}
+
+.calendar-label .label {
+  font-size: 1em;
+  vertical-align: 100%;
 }
 /*TODO: better css structure --> USE SASS INSTEAD OF CSS*/

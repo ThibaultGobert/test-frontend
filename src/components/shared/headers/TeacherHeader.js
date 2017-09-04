@@ -41,10 +41,10 @@ class TeacherHeader extends React.Component {
             <div className="ui container">
               <Link to="/teacherprofile/overview" className="item" activeClassName="active"><i
                 className="grid layout icon" />Klasgroepen</Link>
+              <Link to="/teacherprofile/calendar" className="item" activeClassName="active"><i
+                className="grid layout icon" />Lesdata</Link>
             </div>
           </div>
-
-
         </nav>
       </div>
     );

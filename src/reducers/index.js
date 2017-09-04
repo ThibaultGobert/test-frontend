@@ -4,12 +4,14 @@ import ajaxCallsInProgress from './ajaxStatus';
 import loggedIn from './auth';
 import courses from './courses';
 import lessons from './lessons';
+import calendar from './calendar';
 
 const rootReducer = combineReducers({
   ajaxCallsInProgress,
   loggedIn,
   courses,
-  lessons
+  lessons,
+  calendar
 });
 
  export default rootReducer;
