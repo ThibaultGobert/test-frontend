@@ -1,5 +1,6 @@
 import React from 'react';
-import {Modal, Button, Item} from 'semantic-ui-react';
+import {Modal, Button} from 'semantic-ui-react';
+import PropTypes from 'prop-types';
 import moment from 'moment';
 
 const CalendarDetails = ({onDetailsClose, isOpen, event}) => {
@@ -22,7 +23,13 @@ const CalendarDetails = ({onDetailsClose, isOpen, event}) => {
         </Modal.Description>
       </Modal.Content>
     </Modal>
-  )
+  );
+};
+
+CalendarDetails.propTypes = {
+  onDetailsClose: PropTypes.func.isRequired,
+  isOpen: PropTypes.bool,
+  event: PropTypes.object.isRequired
 };
 
 export default CalendarDetails;

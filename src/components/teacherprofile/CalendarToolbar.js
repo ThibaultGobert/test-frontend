@@ -13,30 +13,6 @@ class CalendarToolbar extends React.Component {
     this.view = this.view.bind(this);
   }
 
-  render() {
-    let {label} = this.props;
-    return (
-      <div className="calendar-toolbar">
-        <div className="view-type">
-          {
-            this.viewNamesGroup()
-          }
-        </div>
-        <div className="view-details">
-          <span className="calendar-control">
-            <img src={require('../../../images/calendar/left-arrow.png')} onClick={() => this.navigate(navigate.PREVIOUS)}/>
-            <img src={require('../../../images/calendar/right-arrow.png')} onClick={() => this.navigate(navigate.NEXT)}/>
-          </span>
-          <span className="calendar-label">
-            <Label>{label}</Label>
-          </span>
-        </div>
-        <div className="clearfix" />
-
-      </div>
-    );
-  }
-
   navigate(action) {
     this.props.onNavigate(action);
   }
@@ -62,6 +38,30 @@ class CalendarToolbar extends React.Component {
         )
       );
     }
+  }
+  
+  render() {
+    let {label} = this.props;
+    return (
+      <div className="calendar-toolbar">
+        <div className="view-type">
+          {
+            this.viewNamesGroup()
+          }
+        </div>
+        <div className="view-details">
+          <span className="calendar-control">
+            <img src={require('../../../images/calendar/left-arrow.png')} onClick={() => this.navigate(navigate.PREVIOUS)}/>
+            <img src={require('../../../images/calendar/right-arrow.png')} onClick={() => this.navigate(navigate.NEXT)}/>
+          </span>
+          <span className="calendar-label">
+            <Label>{label}</Label>
+          </span>
+        </div>
+        <div className="clearfix" />
+
+      </div>
+    );
   }
 }
 

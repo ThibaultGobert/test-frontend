@@ -7,7 +7,7 @@ import * as calendarActions from '../../actions/calendar';
 import Calendar from './Calendar';
 import _ from 'lodash';
 
-class LessonDatePage extends React.Component {
+class CalendarPage extends React.Component {
   // init state + bind functions
   constructor(props, context) {
     super(props, context);
@@ -80,9 +80,10 @@ class LessonDatePage extends React.Component {
   }
 }
 
-LessonDatePage.propTypes = {
+CalendarPage.propTypes = {
   actions: PropTypes.object.isRequired,
-  isLoading: PropTypes.bool
+  isLoading: PropTypes.bool,
+  calendar: PropTypes.array,
 };
 
 // redux connect and related functions
@@ -103,7 +104,7 @@ function findByKey(obj, key) {
   if (_.has(obj, key))
     return [obj[key]];
 
-  var res = [];
+  let res = [];
   _.forEach(obj, function(v) {
     if (typeof v == "object" && (v = findByKey(v, key)).length)
       res.push.apply(res, v);
@@ -111,4 +112,4 @@ function findByKey(obj, key) {
   return res;
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(LessonDatePage);
+export default connect(mapStateToProps, mapDispatchToProps)(CalendarPage);
