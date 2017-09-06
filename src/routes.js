@@ -1,7 +1,6 @@
 import React from 'react';
-import { Route, IndexRoute } from 'react-router';
+import { Route } from 'react-router';
 import App from './components/App';
-import HomePage from './components/home/HomePage';
 import TeacherOverviewPage from "./components/teacherprofile/ClassGroupsPage";
 import ClassListPage from "./components/teacherprofile/ClassListPage";
 import LoginPage from "./components/auth/LoginPage";
@@ -16,7 +15,6 @@ import CalendarPage from "./components/teacherprofile/CalendarPage";
 const routes = (store) => {
   return (
     <Route path="/" component={App}>
-      <IndexRoute component={HomePage}/>
       <Route path="/teacherprofile" onEnter={requireAuth(store)}>
         <Route path="/teacherprofile/overview" component={TeacherOverviewPage}/>
         <Route path="/teacherprofile/calendar" component={CalendarPage}/>
@@ -34,7 +32,7 @@ const routes = (store) => {
       <Route path="/slideviewer" onEnter={requireAuth(store)}>
         <Route path="/slideviewer/:id" component={SlideViewerPage}/>
       </Route>
-      <Route path="login" component={LoginPage} onEnter={requireNoAuth(store)}/>
+      <Route path="/login" component={LoginPage} onEnter={requireNoAuth(store)}/>
     </Route>
   );
 };
