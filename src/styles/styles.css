@@ -13,10 +13,10 @@
 
 .banner {
   /* TODO: is this a valid URL? */
-  background: rgb(38,45,52) url('./../../images/cf-banner.png') ;
+  background: rgb(38,45,52) ;
   background-position: center;
   background-repeat: no-repeat;
-  height: 200px;
+  height: 50px;
 }
 
 .header-bar {
