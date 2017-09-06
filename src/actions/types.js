@@ -7,6 +7,8 @@ export const LOGOUT = 'LOGOUT';
 
 // Courses
 export const LOAD_COURSES_SUCCESS = "LOAD_COURSES_SUCCESS";
+export const LOAD_CHILDREN_SUCCESS = "LOAD_CHILDREN_SUCCESS";
+
 
 // Lessons
 export const LOAD_LESSONS_SUCCESS = "LOAD_LESSONS_SUCCESS";

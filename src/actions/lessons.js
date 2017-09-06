@@ -1,5 +1,5 @@
 import * as types from './types';
-import lessonApi from '../api/lessons';
+import lessonApi from '../api/mockLessons';
 import {ajaxCallError, beginAjaxCall} from "./ajaxStatus";
 
 export function loadLessonsSuccess(lessons) {
