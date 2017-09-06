@@ -14,10 +14,7 @@ class App extends React.Component {
     return (
 
       <div className="full-container">
-
         {!isEmpty(loggedIn) && loggedIn.role == userRoles.TEACHER_ROLE && <TeacherHeader/>}
-        {!isEmpty(loggedIn) && loggedIn.role == userRoles.ADMIN_ROLE && <AdminHeader/>}
-        {!isEmpty(loggedIn) && loggedIn.role == userRoles.STUDENT_ROLE && <StudentHeader/>}
 
         <div className="page-wrapper">
           <div className="page">

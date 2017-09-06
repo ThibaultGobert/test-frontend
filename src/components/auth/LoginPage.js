@@ -1,11 +1,11 @@
 import React from 'react';
 import LoginForm from './LoginForm';
-import * as loginActions from '../../actions/auth';
+import * as authActions from '../../actions/auth';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import toastr from 'toastr';
 import * as roles from '../../constants/roles';
+import toastr from 'toastr';
 
 class LoginPage extends React.Component {
   constructor(props, context) {
@@ -35,15 +35,16 @@ class LoginPage extends React.Component {
   onLoginSubmit(event) {
     event.preventDefault();
     this.setState({loading: true});
-    this.props.actions.login(this.state.credentials).then(() => {
+    this.props.actions.login(this.state.credentials).then((data) => {
       this.setState({loading: false});
-      toastr.success('Logged in');
       if (this.props.loggedIn.role == roles.STUDENT_ROLE) {
-        this.context.router.push('/studentprofile/clan'); // Redirect to courses page after save
+        toastr.error("Geen toegang voor studenten");
+        this.props.actions.logOut();
       } else if (this.props.loggedIn.role == roles.TEACHER_ROLE) {
-        this.context.router.push('/teacherprofile/overview'); // Redirect to courses page after save
+        this.context.router.push('/teacherprofile/overview');
       } else if (this.props.loggedIn.role == roles.ADMIN_ROLE){
-        this.context.router.push('/editorprofile/overview'); // Redirect to courses page after save
+        toastr.error("Geen toegang voor lesmakers");
+        this.props.actions.logOut();
       }
     }).catch(error => {
       this.setState({loading: false});
@@ -83,7 +84,7 @@ function mapStateToProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(loginActions, dispatch)
+    actions: bindActionCreators(authActions, dispatch)
   };
 }
 
