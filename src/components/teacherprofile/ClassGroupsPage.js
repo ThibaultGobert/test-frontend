@@ -35,25 +35,25 @@ class ClassGroupsPage extends React.Component {
     let panels = data.map((course) => {
       return {
         title: {
+          name: course.name,
+          type: course.type,
           group: course.clan,
           level: course.level,
-          day: course.day,
-          time: course.starttime + ' - ' + course.endtime,
           location: course.location.name,
         },
         content: {
           id: course.id,
           headteacher: {
-            name: course.headteacher.name,
-            email: course.headteacher.email,
-            contact: course.headteacher.contact
+            name: course.headTeacher.firstname + ' ' + course.headTeacher.lastname,
+            email: course.headTeacher.email,
+            contact: course.headTeacher.phone
           },
           assistents: course.assistents,
           location: {
             address: course.location.address,
             city: course.location.city,
             organisation: course.location.organisation,
-            room: course.location.room
+            room: course.location.roomname
           }
         }
       };
@@ -61,7 +61,6 @@ class ClassGroupsPage extends React.Component {
     return panels;
   }
 
-// render function --> typically calling child component, here is markup inline
   render() {
     let panelsReady = this.state.panelsLoaded && !this.props.isLoading;
 

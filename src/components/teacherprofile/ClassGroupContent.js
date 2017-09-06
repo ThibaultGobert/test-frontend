@@ -28,7 +28,7 @@ const ClassGroupContent = ({content}) => {
           <Segment vertical>
             <h3>Assistenten</h3>
             <Grid>
-              {
+              { content.assistents &&
                 content.assistents.map((assistent) => {
                   const gridRowKey = "gridrowAssistent-" + assistent.name;
                   return (
@@ -73,3 +73,7 @@ ClassGroupContent.propTypes = {
 };
 
 export default ClassGroupContent;
+/***/
+
+/*
+* */
