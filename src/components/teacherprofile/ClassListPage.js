@@ -4,14 +4,33 @@ import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import * as courseActions from "../../actions/courses";
 import {browserHistory} from "react-router";
-import {Button} from "semantic-ui-react";
+import {Button, Dimmer, Loader} from "semantic-ui-react";
 import DataTable from "../shared/DataTable";
 
 class ClassListPage extends React.Component {
   // init state + bind functions
   constructor(props, context) {
     super(props, context);
+    this.state = { classlistLoaded: false };
     this.redirectToClassGroups = this.redirectToClassGroups.bind(this);
+  }
+
+  componentWillMount() {
+    if (!this.props.course.classlist) {
+      this.props.actions.loadChildren(this.props.course.id);
+    } else {
+      this.setState({
+        classlistLoaded: true
+      });
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if ("classlist" in nextProps.course && nextProps.course.classlist.length > 0) {
+      this.setState({
+        classlistLoaded: true
+      });
+    }
   }
 
   redirectToClassGroups() {
@@ -20,6 +39,12 @@ class ClassListPage extends React.Component {
 
   // render function --> typically calling child component, here is markup inline
   render() {
+    if(!this.state.classlistLoaded) {
+      return (<Dimmer active>
+        <Loader size="medium">Loading</Loader>
+      </Dimmer>);
+    }
+
     let columns = [
       {
         defaults: "",
@@ -29,8 +54,8 @@ class ClassListPage extends React.Component {
       },
       {
         defaults: "",
-        display: "Leeftijd",
-        key: "age",
+        display: "Geboortedatum",
+        key: "birthdate",
         type: "number"
       },
       {
@@ -53,12 +78,6 @@ class ClassListPage extends React.Component {
       },
       {
         defaults: "",
-        display: "Username scratch",
-        key: "usernames_scratch",
-        type: "string"
-      },
-      {
-        defaults: "",
         display: "Username leerplatform",
         key: "usernames_platform",
         type: "string"
@@ -66,13 +85,12 @@ class ClassListPage extends React.Component {
     ];
     let data = this.props.course.classlist.map(student => {
       return {
-        name: student.firstName + " " + student.surName,
-        age: student.age,
-        grade: student.grade + "de",
-        parent_name: student.parent.firstName + " " + student.parent.surName,
-        parent_contact: student.parent.contact,
-        usernames_scratch: student.usernames.scratch,
-        usernames_platform: student.usernames.platform
+        name: student.firstname + " " + student.lastname,
+        birthdate: student.birthdate,
+        grade: student.grade,
+        parent_name: student.parent.firstName + " " + student.parent.lastName,
+        parent_contact: student.parent.phone,
+        usernames_platform: student.login
       };
     });
     return (
@@ -104,7 +122,6 @@ ClassListPage.propTypes = {
 // redux connect and related functions
 function mapStateToProps(state, ownProps) {
   const courseId = ownProps.params.id; // from path /course/:id
-
   let course = getCourseById(state.courses, courseId);
 
   return {

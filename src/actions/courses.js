@@ -7,7 +7,7 @@ export function loadCoursesSuccess(courses) {
 }
 
 export function loadChildrenSuccess(couseId, children) {
-  const childrenForCourse = { couseId: couseId, children: children};
+  const childrenForCourse = { courseId: couseId, children: children};
   return { type: types.LOAD_CHILDREN_SUCCESS, childrenForCourse};
 }
 

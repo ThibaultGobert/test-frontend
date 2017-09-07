@@ -22,7 +22,7 @@ class ClassGroupsPage extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.courses.length > 0) {
+    if (nextProps.courses !== null && Array.isArray(nextProps.courses)) {
       let panels = this.mapToPanels(nextProps.courses);
       this.setState({
         panels: panels,
