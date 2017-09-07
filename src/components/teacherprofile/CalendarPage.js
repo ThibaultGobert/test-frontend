@@ -39,9 +39,7 @@ class CalendarPage extends React.Component {
             "clan": course.clan,
             "level": course.level,
           });
-        element.name = lesson.clan && lesson.level ?
-          lesson.clan.charAt(0) + lesson.level + ': ' + lesson.name :
-          lesson.name;
+        element.name = lesson.name;
         element.start = this.createDate(lesson.startdate);
         element.end = this.createDate(lesson.enddate);
         return element;
