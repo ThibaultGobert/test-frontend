@@ -1,5 +1,5 @@
 import * as types from './types';
-import calendarApi from '../api/mockCalendar';
+import calendarApi from '../api/calendar';
 import {ajaxCallError, beginAjaxCall} from "./ajaxStatus";
 
 export function loadCalendarSuccess(calendar) {

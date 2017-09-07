@@ -1,10 +1,11 @@
 import axios from 'axios';
+import baseUrl from './baseUrl';
 
 class AuthApi {
   static login(credentials) {
     return axios.request({
       method: 'get',
-      url: 'http://localhost:8080/CodefeverWebservice/webresources/v1/authUser',
+      url: baseUrl + '/webresources/v1/authUser',
       headers: {
         'x-username': credentials.username,
         'x-password': credentials.password,
