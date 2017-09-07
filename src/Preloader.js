@@ -3,7 +3,7 @@ import {persistStore} from 'redux-persist';
 import PropTypes from 'prop-types';
 import routes from './routes';
 import {Provider} from 'react-redux';
-import { Router, browserHistory } from 'react-router';
+import { Router, hashHistory } from 'react-router';
 import {Loader} from 'semantic-ui-react';
 
 class Preloader extends React.Component {
@@ -25,7 +25,7 @@ class Preloader extends React.Component {
     }
     return (
       <Provider store={this.props.store}>
-        <Router history={browserHistory}>
+        <Router history={hashHistory}>
           {routes(this.props.store)}
         </Router>
       </Provider>
