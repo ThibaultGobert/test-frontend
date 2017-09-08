@@ -1,7 +1,6 @@
 import React  from 'react';
 import PropTypes from 'prop-types';
 import TeacherHeader from './shared/headers/TeacherHeader';
-import AdminHeader from './shared/headers/AdminHeader';
 import StudentHeader from './shared/headers/StudentHeader';
 import {connect} from 'react-redux';
 import * as userRoles from '../constants/roles';
@@ -15,6 +14,7 @@ class App extends React.Component {
 
       <div className="full-container">
         {!isEmpty(loggedIn) && loggedIn.role == userRoles.TEACHER_ROLE && <TeacherHeader/>}
+        {!isEmpty(loggedIn) && loggedIn.role == userRoles.STUDENT_ROLE && <StudentHeader/>}
 
         <div className="page-wrapper">
           <div className="page">
