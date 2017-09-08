@@ -6,7 +6,7 @@ class HomePage extends React.Component {
     return(
       <div className="jumbotron">
         <h1>CodeFever home page</h1>
-        <Link to="manage" className="btn btn-primary btn-lg">Manage lessons</Link>
+        <Link to="login" className="btn btn-primary btn-lg">Login</Link>
       </div>
     );
   }
