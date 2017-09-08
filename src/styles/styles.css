@@ -262,5 +262,9 @@
   margin-bottom: 1em;
 }
 
+.back-button {
+  margin-bottom: 1em;
+}
+
 
 /*TODO: better css structure --> USE SASS INSTEAD OF CSS*/
