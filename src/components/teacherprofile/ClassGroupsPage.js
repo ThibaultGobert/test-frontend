@@ -46,14 +46,16 @@ class ClassGroupsPage extends React.Component {
           headteacher: {
             name: course.headTeacher.firstname + ' ' + course.headTeacher.lastname,
             email: course.headTeacher.email,
-            contact: course.headTeacher.phone
+            phone: course.headTeacher.phone,
+            cellphone: course.headTeacher.cellphone
           },
-          assistents: course.assistents,
+          assistants: course.assistants,
           location: {
             address: course.location.address,
             city: course.location.city,
             organisation: course.location.organisation,
-            room: course.location.roomname
+            room: course.location.roomname,
+            roomremark: course.location.roomremark
           }
         }
       };

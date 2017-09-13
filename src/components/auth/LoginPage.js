@@ -43,6 +43,9 @@ class LoginPage extends React.Component {
       } else if (this.props.loggedIn.role == roles.TEACHER_ROLE) {
         this.context.router.push('/teacherprofile/overview');
       } else if (this.props.loggedIn.role == roles.ADMIN_ROLE){
+        toastr.error("Geen toegang voor admins");
+        this.props.actions.logOut();
+      } else if (this.props.loggedIn.role == roles.EDITOR_ROLE) {
         toastr.error("Geen toegang voor lesmakers");
         this.props.actions.logOut();
       }

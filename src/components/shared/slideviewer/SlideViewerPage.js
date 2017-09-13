@@ -18,13 +18,13 @@ class SlideViewerPage extends React.Component {
   }
 
   componentWillMount() {
-    this.props.actions.loadLessonSlides(this.props.lesson.type, this.props.lesson.id).then(() => {
+    this.props.actions.loadLessonSlides(this.props.type, this.props.lessonId).then(() => {
       this.setState({
         loadedSlides: true
       });
     }).catch(error => {
       toastr.error(error);
-      browserHistory.goBack();
+      this.redirectToOverview();
     });
   }
 
@@ -33,14 +33,14 @@ class SlideViewerPage extends React.Component {
   }
 
   render() {
-    let slideshowkey = "slideshow"+ this.props.lesson.id;
+    let slideshowkey = "slideshow"+ this.props.lessonId;
     return (
       <div className="slide-show">
         {!this.state.loadedSlides && <Loader />}
         {this.state.loadedSlides &&
           <div>
             <div className="close-presentation" onClick={this.redirectToOverview}>
-              <img src={require('../../../../images/slideviewer/cancel.png')} alt=""/>
+              <img src={require('../../../../images/slideviewer/close.png')} alt=""/>
             </div>
 
             <SlideViewer
@@ -56,7 +56,6 @@ class SlideViewerPage extends React.Component {
 
 SlideViewerPage.propTypes = {
   actions: PropTypes.object.isRequired,
-  lesson: PropTypes.object.isRequired,
 };
 
 function getLessonById(lessons, id) {
@@ -67,13 +66,14 @@ function getLessonById(lessons, id) {
   return null;
 }
 
-
 function mapStateToProps(state, ownProps) {
   const lessonId = ownProps.params.id;
-
-  let lesson = getLessonById(state.lessons, lessonId);
+  const type = ownProps.params.type;
+  const lesson = getLessonById(state.lessons, lessonId);
 
   return {
+    lessonId: lessonId,
+    type: type,
     lesson: lesson
   };
 }

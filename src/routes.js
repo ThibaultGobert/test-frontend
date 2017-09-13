@@ -37,7 +37,7 @@ const routes = (store) => {
       </Route>
 
       <Route path="/slideviewer" onEnter={requireAuth(store)}>
-        <Route path="/slideviewer/:id" component={SlideViewerPage}/>
+        <Route path="/slideviewer/:id/:type" component={SlideViewerPage}/>
       </Route>
       <Route path="/login" component={LoginPage} onEnter={requireNoAuth(store)}/>
     </Route>
