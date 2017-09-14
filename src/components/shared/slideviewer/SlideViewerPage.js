@@ -4,8 +4,9 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {browserHistory} from 'react-router';
 import SlideViewer from './SlideViewer';
-import {Loader} from 'semantic-ui-react';
 import * as lessonActions from '../../../actions/lessons';
+import LoaderHOC from '../hoc/LoaderHOC';
+import {Loader, Dimmer} from 'semantic-ui-react';
 import toastr from 'toastr';
 
 class SlideViewerPage extends React.Component {
@@ -13,14 +14,14 @@ class SlideViewerPage extends React.Component {
     super(props, context);
     this.redirectToOverview = this.redirectToOverview.bind(this);
     this.state = {
-      loadedSlides: false
+      isLoading: true
     };
   }
 
   componentWillMount() {
     this.props.actions.loadLessonSlides(this.props.lessonId, "CLASSHOME", this.props.slideType).then(() => {
       this.setState({
-        loadedSlides: true
+        isLoading: false
       });
     }).catch(error => {
       toastr.error(error);
@@ -34,10 +35,17 @@ class SlideViewerPage extends React.Component {
 
   render() {
     let slideshowkey = "slideshow"+ this.props.lessonId;
+
+    if (this.state.isLoading) {
+      return (
+        <Dimmer active>
+          <Loader size="medium">Loading</Loader>
+        </Dimmer>
+      );
+    }
+
     return (
       <div className="slide-show">
-        {!this.state.loadedSlides && <Loader />}
-        {this.state.loadedSlides &&
           <div>
             <div className="close-presentation" onClick={this.redirectToOverview}>
               <img src={require('../../../../images/slideviewer/close.png')} alt=""/>
