@@ -21,6 +21,7 @@ class CalendarDetailPage extends React.Component {
   }
 
   render() {
+    let slideviewerUrl = "/slideviewer/" + this.props.event.programlessonid;
     return(
       <div className="calendar-details">
         <div className="back-button">
@@ -40,16 +41,16 @@ class CalendarDetailPage extends React.Component {
         }
 
         <div className="calendar-details-buttons">
-          <Link to="/slideviewer/193/CLASS">
+          <Link to={slideviewerUrl + "/CLASS"}>
             <Button primary><Icon name="group"/>Klas</Button>
           </Link>
-          <Link to="/slideviewer/193/HOME">
+          <Link to={slideviewerUrl + "/HOME"}>
             <Button primary><Icon name="home"/>Thuis</Button>
           </Link>
-          <Link to="/slideviewer/193/PROJECTION">
+          <Link to={slideviewerUrl + "/PROJECTION"}>
             <Button primary><Icon name="tv"/>Projectie</Button>
           </Link>
-          <Link to="/slideviewer/193/INFO">
+          <Link to={slideviewerUrl + "/INFO"}>
             <Button primary><Icon name="info"/>Info</Button>
           </Link>
           <Button disabled>Download lescontent</Button>

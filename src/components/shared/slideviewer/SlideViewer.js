@@ -2,6 +2,7 @@ import React from 'react';
 import {PropTypes} from 'prop-types';
 import QuestionSlide from "./QuestionSlide";
 import TextSlide from './TextSlide';
+import keydown, {Keys} from 'react-keydown';
 
 class SlideViewer extends React.Component {
   constructor(props, context) {

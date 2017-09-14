@@ -23,7 +23,6 @@ const CFModal = ({isOpen, onClose, body, header, button}) => {
 
 CFModal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
-  body: PropTypes.string.isRequired,
   header: PropTypes.string.isRequired,
   button: PropTypes.string.isRequired,
   onClose: PropTypes.func.isRequired,

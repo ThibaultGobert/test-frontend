@@ -18,7 +18,7 @@ class SlideViewerPage extends React.Component {
   }
 
   componentWillMount() {
-    this.props.actions.loadLessonSlides(this.props.type, this.props.lessonId).then(() => {
+    this.props.actions.loadLessonSlides(this.props.lessonId, "CLASSHOME", this.props.slideType).then(() => {
       this.setState({
         loadedSlides: true
       });
@@ -58,8 +58,8 @@ SlideViewerPage.propTypes = {
   actions: PropTypes.object.isRequired,
 };
 
-function getLessonById(lessons, id) {
-  const lesson = lessons.filter(lesson => lesson.id == id);
+function getLessonById(lessons, id, slideType) {
+  const lesson = lessons.filter(lesson => lesson.programlessonid == id && lesson.slideType == slideType);
   if (lesson) {
     return lesson[0];
   }
@@ -68,12 +68,12 @@ function getLessonById(lessons, id) {
 
 function mapStateToProps(state, ownProps) {
   const lessonId = ownProps.params.id;
-  const type = ownProps.params.type;
-  const lesson = getLessonById(state.lessons, lessonId);
+  const slideType = ownProps.params.type;
+  const lesson = getLessonById(state.lessons, lessonId, slideType);
 
   return {
     lessonId: lessonId,
-    type: type,
+    slideType: slideType,
     lesson: lesson
   };
 }
