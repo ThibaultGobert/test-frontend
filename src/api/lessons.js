@@ -20,7 +20,7 @@ class LessonApi {
     });
   }
 
-  static getLessonSlides(type, lessonId) {
+  /*static getLessonSlides(type, lessonId) {
     return axios.request({
       method: 'get',
       url: baseUrl + "/webresources/v1/getLesson?lesson=" + lessonId + "&type=" + type,
@@ -31,6 +31,25 @@ class LessonApi {
       }
     }).then(response => {
       return response.data;
+    }).catch(error => {
+      throw error;
+    });
+  } */
+
+  static getLessonSlides(lessonId, lessonType, slideType) {
+    return axios.request({
+      method: 'get',
+      url: baseUrl + "/webresources/v1/getLessonForTeacher?programlessonid=" + lessonId + "&lessontype=" + lessonType + "&slidetype=" + slideType,
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+        'x-token': store.getState().loggedIn.token
+      }
+    }).then(response => {
+      let lesson =  response.data;
+      lesson.slideType = slideType;
+      debugger;
+      return lesson;
     }).catch(error => {
       throw error;
     });
