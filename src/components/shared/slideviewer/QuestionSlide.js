@@ -4,6 +4,7 @@ import renderHtml from 'react-render-html';
 import {Grid} from 'semantic-ui-react';
 import _ from 'lodash';
 import Modal from '../Modal';
+import questionApi from '../../../api/questions';
 
 class QuestionSlide extends React.Component {
   constructor(props) {
@@ -43,35 +44,40 @@ class QuestionSlide extends React.Component {
     return numberOfCorrectAnswers;
   }
 
+
+
   selectAnswer(answer) {
-    if (this.state.questionAnswered) {
-      return
-    }
+    questionApi.registerAnswer(answer.id).then(result => {
+      let correctAnswer = result.correct;
+      let explanation = result.explanation;
+      let renderedExplanation = renderHtml(explanation);
+      answer.attempted = true;
+      answer.correctAnswer = result.correct;
 
-    let correctAnswer = answer.correctAnswer;
-    answer.attempted = true;
-    if (!correctAnswer) {
-      this.setState({
-        numberOfWrongAnswers: this.state.numberOfWrongAnswers + 1
-      }, function() {
-        if (this.state.numberOfWrongAnswers > 1) {
-          this.showModal("Het juiste antwoord was", renderHtml(this.getCorrectAnswer()), "Volgende slide", this.goToNextSlide);
+      if (result.isTrack) {
+        if (!correctAnswer) {
+          this.showModal("Jammer", renderedExplanation, "Probeer nog eens");
 
+          if (this.result.answerscount > 2) {
+            this.showModal("Het juiste antwoord was", <div>All correct answers</div>, "Volgende slide", this.goToNextSlide);
+          }
         } else {
-          this.showModal("Jammer", renderHtml(answer.explanation), "Probeer nog eens");
+          if (this.result.correctanswers == this.result.totalcorrectanswers) {
+            this.showModal("Goed zo", renderedExplanation, "Volgende slide", this.goToNextSlide);
+          } else {
+            this.showModal("Goed zo", renderedExplanation, "Er zijn nog mogelijke antwoorden");
+          }
         }
-      });
-    } else {
-      this.setState({
-        timesCorrect: this.state.timesCorrect + 1
-      }, function() {
-        if (this.state.timesCorrect === this.state.numberOfCorrectAnswers) {
-          this.showModal("Goed zo", renderHtml(answer.explanation), "Volgende slide", this.goToNextSlide);
+      } else {
+        if (!correctAnswer) {
+          this.showModal("Jammer", renderedExplanation, "Probeer nog eens");
         } else {
-          this.showModal("Goed zo", renderHtml(answer.explanation), "Er zijn nog mogelijke antwoorden");
+          this.showModal("Goed zo", renderedExplanation, "Verder");
         }
-      });
-    }
+      }
+    }).catch(error => {
+      console.log(error);
+    });
   }
 
   goToNextSlide() {
@@ -81,16 +87,6 @@ class QuestionSlide extends React.Component {
     }, function() {
       this.props.nextSlide();
     });
-  }
-
-  getCorrectAnswer() {
-    let correctAnswer = "";
-    this.props.answers.map(answer => {
-      if (answer.correctAnswer) {
-        correctAnswer += answer.value + '&nbsp;&nbsp;&nbsp;&nbsp;' +  answer.explanation + "<br />";
-      }
-    });
-    return correctAnswer;
   }
 
   showModal(header, body, button, callback) {
