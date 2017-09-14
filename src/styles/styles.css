@@ -10,6 +10,11 @@
   margin-right: auto;
 }
 
+.wrapper {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
 
 .banner {
   /* TODO: is this a valid URL? */
@@ -322,6 +327,56 @@
   min-height: 100%;
 }
 
+.tag-bar-wrapper {
+  background: #262d34;
+  border-bottom: 4px solid rgb(220, 43, 69);
+}
 
+.tag-bar {
+  width: 100%;
+  color: white;
+}
 
+.tag-bar .meta-slideType {
+  margin-left: 1em;
+}
+.tag-bar .meta-slideType .slide-type-label {
+  background: #2185d0;
+  color: #fff !important;
+}
+
+.meta-title {
+  display: inline-block;
+  line-height: 50px;
+  font-size: 1.2em;
+}
+
+.meta-tags {
+  float: right;
+  display: inline-block;
+}
+
+.meta-tags ul li {
+  display: inline-block;
+  padding-left: 1em;
+}
+
+.aanwezigheden-info {
+  display: block;
+  margin-top: 2em !important;
+  margin-bottom: 2em !important;
+}
+
+.meta-list ul {
+  display: inline-block;
+  margin-right: 1em;
+}
+
+.view-type .icon {
+  font-size: 1em;
+}
+
+.view-type .icon.active {
+  background: #2185d0;
+}
 /*TODO: better css structure --> USE SASS INSTEAD OF CSS*/

@@ -3,17 +3,20 @@ import {PropTypes} from 'prop-types';
 import QuestionSlide from "./QuestionSlide";
 import TextSlide from './TextSlide';
 import keydown, {Keys} from 'react-keydown';
+import TagBar from "./TagBar";
 
 class SlideViewer extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
       index: 0,
-      slide: null
+      slide: null,
+      tags: []
     };
 
     this.nextSlide = this.nextSlide.bind(this);
     this.previousSlide = this.previousSlide.bind(this);
+    this.mapToTags = this.mapToTags.bind(this);
   }
 
   componentWillMount() {
@@ -64,12 +67,18 @@ class SlideViewer extends React.Component {
     } else {
       renderedHtml = <TextSlide title={slide.title} content={slide.content} />;
     }
+
     return renderedHtml;
+  }
+
+  mapToTags() {
+    return [this.state.slide.part, this.state.slide.method, this.state.slide.execution];
   }
 
   render() {
     return (
       <div>
+        <TagBar title={this.props.metadata.title} slideType={this.props.metadata.slideType} tags={this.mapToTags()} viewType={this.state.slide.type}/>
         <div className="slide-show-content">
           <div className="slide-show-inner-content">
             { this.state.index > 0 && <div className="left control-button" onClick={this.previousSlide}>
@@ -88,6 +97,7 @@ class SlideViewer extends React.Component {
 
 SlideViewer.propTypes = {
   slides: PropTypes.array.isRequired,
+  metadata: PropTypes.object.isRequired
 };
 
 export default SlideViewer;

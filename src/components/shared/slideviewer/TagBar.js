@@ -1,13 +1,22 @@
 import React from 'react';
+import SlideTypeLabel from "../SlideTypeLabel";
+import TagMetaList from "./TagMetaList";
 
-const TagBar = ({tags}) => {
+const TagBar = ({title, slideType, tags, viewType}) => {
   return (
-    <div className="tag-bar">
-      {tags.map(tag => {
-        return (
-          <span className="tag">{tag}</span>
-        );
-      })}
+    <div className="tag-bar-wrapper ">
+      <div className="tag-bar wrapper">
+        <span className="meta-title">
+          {title}
+        </span>
+        <span className="meta-slideType">
+          <SlideTypeLabel slideType={slideType} />
+        </span>
+        <span className="meta-tags">
+          <TagMetaList tags={tags} viewType={viewType}/>
+        </span>
+        <div className="clearfix"/>
+      </div>
     </div>
   );
 };

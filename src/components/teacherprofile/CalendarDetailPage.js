@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button} from 'semantic-ui-react';
+import {Button, Message} from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {Link} from 'react-router';
@@ -9,6 +9,7 @@ import {browserHistory} from 'react-router';
 import {Header, Icon} from 'semantic-ui-react';
 import moment from 'moment';
 import AttendanceList from './AttendanceList';
+import * as slideTypes from '../../constants/slideTypes';
 
 class CalendarDetailPage extends React.Component {
   constructor(props) {
@@ -40,17 +41,22 @@ class CalendarDetailPage extends React.Component {
           <AttendanceList classlist={this.props.course.classlist}/>
         }
 
+        <Message className="aanwezigheden-info">
+          <Message.Header>De aanwezigheden invullen</Message.Header>
+          <p>Na les 2 gaat het mogelijk zijn om hier de aanwezigheden van de kinderen bij de les in te vullen</p>
+        </Message>
+
         <div className="calendar-details-buttons">
-          <Link to={slideviewerUrl + "/CLASS"}>
+          <Link to={slideviewerUrl + "/" + slideTypes.CLASS}>
             <Button primary><Icon name="group"/>Klas</Button>
           </Link>
-          <Link to={slideviewerUrl + "/HOME"}>
+          <Link to={slideviewerUrl + "/" + slideTypes.HOME}>
             <Button primary><Icon name="home"/>Thuis</Button>
           </Link>
-          <Link to={slideviewerUrl + "/PROJECTION"}>
+          <Link to={slideviewerUrl + "/" + slideTypes.PROJECTION}>
             <Button primary><Icon name="tv"/>Projectie</Button>
           </Link>
-          <Link to={slideviewerUrl + "/INFO"}>
+          <Link to={slideviewerUrl + "/" + slideTypes.INFO}>
             <Button primary><Icon name="info"/>Info</Button>
           </Link>
           <Button disabled>Download lescontent</Button>

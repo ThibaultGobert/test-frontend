@@ -14,7 +14,7 @@ class SlideViewerPage extends React.Component {
     super(props, context);
     this.redirectToOverview = this.redirectToOverview.bind(this);
     this.state = {
-      isLoading: true
+      isLoading: true,
     };
   }
 
@@ -44,19 +44,23 @@ class SlideViewerPage extends React.Component {
       );
     }
 
-    return (
-      <div className="slide-show">
-          <div>
-            <div className="close-presentation" onClick={this.redirectToOverview}>
-              <img src={require('../../../../images/slideviewer/close.png')} alt=""/>
-            </div>
+    let metadata = {"title": this.props.lesson.name, "slideType": this.props.lesson.slideType};
 
-            <SlideViewer
-              slides={this.props.lesson.slides}
-              key={slideshowkey}
-            />
-          </div>
-        }
+    return (
+      <div className="slideViewerPage">
+        <div className="slide-show">
+            <div>
+              <div className="close-presentation" onClick={this.redirectToOverview}>
+                <img src={require('../../../../images/slideviewer/close.png')} alt=""/>
+              </div>
+
+              <SlideViewer
+                slides={this.props.lesson.slides}
+                key={slideshowkey}
+                metadata={metadata}
+              />
+            </div>
+        </div>
       </div>
     );
   }
