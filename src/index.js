@@ -3,6 +3,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import configureStore from './store/configureStore';
 import './styles/styles.css';
+import '../node_modules/react-big-calendar/lib/css/react-big-calendar.css';
 import Preloader from "./Preloader";
 
 const store = configureStore();

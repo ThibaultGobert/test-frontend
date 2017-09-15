@@ -6,6 +6,6 @@ WORKDIR /usr/src/app
 COPY . /usr/src/app
 RUN npm install
 
-EXPOSE 3000
+EXPOSE 4000
 
-CMD ["npm", "start", "-s"]
+CMD ["npm", "run", "build"]

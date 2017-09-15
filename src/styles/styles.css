@@ -4,19 +4,24 @@
     url('./../../fonts/scribblebox.ttf');
 }
 
+.page {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .wrapper {
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
 }
 
-
 .banner {
   /* TODO: is this a valid URL? */
-  background: rgb(38,45,52) url('./../../images/cf-banner.png') ;
+  background: rgb(38,45,52) ;
   background-position: center;
   background-repeat: no-repeat;
-  height: 200px;
+  height: 50px;
 }
 
 .header-bar {
@@ -185,6 +190,10 @@
   z-index: 200;
 }
 
+.close-presentation img {
+  height: 60px;
+}
+
 .slide-show {
   min-width: 100%;
   min-height: 100%;
@@ -198,11 +207,16 @@
 .slide-show h1 {
   margin-bottom: 1.5em;
 }
-
+.slide-show .control-button {
+  cursor: pointer;
+}
 .slide-show-content {
-  max-width: 1200px;
+  max-width: 1400px;
+  padding-left: 120px;
   margin: auto auto;
-  margin-top: 10em;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  padding-right: 120px;
 }
 
 .control-button {
@@ -228,5 +242,145 @@
 
 .loader {
   z-index: 2000;
+}
+
+.calendar {
+  height: 800px;
+  margin-bottom: 50px;
+  margin-top: 50px;
+}
+
+.calendar-toolbar {
+  margin-bottom: 1em;
+}
+
+
+.calendar-toolbar .view-type {
+  float: right;
+}
+
+.calendar-toolbar img {
+  cursor: pointer;
+}
+
+.calendar-label .label {
+  font-size: 1em;
+  vertical-align: 100%;
+}
+
+.modals {
+  min-width: 100%;
+}
+
+.calendar-details-content {
+  font-size: 1.1em;
+  margin-bottom: 1em;
+}
+
+.back-button {
+  margin-bottom: 1em;
+}
+
+
+.class-group-details .column{
+  word-wrap: break-word;
+}
+
+.answer-content p {
+  display: inline-block;
+}
+
+.answer {
+  background: #F2F2F2;
+  border-radius: 1em;
+  cursor: pointer;
+  margin: 0.5em !important;
+}
+
+.answers-panel {
+  margin-top: 2em;
+}
+
+.slide-show-content {
+}
+
+.wrong-answer .answer-symbol {
+  background: red;
+}
+
+.correct-answer .answer-symbol {
+  background: green;
+}
+
+.answer-symbol {
+  text-align: center;
+  padding-top: 1em !important;
+  padding-bottom: 1em !important;
+  background: #008BCE;
+  color: #fff;
+  font-size: 4em;
+  font-family: sribbleFont;
+  display: inline-block;
+}
+
+.answer-content p {
+  font-size: 1.3em;
+  display: flex !important;
+  flex-flow: row !important;
+  align-items: center !important;
+  min-height: 100%;
+}
+
+.tag-bar-wrapper {
+  background: #262d34;
+  border-bottom: 4px solid rgb(220, 43, 69);
+}
+
+.tag-bar {
+  width: 100%;
+  color: white;
+}
+
+.tag-bar .meta-slideType {
+  margin-left: 1em;
+}
+.tag-bar .meta-slideType .slide-type-label {
+  background: #2185d0;
+  color: #fff !important;
+}
+
+.meta-title {
+  display: inline-block;
+  line-height: 50px;
+  font-size: 1.2em;
+}
+
+.meta-tags {
+  float: right;
+  display: inline-block;
+}
+
+.meta-tags ul li {
+  display: inline-block;
+  padding-left: 1em;
+}
+
+.aanwezigheden-info {
+  display: block;
+  margin-top: 2em !important;
+  margin-bottom: 2em !important;
+}
+
+.meta-list ul {
+  display: inline-block;
+  margin-right: 1em;
+}
+
+.view-type .icon {
+  font-size: 1em;
+}
+
+.view-type .icon.active {
+  background: #2185d0;
 }
 /*TODO: better css structure --> USE SASS INSTEAD OF CSS*/

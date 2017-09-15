@@ -2,6 +2,7 @@ import React from 'react';
 import {Link} from 'react-router';
 import PropTypes from 'prop-types';
 import { Grid, Segment, Button } from 'semantic-ui-react';
+import renderHtml from 'react-render-html';
 
 const ClassGroupContent = ({content}) => {
   let buttonKey = "button" + content.id;
@@ -20,27 +21,27 @@ const ClassGroupContent = ({content}) => {
                   {content.headteacher.email}
                 </Grid.Column>
                 <Grid.Column width={6}>
-                  {content.headteacher.contact}
+                  {content.headteacher.cellphone}
                 </Grid.Column>
               </Grid.Row>
             </Grid>
           </Segment>
           <Segment vertical>
-            <h3>Assistenten</h3>
+            <h3>Assistent-lesgevers</h3>
             <Grid>
-              {
-                content.assistents.map((assistent) => {
-                  const gridRowKey = "gridrowAssistent-" + assistent.name;
+              { content.assistants &&
+                content.assistants.map((assistant) => {
+                  const gridRowKey = "gridrowAssistent-" + assistant.name;
                   return (
                     <Grid.Row key={gridRowKey}>
                       <Grid.Column width={3}>
-                        {assistent.name}
+                        {assistant.firstname + ' ' + assistant.lastname}
                       </Grid.Column>
                       <Grid.Column width={6}>
-                        {assistent.email}
+                        {assistant.email}
                       </Grid.Column>
                       <Grid.Column width={6}>
-                        {assistent.contact}
+                        { assistant.cellphone}
                       </Grid.Column>
                     </Grid.Row>
                   );
@@ -52,10 +53,11 @@ const ClassGroupContent = ({content}) => {
         <Grid.Column width={6}>
           <Segment vertical>
             <h3>Locatie</h3>
-            <p><strong>Adres</strong> {content.location.address}</p>
-            <p><strong>Stad</strong> {content.location.city}</p>
             <p><strong>Organisatie</strong> {content.location.organisation}</p>
+            <p><strong>Adres</strong> {content.location.address}</p>
             <p><strong>Lokaal</strong> {content.location.room}</p>
+            <p><strong>Opmerkingen</strong> {renderHtml(content.location.roomremark)}</p>
+
           </Segment>
         </Grid.Column>
         <Grid.Column width={2}>

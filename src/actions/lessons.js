@@ -22,10 +22,10 @@ export function loadLessons(type) {
   };
 }
 
-export function loadLessonSlides(type, lessonId){
+export function loadLessonSlides(lessonId, lessonType, slideType){
   return function(dispatch) {
     dispatch(beginAjaxCall());
-    return lessonApi.getLessonSlides(type, lessonId).then(lessonInfo => {
+    return lessonApi.getLessonSlides(lessonId, lessonType, slideType).then(lessonInfo => {
       dispatch(loadLessonSlidesSuccess(lessonInfo));
     }).catch(error => {
       dispatch(ajaxCallError());
