@@ -207,12 +207,16 @@
 .slide-show h1 {
   margin-bottom: 1.5em;
 }
-
+.slide-show .control-button {
+  cursor: pointer;
+}
 .slide-show-content {
-  max-width: 1200px;
+  max-width: 1400px;
+  padding-left: 120px;
   margin: auto auto;
   margin-top: 5%;
   margin-bottom: 5%;
+  padding-right: 120px;
 }
 
 .control-button {
