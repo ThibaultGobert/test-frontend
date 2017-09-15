@@ -37,6 +37,22 @@ class LessonApi {
       throw error;
     });
   }
+
+  static getLessonMetaData(programLessonId) {
+    return axios.request({
+      method: 'get',
+      url: baseUrl + "/webresources/v1/getLessonMetaData?programlessonid=" + programLessonId,
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+        'x-token': store.getState().loggedIn.token
+      }
+    }).then(response => {
+      return response.data;
+    }).catch(error => {
+      throw error;
+    });
+  }
 }
 
 export default LessonApi;

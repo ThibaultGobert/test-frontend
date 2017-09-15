@@ -10,15 +10,42 @@ import {Header, Icon} from 'semantic-ui-react';
 import moment from 'moment';
 import AttendanceList from './AttendanceList';
 import * as slideTypes from '../../constants/slideTypes';
+import lessonApi from '../../api/lessons';
+import _ from 'lodash';
 
 class CalendarDetailPage extends React.Component {
   constructor(props) {
     super(props);
     this.goBack = this.goBack.bind(this);
+    this.downloadLescontent = this.downloadLescontent.bind(this);
+    this.state = {
+      lessonContentLoading: true,
+      contentUrl: null
+    };
   }
 
   goBack() {
     browserHistory.goBack();
+  }
+
+  componentDidMount() {
+    lessonApi.getLessonMetaData(this.props.event.programlessonid).then(metadata => {
+      let contentUrls = metadata.map(dataForLesson => {
+        if(dataForLesson.ziplocation !== undefined && dataForLesson.ziplocation) {
+          return dataForLesson.ziplocation;
+        }
+      });
+      contentUrls = _.without(contentUrls, undefined);
+      this.setState({
+        lessonContentLoading: false,
+        contentUrl: contentUrls[0]
+      });
+    });
+  }
+
+  downloadLescontent(e) {
+    e.preventDefault();
+    window.location.assign(this.state.contentUrl, '_blank');
   }
 
   render() {
@@ -59,8 +86,7 @@ class CalendarDetailPage extends React.Component {
           <Link to={slideviewerUrl + "/" + slideTypes.INFO}>
             <Button primary><Icon name="info"/>Info</Button>
           </Link>
-          <Button disabled>Download lescontent</Button>
-
+          <Button loading={this.state.lessonContentLoading} onClick={this.downloadLescontent} disabled={this.state.contentUrl == undefined}>Download lescontent</Button>
         </div>
       </div>
     );
@@ -69,6 +95,10 @@ class CalendarDetailPage extends React.Component {
 
 CalendarDetailPage.propTypes = {
   event: PropTypes.object.isRequired,
+};
+
+CalendarDetailPage.contextTypes = {
+  router: PropTypes.object.isRequired
 };
 
 function getEventById(events, id) {
