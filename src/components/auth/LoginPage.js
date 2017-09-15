@@ -38,8 +38,7 @@ class LoginPage extends React.Component {
     this.props.actions.login(this.state.credentials).then((data) => {
       this.setState({loading: false});
       if (this.props.loggedIn.role == roles.STUDENT_ROLE) {
-        toastr.error("Geen toegang voor studenten");
-        this.props.actions.logOut();
+        this.context.router.push('/studentprofile/clan');
       } else if (this.props.loggedIn.role == roles.TEACHER_ROLE) {
         this.context.router.push('/teacherprofile/overview');
       } else if (this.props.loggedIn.role == roles.ADMIN_ROLE){

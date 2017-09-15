@@ -24,7 +24,7 @@ class SlideViewerPage extends React.Component {
         isLoading: false
       });
     }).catch(error => {
-      toastr.error("Les is niet beschikbaar, neem contact op met fien@codefever.be");
+      toastr.error("Les is niet beschikbaar");
       this.redirectToOverview();
     });
   }

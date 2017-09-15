@@ -4,7 +4,6 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import LessonList from "./LessonList";
 import * as lessonActions from '../../actions/lessons';
-import * as slideshowTypes from '../../constants/slideshowTypes';
 
 class ChallengesPage extends React.Component {
   constructor(props, context) {
@@ -12,7 +11,7 @@ class ChallengesPage extends React.Component {
   }
 
   componentWillMount() {
-    this.props.actions.loadLessons(slideshowTypes.CHALLENGES);
+    this.props.actions.loadLessons();
   }
 
   render() {

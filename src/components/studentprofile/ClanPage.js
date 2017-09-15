@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import LessonList from './LessonList';
 import {bindActionCreators} from 'redux';
 import * as lessonActions from '../../actions/lessons';
-import * as slideshowTypes from '../../constants/slideshowTypes';
+import * as slideTypes from '../../constants/slideTypes';
 
 class ClanPage extends React.Component {
   constructor(props, context) {
@@ -12,14 +12,14 @@ class ClanPage extends React.Component {
   }
 
   componentWillMount() {
-    this.props.actions.loadLessons(slideshowTypes.CLASS);
+    this.props.actions.loadLessons();
   }
 
   render() {
     return(
       <div>
         <h1>Jouw clan</h1>
-        <LessonList lessons={this.props.lessons}/>
+        <LessonList lessons={this.props.lessons} slideType={slideTypes.HOME}/>
       </div>
     );
   }

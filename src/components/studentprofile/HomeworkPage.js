@@ -12,7 +12,7 @@ class HomeworkPage extends React.Component {
   }
 
   componentWillMount() {
-    this.props.actions.loadLessons(slideshowTypes.HOME);
+    this.props.actions.loadLessons();
   }
 
   render() {
