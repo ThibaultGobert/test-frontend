@@ -82,11 +82,11 @@ class SlideViewer extends React.Component {
         <div className="slide-show-content">
           <div className="slide-show-inner-content">
             { this.state.index > 0 && <div className="left control-button" onClick={this.previousSlide}>
-              <img src={require('../../../../images/slideviewer/knoplinks.png')} alt=""/>
+              <img src={require('../../../../images/slideviewer/left.png')} alt=""/>
             </div>}
             {this.renderSlide()}
             { this.state.index < this.props.slides.length - 1 && <div className="right control-button" onClick={this.nextSlide}>
-              <img src={require('../../../../images/slideviewer/knoprechts.png')} alt=""/>
+              <img src={require('../../../../images/slideviewer/right.png')} alt=""/>
             </div>}
           </div>
         </div>
