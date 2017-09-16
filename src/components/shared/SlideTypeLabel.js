@@ -30,7 +30,7 @@ const SlideTypeLabel = ({slideType}) => {
 };
 
 SlideTypeLabel.propTypes = {
-  slideTypes: PropTypes.string.isRequired
+  slideType: PropTypes.string.isRequired
 };
 
 export default SlideTypeLabel;

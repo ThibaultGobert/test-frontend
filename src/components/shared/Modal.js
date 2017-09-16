@@ -2,14 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Modal, Button, Icon} from 'semantic-ui-react';
 
-
 const CFModal = ({isOpen, onClose, body, header, button}) => {
   return (
-    <Modal open={isOpen} onClose={onClose} onActionClick={onClose}>
+    <Modal open={isOpen} onClose={onClose} onActionClick={onClose} className="modal">
       <Modal.Header>{header}</Modal.Header>
       <Modal.Content>
         <Modal.Description>
-          <p>{body}</p>
+          {body}
         </Modal.Description>
       </Modal.Content>
       <Modal.Actions>
@@ -23,9 +22,10 @@ const CFModal = ({isOpen, onClose, body, header, button}) => {
 
 CFModal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
-  header: PropTypes.string.isRequired,
-  button: PropTypes.string.isRequired,
   onClose: PropTypes.func.isRequired,
+  header: PropTypes.string.isRequired,
+  body: PropTypes.string.isRequired,
+  button: PropTypes.string.isRequired
 };
 
 export default CFModal;
