@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Form, Message} from 'semantic-ui-react';
 
-const LoginForm = ({onSubmit, onChange, error, loading, errorMessage}) => {
+const LoginForm = ({onSubmit, onChange, error, errorMessage}) => {
     return (
-      <Form onSubmit={onSubmit} error={error} loading={loading}>
+      <Form onSubmit={onSubmit} error={error}>
         <Form.Field>
           <label>Username</label>
           <input placeholder="username" onChange={onChange} name="username"/>
@@ -27,7 +27,6 @@ LoginForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
   error: PropTypes.bool,
-  loading: PropTypes.bool,
   errorMessage: PropTypes.string
 };
 

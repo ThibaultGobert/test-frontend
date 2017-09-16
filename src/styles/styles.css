@@ -83,7 +83,7 @@
 }
 
 .login-form {
-  max-width: 600px;
+  max-width: 700px;
   margin: 0 auto;
   margin-top: 150px;
 
@@ -91,10 +91,15 @@
 
 .login-form form {
   padding: 5em 3em;
-  border-top: 4px solid #D92B2F;
-  border-bottom: 4px solid rgb(38,45,52);
   background: #F4F4F4;
   border-radius: 3px;
+  background: #303133;
+  border-radius: 25px;
+  border: 10px solid #262133;
+}
+
+.login-form .ui.form .field>label {
+  color: #fff !important;
 }
 
 .ui.accordion .title .dropdown.icon {
@@ -382,5 +387,19 @@
 
 .view-type .icon.active {
   background: #2185d0;
+}
+
+.rambdass-welcome {
+  position: absolute;
+  bottom: 50px;
+  left: 50px;
+  width: 250px;
+}
+
+
+.login-form-wrapper {
+  background: #337ab7;
+  padding: 2em;
+  border-radius: 1em;
 }
 /*TODO: better css structure --> USE SASS INSTEAD OF CSS*/

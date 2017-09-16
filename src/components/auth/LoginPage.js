@@ -3,6 +3,7 @@ import LoginForm from './LoginForm';
 import * as authActions from '../../actions/auth';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
+import {Dimmer, Loader} from 'semantic-ui-react';
 import {bindActionCreators} from 'redux';
 import * as roles from '../../constants/roles';
 import toastr from 'toastr';
@@ -56,15 +57,25 @@ class LoginPage extends React.Component {
   }
 
   render() {
+    if (this.state.loading) {
+      return (
+        <Dimmer active>
+          <Loader />
+        </Dimmer>
+      );
+    }
+
     return(
       <div className="login-form">
-        <LoginForm
-          onChange={this.onLoginChange}
-          onSubmit={this.onLoginSubmit}
-          error={this.state.error}
-          loading={this.state.loading}
-          errorMessage={this.state.errorMessage}
-        />
+        <img className="rambdass-welcome" src={require('../../../images/login/ramdass-welkom.png')}/>
+        <div className="login-form-wrapper">
+          <LoginForm
+            onChange={this.onLoginChange}
+            onSubmit={this.onLoginSubmit}
+            error={this.state.error}
+            errorMessage={this.state.errorMessage}
+          />
+        </div>
       </div>
     );
   }
