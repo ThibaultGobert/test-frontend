@@ -18,6 +18,9 @@ Install following chrome extensions
 1. Create new branch from development
 2. Create pull request when merging back into development
 
+## Deployment
+Run `npm run build` to start a production build. 
+
 ## Dependencies
 **Dependency**|**Description**
 :-----:|:-----:

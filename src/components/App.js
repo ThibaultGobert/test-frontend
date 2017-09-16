@@ -1,9 +1,9 @@
 import React  from 'react';
 import PropTypes from 'prop-types';
 import TeacherHeader from './shared/headers/TeacherHeader';
-import AdminHeader from './shared/headers/AdminHeader';
 import StudentHeader from './shared/headers/StudentHeader';
 import {connect} from 'react-redux';
+import * as userRoles from '../constants/roles';
 import isEmpty from '../functions/isEmpty';
 
 class App extends React.Component {
@@ -11,13 +11,15 @@ class App extends React.Component {
   render() {
     let loggedIn = this.props.loggedIn;
     return (
-      <div className="container-fluid">
-        {!isEmpty(loggedIn) && loggedIn.role == "TEACHER" && <TeacherHeader/>}
-        {!isEmpty(loggedIn) && loggedIn.role == "ADMIN" && <AdminHeader/>}
-        {!isEmpty(loggedIn) && loggedIn.role == "STUDENT" && <StudentHeader/>}
 
-        <div className="page wrapper">
-          {this.props.children}
+      <div className="full-container">
+        {!isEmpty(loggedIn) && loggedIn.role == userRoles.TEACHER_ROLE && <TeacherHeader/>}
+        {!isEmpty(loggedIn) && loggedIn.role == userRoles.STUDENT_ROLE && <StudentHeader/>}
+
+        <div className="page-wrapper">
+          <div className="page">
+            {this.props.children}
+          </div>
         </div>
       </div>
     );
@@ -33,5 +35,9 @@ function mapStateToProps(state, ownProps) {
     loggedIn: state.loggedIn
   };
 }
+
+App.propTypes = {
+  loggedIn: PropTypes.object.isRequired
+};
 
 export default connect(mapStateToProps)(App);

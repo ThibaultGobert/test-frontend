@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {Link} from 'react-router';
 
 const LessonList = ({lessons}) => {
@@ -22,6 +23,10 @@ const LessonList = ({lessons}) => {
       }
     </div>
   );
+};
+
+LessonList.propTypes = {
+  lessons: PropTypes.arrayOf(PropTypes.object)
 };
 
 export default LessonList;

@@ -7,7 +7,7 @@ import {PropTypes} from 'prop-types';
 import {bindActionCreators} from 'redux';
 import toastr from 'toastr';
 
-class Header extends React.Component {
+class StudentHeader extends React.Component {
   constructor(props) {
     super(props);
     this.logOut = this.logOut.bind(this);
@@ -16,15 +16,14 @@ class Header extends React.Component {
   logOut() {
     event.preventDefault();
     this.props.actions.logOut();
-    toastr.remove()
+    toastr.remove();
     this.context.router.push('/login'); // Redirect to courses page after save
   }
 
   render() {
     return (
       <div className="header">
-        <div className="banner">
-        </div>
+        <div className="banner" />
 
         <div className="header-bar">
           <div className="wrapper">
@@ -35,18 +34,18 @@ class Header extends React.Component {
 
             <Button primary onClick={this.logOut}>Uitloggen</Button>
           </div>
-          <div className="clearfix"></div>
+          <div className="clearfix" />
         </div>
 
         <nav>
           <div className="ui attached stackable menu">
             <div className="ui container">
               <Link to="/studentprofile/clan" className="item" activeClassName="active"><i
-                className="grid layout icon"></i>Jouw clan</Link>
+                className="grid layout icon" />Jouw clan</Link>
               <Link to="/studentprofile/homework" className="item" activeClassName="active"><i
-                className="grid layout icon"></i>Thuis</Link>
+                className="grid layout icon" />Thuis</Link>
               <Link to="/studentprofile/challenges" className="item" activeClassName="active"><i
-                className="grid layout icon"></i>Challenges</Link>
+                className="grid layout icon" />Challenges</Link>
 
             </div>
           </div>
@@ -58,11 +57,12 @@ class Header extends React.Component {
   }
 }
 
-Header.PropTypes = {
-  actions: PropTypes.object.isRequired
+StudentHeader.propTypes = {
+  actions: PropTypes.object.isRequired,
+  loggedIn: PropTypes.object.isRequired,
 };
 
-Header.contextTypes = {
+StudentHeader.contextTypes = {
   router: PropTypes.object
 };
 
@@ -78,4 +78,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default connect(mapStateToProps, mapDispatchToProps)(StudentHeader);

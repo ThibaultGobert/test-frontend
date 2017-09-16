@@ -1,19 +1,20 @@
 import React from 'react';
 import {persistStore} from 'redux-persist';
+import PropTypes from 'prop-types';
 import routes from './routes';
 import {Provider} from 'react-redux';
-import { Router, browserHistory } from 'react-router';
+import { Router, hashHistory } from 'react-router';
 import {Loader} from 'semantic-ui-react';
 
-export default class Preloader extends React.Component {
+class Preloader extends React.Component {
 
   constructor() {
-    super()
-    this.state = { rehydrated: false}
+    super();
+    this.state = { rehydrated: false};
   }
 
   componentWillMount(){
-    persistStore(this.props.store, {whitelist: ['loggedIn', 'courses', 'lessons']}, () => {
+    persistStore(this.props.store, {whitelist: ['loggedIn', 'courses', 'lessons', 'calendar']}, () => {
       this.setState({ rehydrated: true });
     });
   }
@@ -24,10 +25,16 @@ export default class Preloader extends React.Component {
     }
     return (
       <Provider store={this.props.store}>
-        <Router history={browserHistory}>
+        <Router history={hashHistory}>
           {routes(this.props.store)}
         </Router>
       </Provider>
     );
   }
 }
+
+Preloader.propTypes = {
+  store: PropTypes.object.isRequired
+};
+
+export default Preloader;

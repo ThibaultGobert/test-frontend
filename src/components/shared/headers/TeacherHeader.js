@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, IndexLink } from 'react-router';
+import { Link } from 'react-router';
 import * as authActions from '../../../actions/auth';
 import {Button} from 'semantic-ui-react';
 import {connect} from 'react-redux';
@@ -7,7 +7,7 @@ import {PropTypes} from 'prop-types';
 import {bindActionCreators} from 'redux';
 import toastr from 'toastr';
 
-class Header extends React.Component {
+class TeacherHeader extends React.Component {
   constructor(props) {
     super(props);
     this.logOut = this.logOut.bind(this);
@@ -16,16 +16,14 @@ class Header extends React.Component {
   logOut() {
     event.preventDefault();
     this.props.actions.logOut();
-    toastr.remove()
+    toastr.remove();
     this.context.router.push('/login'); // Redirect to courses page after save
   }
 
   render() {
     return (
       <div className="header">
-        <div className="banner">
-
-        </div>
+        <div className="banner" />
         <div className="header-bar">
           <div className="wrapper">
             <div className="header-lockup">
@@ -35,29 +33,30 @@ class Header extends React.Component {
 
             <Button primary onClick={this.logOut}>Uitloggen</Button>
           </div>
-          <div className="clearfix"></div>
+          <div className="clearfix" />
         </div>
 
         <nav>
           <div className="ui attached stackable menu">
             <div className="ui container">
               <Link to="/teacherprofile/overview" className="item" activeClassName="active"><i
-                className="grid layout icon"></i>Klasgroepen</Link>
+                className="grid layout icon" />Klasgroepen</Link>
+              <Link to="/teacherprofile/calendar" className="item" activeClassName="active"><i
+                className="grid layout icon" />Lesdata</Link>
             </div>
           </div>
-
-
         </nav>
       </div>
     );
   }
 }
 
-Header.PropTypes = {
-  actions: PropTypes.object.isRequired
+TeacherHeader.propTypes = {
+  actions: PropTypes.object.isRequired,
+  loggedIn: PropTypes.object.isRequired
 };
 
-Header.contextTypes = {
+TeacherHeader.contextTypes = {
   router: PropTypes.object
 };
 
@@ -73,4 +72,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default connect(mapStateToProps, mapDispatchToProps)(TeacherHeader);

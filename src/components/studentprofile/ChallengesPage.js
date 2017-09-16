@@ -1,4 +1,5 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
+import {PropTypes} from 'prop-types';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import LessonList from "./LessonList";
@@ -24,7 +25,10 @@ class ChallengesPage extends React.Component {
   }
 }
 
-ChallengesPage.propTypes = {};
+ChallengesPage.propTypes = {
+  actions: PropTypes.object.isRequired,
+  lessons: PropTypes.arrayOf(PropTypes.object)
+};
 
 function mapStateToProps(state, ownProps) {
   return {

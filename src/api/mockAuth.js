@@ -5,8 +5,11 @@ import delay from './delay';
 // All calls return promises.
 const authResponses = [
   {
-    "token": "OWY0MmFlYTEtZTlhMS00M2ZlLWFkNGMtMDg0YzA5MDE4NGNj",
-    "fullname": "Simon De Gheselle"
+    "token": "e21c1f03e16d41aa883f3f9d0743ebce",
+    "fullname": "Simon De Gheselle",
+    "role": "ADMIN",
+    "level": "3",
+    "username": "simondegheselle"
   }
 ];
 
@@ -15,14 +18,6 @@ class AuthApi {
   static login(credentials) {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        if (credentials.username.length < 3) {
-          reject('Username must be at least 3 characters');
-        }
-
-        if (credentials.password.length < 3) {
-          reject('Password must be at least 3 characters');
-        }
-
         if (credentials.username == "deghesellesimon") {
           reject('Geen juiste username - paswoord combinatie, probeer opnieuw');
         }
