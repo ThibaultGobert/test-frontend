@@ -2,20 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router';
 
-const LessonList = ({lessons}) => {
+const LessonList = ({lessons, slideType}) => {
   return (
     <div className="cards">
       {
         lessons.map(lesson => {
-          let slideViewerLink = "/slideviewer/" + lesson.id;
-          let lessonKey = "card" + lesson.id;
+          let slideViewerLink = "/slideviewer/" + lesson.programlessonid + '/' + slideType;
+          let lessonKey = "card" + lesson.programlessonid;
           return(
             <div className="cardholder" key={lessonKey}>
               <Link to={slideViewerLink}>
-                { lesson.order !== 0 && <img src={require(`../../../images/placeholders/les${lesson.order}.png`)} alt="" />}
-              </Link>
-              <Link to={slideViewerLink}>
-                { lesson.order == 0 && <img src={require(`../../../images/placeholders/eddy.png`)} alt="" />}
+                { lesson.number && <img src={require(`../../../images/placeholders/les${lesson.number}.png`)} alt="" />}
               </Link>
             </div>
           );
@@ -26,7 +23,8 @@ const LessonList = ({lessons}) => {
 };
 
 LessonList.propTypes = {
-  lessons: PropTypes.arrayOf(PropTypes.object)
+  lessons: PropTypes.arrayOf(PropTypes.object),
+  slideType: PropTypes.string.isRequired
 };
 
 export default LessonList;

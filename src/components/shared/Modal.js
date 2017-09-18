@@ -24,7 +24,6 @@ CFModal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
   header: PropTypes.string.isRequired,
-  body: PropTypes.string.isRequired,
   button: PropTypes.string.isRequired
 };
 

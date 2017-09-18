@@ -7,6 +7,7 @@ import SlideViewer from './SlideViewer';
 import * as lessonActions from '../../../actions/lessons';
 import LoaderHOC from '../hoc/LoaderHOC';
 import {Loader, Dimmer} from 'semantic-ui-react';
+import * as userRoles from '../../../constants/roles';
 import toastr from 'toastr';
 
 class SlideViewerPage extends React.Component {
@@ -24,7 +25,7 @@ class SlideViewerPage extends React.Component {
         isLoading: false
       });
     }).catch(error => {
-      toastr.error("Les is niet beschikbaar, neem contact op met fien@codefever.be");
+      toastr.error("Les is niet beschikbaar");
       this.redirectToOverview();
     });
   }
@@ -58,6 +59,7 @@ class SlideViewerPage extends React.Component {
                 slides={this.props.lesson.slides}
                 key={slideshowkey}
                 metadata={metadata}
+                isStudent={this.props.isStudent}
               />
             </div>
         </div>
@@ -83,10 +85,12 @@ function mapStateToProps(state, ownProps) {
   const slideType = ownProps.params.type;
   const lesson = getLessonById(state.lessons, lessonId, slideType);
 
+
   return {
     lessonId: lessonId,
     slideType: slideType,
-    lesson: lesson
+    lesson: lesson,
+    isStudent: state.loggedIn.role == userRoles.STUDENT_ROLE
   };
 }
 
