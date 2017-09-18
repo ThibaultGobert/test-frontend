@@ -4,22 +4,38 @@ import {connect} from 'react-redux';
 import LessonList from './LessonList';
 import {bindActionCreators} from 'redux';
 import * as lessonActions from '../../actions/lessons';
-import * as slideshowTypes from '../../constants/slideshowTypes';
+import {Dimmer, Loader} from 'semantic-ui-react';
+import * as slideTypes from '../../constants/slideTypes';
 
 class ClanPage extends React.Component {
   constructor(props, context) {
     super(props, context);
+    this.state = {
+      isLoading: true
+    };
   }
 
-  componentWillMount() {
-    this.props.actions.loadLessons(slideshowTypes.CLASS);
+  componentDidMount() {
+    this.props.actions.loadLessons().then(() => {
+      this.setState({
+        isLoading: false
+      });
+    });
   }
 
   render() {
+    if (this.state.isLoading) {
+      return (
+        <Dimmer active>
+          <Loader size="medium">Loading</Loader>
+        </Dimmer>
+      );
+    }
+
     return(
       <div>
-        <h1>Jouw clan</h1>
-        <LessonList lessons={this.props.lessons}/>
+        <h1>Klaslessen</h1>
+        <LessonList lessons={this.props.lessons} slideType={slideTypes.CLASS}/>
       </div>
     );
   }

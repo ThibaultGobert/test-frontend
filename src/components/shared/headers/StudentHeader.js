@@ -41,12 +41,9 @@ class StudentHeader extends React.Component {
           <div className="ui attached stackable menu">
             <div className="ui container">
               <Link to="/studentprofile/clan" className="item" activeClassName="active"><i
-                className="grid layout icon" />Jouw clan</Link>
+                className="grid layout icon" />Klas</Link>
               <Link to="/studentprofile/homework" className="item" activeClassName="active"><i
                 className="grid layout icon" />Thuis</Link>
-              <Link to="/studentprofile/challenges" className="item" activeClassName="active"><i
-                className="grid layout icon" />Challenges</Link>
-
             </div>
           </div>
 

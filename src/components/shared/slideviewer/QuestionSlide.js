@@ -54,13 +54,14 @@ class QuestionSlide extends React.Component {
       answer.attempted = true;
       answer.correctAnswer = result.correct;
 
-      if (result.isTrack) {
+      // TODO: enable tracking
+      /*if (result.isTrack) {
         if (!correctAnswer) {
-          this.showModal("Jammer", renderedExplanation, "Probeer nog eens");
-
-          if (this.result.answerscount > 2) {
-            this.showModal("Het juiste antwoord was", <div>All correct answers</div>, "Volgende slide", this.goToNextSlide);
-          }
+          this.showModal("Jammer", renderedExplanation, "Probeer nog eens", function() {
+            if (this.result.answerscount > 2) {
+              this.showModal("Het juiste antwoord was", <div>All correct answers</div>, "Volgende slide", this.goToNextSlide);
+            }
+          });
         } else {
           if (this.result.correctanswers == this.result.totalcorrectanswers) {
             this.showModal("Goed zo", renderedExplanation, "Volgende slide", this.goToNextSlide);
@@ -68,12 +69,11 @@ class QuestionSlide extends React.Component {
             this.showModal("Goed zo", renderedExplanation, "Er zijn nog mogelijke antwoorden");
           }
         }
+      } else {*/
+      if (!correctAnswer) {
+        this.showModal("Jammer", renderedExplanation, "Probeer nog eens");
       } else {
-        if (!correctAnswer) {
-          this.showModal("Jammer", renderedExplanation, "Probeer nog eens");
-        } else {
-          this.showModal("Goed zo", renderedExplanation, "Verder");
-        }
+        this.showModal("Goed zo", renderedExplanation, "Verder");
       }
     }).catch(error => {
       console.log(error);
