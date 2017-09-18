@@ -5,16 +5,17 @@ import StudentHeader from './shared/headers/StudentHeader';
 import {connect} from 'react-redux';
 import * as userRoles from '../constants/roles';
 import isEmpty from '../functions/isEmpty';
+import LoginHeader from "./shared/headers/LoginHeader";
 
 class App extends React.Component {
 
   render() {
     let loggedIn = this.props.loggedIn;
     return (
-
       <div className="full-container">
         {!isEmpty(loggedIn) && loggedIn.role == userRoles.TEACHER_ROLE && <TeacherHeader/>}
         {!isEmpty(loggedIn) && loggedIn.role == userRoles.STUDENT_ROLE && <StudentHeader/>}
+        {isEmpty(loggedIn) && <LoginHeader />}
 
         <div className="page-wrapper">
           <div className="page">

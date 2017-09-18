@@ -7,6 +7,7 @@ import {Dimmer, Loader} from 'semantic-ui-react';
 import {bindActionCreators} from 'redux';
 import * as roles from '../../constants/roles';
 import toastr from 'toastr';
+import LoginHeader from '../shared/headers/LoginHeader';
 
 class LoginPage extends React.Component {
   constructor(props, context) {
