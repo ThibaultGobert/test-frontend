@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, IndexRoute } from 'react-router';
+import { Route, Redirect, IndexRoute } from 'react-router';
 import App from './components/App';
 import TeacherOverviewPage from "./components/teacherprofile/ClassGroupsPage";
 import ClassListPage from "./components/teacherprofile/ClassListPage";
@@ -11,14 +11,12 @@ import ChallengesPage from "./components/studentprofile/ChallengesPage";
 import HomeworkPage from "./components/studentprofile/HomeworkPage";
 import SlideViewerPage from "./components/shared/slideviewer/SlideViewerPage";
 import CalendarPage from "./components/teacherprofile/CalendarPage";
-import HomePage from "./components/home/HomePage";
 import CalendarDetailPage from "./components/teacherprofile/CalendarDetailPage";
 
 const routes = (store) => {
   return (
     <Route path="/" component={App}>
-      <IndexRoute component={HomePage}/>
-
+      <IndexRoute component={LoginPage} onEnter={requireNoAuth(store)}/>
       <Route path="/teacherprofile" onEnter={requireAuth(store)}>
         <Route path="/teacherprofile/overview" component={TeacherOverviewPage}/>
         <Route path="/teacherprofile/calendar" component={CalendarPage}/>
@@ -39,11 +37,12 @@ const routes = (store) => {
       <Route path="/slideviewer" onEnter={requireAuth(store)}>
         <Route path="/slideviewer/:id/:type" component={SlideViewerPage}/>
       </Route>
-      <Route path="/login" component={LoginPage} onEnter={requireNoAuth(store)}/>
+      <Route name="login" path="/login" component={LoginPage} onEnter={requireNoAuth(store)}/>
+      <Redirect from="/" to="login" />
+      <Redirect from="*" to="login" />
     </Route>
   );
 };
-
 
 const requireAuth = (store) => {
   return (location, replace) => {
