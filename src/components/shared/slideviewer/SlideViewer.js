@@ -78,7 +78,7 @@ class SlideViewer extends React.Component {
   render() {
     return (
       <div>
-        <TagBar title={this.props.metadata.title} slideType={this.props.metadata.slideType} tags={this.mapToTags()} viewType={this.state.slide.type}/>
+        <TagBar title={this.props.metadata.title} slideType={this.props.metadata.slideType} tags={this.mapToTags()} viewType={this.state.slide.type} isStudent={this.props.isStudent}/>
         <div className="slide-show-content">
           <div className="slide-show-inner-content">
             { this.state.index > 0 && <div className="left control-button" onClick={this.previousSlide}>
@@ -97,7 +97,8 @@ class SlideViewer extends React.Component {
 
 SlideViewer.propTypes = {
   slides: PropTypes.array.isRequired,
-  metadata: PropTypes.object.isRequired
+  metadata: PropTypes.object.isRequired,
+  isStudent: PropTypes.bool
 };
 
 export default SlideViewer;

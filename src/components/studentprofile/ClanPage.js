@@ -18,8 +18,8 @@ class ClanPage extends React.Component {
   render() {
     return(
       <div>
-        <h1>Jouw clan</h1>
-        <LessonList lessons={this.props.lessons} slideType={slideTypes.HOME}/>
+        <h1>Klaslessen</h1>
+        <LessonList lessons={this.props.lessons} slideType={slideTypes.CLASS}/>
       </div>
     );
   }

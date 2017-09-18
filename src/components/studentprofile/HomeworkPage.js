@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as lessonActions from '../../actions/lessons';
 import * as slideshowTypes from '../../constants/slideshowTypes';
+import * as slideTypes from '../../constants/slideTypes';
 import LessonList from "./LessonList";
 
 class HomeworkPage extends React.Component {
@@ -19,7 +20,7 @@ class HomeworkPage extends React.Component {
     return (
       <div>
         <h1>De thuisversies</h1>
-        <LessonList lessons={this.props.lessons}/>
+        <LessonList lessons={this.props.lessons} slideType={slideTypes.HOME}/>
       </div>
     );
   }
