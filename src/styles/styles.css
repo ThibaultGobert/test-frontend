@@ -1,3 +1,7 @@
+body {
+  margin: 0 !important;
+}
+
 @font-face {
   font-family: sribbleFont;
   src:
@@ -24,6 +28,14 @@
   height: 50px;
 }
 
+.login-header .login-logo {
+ text-align: right;
+  margin-top: 2em;
+  margin-left: 3em;
+  height: 85px;
+}
+
+
 .header-bar {
   background: rgb(38,45,52);
   padding: 1em 2em;
@@ -46,6 +58,27 @@
   z-index: 100;
 }
 
+.code-tag {
+  font-size: 1.3em !important;
+  color: #fff;
+}
+
+.login-form button {
+  float: right;
+}
+
+.login-form .field {
+  margin-left: 1em !important;
+}
+
+.login-form .field .code-tag {
+  color: yellow !important;
+}
+
+.login-form .field input {
+  width: 25em !important;
+}
+
 .header-bar .welcome-message {
   position: relative;
   font-family: sribbleFont;
@@ -54,6 +87,14 @@
   left: 20px;
   font-size: 40px;
   -webkit-font-smoothing: antialiased;
+}
+
+.login-form button {
+  margin-top: 1.5em !important;
+}
+
+.login-form-wrapper {
+  margin-top: 50px;
 }
 
 .page {
@@ -83,18 +124,21 @@
 }
 
 .login-form {
-  max-width: 600px;
+  max-width: 700px;
   margin: 0 auto;
-  margin-top: 150px;
-
 }
 
 .login-form form {
   padding: 5em 3em;
-  border-top: 4px solid #D92B2F;
-  border-bottom: 4px solid rgb(38,45,52);
   background: #F4F4F4;
   border-radius: 3px;
+  background: #262626;
+  border-radius: 25px;
+  border: 10px solid #222;
+}
+
+.login-form .ui.form .field>label {
+  color: #fff;
 }
 
 .ui.accordion .title .dropdown.icon {
@@ -382,5 +426,19 @@
 
 .view-type .icon.active {
   background: #2185d0;
+}
+
+.rambdass-welcome {
+  position: absolute;
+  bottom: 50px;
+  left: 50px;
+  width: 250px;
+}
+
+
+.login-form-wrapper {
+  background: #337ab7;
+  padding: 2em;
+  border-radius: 1em;
 }
 /*TODO: better css structure --> USE SASS INSTEAD OF CSS*/

@@ -3,6 +3,10 @@ import _ from 'lodash';
 export default (data) => {
   let lessons = data.map(course => {
     return course.lessons.map(lesson => {
+      if (lesson.startdate == undefined || lesson.enddate == undefined) {
+        return null;
+      }
+
       let element =Object.assign(lesson, {
         "course_name": course.name,
         "program_type": course.program_type,
@@ -16,6 +20,7 @@ export default (data) => {
     });
   });
   lessons = _.flatten(lessons);
+  lessons = _.without(lessons, null);
   return lessons;
 };
 

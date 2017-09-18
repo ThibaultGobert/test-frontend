@@ -23,7 +23,7 @@ class LessonApi {
   static getLessonSlides(lessonId, lessonType, slideType) {
     return axios.request({
       method: 'get',
-      url: baseUrl + "/webresources/v1/getLessonForTeacher?programlessonid=" + lessonId + "&lessontype=" + lessonType + "&slidetype=" + slideType,
+      url: baseUrl + "/webresources/v1/getLessonNEW?programlessonid=" + lessonId + "&lessontype=" + lessonType + "&slidetype=" + slideType,
       headers: {
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*',
