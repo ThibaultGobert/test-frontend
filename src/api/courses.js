@@ -1,6 +1,7 @@
 import axios from 'axios';
 import store from '../index';
 import mapToCourses from './mapToCourses';
+import mapToClassList from './mapToClassList';
 import baseUrl from './baseUrl';
 
 class CourseApi {
@@ -31,7 +32,8 @@ class CourseApi {
         'x-token': store.getState().loggedIn.token
       }
     }).then(response => {
-      return response.data;
+      let classlist = mapToClassList(response.data);
+      return classlist;
     }).catch(error => {
       throw error;
     });

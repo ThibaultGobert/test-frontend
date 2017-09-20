@@ -100,7 +100,42 @@ body {
 .page {
   padding: 2em;
 }
+.answer img {
+  max-width: 100%;
+}
 
+.info-page {
+  margin-top: 1.5em;
+}
+
+.info-page table, .info-page th, .info-page td {
+  border: 1px solid black;
+}
+
+.info-page th, .info-page td {
+  padding: 0.3em;
+}
+
+.info-page table {
+  margin: 1em;
+  width: 700px;
+
+}
+
+.info-page h1 {
+  font-size: 1.5em;
+}
+.info-page p {
+  font-size: 1.1em;
+}
+
+.info-page ul li {
+  font-size: 1.1em;
+}
+
+.answer {
+  margin: 1em;
+}
 .clearfix:after {
   clear: both;
   content: ".";
@@ -126,6 +161,35 @@ body {
 .login-form {
   max-width: 700px;
   margin: 0 auto;
+}
+
+.highlight {
+  background: #db2828 !important;
+  color: #fff !important;
+}
+
+.legende {
+  padding: 1em;
+  margin-top: 1em;
+  float: right;
+}
+
+.legende .symbol {
+  height: 20px;
+  width: 30px;
+  display: inline-block;
+}
+
+.symbol.trial {
+  background: #db2828;
+}
+
+.legende .explanation {
+  font-size: 1.1em;
+  line-height: 20px;
+  vertical-align: top;
+  margin-left: 0.5em;
+  display: inline-block;
 }
 
 .login-form form {
@@ -261,6 +325,7 @@ body {
   margin-top: 5%;
   margin-bottom: 5%;
   padding-right: 120px;
+  font-size: 1.1em !important;
 }
 
 .control-button {

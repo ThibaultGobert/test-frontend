@@ -3,12 +3,12 @@ import SlideTypeLabel from "../SlideTypeLabel";
 import TagMetaList from "./TagMetaList";
 import * as slideTypes from '../../../constants/slideTypes';
 
-const TagBar = ({title, slideType, tags, viewType, isStudent}) => {
+const TagBar = ({title, version, slideType, tags, viewType, isStudent}) => {
   return (
     <div className="tag-bar-wrapper ">
       <div className="tag-bar wrapper">
         <span className="meta-title">
-          {title}
+          {title} { !isStudent && version}
         </span>
         <span className="meta-slideType">
           {!isStudent && <SlideTypeLabel slideType={slideType} />}

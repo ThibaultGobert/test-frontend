@@ -70,7 +70,7 @@ class CalendarDetailPage extends React.Component {
 
         <Message className="aanwezigheden-info">
           <Message.Header>De aanwezigheden invullen</Message.Header>
-          <p>Na les 2 gaat het mogelijk zijn om hier de aanwezigheden van de kinderen bij de les in te vullen</p>
+          <p>Binnenkort gaat het mogelijk zijn om hier de aanwezigheden van de kinderen bij de les in te vullen. Gelieve dit voorlopig nog zelf bij te houden en door te mailen naar<a href="mailto:lieve@codefever.be"> lieve@codefever.be</a></p>
         </Message>
 
         <div className="calendar-details-buttons">

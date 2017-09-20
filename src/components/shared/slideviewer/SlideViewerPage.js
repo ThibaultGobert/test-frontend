@@ -45,7 +45,7 @@ class SlideViewerPage extends React.Component {
       );
     }
 
-    let metadata = {"title": this.props.lesson.name, "slideType": this.props.lesson.slideType};
+    let metadata = {"title": this.props.lesson.name, "version": this.props.lesson.version, "slideType": this.props.lesson.slideType};
 
     return (
       <div className="slideViewerPage">

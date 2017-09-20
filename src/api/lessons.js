@@ -1,6 +1,7 @@
 import axios from 'axios';
 import store from '../index';
 import baseUrl from './baseUrl';
+import mapToStudentLessons from './mapToStudentLessons';
 
 class LessonApi {
 
@@ -15,12 +16,7 @@ class LessonApi {
       }
     }).then(response => {
       let lessons = response.data.lessons;
-      /* lessons = lessons.map(lesson => {
-        this.getLessonMetaData(lesson.programlessonid).then(metadata => {
-          lesson.activateStudent = metadata.activateStudent;
-        });
-        return lesson;
-      });*/
+      lessons = mapToStudentLessons(lessons);
       return lessons;
     }).catch(error => {
       throw error;

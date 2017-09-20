@@ -40,9 +40,11 @@ class TeacherHeader extends React.Component {
           <div className="ui attached stackable menu">
             <div className="ui container">
               <Link to="/teacherprofile/overview" className="item" activeClassName="active"><i
-                className="grid layout icon" />Klasgroepen</Link>
+                className="group layout icon" />Klasgroepen</Link>
               <Link to="/teacherprofile/calendar" className="item" activeClassName="active"><i
-                className="grid layout icon" />Lesdata</Link>
+                className="calendar layout icon" />Lesdata</Link>
+              <Link to="/teacherprofile/info" className="item" activeClassName="active"><i
+                className="info layout icon" />Info</Link>
             </div>
           </div>
         </nav>
