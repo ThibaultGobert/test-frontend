@@ -4,7 +4,9 @@ import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import * as courseActions from "../../actions/courses";
 import {browserHistory} from "react-router";
-import {Button, Dimmer, Loader, Message} from "semantic-ui-react";
+import {Button, Message} from "semantic-ui-react";
+import ErrorMessage from '../shared/ErrorMessage';
+import Loader from '../shared/Loader';
 import DataTable from "../shared/DataTable";
 import * as subscriptionTypes from '../../constants/subscriptionTypes';
 import _ from 'lodash';
@@ -21,22 +23,8 @@ class ClassListPage extends React.Component {
     this.redirectToClassGroups = this.redirectToClassGroups.bind(this);
   }
 
-  componentWillMount() {
-    if (!this.props.course.classlist) {
-      this.props.actions.loadChildren(this.props.course.id);
-    } else {
-      this.setState({
-        classlistLoaded: true
-      });
-    }
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if ("classlist" in nextProps.course && nextProps.course.classlist.length > 0) {
-      this.setState({
-        classlistLoaded: true
-      });
-    }
+  componentDidMount() {
+    this.props.actions.loadChildren(this.props.courseId);
   }
 
   redirectToClassGroups() {
@@ -45,14 +33,7 @@ class ClassListPage extends React.Component {
 
   // render function --> typically calling child component, here is markup inline
   render() {
-    if(!this.state.classlistLoaded) {
-      return (<Dimmer active>
-        <Loader size="medium">Loading</Loader>
-      </Dimmer>);
-    }
-
-
-    let data = this.props.course.classlist.map(student => {
+    let data = this.props.classlist.map(student => {
       let highlight = false;
       if (student.subscription_type == subscriptionTypes.TRIAL) {
         highlight = true;
@@ -135,18 +116,25 @@ class ClassListPage extends React.Component {
 
         <Button labelPosition="left" icon="left chevron" content="Terug" onClick={this.redirectToClassGroups}/>
         <div className="class-list-header">
-          <h1>Klaslijst {this.props.course.name} </h1>
+          <h1>Klaslijst {this.props.course? this.props.course.name: ""} </h1>
           <Button className="download-classlist" disabled>Download klaslijst</Button>
+        </div>
 
-        </div>
-       <DataTable data={data} columns={columns}/>
-        <div className="legende">
-          <div className="legende-trial">
-            <span className="symbol trial"></span>
-            <span className="explanation">Proefles</span>
+        <Loader active={this.props.loading}/>
+        {!this.props.hasError &&
+          <div>
+            <DataTable data={data} columns={columns}/>
+            <div className="legende">
+              <div className="legende-trial">
+                <span className="symbol trial"></span>
+                <span className="explanation">Proefles</span>
+              </div>
+            </div>
+            <div className="clearfix"/>
           </div>
-        </div>
-        <div className="clearfix" />
+        }
+
+        { this.props.hasError && <ErrorMessage header="Fout bij inladen" message={this.props.error.message} />}
       </div>
     );
   }
@@ -168,9 +156,13 @@ ClassListPage.propTypes = {
 // redux connect and related functions
 function mapStateToProps(state, ownProps) {
   const courseId = ownProps.params.id; // from path /course/:id
-  let course = getCourseById(state.courses, courseId);
-
+  const course = getCourseById(state.courses.data, courseId)
   return {
+    classlist: state.classlist.data,
+    loading: state.classlist.loading,
+    error: state.classlist.error,
+    hasError: state.classlist.hasError,
+    courseId: courseId,
     course: course
   };
 }

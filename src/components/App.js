@@ -10,11 +10,11 @@ import LoginHeader from "./shared/headers/LoginHeader";
 class App extends React.Component {
 
   render() {
-    let loggedIn = this.props.loggedIn;
+    let loggedIn = this.props.loggedIn.data;
     return (
       <div className="full-container">
-        {!isEmpty(loggedIn) && loggedIn.role == userRoles.TEACHER_ROLE && <TeacherHeader/>}
-        {!isEmpty(loggedIn) && loggedIn.role == userRoles.STUDENT_ROLE && <StudentHeader/>}
+        {!isEmpty(loggedIn) && loggedIn.role == userRoles.TEACHER_ROLE && <TeacherHeader user={loggedIn}/>}
+        {!isEmpty(loggedIn) && loggedIn.role == userRoles.STUDENT_ROLE && <StudentHeader user={loggedIn}/>}
         {isEmpty(loggedIn) && <LoginHeader />}
 
         <div className="page-wrapper">

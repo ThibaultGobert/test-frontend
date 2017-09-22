@@ -96,7 +96,7 @@ class SlideViewer extends React.Component {
 }
 
 SlideViewer.propTypes = {
-  slides: PropTypes.array.isRequired,
+  slides: PropTypes.array,
   metadata: PropTypes.object.isRequired,
   isStudent: PropTypes.bool
 };

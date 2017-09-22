@@ -5,38 +5,37 @@ import {bindActionCreators} from 'redux';
 import * as lessonActions from '../../actions/lessons';
 import * as slideshowTypes from '../../constants/slideshowTypes';
 import * as slideTypes from '../../constants/slideTypes';
-import {Dimmer, Loader} from 'semantic-ui-react';
+import Loader from '../shared/Loader';
+import Reloader from "../shared/Reloader";
+import ErrorMessage from '../shared/ErrorMessage';
 import LessonList from "./LessonList";
+import _ from 'lodash';
 
 class HomeworkPage extends React.Component {
   constructor(props, context) {
     super(props, context);
-    this.state = {
-      isLoading: true
-    };
   }
 
-  componentWillMount() {
-    this.props.actions.loadLessons().then(() => {
-      this.setState({
-        isLoading: false
-      });
-    });
+  componentDidMount() {
+    if(_.isEmpty(this.props.lessons) && this.props.error == null) {
+      this.props.actions.loadLessons();
+    }
+  }
+
+  componentDidUpdate() {
+    if(!this.props.loading && _.isEmpty(this.props.lessons) && !this.props.hasError) {
+      this.props.actions.loadLessons();
+    }
   }
 
   render() {
-    if (this.state.isLoading) {
-      return (
-        <Dimmer active>
-          <Loader size="medium">Loading</Loader>
-        </Dimmer>
-      );
-    }
-
-    return (
+    return(
       <div>
         <h1>De thuisversies</h1>
+        <Reloader action={this.props.actions.loadLessons}/>
+        <Loader active={this.props.loading}/>
         <LessonList lessons={this.props.lessons} slideType={slideTypes.HOME}/>
+        { this.props.hasError && <ErrorMessage header="Fout bij inladen" message={this.props.error.message} />}
       </div>
     );
   }
@@ -49,7 +48,10 @@ HomeworkPage.propTypes = {
 
 function mapStateToProps(state, ownProps) {
   return {
-    lessons: state.lessons
+    lessons: state.lessons.data,
+    loading: state.lessons.loading,
+    error: state.lessons.error,
+    hasError: state.lessons.hasError
   };
 }
 

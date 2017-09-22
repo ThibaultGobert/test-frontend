@@ -2,45 +2,40 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import PropTypes from 'prop-types';
-import {Loader, Dimmer} from 'semantic-ui-react';
 import * as calendarActions from '../../actions/calendar';
+import ErrorMessage from '../shared/ErrorMessage';
 import Calendar from './Calendar';
 import _ from 'lodash';
+import Loader from "../shared/Loader";
+import Reloader from '../shared/Reloader';
 
 class CalendarPage extends React.Component {
   // init state + bind functions
   constructor(props, context) {
     super(props, context);
-    this.state = {
-      datesLoaded: false
-    };
   }
 
   componentDidMount() {
-    this.props.actions.loadCalendar();
+    if(_.isEmpty(this.props.calendar) && this.props.error == null) {
+      this.props.actions.loadCalendar();
+    }
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.calendar.length > 0) {
-      this.setState({
-        dates: nextProps.calendar,
-        datesLoaded: true
-      });
+  componentDidUpdate() {
+    if(!this.props.loading && _.isEmpty(this.props.calendar) && !this.props.hasError) {
+      this.props.actions.loadCalendar();
     }
   }
 
   render() {
-    if (this.props.isLoading) {
-      return (<Dimmer active>
-        <Loader size="medium">Loading</Loader>
-      </Dimmer>);
-    }
-
     return(
       <div className="container">
+        <Reloader action={this.props.actions.loadCalendar}/>
         <h1>Jouw kalender</h1>
         <p>Bekijk hier de lessen en klik door op een les om de details ervan te zien</p>
-        {this.state.datesLoaded && <Calendar dates={this.state.dates}/>}
+        <Loader active={this.props.loading} />
+        {!this.props.hasError && <Calendar dates={this.props.calendar}/>}
+        { this.props.hasError && <ErrorMessage header="Fout bij inladen" message={this.props.error.message} />}
       </div>
     );
   }
@@ -48,15 +43,17 @@ class CalendarPage extends React.Component {
 
 CalendarPage.propTypes = {
   actions: PropTypes.object.isRequired,
-  isLoading: PropTypes.bool,
+  loading: PropTypes.bool,
   calendar: PropTypes.array,
 };
 
 // redux connect and related functions
 function mapStateToProps(state, ownProps) {
   return {
-    isLoading: state.ajaxCallsInProgress > 0,
-    calendar: state.calendar
+    calendar: state.calendar.data,
+    loading: state.calendar.loading,
+    error: state.calendar.error,
+    hasError: state.calendar.hasError
   };
 }
 

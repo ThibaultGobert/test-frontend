@@ -49,7 +49,7 @@ const routes = (store) => {
 const requireAuth = (store) => {
   return (location, replace) => {
     // Do something with your store
-    if (isEmpty(store.getState().loggedIn)) {
+    if (isEmpty(store.getState().loggedIn.data)) {
       replace({
         pathname: '/login',
         state: { nextPathname: location.location.pathname }
@@ -62,7 +62,7 @@ const requireAuth = (store) => {
 const requireNoAuth = (store) => {
   return (location, replace) => {
     // Do something with your store
-    const loggedInUser = store.getState().loggedIn;
+    const loggedInUser = store.getState().loggedIn.data;
     if (!isEmpty(loggedInUser)) {
       let path = {};
       switch(loggedInUser.role) {

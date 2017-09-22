@@ -112,7 +112,8 @@ function getEventById(events, id) {
 // redux connect and related functions
 function mapStateToProps(state, ownProps) {
   const eventId = ownProps.params.eventId; // from path /course/:id
-  let event = getEventById(state.calendar, eventId);
+  let event = getEventById(state.calendar.data, eventId);
+
   return {
     event: event,
   };

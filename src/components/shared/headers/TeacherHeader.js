@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 import * as authActions from '../../../actions/auth';
-import {Button} from 'semantic-ui-react';
+import {Button, Icon} from 'semantic-ui-react';
 import {connect} from 'react-redux';
 import {PropTypes} from 'prop-types';
 import {bindActionCreators} from 'redux';
@@ -28,7 +28,7 @@ class TeacherHeader extends React.Component {
           <div className="wrapper">
             <div className="header-lockup">
               <img className="logo" src={require('../../../../images/logo.png')}/>
-              <span className="welcome-message">Hey {this.props.loggedIn.fullname}</span>
+              <span className="welcome-message">Hey {this.props.user.fullname}</span>
             </div>
 
             <Button primary onClick={this.logOut}>Uitloggen</Button>

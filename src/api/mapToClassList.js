@@ -20,7 +20,7 @@ function mapToSubscriptionType(type) {
     return subscriptionTypes.SUBSCRIPTION;
   }
 
-  if (type == "TrialSubscription") {
+  if (type == "Trial") {
     return subscriptionTypes.TRIAL;
   }
 
@@ -36,7 +36,7 @@ let categoryMap = {
 };
 
 function mapToPasswordHint(category, hint) {
-  if (category == "Other") {
+  if (category == "other") {
     if (hint.includes("tijdelijke_wachtwoord")) {
       return "Wachtwoord is CFR17!";
     }

@@ -3,31 +3,28 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import PropTypes from 'prop-types';
 import Accordion from "../shared/Accordion";
-import {Loader, Dimmer} from 'semantic-ui-react';
+import ErrorMessage from '../shared/ErrorMessage';
 import * as courseActions from '../../actions/courses';
+import Loader from '../shared/Loader';
+import _ from 'lodash';
+import Reloader from "../shared/Reloader";
 
 class ClassGroupsPage extends React.Component {
   // init state + bind functions
   constructor(props, context) {
     super(props, context);
-    this.state = {
-      panelsLoaded: false
-    };
-
     this.mapToPanels = this.mapToPanels.bind(this);
   }
 
   componentDidMount() {
-    this.props.actions.loadCourses();
+    if(_.isEmpty(this.props.courses) && !this.props.hasError) {
+      this.props.actions.loadCourses();
+    }
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.courses !== null && Array.isArray(nextProps.courses)) {
-      let panels = this.mapToPanels(nextProps.courses);
-      this.setState({
-        panels: panels,
-        panelsLoaded: true
-      });
+  componentDidUpdate() {
+    if(!this.props.loading && _.isEmpty(this.props.courses) && !this.props.hasError) {
+      this.props.actions.loadCourses();
     }
   }
 
@@ -64,18 +61,15 @@ class ClassGroupsPage extends React.Component {
   }
 
   render() {
-    let panelsReady = this.state.panelsLoaded && !this.props.isLoading;
-
+    let panels = this.mapToPanels(this.props.courses);
     return(
       <div className="container">
+        <Loader active={this.props.loading}/>
+        <Reloader action={this.props.actions.loadCourses}/>
         <h1>Klasgroepen</h1>
         <div className="subtitle">Bekijk hier je lessen en download de klaslijsten</div>
-        { !panelsReady &&
-          <Dimmer active>
-            <Loader size="medium">Loading</Loader>
-          </Dimmer>
-        }
-        { panelsReady && <Accordion panels={this.state.panels}/>}
+        { !this.props.hasError && <Accordion panels={panels}/>}
+        { this.props.hasError && <ErrorMessage header="Fout bij inladen" message={this.props.error.message} />}
       </div>
     );
   }
@@ -84,14 +78,15 @@ class ClassGroupsPage extends React.Component {
 ClassGroupsPage.propTypes = {
   actions: PropTypes.object.isRequired,
   courses: PropTypes.arrayOf(PropTypes.object),
-  isLoading: PropTypes.bool
+  loading: PropTypes.bool
 };
 
-// redux connect and related functions
 function mapStateToProps(state, ownProps) {
   return {
-    isLoading: state.ajaxCallsInProgress > 0,
-    courses: state.courses
+    loading: state.courses.loading,
+    courses: state.courses.data,
+    error: state.courses.error,
+    hasError: state.courses.hasError
   };
 }
 

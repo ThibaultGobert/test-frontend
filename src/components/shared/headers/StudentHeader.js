@@ -29,7 +29,7 @@ class StudentHeader extends React.Component {
           <div className="wrapper">
             <div className="header-lockup">
               <img className="logo" src={require('../../../../images/logo.png')}/>
-              <span className="welcome-message">Hey {this.props.loggedIn.fullname}</span>
+              <span className="welcome-message">Hey {this.props.user.fullname}</span>
             </div>
 
             <Button primary onClick={this.logOut}>Uitloggen</Button>
@@ -41,9 +41,9 @@ class StudentHeader extends React.Component {
           <div className="ui attached stackable menu">
             <div className="ui container">
               <Link to="/studentprofile/clan" className="item" activeClassName="active"><i
-                className="grid layout icon" />Klas</Link>
+                className="group layout icon" />Klas</Link>
               <Link to="/studentprofile/homework" className="item" activeClassName="active"><i
-                className="grid layout icon" />Thuis</Link>
+                className="home layout icon" />Thuis</Link>
             </div>
           </div>
 
@@ -56,7 +56,7 @@ class StudentHeader extends React.Component {
 
 StudentHeader.propTypes = {
   actions: PropTypes.object.isRequired,
-  loggedIn: PropTypes.object.isRequired,
+  user: PropTypes.object.isRequired,
 };
 
 StudentHeader.contextTypes = {

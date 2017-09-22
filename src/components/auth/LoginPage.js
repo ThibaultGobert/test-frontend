@@ -3,11 +3,11 @@ import LoginForm from './LoginForm';
 import * as authActions from '../../actions/auth';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {Dimmer, Loader} from 'semantic-ui-react';
+import {Dimmer} from 'semantic-ui-react';
 import {bindActionCreators} from 'redux';
 import * as roles from '../../constants/roles';
+import Loader from '../shared/Loader';
 import toastr from 'toastr';
-import LoginHeader from '../shared/headers/LoginHeader';
 
 class LoginPage extends React.Component {
   constructor(props, context) {
@@ -17,10 +17,7 @@ class LoginPage extends React.Component {
       credentials: {
         username: '',
         password: '',
-      },
-      error: false,
-      loading: false,
-      errorMessage: '',
+      }
     };
 
     this.onLoginChange = this.onLoginChange.bind(this);
@@ -36,9 +33,7 @@ class LoginPage extends React.Component {
 
   onLoginSubmit(event) {
     event.preventDefault();
-    this.setState({loading: true});
     this.props.actions.login(this.state.credentials).then((data) => {
-      this.setState({loading: false});
       if (this.props.loggedIn.role == roles.STUDENT_ROLE) {
         this.context.router.push('/studentprofile/clan');
       } else if (this.props.loggedIn.role == roles.TEACHER_ROLE) {
@@ -50,30 +45,20 @@ class LoginPage extends React.Component {
         toastr.error("Geen toegang voor lesmakers");
         this.props.actions.logOut();
       }
-    }).catch(error => {
-      this.setState({loading: false});
-      this.setState({error: true, errorMessage: error});
     });
   }
 
   render() {
-    if (this.state.loading) {
-      return (
-        <Dimmer active>
-          <Loader />
-        </Dimmer>
-      );
-    }
-
     return(
       <div className="login-form">
         <img className="rambdass-welcome" src={require('../../../images/login/ramdass-welkom.png')}/>
+        <Loader active={this.props.loading}/>
         <div className="login-form-wrapper">
           <LoginForm
             onChange={this.onLoginChange}
             onSubmit={this.onLoginSubmit}
-            error={this.state.error}
-            errorMessage={this.state.errorMessage}
+            error={this.props.hasError}
+            errorMessage={this.props.error}
           />
         </div>
       </div>
@@ -84,6 +69,9 @@ class LoginPage extends React.Component {
 LoginPage.propTypes = {
   actions: PropTypes.object.isRequired,
   loggedIn: PropTypes.object.isRequired,
+  hasError: PropTypes.bool,
+  loading: PropTypes.bool,
+  error: PropTypes.error
 };
 
 LoginPage.contextTypes = {
@@ -92,7 +80,10 @@ LoginPage.contextTypes = {
 
 function mapStateToProps(state, ownProps) {
   return {
-    loggedIn: state.loggedIn
+    loggedIn: state.loggedIn.data,
+    loading: state.loggedIn.loading,
+    error: state.loggedIn.error,
+    hasError: state.loggedIn.hasError,
   };
 }
 

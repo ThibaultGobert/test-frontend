@@ -237,7 +237,11 @@ class DataTable extends Component {
   render() {
     return (
       <div>
+
+
         <Segment attached="top" floated="right">
+          <h2 className="data-count">Aantal: {this.props.data.length}</h2>
+
           <Input icon="search" value={this.state.query || ""} onChange={this.onSearch} placeholder="Zoek..." />
         </Segment>
         <Table celled attached className="sortable" >

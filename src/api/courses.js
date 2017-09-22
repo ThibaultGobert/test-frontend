@@ -9,10 +9,11 @@ class CourseApi {
     return axios.request({
       method: 'get',
       url: baseUrl + '/webresources/v1/getTeacherCourse?replacements=' + replacementsIncluded,
+      timeout: 3000,
       headers: {
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*',
-        'x-token': store.getState().loggedIn.token
+        'x-token': store.getState().loggedIn.data.token
       }
     }).then(response => {
       let courses = mapToCourses(response.data);
@@ -26,10 +27,11 @@ class CourseApi {
     return axios.request({
       method: 'get',
       url: baseUrl + '/webresources/v1/getChildrenForCours?courseid=' + courseId,
+      timeout: 3000,
       headers: {
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*',
-        'x-token': store.getState().loggedIn.token
+        'x-token': store.getState().loggedIn.data.token
       }
     }).then(response => {
       let classlist = mapToClassList(response.data);

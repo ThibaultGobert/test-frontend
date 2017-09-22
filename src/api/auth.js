@@ -6,6 +6,7 @@ class AuthApi {
     return axios.request({
       method: 'get',
       url: baseUrl + '/webresources/v1/authUser',
+      timeout: 3000,
       headers: {
         'x-username': credentials.username,
         'x-password': credentials.password,
@@ -13,7 +14,16 @@ class AuthApi {
     }).then(response => {
       return response.data;
     }).catch(error => {
-      throw "Geen geldige username - paswoord combinatie";
+      if(error.code == "ECONNABORTED") {
+        throw "Timeout error";
+      }
+
+      let errorReturned = error.response.data;
+      if (errorReturned.status == 500) {
+        throw "Geen geldige username - wachtwoord combinatie";
+      }
+
+      throw error;
     });
   }
 }

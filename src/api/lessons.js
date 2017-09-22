@@ -9,10 +9,11 @@ class LessonApi {
     return axios.request({
       method: 'get',
       url: baseUrl + '/webresources/v1/getUserInformation',
+      timeout: 3000,
       headers: {
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*',
-        'x-token': store.getState().loggedIn.token
+        'x-token': store.getState().loggedIn.data.token
       }
     }).then(response => {
       let lessons = response.data.lessons;
@@ -28,10 +29,11 @@ class LessonApi {
     return axios.request({
       method: 'get',
       url: baseUrl + "/webresources/v1/getLessonNEW?programlessonid=" + programLessonId + "&lessontype=" + lessonType + "&slidetype=" + slideType,
+      timeout: 3000,
       headers: {
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*',
-        'x-token': store.getState().loggedIn.token
+        'x-token': store.getState().loggedIn.data.token
       }
     }).then(response => {
       let lesson =  response.data;
@@ -46,10 +48,11 @@ class LessonApi {
     return axios.request({
       method: 'get',
       url: baseUrl + "/webresources/v1/getLessonMetaData?programlessonid=" + programLessonId,
+      timeout: 3000,
       headers: {
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*',
-        'x-token': store.getState().loggedIn.token
+        'x-token': store.getState().loggedIn.data.token
       }
     }).then(response => {
       return response.data;

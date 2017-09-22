@@ -5,29 +5,29 @@ import {bindActionCreators} from 'redux';
 import {browserHistory} from 'react-router';
 import SlideViewer from './SlideViewer';
 import * as lessonActions from '../../../actions/lessons';
-import LoaderHOC from '../hoc/LoaderHOC';
-import {Loader, Dimmer} from 'semantic-ui-react';
 import * as userRoles from '../../../constants/roles';
+import Loader from '../../shared/Loader';
 import toastr from 'toastr';
+import _ from 'lodash';
 
 class SlideViewerPage extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.redirectToOverview = this.redirectToOverview.bind(this);
     this.state = {
-      isLoading: true,
+      loaded: false,
     };
   }
 
-  componentWillMount() {
-    this.props.actions.loadLessonSlides(this.props.lessonId, "CLASSHOME", this.props.slideType).then(() => {
-      this.setState({
-        isLoading: false
+  componentDidMount() {
+    if(_.isEmpty(this.props.lesson) && this.props.error == null) {
+      this.props.actions.loadLessonSlides(this.props.lessonId, "CLASSHOME", this.props.slideType).then(data => {
+        this.setState({loaded: true});
+      }).catch(error => {
+        toastr.error("Les is niet beschikbaar");
+        this.redirectToOverview();
       });
-    }).catch(error => {
-      toastr.error("Les is niet beschikbaar");
-      this.redirectToOverview();
-    });
+    }
   }
 
   redirectToOverview() {
@@ -37,32 +37,26 @@ class SlideViewerPage extends React.Component {
   render() {
     let slideshowkey = "slideshow"+ this.props.lessonId;
 
-    if (this.state.isLoading) {
-      return (
-        <Dimmer active>
-          <Loader size="medium">Loading</Loader>
-        </Dimmer>
-      );
-    }
-
     let metadata = {"title": this.props.lesson.name, "version": this.props.lesson.version, "slideType": this.props.lesson.slideType};
 
     return (
       <div className="slideViewerPage">
-        <div className="slide-show">
-            <div>
-              <div className="close-presentation" onClick={this.redirectToOverview}>
-                <img src={require('../../../../images/slideviewer/close.png')} alt=""/>
-              </div>
+        <Loader active={!this.state.loaded} />
 
-              <SlideViewer
-                slides={this.props.lesson.slides}
-                key={slideshowkey}
-                metadata={metadata}
-                isStudent={this.props.isStudent}
-              />
+        { this.state.loaded && <div className="slide-show">
+          <div>
+            <div className="close-presentation" onClick={this.redirectToOverview}>
+              <img src={require('../../../../images/slideviewer/close.png')} alt=""/>
             </div>
-        </div>
+
+            <SlideViewer
+              slides={this.props.lesson.slides}
+              key={slideshowkey}
+              metadata={metadata}
+              isStudent={this.props.isStudent}
+            />
+          </div>
+        </div>}
       </div>
     );
   }
@@ -72,25 +66,17 @@ SlideViewerPage.propTypes = {
   actions: PropTypes.object.isRequired,
 };
 
-function getLessonById(lessons, id, slideType) {
-  const lesson = lessons.filter(lesson => lesson.programlessonid == id && lesson.slideType == slideType);
-  if (lesson) {
-    return lesson[0];
-  }
-  return null;
-}
-
 function mapStateToProps(state, ownProps) {
   const lessonId = ownProps.params.id;
   const slideType = ownProps.params.type;
-  const lesson = getLessonById(state.lessons, lessonId, slideType);
-
+  const lesson = state.currentLesson.data;
 
   return {
     lessonId: lessonId,
     slideType: slideType,
     lesson: lesson,
-    isStudent: state.loggedIn.role == userRoles.STUDENT_ROLE
+    loading: state.currentLesson.loading,
+    isStudent: state.loggedIn.data.role == userRoles.STUDENT_ROLE
   };
 }
 

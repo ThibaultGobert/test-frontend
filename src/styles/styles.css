@@ -58,6 +58,10 @@ body {
   z-index: 100;
 }
 
+.header a {
+  font-size: 1.1em;
+}
+
 .code-tag {
   font-size: 1.3em !important;
   color: #fff;
@@ -328,6 +332,21 @@ body {
   font-size: 1.1em !important;
 }
 
+.refresh-store {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+.refresh-store i {
+  color: #BFC6CD;
+  cursor: pointer;
+}
+
+
+.ui.dimmer {
+  background-color: rgba(0,0,0,0.95) !important;
+}
 .control-button {
   position: absolute;
   top: 45%;
@@ -368,6 +387,11 @@ body {
   float: right;
 }
 
+.class-list .ui.top.floated.segment.right {
+  padding-left: 0;
+  padding-right: 0;
+}
+
 .calendar-toolbar img {
   cursor: pointer;
 }
@@ -376,7 +400,9 @@ body {
   font-size: 1em;
   vertical-align: 100%;
 }
-
+.data-count {
+  display: inline-block;
+}
 .modals {
   min-width: 100%;
 }
