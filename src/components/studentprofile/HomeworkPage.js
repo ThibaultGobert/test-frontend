@@ -17,13 +17,13 @@ class HomeworkPage extends React.Component {
   }
 
   componentDidMount() {
-    if(_.isEmpty(this.props.lessons) && this.props.error == null) {
+    if(this.props.error == null) {
       this.props.actions.loadLessons(slideTypes.HOME);
     }
   }
 
   componentDidUpdate() {
-    if(!this.props.loading && _.isEmpty(this.props.lessons) && !this.props.hasError) {
+    if(!this.props.loading && !this.props.hasError) {
       this.props.actions.loadLessons(slideTypes.HOME);
     }
   }
@@ -35,7 +35,7 @@ class HomeworkPage extends React.Component {
         <Reloader action={this.props.actions.loadLessons}/>
         <Loader active={this.props.loading}/>
         <LessonList lessons={this.props.lessons} slideType={slideTypes.HOME}/>
-        { this.props.hasError && <ErrorMessage header="Fout bij inladen" message={this.props.error.message} />}
+        { this.props.hasError && <ErrorMessage header="Fout bij inladen" message={this.props.error} />}
       </div>
     );
   }

@@ -12,7 +12,7 @@ const LessonList = ({lessons, slideType}) => {
           return(
             <div className="cardholder" key={lessonKey}>
               <Link to={slideViewerLink}>
-                { lesson.number && <img src={require(`../../../images/placeholders/les${lesson.number}.png`)} alt="" />}
+                <img src={require(`../../../images/placeholders/les${lesson.order}.png`)} alt="" />
               </Link>
             </div>
           );

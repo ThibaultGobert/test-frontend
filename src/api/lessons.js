@@ -1,12 +1,11 @@
 import axios from 'axios';
 import store from '../index';
 import baseUrl from './baseUrl';
-import mapToStudentLessons from './mapToStudentLessons';
+import _ from 'lodash';
 
 class LessonApi {
 
   static getLessonsForStudent(slidetype) {
-    debugger;
     return axios.request({
       method: 'get',
       url: baseUrl + '/webresources/v1/getAllLessons?type=CLASSHOME&slidetype=' + slidetype,
@@ -17,8 +16,10 @@ class LessonApi {
         'x-token': store.getState().loggedIn.data.token
       }
     }).then(response => {
-      let lessons = response.data.lessons;
-      lessons = mapToStudentLessons(lessons);
+      let lessons = response.data.filter(lesson => lesson.activateStudent);
+      if (_.isEmpty(lessons)) {
+        throw "Geen lessen beschikbaar";
+      }
       return lessons;
     }).catch(error => {
       throw error;
