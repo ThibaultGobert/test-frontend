@@ -5877,6 +5877,10 @@ redux-immutable-state-invariant@2.0.0:
     invariant "^2.1.0"
     json-stringify-safe "^5.0.1"
 
+redux-persist-migrate@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/redux-persist-migrate/-/redux-persist-migrate-5.0.0.tgz#0c8fa7285791796be92de968aea6de64cf24b73e"
+
 redux-persist@4.9.1:
   version "4.9.1"
   resolved "https://registry.yarnpkg.com/redux-persist/-/redux-persist-4.9.1.tgz#271fa31d1c782ebf9082fb5174e829db24faf59e"
@@ -6629,6 +6633,10 @@ strip-indent@^1.0.1:
 strip-json-comments@~2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/strip-json-comments/-/strip-json-comments-2.0.1.tgz#3c531942e908c2697c0ec344858c286c7ca0a60a"
+
+striptags@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/striptags/-/striptags-3.1.0.tgz#763e534338d9cf542f004a4b1eb099e32d295e44"
 
 style-loader@0.18.2:
   version "0.18.2"

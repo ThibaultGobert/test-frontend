@@ -1,16 +1,16 @@
 import React from 'react';
-import LoginForm from './LoginForm';
+import LoginForm from './ImpersonateForm';
 import * as authActions from '../../actions/auth';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
+import {Icon} from 'semantic-ui-react';
 import {Link} from 'react-router';
 import {bindActionCreators} from 'redux';
 import * as roles from '../../constants/roles';
-import {Icon} from 'semantic-ui-react';
 import Loader from '../shared/Loader';
 import toastr from 'toastr';
 
-class LoginPage extends React.Component {
+class ImpersonatePage extends React.Component {
   constructor(props, context) {
     super(props, context);
 
@@ -18,6 +18,7 @@ class LoginPage extends React.Component {
       credentials: {
         username: '',
         password: '',
+        child_username: '',
       }
     };
 
@@ -34,7 +35,7 @@ class LoginPage extends React.Component {
 
   onLoginSubmit(event) {
     event.preventDefault();
-    this.props.actions.login(this.state.credentials).then((data) => {
+    this.props.actions.impersonate(this.state.credentials).then((data) => {
       if (this.props.loggedIn.role == roles.STUDENT_ROLE) {
         this.context.router.push('/studentprofile/clan');
       } else if (this.props.loggedIn.role == roles.TEACHER_ROLE) {
@@ -62,18 +63,20 @@ class LoginPage extends React.Component {
             errorMessage={this.props.error}
           />
         </div>
+
         <div className="impersonate-link">
-          <Link to="/impersonate">
-            <Icon name="lock" />
+          <Link to="/login">
+            <Icon name="unlock alternate" />
           </Link>
         </div>
-      </div>
 
+
+      </div>
     );
   }
 }
 
-LoginPage.propTypes = {
+ImpersonatePage.propTypes = {
   actions: PropTypes.object.isRequired,
   loggedIn: PropTypes.object.isRequired,
   hasError: PropTypes.bool,
@@ -81,7 +84,7 @@ LoginPage.propTypes = {
   error: PropTypes.error
 };
 
-LoginPage.contextTypes = {
+ImpersonatePage.contextTypes = {
   router: PropTypes.object
 };
 
@@ -101,4 +104,4 @@ function mapDispatchToProps(dispatch) {
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);
+export default connect(mapStateToProps, mapDispatchToProps)(ImpersonatePage);

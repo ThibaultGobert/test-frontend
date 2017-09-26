@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Table, Menu, Icon, Segment, Input, Popup } from "semantic-ui-react";
-import {orderBy, flatten, capitalize} from "lodash";
+import {orderBy, flatten, capitalize, isEmpty} from "lodash";
+import striptags from 'striptags';
 
 const dataParser = (obj) => {
   if(!obj) return [{}];
@@ -126,7 +127,8 @@ class DataTable extends Component {
 
   defaultRenderBodyRow(data, index) {
     let highlight = data.highlight ? 'highlight': '';
-    let hidden_info = data.hidden_info != undefined && data.hidden_info != "";
+
+    let hidden_info = (data.parentremark != undefined && data.parentremark != "") || (data.teacherremark != undefined && data.teacherremark != "");
     return (
       <Table.Row key={index} className={highlight}>
         {this.columns.map(({key, defaults, accessor, decorator}, idx) => {
@@ -137,8 +139,10 @@ class DataTable extends Component {
         return (<Table.Cell key={idx}>{(idx == 0 && hidden_info) && <Popup
           trigger={<Icon name="info"/>}
           content={data.hidden_info}
-          inverted
-        />} {value}</Table.Cell>);
+          inverted>
+            { data.parentremark && <p>Opmerkingen ouders: {striptags(data.parentremark)}</p>}
+            { data.teacherremark && <p>Opmerkingen leraren: {striptags(data.teacherremark)}</p>}
+        </Popup>} {value}</Table.Cell>);
       })}
       </Table.Row>
     );

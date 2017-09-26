@@ -38,15 +38,8 @@ class ClassListPage extends React.Component {
       if (student.subscription_type == subscriptionTypes.TRIAL) {
         highlight = true;
       }
-      let parentRemark = student.parentremark;
-      if (parentRemark != undefined) {
-        parentRemark = parentRemark.replaceAll("<p>", "");
-        parentRemark = parentRemark.replaceAll("</p>", "");
 
-      }
-      let hidden_info = parentRemark;
-
-      return Object.assign(student, {highlight: highlight, hidden_info: hidden_info});
+      return Object.assign(student, {highlight: highlight});
     });
 
     let columns = [

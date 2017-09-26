@@ -10,6 +10,7 @@ class AuthApi {
       headers: {
         'x-username': credentials.username,
         'x-password': credentials.password,
+        'x-impersonateuser': credentials.child_username ?  credentials.child_username : ''
       }
     }).then(response => {
       return response.data;
@@ -19,7 +20,8 @@ class AuthApi {
       }
 
       let errorReturned = error.response.data;
-      if (errorReturned.status == 500) {
+
+      if (errorReturned.status == 401 || errorReturned.status == 500) {
         throw "Geen geldige username - wachtwoord combinatie";
       }
 

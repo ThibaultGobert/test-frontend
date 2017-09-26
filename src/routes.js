@@ -13,6 +13,8 @@ import SlideViewerPage from "./components/shared/slideviewer/SlideViewerPage";
 import CalendarPage from "./components/teacherprofile/CalendarPage";
 import CalendarDetailPage from "./components/teacherprofile/CalendarDetailPage";
 import InfoPage from "./components/teacherprofile/InfoPage";
+import * as authActions from './actions/auth';
+import ImpersonatePage from "./components/auth/ImpersonatePage";
 
 const routes = (store) => {
   return (
@@ -40,6 +42,8 @@ const routes = (store) => {
         <Route path="/slideviewer/:id/:type" component={SlideViewerPage}/>
       </Route>
       <Route name="login" path="/login" component={LoginPage} onEnter={requireNoAuth(store)}/>
+      <Route name="impersonate" path="/impersonate" component={ImpersonatePage} onEnter={requireNoAuth(store)}/>
+
       <Redirect from="/" to="login" />
       <Redirect from="*" to="login" />
     </Route>
@@ -62,8 +66,8 @@ const requireAuth = (store) => {
 const requireNoAuth = (store) => {
   return (location, replace) => {
     // Do something with your store
-    const loggedInUser = store.getState().loggedIn.data;
-    if (!isEmpty(loggedInUser)) {
+    store.dispatch(authActions.logOut());
+    /*if (!isEmpty(loggedInUser)) {
       let path = {};
       switch(loggedInUser.role) {
         case "STUDENT":
@@ -86,7 +90,7 @@ const requireNoAuth = (store) => {
           break;
       }
       replace(path);
-    }
+    }*/
   };
 };
 

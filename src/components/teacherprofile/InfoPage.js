@@ -37,6 +37,10 @@ class InfoPage extends React.Component {
             <td>Uitleg_ivm_1.1.pdf</td>
           </tr>
           <tr>
+            <td>ByteBusters en CodeKraks level 3</td>
+            <td>Uitleg_ivm_1.2.pdf</td>
+          </tr>
+          <tr>
             <td>ByteBusters level 1, <br/>ByteBusters level 5, <br/>CodeKraks level 1, <br/>DigiHeroes level 1, <br/>e-Riders level 1,
               <br/>ASS-lessen</td>
             <td>Uitleg_ivm_2.0.pdf</td>

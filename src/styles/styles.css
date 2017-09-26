@@ -80,7 +80,17 @@ body {
 }
 
 .login-form .field input {
-  width: 25em !important;
+  width: 20em !important;
+}
+
+.impersonate-link {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+}
+
+.impersonate-form label {
+  min-width: 10em;
 }
 
 .header-bar .welcome-message {

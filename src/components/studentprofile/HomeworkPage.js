@@ -18,13 +18,13 @@ class HomeworkPage extends React.Component {
 
   componentDidMount() {
     if(_.isEmpty(this.props.lessons) && this.props.error == null) {
-      this.props.actions.loadLessons();
+      this.props.actions.loadLessons(slideTypes.HOME);
     }
   }
 
   componentDidUpdate() {
     if(!this.props.loading && _.isEmpty(this.props.lessons) && !this.props.hasError) {
-      this.props.actions.loadLessons();
+      this.props.actions.loadLessons(slideTypes.HOME);
     }
   }
 

@@ -5,10 +5,11 @@ import mapToStudentLessons from './mapToStudentLessons';
 
 class LessonApi {
 
-  static getLessonsForStudent() {
+  static getLessonsForStudent(slidetype) {
+    debugger;
     return axios.request({
       method: 'get',
-      url: baseUrl + '/webresources/v1/getUserInformation',
+      url: baseUrl + '/webresources/v1/getAllLessons?type=CLASSHOME&slidetype=' + slidetype,
       timeout: 3000,
       headers: {
         'Content-Type': 'application/json',

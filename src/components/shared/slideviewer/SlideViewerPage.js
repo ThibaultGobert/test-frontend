@@ -20,7 +20,7 @@ class SlideViewerPage extends React.Component {
   }
 
   componentDidMount() {
-    if(_.isEmpty(this.props.lesson) && this.props.error == null) {
+    if(this.props.error == null) {
       this.props.actions.loadLessonSlides(this.props.lessonId, "CLASSHOME", this.props.slideType).then(data => {
         this.setState({loaded: true});
       }).catch(error => {
