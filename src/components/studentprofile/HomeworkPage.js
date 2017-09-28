@@ -23,8 +23,10 @@ class HomeworkPage extends React.Component {
   }
 
   componentDidUpdate() {
-    if(!this.props.loading && !this.props.hasError) {
-      this.props.actions.loadLessons(slideTypes.HOME);
+    if (_.isEmpty(this.props.lessons)) {
+      if (!this.props.loading && !this.props.hasError) {
+        this.props.actions.loadLessons(slideTypes.HOME);
+      }
     }
   }
 

@@ -69,8 +69,6 @@ class ImpersonatePage extends React.Component {
             <Icon name="unlock alternate" />
           </Link>
         </div>
-
-
       </div>
     );
   }
@@ -81,7 +79,7 @@ ImpersonatePage.propTypes = {
   loggedIn: PropTypes.object.isRequired,
   hasError: PropTypes.bool,
   loading: PropTypes.bool,
-  error: PropTypes.error
+  error: PropTypes.object
 };
 
 ImpersonatePage.contextTypes = {

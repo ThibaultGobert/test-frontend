@@ -22,11 +22,13 @@ class ClanPage extends React.Component {
   }
 
   componentDidUpdate() {
-    if(!this.props.loading && !this.props.hasError) {
-      this.props.actions.loadLessons("CLASS");
+    if (_.isEmpty(this.props.lessons)) {
+      if (!this.props.loading && !this.props.hasError) {
+        this.props.actions.loadLessons("CLASS");
+      }
     }
   }
-
+  
   render() {
     return(
       <div>

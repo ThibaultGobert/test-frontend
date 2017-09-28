@@ -18,11 +18,13 @@ class LoginPage extends React.Component {
       credentials: {
         username: '',
         password: '',
-      }
+      },
+      hidden: true,
     };
 
     this.onLoginChange = this.onLoginChange.bind(this);
     this.onLoginSubmit = this.onLoginSubmit.bind(this);
+    this.toggleHidden = this.toggleHidden.bind(this);
   }
 
   onLoginChange(event) {
@@ -49,6 +51,12 @@ class LoginPage extends React.Component {
     });
   }
 
+  toggleHidden() {
+    this.setState((prevState) => {
+      return {hidden: !prevState.hidden};
+    });
+  }
+
   render() {
     return(
       <div className="login-form">
@@ -60,6 +68,9 @@ class LoginPage extends React.Component {
             onSubmit={this.onLoginSubmit}
             error={this.props.hasError}
             errorMessage={this.props.error}
+            credentials={this.state.credentials}
+            toggleHidden={this.toggleHidden}
+            hidden={this.state.hidden}
           />
         </div>
         <div className="impersonate-link">

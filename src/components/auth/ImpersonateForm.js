@@ -12,27 +12,24 @@ const ImpersonateForm = ({onSubmit, onChange, error, errorMessage}) => {
 
         <Form.Group inline>
           <Form.Field>
-            <label className="code-tag">&lt;Username kind /&gt;</label>
+            <label className="code-tag">&lt;Gebruikersnaam kind /&gt;</label>
             <input placeholder="usernamekind" onChange={onChange} name="child_username"/>
           </Form.Field>
         </Form.Group>
 
         <Form.Group inline>
           <Form.Field>
-            <label className="code-tag">&lt;Username leraar /&gt;</label>
+            <label className="code-tag">&lt;Gebruikersnaam leraar /&gt;</label>
             <input placeholder="username leraar" onChange={onChange} name="username"/>
           </Form.Field>
         </Form.Group>
 
         <Form.Group inline>
           <Form.Field>
-            <label className="code-tag">&lt;Paswoord /&gt;</label>
+            <label className="code-tag">&lt;Wachtwoord /&gt;</label>
             <input type="password" placeholder="paswoord" onChange={onChange} name="password"/>
           </Form.Field>
         </Form.Group>
-
-
-
 
         { error && <ErrorMessage header="Login mislukt" message={errorMessage}/>}
 
