@@ -44,7 +44,7 @@ ImpersonateForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
   error: PropTypes.bool,
-  errorMessage: PropTypes.object
+  errorMessage: PropTypes.string
 };
 
 export default ImpersonateForm;

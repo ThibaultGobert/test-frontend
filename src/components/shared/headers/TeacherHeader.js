@@ -55,7 +55,8 @@ class TeacherHeader extends React.Component {
 
 TeacherHeader.propTypes = {
   actions: PropTypes.object.isRequired,
-  loggedIn: PropTypes.object.isRequired
+  loggedIn: PropTypes.object.isRequired,
+  user: PropTypes.object.isRequired
 };
 
 TeacherHeader.contextTypes = {

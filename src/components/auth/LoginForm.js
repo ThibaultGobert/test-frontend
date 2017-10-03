@@ -23,10 +23,8 @@ const LoginForm = ({onSubmit, onChange, error, errorMessage, toggleHidden, hidde
                      icon={<Icon name="eye" className="eye-icon" inverted link onClick={toggleHidden} />}/>
             </Form.Field>
           </Form.Group>
-
-          { error && <ErrorMessage header="Login mislukt" message={errorMessage}/>}
-
           <div className="code-tag">&lt;/Start&gt;</div>
+          { error && <ErrorMessage header="Login mislukt" message={errorMessage}/>}
           <Form.Button primary>Login</Form.Button>
         </Form>
       </div>
@@ -36,8 +34,11 @@ const LoginForm = ({onSubmit, onChange, error, errorMessage, toggleHidden, hidde
 LoginForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
-  error: PropTypes.bool,
-  errorMessage: PropTypes.object
+  error: PropTypes.bool.isRequired,
+  errorMessage: PropTypes.string.isRequired,
+  toggleHidden: PropTypes.func.isRequired,
+  hidden: PropTypes.bool.isRequired,
+  credentials: PropTypes.object.isRequired
 };
 
 export default LoginForm;

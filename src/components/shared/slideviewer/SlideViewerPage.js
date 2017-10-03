@@ -44,18 +44,16 @@ class SlideViewerPage extends React.Component {
         <Loader active={!this.state.loaded} />
 
         { this.state.loaded && <div className="slide-show">
-          <div>
-            <div className="close-presentation" onClick={this.redirectToOverview}>
-              <img src={require('../../../../images/slideviewer/close.png')} alt=""/>
-            </div>
-
-            <SlideViewer
-              slides={this.props.lesson.slides}
-              key={slideshowkey}
-              metadata={metadata}
-              isStudent={this.props.isStudent}
-            />
+          <div className="close-presentation" onClick={this.redirectToOverview}>
+            <img src={require('../../../../images/slideviewer/close.png')} alt=""/>
           </div>
+
+          <SlideViewer
+            slides={this.props.lesson.slides}
+            key={slideshowkey}
+            metadata={metadata}
+            isStudent={this.props.isStudent}
+          />
         </div>}
       </div>
     );

@@ -89,7 +89,7 @@ LoginPage.propTypes = {
   loggedIn: PropTypes.object.isRequired,
   hasError: PropTypes.bool,
   loading: PropTypes.bool,
-  error: PropTypes.error
+  error: PropTypes.object
 };
 
 LoginPage.contextTypes = {

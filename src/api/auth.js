@@ -3,15 +3,20 @@ import baseUrl from './baseUrl';
 
 class AuthApi {
   static login(credentials) {
+    const headers = credentials.child_username ? {
+      'x-username': credentials.username,
+      'x-password': credentials.password,
+      'x-impersonateuser': credentials.child_username
+    } : {
+      'x-username': credentials.username,
+      'x-password': credentials.password,
+    };
+
     return axios.request({
       method: 'get',
       url: baseUrl + '/webresources/v1/authUser',
       timeout: 3000,
-      headers: {
-        'x-username': credentials.username,
-        'x-password': credentials.password,
-        'x-impersonateuser': credentials.child_username ?  credentials.child_username : ''
-      }
+      headers: headers
     }).then(response => {
       return response.data;
     }).catch(error => {

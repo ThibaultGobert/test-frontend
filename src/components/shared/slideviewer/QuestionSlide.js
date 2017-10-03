@@ -114,7 +114,8 @@ class QuestionSlide extends React.Component {
 
   render() {
     return (
-        <div className="question-slide">
+      <div className="slide">
+        <div className="question-slide slide-content">
           <Modal isOpen={this.state.modal.isOpen}
                  body={this.state.modal.body}
                  header={this.state.modal.header}
@@ -155,6 +156,7 @@ class QuestionSlide extends React.Component {
             </div>
           </div>
         </div>
+      </div>
     );
   }
 }

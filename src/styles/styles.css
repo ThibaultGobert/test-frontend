@@ -259,6 +259,10 @@ i.eye-icon {
   margin-top: 3em;
 }
 
+.slide-viewer {
+  height: calc(100% - 84.5px);
+}
+
 .subtitle {
   font-size: 1.1em;
 }
@@ -351,13 +355,7 @@ i.eye-icon {
   cursor: pointer;
 }
 .slide-show-content {
-  max-width: 1400px;
-  padding-left: 120px;
-  margin: auto auto;
-  margin-top: 5%;
-  margin-bottom: 5%;
-  padding-right: 120px;
-  font-size: 1.1em !important;
+  font-size: 1.1em;
 }
 
 .refresh-store {
@@ -374,26 +372,6 @@ i.eye-icon {
 
 .ui.dimmer {
   background-color: rgba(0,0,0,0.95) !important;
-}
-.control-button {
-  position: absolute;
-  top: 45%;
-}
-
-.control-button {
-  font-size: 3em !important;
-}
-
-.control-button img {
-  height: 70px;
-}
-
-.control-button.left {
-  left: 20px;
-}
-
-.control-button.right {
-  right: 20px;
 }
 
 .loader {
@@ -464,9 +442,6 @@ i.eye-icon {
   margin-top: 2em;
 }
 
-.slide-show-content {
-}
-
 .wrong-answer .answer-symbol {
   background: red;
 }
@@ -497,6 +472,7 @@ i.eye-icon {
 .tag-bar-wrapper {
   background: #262d34;
   border-bottom: 4px solid rgb(220, 43, 69);
+  height: 60px;
 }
 
 .tag-bar {
@@ -554,7 +530,6 @@ i.eye-icon {
   width: 250px;
 }
 
-
 .login-form-wrapper {
   background: #337ab7;
   display: inline-block;
@@ -562,4 +537,77 @@ i.eye-icon {
   padding: 2em;
   border-radius: 1em;
 }
+
+.slide-show {
+  height: 100vh;
+}
+
+.progress-bar .ui.progress {
+  margin: 0;
+  background: #BFC6CD;
+  border-radius: 0;
+}
+
+.progress-bar .ui.progress .bar {
+  background: #262D34;
+  border-radius: 0;
+}
+
+.progress-bar {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}
+
+.slide-show-content {
+  height: 100%;
+  position: relative;
+}
+
+.slide-show-inner-content {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.scrollbars {
+  position: inherit !important;
+}
+
+.slide {
+  flex: 1;
+  align-self: flex-start;
+  padding-top: 4em;
+  padding-bottom: 4em;
+  max-height: 100%;
+}
+
+.slide-content {
+  padding-left: 4em;
+  padding-right: 4em;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-top: 4em;
+  padding-bottom: 4em;
+}
+
+.control-button {
+  padding: 0 1em;
+  z-index: 30;
+}
+
+.control-button.hide {
+  visibility: hidden;
+}
+
+.control-button img {
+  height: 70px;
+}
+
+
+
+
+
+
 /*TODO: better css structure --> USE SASS INSTEAD OF CSS*/

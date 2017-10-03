@@ -45,7 +45,7 @@ class CalendarDetailPage extends React.Component {
 
   downloadLescontent(e) {
     e.preventDefault();
-    window.location.assign(this.state.contentUrl, '_blank');
+    window.location.assign(this.state.contentUrl);
   }
 
   render() {
