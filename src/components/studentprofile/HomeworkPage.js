@@ -3,11 +3,9 @@ import {PropTypes} from 'prop-types';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as lessonActions from '../../actions/lessons';
-import * as slideshowTypes from '../../constants/slideshowTypes';
 import * as slideTypes from '../../constants/slideTypes';
 import Loader from '../shared/Loader';
 import Reloader from "../shared/Reloader";
-import ErrorMessage from '../shared/ErrorMessage';
 import LessonList from "./LessonList";
 import _ from 'lodash';
 
@@ -37,7 +35,6 @@ class HomeworkPage extends React.Component {
         <Reloader action={this.props.actions.loadLessons}/>
         <Loader active={this.props.loading}/>
         <LessonList lessons={this.props.lessons} slideType={slideTypes.HOME}/>
-        { this.props.hasError && <ErrorMessage header="Fout bij inladen" message={this.props.error} />}
       </div>
     );
   }

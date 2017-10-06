@@ -8,7 +8,7 @@ class LessonApi {
   static getLessonsForStudent(slidetype) {
     return axios.request({
       method: 'get',
-      url: baseUrl + '/webresources/v1/getAllLessons?type=CLASSHOME&slidetype=' + slidetype,
+      url: baseUrl + '/webresources/v1/lessons/getAllLessons?type=CLASSHOME&slidetype=' + slidetype,
       timeout: 3000,
       headers: {
         'Content-Type': 'application/json',

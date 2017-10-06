@@ -5,7 +5,6 @@ import LessonList from './LessonList';
 import {bindActionCreators} from 'redux';
 import * as lessonActions from '../../actions/lessons';
 import Loader from '../shared/Loader';
-import ErrorMessage from "../shared/ErrorMessage";
 import * as slideTypes from '../../constants/slideTypes';
 import Reloader from "../shared/Reloader";
 import _ from 'lodash';
@@ -28,15 +27,14 @@ class ClanPage extends React.Component {
       }
     }
   }
-  
+
   render() {
     return(
       <div>
         <h1>Klaslessen</h1>
-        <Reloader action={this.props.actions.loadLessons}/>
+        <Reloader action={this.props.actions.loadLessons} />
         <Loader active={this.props.loading}/>
         <LessonList lessons={this.props.lessons} slideType={slideTypes.CLASS}/>
-        { this.props.hasError && <ErrorMessage header="Fout bij inladen" message={this.props.error} />}
       </div>
     );
   }
