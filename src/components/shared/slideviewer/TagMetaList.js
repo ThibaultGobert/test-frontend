@@ -9,7 +9,7 @@ function mapToTag(tag) {
       return "OEFENING";
     case "CLASS":
       return "KLASSIKAAL";
-    case "MANDETORY":
+    case "MANDATORY":
       return "VERPLICHT";
     case "INTRODUCTION":
       return "INTRODUCTIE";

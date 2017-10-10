@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { Grid, Segment, Button } from 'semantic-ui-react';
 import renderHtml from 'react-render-html';
 import ContactList from "./ContactList";
+import _ from 'lodash';
 
 const ClassGroupContent = ({content}) => {
   let buttonKey = "button" + content.id;
@@ -28,10 +29,10 @@ const ClassGroupContent = ({content}) => {
               </Grid.Row>
             </Grid>
           </Segment>
-          <Segment vertical>
+          { !_.isEmpty(content.assistants) && <Segment vertical>
             <h3>Assistent-lesgevers</h3>
             <ContactList contacts={content.assistants}/>
-          </Segment>
+          </Segment>}
         </Grid.Column>
         <Grid.Column width={6}>
           <Segment vertical>
