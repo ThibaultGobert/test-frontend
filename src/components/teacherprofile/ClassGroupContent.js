@@ -3,9 +3,11 @@ import {Link} from 'react-router';
 import PropTypes from 'prop-types';
 import { Grid, Segment, Button } from 'semantic-ui-react';
 import renderHtml from 'react-render-html';
+import ContactList from "./ContactList";
 
 const ClassGroupContent = ({content}) => {
   let buttonKey = "button" + content.id;
+  // TODO Simon: use contact list for headteachers
   return (
     <Grid className="class-group-details">
       <Grid.Row className="full-width">
@@ -28,26 +30,7 @@ const ClassGroupContent = ({content}) => {
           </Segment>
           <Segment vertical>
             <h3>Assistent-lesgevers</h3>
-            <Grid>
-              { content.assistants &&
-                content.assistants.map((assistant) => {
-                  const gridRowKey = "gridrowAssistent-" + assistant.name;
-                  return (
-                    <Grid.Row key={gridRowKey}>
-                      <Grid.Column width={3}>
-                        {assistant.firstname + ' ' + assistant.lastname}
-                      </Grid.Column>
-                      <Grid.Column width={6}>
-                        {assistant.email}
-                      </Grid.Column>
-                      <Grid.Column width={6}>
-                        { assistant.cellphone}
-                      </Grid.Column>
-                    </Grid.Row>
-                  );
-                })
-              }
-            </Grid>
+            <ContactList contacts={content.assistants}/>
           </Segment>
         </Grid.Column>
         <Grid.Column width={6}>
