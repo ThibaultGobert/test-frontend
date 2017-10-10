@@ -56,7 +56,7 @@ const ClassGroupContent = ({content}) => {
             <p><strong>Organisatie</strong> {content.location.organisation}</p>
             <p><strong>Adres</strong> {content.location.address}</p>
             <p><strong>Lokaal</strong> {content.location.room}</p>
-            <p><strong>Opmerkingen</strong> {renderHtml(content.location.roomremark)}</p>
+            <p><strong>Opmerkingen</strong> {content.location.roomremark && renderHtml(content.location.roomremark)}</p>
 
           </Segment>
         </Grid.Column>

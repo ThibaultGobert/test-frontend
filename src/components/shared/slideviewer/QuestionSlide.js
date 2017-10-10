@@ -114,7 +114,8 @@ class QuestionSlide extends React.Component {
 
   render() {
     return (
-        <div className="question-slide">
+      <div className="slide">
+        <div className="question-slide slide-content">
           <Modal isOpen={this.state.modal.isOpen}
                  body={this.state.modal.body}
                  header={this.state.modal.header}
@@ -127,7 +128,7 @@ class QuestionSlide extends React.Component {
               {renderHtml(this.props.question)}
             </div>
             <div className="answers-panel">
-              <Grid>
+              <Grid columns={this.props.layout.columns}>
                 {this.props.answers.map(answer => {
                   let answerKey = "answer" + answer.id;
 
@@ -141,7 +142,7 @@ class QuestionSlide extends React.Component {
                   }
 
                   return (
-                    <Grid.Column width={16 / this.props.layout.columns} key={answerKey} className={classname}>
+                    <Grid.Column key={answerKey} className={classname}>
                       <Grid className="answer" onClick={() => { this.selectAnswer(answer); }} disabled={!this.state.questionAnswered}>
                         <Grid.Column className="answer-symbol" width={4}>{answer.numbering}</Grid.Column>
                         <Grid.Column className="answer-content" width={12}>
@@ -155,6 +156,7 @@ class QuestionSlide extends React.Component {
             </div>
           </div>
         </div>
+      </div>
     );
   }
 }

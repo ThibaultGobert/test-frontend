@@ -1,16 +1,16 @@
 import React from 'react';
-import LoginForm from './LoginForm';
+import LoginForm from './ImpersonateForm';
 import * as authActions from '../../actions/auth';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
+import {Icon} from 'semantic-ui-react';
 import {Link} from 'react-router';
 import {bindActionCreators} from 'redux';
 import * as roles from '../../constants/roles';
-import {Icon} from 'semantic-ui-react';
 import Loader from '../shared/Loader';
 import toastr from 'toastr';
 
-class LoginPage extends React.Component {
+class ImpersonatePage extends React.Component {
   constructor(props, context) {
     super(props, context);
 
@@ -18,13 +18,12 @@ class LoginPage extends React.Component {
       credentials: {
         username: '',
         password: '',
-      },
-      hidden: true,
+        child_username: '',
+      }
     };
 
     this.onLoginChange = this.onLoginChange.bind(this);
     this.onLoginSubmit = this.onLoginSubmit.bind(this);
-    this.toggleHidden = this.toggleHidden.bind(this);
   }
 
   onLoginChange(event) {
@@ -36,7 +35,7 @@ class LoginPage extends React.Component {
 
   onLoginSubmit(event) {
     event.preventDefault();
-    this.props.actions.login(this.state.credentials).then((data) => {
+    this.props.actions.impersonate(this.state.credentials).then((data) => {
       if (this.props.loggedIn.role == roles.STUDENT_ROLE) {
         this.context.router.push('/studentprofile/clan');
       } else if (this.props.loggedIn.role == roles.TEACHER_ROLE) {
@@ -51,12 +50,6 @@ class LoginPage extends React.Component {
     });
   }
 
-  toggleHidden() {
-    this.setState((prevState) => {
-      return {hidden: !prevState.hidden};
-    });
-  }
-
   render() {
     return(
       <div className="login-form">
@@ -68,23 +61,20 @@ class LoginPage extends React.Component {
             onSubmit={this.onLoginSubmit}
             error={this.props.hasError}
             errorMessage={this.props.error}
-            credentials={this.state.credentials}
-            toggleHidden={this.toggleHidden}
-            hidden={this.state.hidden}
           />
         </div>
+
         <div className="impersonate-link">
-          <Link to="/impersonate">
-            <Icon name="lock" />
+          <Link to="/login">
+            <Icon name="unlock alternate" />
           </Link>
         </div>
       </div>
-
     );
   }
 }
 
-LoginPage.propTypes = {
+ImpersonatePage.propTypes = {
   actions: PropTypes.object.isRequired,
   loggedIn: PropTypes.object.isRequired,
   hasError: PropTypes.bool,
@@ -92,7 +82,7 @@ LoginPage.propTypes = {
   error: PropTypes.object
 };
 
-LoginPage.contextTypes = {
+ImpersonatePage.contextTypes = {
   router: PropTypes.object
 };
 
@@ -112,4 +102,4 @@ function mapDispatchToProps(dispatch) {
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);
+export default connect(mapStateToProps, mapDispatchToProps)(ImpersonatePage);

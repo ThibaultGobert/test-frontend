@@ -3,15 +3,14 @@ import initialState from './initialState';
 
 export default function courseReducer(state = initialState.courses, action) {
   switch (action.type) {
-    case types.LOAD_COURSES_SUCCESS:
-      return action.courses;
+    case types.FETCH_COURSES:
+      return Object.assign({}, { data:[], loading: true, error: null, hasError: false});
 
-    case types.LOAD_CHILDREN_SUCCESS: {
-      let course = state.filter(course => course.id === action.childrenForCourse.courseId)[0];
-      let extendedCourse = Object.assign({}, course, {"classlist": action.childrenForCourse.children});
-      let otherCourses = state.filter(course => course.id !== action.childrenForCourse.courseId);
-      return [...otherCourses, extendedCourse];
-    }
+    case types.LOAD_COURSES_SUCCESS:
+      return Object.assign({}, { data: action.courses, loading: false, error: null, hasError: false});
+
+    case types.FETCH_COURSES_ERROR:
+      return Object.assign({}, { data: [], loading: false, error: action.error, hasError: true});
 
     default:
       return state;

@@ -6,31 +6,28 @@ export function loadCoursesSuccess(courses) {
   return {type: types.LOAD_COURSES_SUCCESS, courses };
 }
 
-export function loadChildrenSuccess(couseId, children) {
-  const childrenForCourse = { courseId: couseId, children: children};
-  return { type: types.LOAD_CHILDREN_SUCCESS, childrenForCourse};
+export function loadChildrenSuccess(children) {
+  return { type: types.LOAD_CHILDREN_SUCCESS, children};
 }
 
 export function loadCourses() {
   return function(dispatch) {
-    dispatch(beginAjaxCall());
+    dispatch(beginAjaxCall(types.FETCH_COURSES));
     return courseApi.getCourses(false).then((courses) => {
       dispatch(loadCoursesSuccess(courses));
     }).catch(error => {
-      dispatch(ajaxCallError());
-      throw(error);
+      dispatch(ajaxCallError(types.FETCH_COURSES_ERROR, error));
     });
   };
 }
 
 export function loadChildren(courseId) {
   return function(dispatch) {
-    dispatch(beginAjaxCall());
+    dispatch(beginAjaxCall(types.FETCH_CHILDREN));
     return courseApi.getChildrenForCourse(courseId).then((children) => {
-      dispatch(loadChildrenSuccess(courseId, children));
+      dispatch(loadChildrenSuccess(children));
     }).catch(error => {
-      dispatch(ajaxCallError());
-      throw(error);
+      dispatch(ajaxCallError(types.FETCH_CHILDREN_ERROR, error));
     });
   };
 }

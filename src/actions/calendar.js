@@ -8,12 +8,11 @@ export function loadCalendarSuccess(calendar) {
 
 export function loadCalendar() {
   return function(dispatch) {
-    dispatch(beginAjaxCall());
+    dispatch(beginAjaxCall(types.FETCH_CALENDAR));
     return calendarApi.getCalendar().then((calendar) => {
       dispatch(loadCalendarSuccess(calendar));
     }).catch(error => {
-      dispatch(ajaxCallError());
-      throw(error);
+      dispatch(ajaxCallError(types.FETCH_CALENDAR_ERROR, error));
     });
   };
 }

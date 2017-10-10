@@ -1,26 +1,25 @@
 import axios from 'axios';
 import store from '../index';
 import baseUrl from './baseUrl';
+import _ from 'lodash';
 
 class LessonApi {
 
-  static getLessonsForStudent() {
+  static getLessonsForStudent(slidetype) {
     return axios.request({
       method: 'get',
-      url: baseUrl + '/webresources/v1/getUserInformation',
+      url: baseUrl + '/webresources/v1/lessons/getAllLessons?type=CLASSHOME&slidetype=' + slidetype,
+      timeout: 3000,
       headers: {
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*',
-        'x-token': store.getState().loggedIn.token
+        'x-token': store.getState().loggedIn.data.token
       }
     }).then(response => {
-      let lessons = response.data.lessons;
-      /* lessons = lessons.map(lesson => {
-        this.getLessonMetaData(lesson.programlessonid).then(metadata => {
-          lesson.activateStudent = metadata.activateStudent;
-        });
-        return lesson;
-      });*/
+      let lessons = response.data.filter(lesson => lesson.activateStudent);
+      if (_.isEmpty(lessons)) {
+        throw "Geen lessen beschikbaar";
+      }
       return lessons;
     }).catch(error => {
       throw error;
@@ -31,11 +30,12 @@ class LessonApi {
   static getLessonSlides(programLessonId, lessonType, slideType) {
     return axios.request({
       method: 'get',
-      url: baseUrl + "/webresources/v1/getLessonNEW?programlessonid=" + programLessonId + "&lessontype=" + lessonType + "&slidetype=" + slideType,
+      url: baseUrl + "/webresources/v1/lessons/getLessonNEW?programlessonid=" + programLessonId + "&lessontype=" + lessonType + "&slidetype=" + slideType,
+      timeout: 3000,
       headers: {
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*',
-        'x-token': store.getState().loggedIn.token
+        'x-token': store.getState().loggedIn.data.token
       }
     }).then(response => {
       let lesson =  response.data;
@@ -49,11 +49,12 @@ class LessonApi {
   static getLessonMetaData(programLessonId) {
     return axios.request({
       method: 'get',
-      url: baseUrl + "/webresources/v1/getLessonMetaData?programlessonid=" + programLessonId,
+      url: baseUrl + "/webresources/v1/lessons/getLessonMetaData?programlessonid=" + programLessonId,
+      timeout: 3000,
       headers: {
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*',
-        'x-token': store.getState().loggedIn.token
+        'x-token': store.getState().loggedIn.data.token
       }
     }).then(response => {
       return response.data;

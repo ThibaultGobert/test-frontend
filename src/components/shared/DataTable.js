@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Table, Menu, Icon, Segment, Input } from "semantic-ui-react";
-import {orderBy, flatten, capitalize} from "lodash";
+import { Table, Menu, Icon, Segment, Input, Popup } from "semantic-ui-react";
+import {orderBy, flatten, capitalize, isEmpty} from "lodash";
+import striptags from 'striptags';
 
 const dataParser = (obj) => {
   if(!obj) return [{}];
@@ -125,14 +126,26 @@ class DataTable extends Component {
   }
 
   defaultRenderBodyRow(data, index) {
-    return (<Table.Row key={index}>
-      {this.columns.map(({key, defaults, accessor, decorator}, idx) => {
+    let highlight = data.highlight ? 'highlight': '';
+
+    let hidden_info = (data.parentremark != undefined && data.parentremark != "") || (data.teacherremark != undefined && data.teacherremark != "");
+    return (
+      <Table.Row key={index} className={highlight}>
+        {this.columns.map(({key, defaults, accessor, decorator}, idx) => {
+
         if (!data) return <Table.Cell key={idx}/>;
         let value = (accessor) ? accessor(data, key) : (data[key] || defaults);
         if (decorator) value = decorator(value);
-        return (<Table.Cell key={idx}>{value}</Table.Cell>);
+        return (<Table.Cell key={idx}>{(idx == 0 && hidden_info) && <Popup
+          trigger={<Icon name="info"/>}
+          content={data.hidden_info}
+          inverted>
+            { data.parentremark && <p>Opmerkingen ouders: {striptags(data.parentremark)}</p>}
+            { data.teacherremark && <p>Opmerkingen leraren: {striptags(data.teacherremark)}</p>}
+        </Popup>} {value}</Table.Cell>);
       })}
-    </Table.Row>);
+      </Table.Row>
+    );
   }
 
   pageChange(index) {
@@ -228,10 +241,14 @@ class DataTable extends Component {
   render() {
     return (
       <div>
+
+
         <Segment attached="top" floated="right">
+          <h2 className="data-count">Aantal: {this.props.data.length}</h2>
+
           <Input icon="search" value={this.state.query || ""} onChange={this.onSearch} placeholder="Zoek..." />
         </Segment>
-        <Table celled attached className="sortable">
+        <Table celled attached className="sortable" >
           <Table.Header>
             {this.columns && this.renderHeader(this.columns, this.onSort, this.headerClass)}
           </Table.Header>
@@ -240,7 +257,7 @@ class DataTable extends Component {
           </Table.Body>
           {this.pagedData.length > 1 &&
           <Table.Footer>
-            <Table.Row>
+            <Table.Row >
               <Table.HeaderCell colSpan={this.columns.length}>
                 <Menu floated="right" pagination>
                   {this.state.index !== 0 && this.pagedData.length > 1 &&

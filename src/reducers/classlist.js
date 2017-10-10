@@ -1,18 +1,19 @@
 import * as types from '../actions/types';
 import initialState from './initialState';
 
-export default function calendarReducer(state = initialState.calendar, action) {
+export default function courseReducer(state = initialState.classlist, action) {
   switch (action.type) {
-    case types.FETCH_CALENDAR:
+    case types.FETCH_CHILDREN:
       return Object.assign({}, { data:[], loading: true, error: null, hasError: false});
 
-    case types.LOAD_CALENDAR_SUCCESS:
-      return Object.assign({}, { data: action.calendar, loading: false, error: null, hasError: false});
+    case types.LOAD_CHILDREN_SUCCESS:
+      return Object.assign({}, { data: action.children, loading: false, error: null, hasError: false});
 
-    case types.FETCH_CALENDAR_ERROR:
+    case types.FETCH_CHILDREN_ERROR:
       return Object.assign({}, { data: [], loading: false, error: action.error, hasError: true});
 
     default:
       return state;
   }
 }
+

@@ -2,8 +2,9 @@ import React from 'react';
 import {PropTypes} from 'prop-types';
 import QuestionSlide from "./QuestionSlide";
 import TextSlide from './TextSlide';
-import keydown, {Keys} from 'react-keydown';
 import TagBar from "./TagBar";
+import { Progress } from 'semantic-ui-react';
+import { Scrollbars } from 'react-custom-scrollbars';
 
 class SlideViewer extends React.Component {
   constructor(props, context) {
@@ -17,6 +18,7 @@ class SlideViewer extends React.Component {
     this.nextSlide = this.nextSlide.bind(this);
     this.previousSlide = this.previousSlide.bind(this);
     this.mapToTags = this.mapToTags.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
   }
 
   componentWillMount() {
@@ -24,6 +26,17 @@ class SlideViewer extends React.Component {
     this.setState({
       slide: slide
     });
+
+  }
+
+  componentDidMount() {
+    // Add Event Listener on compenent mount
+    window.addEventListener("keyup", this.handleKeyPress);
+  }
+
+  componentWillUnmount() {
+    // Remove event listener on compenent unmount
+    window.removeEventListener("keyup", this.handleKeyPress);
   }
 
   nextSlide() {
@@ -75,20 +88,44 @@ class SlideViewer extends React.Component {
     return [this.state.slide.part, this.state.slide.method, this.state.slide.execution];
   }
 
+  handleKeyPress(e) {
+    e.preventDefault();
+    if (e.key === "ArrowRight") {
+      this.nextSlide();
+    }
+    if (e.key === "ArrowLeft") {
+      this.previousSlide();
+    }
+  }
+
   render() {
+    const hideLeftButton = this.state.index > 0 ? "" : "hide";
+    const hideRightButton = this.state.index < this.props.slides.length - 1 ? "": "hide";
     return (
-      <div>
-        <TagBar title={this.props.metadata.title} slideType={this.props.metadata.slideType} tags={this.mapToTags()} viewType={this.state.slide.type} isStudent={this.props.isStudent}/>
+      <div className="slide-viewer">
+        <TagBar
+          title={this.props.metadata.title}
+          version={this.props.metadata.version}
+          slideType={this.props.metadata.slideType}
+          tags={this.mapToTags()}
+          viewType={this.state.slide.type}
+          isStudent={this.props.isStudent}
+        />
         <div className="slide-show-content">
           <div className="slide-show-inner-content">
-            { this.state.index > 0 && <div className="left control-button" onClick={this.previousSlide}>
+            <div className={hideLeftButton + " left control-button"} onClick={this.previousSlide}>
               <img src={require('../../../../images/slideviewer/left.png')} alt=""/>
-            </div>}
-            {this.renderSlide()}
-            { this.state.index < this.props.slides.length - 1 && <div className="right control-button" onClick={this.nextSlide}>
+            </div>
+            <Scrollbars className="scrollbars" autoHeightMax={200}>
+              { this.renderSlide() }
+            </Scrollbars>
+            <div className={hideRightButton + " right control-button"} onClick={this.nextSlide}>
               <img src={require('../../../../images/slideviewer/right.png')} alt=""/>
-            </div>}
+            </div>
           </div>
+        </div>
+        <div className="progress-bar">
+          <Progress percent={((this.state.index + 1) / this.props.slides.length)*100} />
         </div>
       </div>
     );
@@ -96,7 +133,7 @@ class SlideViewer extends React.Component {
 }
 
 SlideViewer.propTypes = {
-  slides: PropTypes.array.isRequired,
+  slides: PropTypes.array,
   metadata: PropTypes.object.isRequired,
   isStudent: PropTypes.bool
 };

@@ -58,9 +58,21 @@ body {
   z-index: 100;
 }
 
+.header a {
+  font-size: 1.1em;
+}
+
 .code-tag {
   font-size: 1.3em !important;
   color: #fff;
+}
+
+.eye-icon {
+  background-color: #008BCE;
+}
+
+i.eye-icon {
+  opacity: 0.7 !important;
 }
 
 .login-form button {
@@ -76,8 +88,28 @@ body {
 }
 
 .login-form .field input {
-  width: 25em !important;
+  width: 20em !important;
 }
+
+.impersonate-link {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+}
+
+
+.login-form label {
+  min-width: 9.5em;
+}
+
+.login-form.impersonate-form {
+  min-width: 750px;
+}
+
+.impersonate-form label {
+  min-width: 12em;
+}
+
 
 .header-bar .welcome-message {
   position: relative;
@@ -100,7 +132,42 @@ body {
 .page {
   padding: 2em;
 }
+.answer img {
+  max-width: 100%;
+}
 
+.info-page {
+  margin-top: 1.5em;
+}
+
+.info-page table, .info-page th, .info-page td {
+  border: 1px solid black;
+}
+
+.info-page th, .info-page td {
+  padding: 0.3em;
+}
+
+.info-page table {
+  margin: 1em;
+  width: 700px;
+
+}
+
+.info-page h1 {
+  font-size: 1.5em;
+}
+.info-page p {
+  font-size: 1.1em;
+}
+
+.info-page ul li {
+  font-size: 1.1em;
+}
+
+.answer {
+  margin: 1em;
+}
 .clearfix:after {
   clear: both;
   content: ".";
@@ -124,8 +191,37 @@ body {
 }
 
 .login-form {
-  max-width: 700px;
+  min-width: 700px;
   margin: 0 auto;
+}
+
+.highlight {
+  background: #db2828 !important;
+  color: #fff !important;
+}
+
+.legende {
+  padding: 1em;
+  margin-top: 1em;
+  float: right;
+}
+
+.legende .symbol {
+  height: 20px;
+  width: 30px;
+  display: inline-block;
+}
+
+.symbol.trial {
+  background: #db2828;
+}
+
+.legende .explanation {
+  font-size: 1.1em;
+  line-height: 20px;
+  vertical-align: top;
+  margin-left: 0.5em;
+  display: inline-block;
 }
 
 .login-form form {
@@ -161,6 +257,10 @@ body {
 
 .cf-accordion {
   margin-top: 3em;
+}
+
+.slide-viewer {
+  height: calc(100% - 84.5px);
 }
 
 .subtitle {
@@ -255,33 +355,23 @@ body {
   cursor: pointer;
 }
 .slide-show-content {
-  max-width: 1400px;
-  padding-left: 120px;
-  margin: auto auto;
-  margin-top: 5%;
-  margin-bottom: 5%;
-  padding-right: 120px;
+  font-size: 1.1em;
 }
 
-.control-button {
+.refresh-store {
   position: absolute;
-  top: 45%;
+  right: 10px;
+  top: 10px;
 }
 
-.control-button {
-  font-size: 3em !important;
+.refresh-store i {
+  color: #BFC6CD;
+  cursor: pointer;
 }
 
-.control-button img {
-  height: 70px;
-}
 
-.control-button.left {
-  left: 20px;
-}
-
-.control-button.right {
-  right: 20px;
+.ui.dimmer {
+  background-color: rgba(0,0,0,0.95) !important;
 }
 
 .loader {
@@ -303,6 +393,11 @@ body {
   float: right;
 }
 
+.class-list .ui.top.floated.segment.right {
+  padding-left: 0;
+  padding-right: 0;
+}
+
 .calendar-toolbar img {
   cursor: pointer;
 }
@@ -311,7 +406,9 @@ body {
   font-size: 1em;
   vertical-align: 100%;
 }
-
+.data-count {
+  display: inline-block;
+}
 .modals {
   min-width: 100%;
 }
@@ -345,9 +442,6 @@ body {
   margin-top: 2em;
 }
 
-.slide-show-content {
-}
-
 .wrong-answer .answer-symbol {
   background: red;
 }
@@ -378,6 +472,7 @@ body {
 .tag-bar-wrapper {
   background: #262d34;
   border-bottom: 4px solid rgb(220, 43, 69);
+  height: 60px;
 }
 
 .tag-bar {
@@ -435,10 +530,83 @@ body {
   width: 250px;
 }
 
-
 .login-form-wrapper {
   background: #337ab7;
+  display: inline-block;
+  margin-left: 250px;
   padding: 2em;
   border-radius: 1em;
 }
+
+.slide-show {
+  height: 100vh;
+}
+
+.progress-bar .ui.progress {
+  margin: 0;
+  background: #BFC6CD;
+  border-radius: 0;
+}
+
+.progress-bar .ui.progress .bar {
+  background: #262D34;
+  border-radius: 0;
+}
+
+.progress-bar {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}
+
+.slide-show-content {
+  height: 100%;
+  position: relative;
+}
+
+.slide-show-inner-content {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.scrollbars {
+  position: inherit !important;
+}
+
+.slide {
+  flex: 1;
+  align-self: flex-start;
+  padding-top: 4em;
+  padding-bottom: 4em;
+  max-height: 100%;
+}
+
+.slide-content {
+  padding-left: 4em;
+  padding-right: 4em;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-bottom: 2em;
+}
+
+.control-button {
+  padding: 0 1em;
+  z-index: 30;
+}
+
+.control-button.hide {
+  visibility: hidden;
+}
+
+.control-button img {
+  height: 70px;
+}
+
+
+
+
+
+
 /*TODO: better css structure --> USE SASS INSTEAD OF CSS*/

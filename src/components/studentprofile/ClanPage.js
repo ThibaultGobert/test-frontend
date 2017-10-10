@@ -4,37 +4,36 @@ import {connect} from 'react-redux';
 import LessonList from './LessonList';
 import {bindActionCreators} from 'redux';
 import * as lessonActions from '../../actions/lessons';
-import {Dimmer, Loader} from 'semantic-ui-react';
+import Loader from '../shared/Loader';
 import * as slideTypes from '../../constants/slideTypes';
+import Reloader from "../shared/Reloader";
+import _ from 'lodash';
 
 class ClanPage extends React.Component {
   constructor(props, context) {
     super(props, context);
-    this.state = {
-      isLoading: true
-    };
   }
 
   componentDidMount() {
-    this.props.actions.loadLessons().then(() => {
-      this.setState({
-        isLoading: false
-      });
-    });
+    if( this.props.error == null) {
+      this.props.actions.loadLessons("CLASS");
+    }
+  }
+
+  componentDidUpdate() {
+    if (_.isEmpty(this.props.lessons)) {
+      if (!this.props.loading && !this.props.hasError) {
+        this.props.actions.loadLessons("CLASS");
+      }
+    }
   }
 
   render() {
-    if (this.state.isLoading) {
-      return (
-        <Dimmer active>
-          <Loader size="medium">Loading</Loader>
-        </Dimmer>
-      );
-    }
-
     return(
       <div>
         <h1>Klaslessen</h1>
+        <Reloader action={this.props.actions.loadLessons} />
+        <Loader active={this.props.loading}/>
         <LessonList lessons={this.props.lessons} slideType={slideTypes.CLASS}/>
       </div>
     );
@@ -48,7 +47,10 @@ ClanPage.propTypes = {
 
 function mapStateToProps(state, ownProps) {
   return {
-    lessons: state.lessons
+    lessons: state.lessons.data,
+    loading: state.lessons.loading,
+    error: state.lessons.error,
+    hasError: state.lessons.hasError
   };
 }
 
