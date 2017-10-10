@@ -30,7 +30,7 @@ class LessonApi {
   static getLessonSlides(programLessonId, lessonType, slideType) {
     return axios.request({
       method: 'get',
-      url: baseUrl + "/webresources/v1/getLessonNEW?programlessonid=" + programLessonId + "&lessontype=" + lessonType + "&slidetype=" + slideType,
+      url: baseUrl + "/webresources/v1/lessons/getLessonNEW?programlessonid=" + programLessonId + "&lessontype=" + lessonType + "&slidetype=" + slideType,
       timeout: 3000,
       headers: {
         'Content-Type': 'application/json',
@@ -49,7 +49,7 @@ class LessonApi {
   static getLessonMetaData(programLessonId) {
     return axios.request({
       method: 'get',
-      url: baseUrl + "/webresources/v1/getLessonMetaData?programlessonid=" + programLessonId,
+      url: baseUrl + "/webresources/v1/lessons/getLessonMetaData?programlessonid=" + programLessonId,
       timeout: 3000,
       headers: {
         'Content-Type': 'application/json',

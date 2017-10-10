@@ -7,7 +7,7 @@ export default (data) => {
       name: student.firstname + ' ' + student.lastname,
       subscription_type: mapToSubscriptionType(student.subscriptiontype),
       password_hint: mapToPasswordHint(student.passwordLearningPlatformHint, student.passwordHint),
-      parent_contact: student.parent.phone,
+      parent_contact: student.parent.cell,
       parent_name: student.parent.firstName + " " + student.parent.lastName,
       usernames_platform: student.login
     });

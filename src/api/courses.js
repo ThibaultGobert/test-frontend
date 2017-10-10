@@ -8,7 +8,7 @@ class CourseApi {
   static getCourses(replacementsIncluded) {
     return axios.request({
       method: 'get',
-      url: baseUrl + '/webresources/v1/getTeacherCourse?replacements=' + replacementsIncluded,
+      url: baseUrl + '/webresources/v1/courses/getTeacherCourse?replacements=' + replacementsIncluded,
       timeout: 3000,
       headers: {
         'Content-Type': 'application/json',
@@ -26,7 +26,7 @@ class CourseApi {
   static getChildrenForCourse(courseId) {
     return axios.request({
       method: 'get',
-      url: baseUrl + '/webresources/v1/getChildrenForCours?courseid=' + courseId,
+      url: baseUrl + '/webresources/v1/courses/getChildrenForCours?courseid=' + courseId,
       timeout: 3000,
       headers: {
         'Content-Type': 'application/json',

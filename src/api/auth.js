@@ -14,7 +14,7 @@ class AuthApi {
 
     return axios.request({
       method: 'get',
-      url: baseUrl + '/webresources/v1/authUser',
+      url: baseUrl + '/webresources/v1/usersession/authUser',
       timeout: 3000,
       headers: headers
     }).then(response => {
