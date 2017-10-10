@@ -1,6 +1,7 @@
 import React from 'react';
 import SlideTypeLabel from "../SlideTypeLabel";
 import TagMetaList from "./TagMetaList";
+import ProjectionTagList from './ProjectionTagList';
 import * as slideTypes from '../../../constants/slideTypes';
 
 const TagBar = ({title, version, slideType, tags, viewType, isStudent}) => {
@@ -15,6 +16,7 @@ const TagBar = ({title, version, slideType, tags, viewType, isStudent}) => {
         </span>
         <span className="meta-tags">
           { (slideType !== slideTypes.PROJECTION && !isStudent) &&  <TagMetaList tags={tags} viewType={viewType}/>}
+          { (slideType == slideTypes.PROJECTION && !isStudent) &&  <ProjectionTagList viewType={viewType}/>}
         </span>
         <div className="clearfix"/>
       </div>

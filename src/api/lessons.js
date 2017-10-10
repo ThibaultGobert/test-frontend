@@ -2,6 +2,7 @@ import axios from 'axios';
 import store from '../index';
 import baseUrl from './baseUrl';
 import _ from 'lodash';
+import * as userRoles from '../constants/roles';
 
 class LessonApi {
 
@@ -40,6 +41,13 @@ class LessonApi {
     }).then(response => {
       let lesson =  response.data;
       lesson.slideType = slideType;
+      let role = store.getState().loggedIn.data.role;
+
+      if (role === userRoles.TEACHER_ROLE && !lesson.activateTeacher ||
+        role === userRoles.STUDENT_ROLE && !lesson.activateStudent) {
+        throw "Les is niet beschikbaar";
+      }
+
       return lesson;
     }).catch(error => {
       throw error;

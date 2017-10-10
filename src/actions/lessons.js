@@ -26,8 +26,10 @@ export function loadLessonSlides(lessonId, lessonType, slideType){
     dispatch(beginAjaxCall(types.FETCH_LESSON_SLIDES));
     return lessonApi.getLessonSlides(lessonId, lessonType, slideType).then(lessonInfo => {
       dispatch(loadLessonSlidesSuccess(lessonInfo));
+      return lessonInfo;
     }).catch(error => {
       dispatch(ajaxCallError(types.FETCH_LESSON_SLIDES_ERROR, error));
+      throw error;
     });
   };
 }

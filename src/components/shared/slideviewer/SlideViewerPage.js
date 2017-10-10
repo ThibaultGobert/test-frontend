@@ -15,19 +15,33 @@ class SlideViewerPage extends React.Component {
     super(props, context);
     this.redirectToOverview = this.redirectToOverview.bind(this);
     this.state = {
-      loaded: false,
+      lesson: {},
+      hasError: false,
+      error: null,
+      loading: true,
     };
   }
 
   componentDidMount() {
-    if(this.props.error == null) {
-      this.props.actions.loadLessonSlides(this.props.lessonId, "CLASSHOME", this.props.slideType).then(data => {
-        this.setState({loaded: true});
-      }).catch(error => {
-        toastr.error("Les is niet beschikbaar");
-        this.redirectToOverview();
-      });
-    }
+      if(_.isEmpty(this.state.lesson) && !this.state.hasError) {
+        this.setState({loading: true});
+        this.props.actions.loadLessonSlides(this.props.lessonId, "CLASSHOME", this.props.slideType).then(data => {
+          this.setState({
+            lesson: data,
+            hasError: false,
+            error: null,
+            loading: false,
+          });
+        }).catch(error => {
+          this.setState({
+            hasError: true,
+            error: error,
+            loading: false,
+          });
+          this.redirectToOverview();
+          toastr.error(error);
+        });
+      }
   }
 
   redirectToOverview() {
@@ -35,26 +49,30 @@ class SlideViewerPage extends React.Component {
   }
 
   render() {
+    if (this.state.loading) {
+      return (<Loader active={this.state.loading} />);
+    }
+
     let slideshowkey = "slideshow"+ this.props.lessonId;
 
-    let metadata = {"title": this.props.lesson.name, "version": this.props.lesson.version, "slideType": this.props.lesson.slideType};
+    let metadata = {"title": this.state.lesson.name, "version": this.state.lesson.version, "slideType": this.state.lesson.slideType};
 
     return (
       <div className="slideViewerPage">
-        <Loader active={!this.state.loaded} />
+        { (!_.isEmpty(this.state.lesson) && !this.state.loading && !this.state.hasError) &&
+          <div className="slide-show">
+            <div className="close-presentation" onClick={this.redirectToOverview}>
+              <img src={require('../../../../images/slideviewer/close.png')} alt=""/>
+            </div>
 
-        { this.state.loaded && <div className="slide-show">
-          <div className="close-presentation" onClick={this.redirectToOverview}>
-            <img src={require('../../../../images/slideviewer/close.png')} alt=""/>
+            <SlideViewer
+              slides={this.state.lesson.slides}
+              key={slideshowkey}
+              metadata={metadata}
+              isStudent={this.props.isStudent}
+            />
           </div>
-
-          <SlideViewer
-            slides={this.props.lesson.slides}
-            key={slideshowkey}
-            metadata={metadata}
-            isStudent={this.props.isStudent}
-          />
-        </div>}
+        }
       </div>
     );
   }
@@ -67,13 +85,10 @@ SlideViewerPage.propTypes = {
 function mapStateToProps(state, ownProps) {
   const lessonId = ownProps.params.id;
   const slideType = ownProps.params.type;
-  const lesson = state.currentLesson.data;
 
   return {
     lessonId: lessonId,
     slideType: slideType,
-    lesson: lesson,
-    loading: state.currentLesson.loading,
     isStudent: state.loggedIn.data.role == userRoles.STUDENT_ROLE
   };
 }
