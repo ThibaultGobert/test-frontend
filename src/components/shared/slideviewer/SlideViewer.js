@@ -101,8 +101,9 @@ class SlideViewer extends React.Component {
   render() {
     const hideLeftButton = this.state.index > 0 ? "" : "hide";
     const hideRightButton = this.state.index < this.props.slides.length - 1 ? "": "hide";
+    const slideViewerClassName = "slide-viewer " + this.props.metadata.slideType;
     return (
-      <div className="slide-viewer">
+      <div className={slideViewerClassName}>
         <TagBar
           title={this.props.metadata.title}
           version={this.props.metadata.version}
@@ -114,13 +115,13 @@ class SlideViewer extends React.Component {
         <div className="slide-show-content">
           <div className="slide-show-inner-content">
             <div className={hideLeftButton + " left control-button"} onClick={this.previousSlide}>
-              <img src={require('../../../../images/slideviewer/left.png')} alt=""/>
+              <img src={require('../../../../images/slideviewer/back.png')} alt=""/>
             </div>
             <Scrollbars className="scrollbars" autoHeightMax={200}>
               { this.renderSlide() }
             </Scrollbars>
             <div className={hideRightButton + " right control-button"} onClick={this.nextSlide}>
-              <img src={require('../../../../images/slideviewer/right.png')} alt=""/>
+              <img src={require('../../../../images/slideviewer/next.png')} alt=""/>
             </div>
           </div>
         </div>
