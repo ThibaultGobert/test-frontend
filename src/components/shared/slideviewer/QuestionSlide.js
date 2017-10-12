@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import renderHtml from 'react-render-html';
-import {Grid} from 'semantic-ui-react';
+import {Grid, Segment, Label} from 'semantic-ui-react';
 import _ from 'lodash';
 import Modal from '../Modal';
 import questionApi from '../../../api/questions';
@@ -132,7 +132,7 @@ class QuestionSlide extends React.Component {
                 {this.props.answers.map(answer => {
                   let answerKey = "answer" + answer.id;
 
-                  let classname = "";
+                  let classname = "answer ";
                   if (answer.attempted) {
                     if (answer.correctAnswer) {
                       classname += "correct-answer";
@@ -142,13 +142,16 @@ class QuestionSlide extends React.Component {
                   }
 
                   return (
-                    <Grid.Column key={answerKey} className={classname}>
-                      <Grid className="answer" onClick={() => { this.selectAnswer(answer); }} disabled={!this.state.questionAnswered}>
-                        <Grid.Column className="answer-symbol" width={4}>{answer.numbering}</Grid.Column>
-                        <Grid.Column className="answer-content" width={12}>
-                          {renderHtml(answer.value)}
-                        </Grid.Column>
-                      </Grid>
+                    <Grid.Column key={answerKey} stretched>
+                      <div className={classname} onClick={() => { this.selectAnswer(answer); }} disabled={!this.state.questionAnswered}>
+
+                        <div className="answer-content middle aligned">
+                          <Label floating>{answer.numbering}</Label>
+                          <div className="answer-value">
+                            {renderHtml(answer.value)}
+                          </div>
+                        </div>
+                      </div>
                     </Grid.Column>
                   );
                 })}
