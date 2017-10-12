@@ -7,7 +7,7 @@ class QuestionApi {
   static registerAnswer(answerId) {
     return axios.request({
       method: 'get',
-      url: baseUrl + '/webresources/v1/lessons/registerAnswer?answerid=' + answerId,
+      url: baseUrl + '/lessons/registerAnswer?answerid=' + answerId,
       timeout: 3000,
       headers: {
         'Content-Type': 'application/json',

@@ -22,7 +22,7 @@ class CalendarApi {
   static getCalendar() {
     return axios.request({
       method: 'get',
-      url: baseUrl + '/webresources/v1/courses/getTeacherCourse?replacements=false',
+      url: baseUrl + '/courses/getTeacherCourse?replacements=false',
       timeout: 3000,
       headers: {
         'Content-Type': 'application/json',
