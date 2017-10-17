@@ -645,6 +645,10 @@ i.eye-icon {
   font-size: 18px !important;
 }
 
+.answer .ui.floating.label {
+  top: -1.5em;
+}
+
 
 
 

@@ -7,6 +7,7 @@ import LoginPage from "./components/auth/LoginPage";
 import isEmpty from './functions/isEmpty';
 import ClanPage from "./components/studentprofile/ClanPage";
 import EditorOverviewPage from "./components/editorprofile/OverviewPage";
+import WorkshopOverviewPage from './components/workshopprofile/OverviewPage';
 import ChallengesPage from "./components/studentprofile/ChallengesPage";
 import HomeworkPage from "./components/studentprofile/HomeworkPage";
 import SlideViewerPage from "./components/shared/slideviewer/SlideViewerPage";
@@ -36,6 +37,10 @@ const routes = (store) => {
 
       <Route path="/editorprofile" onEnter={requireAuth(store)}>
         <Route path="/editorprofile/overview" component={EditorOverviewPage}/>
+      </Route>
+
+      <Route path="/workshopprofile" onEnter={requireAuth(store)}>
+        <Route path="/workshopprofile/overview" component={WorkshopOverviewPage}/>
       </Route>
 
       <Route path="/slideviewer" onEnter={requireAuth(store)}>

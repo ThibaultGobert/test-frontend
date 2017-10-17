@@ -1,5 +1,6 @@
 import axios from 'axios';
 import baseUrl from './baseUrl';
+import mapToUser from './mapToUser';
 
 class AuthApi {
   static login(credentials) {
@@ -18,7 +19,7 @@ class AuthApi {
       timeout: 3000,
       headers: headers
     }).then(response => {
-      return response.data;
+      return mapToUser(response.data);
     }).catch(error => {
       if(error.code == "ECONNABORTED") {
         throw "Timeout error";

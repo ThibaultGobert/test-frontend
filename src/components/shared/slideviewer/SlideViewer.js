@@ -85,7 +85,9 @@ class SlideViewer extends React.Component {
   }
 
   mapToTags() {
-    return [this.state.slide.part, this.state.slide.method, this.state.slide.execution];
+    if (this.state.slide) {
+      return [this.state.slide.part, this.state.slide.method, this.state.slide.execution];
+    }
   }
 
   handleKeyPress(e) {
