@@ -40,6 +40,8 @@ class ImpersonatePage extends React.Component {
         this.context.router.push('/studentprofile/clan');
       } else if (this.props.loggedIn.role == roles.TEACHER_ROLE) {
         this.context.router.push('/teacherprofile/overview');
+      } else if (this.props.loggedIn.role == roles.WORKSHOP_STUDENT_ROLE) {
+        this.context.router.push('/workshopprofile/overview');
       } else if (this.props.loggedIn.role == roles.ADMIN_ROLE){
         toastr.error("Geen toegang voor admins");
         this.props.actions.logOut();
