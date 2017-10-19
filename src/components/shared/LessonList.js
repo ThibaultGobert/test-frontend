@@ -27,20 +27,14 @@ const LessonList = ({lessons, slideType, showLockedLessons}) => {
       }
       { showLockedLessons &&
         lessonLocked.map(lessonOrder => {
-          return renderLocked(lessonOrder);
+          return (<div className="cardholder" key={"lessonOrder-" + lessonOrder}>
+            <Image src={require(`../../../images/placeholders/les${lessonOrder}-locked.png`)} alt="" shape="rounded"/>
+          </div>);
         })
       }
     </div>
   );
 };
-
-function renderLocked(index) {
-  return (
-    <div className="cardholder" >
-        <Image src={require(`../../../images/placeholders/les${index}-locked.png`)} alt="" shape="rounded"/>
-    </div>
-  );
-}
 
 LessonList.propTypes = {
   lessons: PropTypes.arrayOf(PropTypes.object),

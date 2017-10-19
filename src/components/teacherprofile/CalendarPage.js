@@ -45,6 +45,8 @@ CalendarPage.propTypes = {
   actions: PropTypes.object.isRequired,
   loading: PropTypes.bool,
   calendar: PropTypes.array,
+  hasError: PropTypes.bool.isRequired,
+  error: PropTypes.object.isRequired
 };
 
 // redux connect and related functions

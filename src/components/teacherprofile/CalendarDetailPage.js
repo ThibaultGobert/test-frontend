@@ -1,14 +1,11 @@
 import React from 'react';
-import {Button, Message} from 'semantic-ui-react';
+import {Button, Message, Header, Icon} from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {Link} from 'react-router';
+import {Link,browserHistory} from 'react-router';
 import * as calendarActions from '../../actions/calendar';
 import {bindActionCreators} from 'redux';
-import {browserHistory} from 'react-router';
-import {Header, Icon} from 'semantic-ui-react';
 import moment from 'moment';
-import AttendanceList from './AttendanceList';
 import * as slideTypes from '../../constants/slideTypes';
 import lessonApi from '../../api/lessons';
 import _ from 'lodash';
@@ -24,10 +21,6 @@ class CalendarDetailPage extends React.Component {
     };
   }
 
-  goBack() {
-    browserHistory.goBack();
-  }
-
   componentDidMount() {
     lessonApi.getLessonMetaData(this.props.event.programlessonid).then(metadata => {
       let contentUrls = metadata.map(dataForLesson => {
@@ -41,6 +34,10 @@ class CalendarDetailPage extends React.Component {
         contentUrl: contentUrls[0]
       });
     });
+  }
+
+  goBack() {
+    browserHistory.goBack();
   }
 
   downloadLescontent(e) {
@@ -63,10 +60,6 @@ class CalendarDetailPage extends React.Component {
           <div className="clan">Clan: {this.props.event.clan}</div>
           <div className="level">Level: {this.props.event.level}</div>
         </div>
-
-        { this.props.course &&
-          <AttendanceList classlist={this.props.course.classlist}/>
-        }
 
         <Message className="aanwezigheden-info">
           <Message.Header>De aanwezigheden invullen</Message.Header>

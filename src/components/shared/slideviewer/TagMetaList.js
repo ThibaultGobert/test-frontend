@@ -42,8 +42,6 @@ function mapViewType(viewType) {
   );
 }
 
-// TODO: export this to a translation file
-
 const TagMetaList = ({tags, viewType}) => {
   return (
     <div className="meta-list">

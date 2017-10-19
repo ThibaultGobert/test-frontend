@@ -9,7 +9,7 @@ import * as slideTypes from '../../constants/slideTypes';
 import Reloader from "../shared/Reloader";
 import _ from 'lodash';
 
-class ClanPage extends React.Component {
+class ClassPage extends React.Component {
   constructor(props, context) {
     super(props, context);
   }
@@ -34,15 +34,18 @@ class ClanPage extends React.Component {
         <h1>Klaslessen</h1>
         <Reloader action={this.props.actions.loadLessons} />
         <Loader active={this.props.loading}/>
-        <LessonList lessons={this.props.lessons} slideType={slideTypes.CLASS} showLockedLessons={true}/>
+        <LessonList lessons={this.props.lessons} slideType={slideTypes.CLASS} showLockedLessons/>
       </div>
     );
   }
 }
 
-ClanPage.propTypes = {
+ClassPage.propTypes = {
   actions: PropTypes.object.isRequired,
-  lessons: PropTypes.arrayOf(PropTypes.object)
+  lessons: PropTypes.arrayOf(PropTypes.object),
+  loading: PropTypes.bool.isRequired,
+  error: PropTypes.object.isRequired,
+  hasError: PropTypes.bool.isRequired,
 };
 
 function mapStateToProps(state, ownProps) {
@@ -61,4 +64,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ClanPage);
+export default connect(mapStateToProps, mapDispatchToProps)(ClassPage);

@@ -78,7 +78,9 @@ class ClassGroupsPage extends React.Component {
 ClassGroupsPage.propTypes = {
   actions: PropTypes.object.isRequired,
   courses: PropTypes.arrayOf(PropTypes.object),
-  loading: PropTypes.bool
+  loading: PropTypes.bool,
+  error: PropTypes.object.isRequired,
+  hasError: PropTypes.bool.isRequired,
 };
 
 function mapStateToProps(state, ownProps) {

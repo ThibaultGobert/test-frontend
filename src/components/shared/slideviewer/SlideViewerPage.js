@@ -22,7 +22,7 @@ class SlideViewerPage extends React.Component {
     };
   }
 
-  componentDidMount() {
+  componentWillMount() {
       if(_.isEmpty(this.state.lesson) && !this.state.hasError) {
         this.setState({loading: true});
         this.props.actions.loadLessonSlides(this.props.lessonId, "CLASSHOME", this.props.slideType).then(data => {
@@ -57,7 +57,6 @@ class SlideViewerPage extends React.Component {
 
     let metadata = {"title": this.state.lesson.name, "version": this.state.lesson.version, "slideType": this.state.lesson.slideType};
 
-    debugger;
     return (
       <div className="slideViewerPage">
         { (!_.isEmpty(this.state.lesson) && !this.state.loading && !this.state.hasError) &&
@@ -81,6 +80,9 @@ class SlideViewerPage extends React.Component {
 
 SlideViewerPage.propTypes = {
   actions: PropTypes.object.isRequired,
+  lessonId: PropTypes.string.isRequired,
+  slideType: PropTypes.string.isRequired,
+  isStudent: PropTypes.bool.isRequired
 };
 
 function mapStateToProps(state, ownProps) {

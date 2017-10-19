@@ -5,7 +5,7 @@ import TeacherOverviewPage from "./components/teacherprofile/ClassGroupsPage";
 import ClassListPage from "./components/teacherprofile/ClassListPage";
 import LoginPage from "./components/auth/LoginPage";
 import isEmpty from './functions/isEmpty';
-import ClanPage from "./components/studentprofile/ClanPage";
+import ClanPage from "./components/studentprofile/ClassPage";
 import EditorOverviewPage from "./components/editorprofile/OverviewPage";
 import WorkshopOverviewPage from './components/workshopprofile/OverviewPage';
 import ChallengesPage from "./components/studentprofile/ChallengesPage";

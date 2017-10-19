@@ -3,7 +3,7 @@ import _ from 'lodash';
 export default (data) => {
   let lessons = data.map(course => {
     return course.lessons.map(lesson => {
-      if (lesson.startdate == undefined || lesson.enddate == undefined) {
+      if (lesson.startDate == undefined || lesson.endDate == undefined) {
         return null;
       }
 
@@ -14,8 +14,8 @@ export default (data) => {
         "level": course.level,
       });
       element.name = lesson.name;
-      element.start = createDate(lesson.startdate);
-      element.end = createDate(lesson.enddate);
+      element.start = createDate(lesson.startDate);
+      element.end = createDate(lesson.endDate);
       return element;
     });
   });
