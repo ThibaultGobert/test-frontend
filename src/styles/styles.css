@@ -649,10 +649,11 @@ i.eye-icon {
   top: -1.5em;
 }
 
-.meta-slide-data .child-id {
+.meta-slide-data .slide-id {
   position: absolute;
   right: 10px;
-  bottom: 10px;
+  bottom: 30px;
+  font-size: 0.9em;
   color: #333;
 }
 
