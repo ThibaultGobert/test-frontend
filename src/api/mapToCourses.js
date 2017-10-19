@@ -2,8 +2,8 @@ import _ from 'lodash';
 
 export default (data) => {
   data = data.sort((a, b) => {
-    let lessonDateA = createDate(a.lessons[0].startdate);
-    let lessonDateB = createDate(b.lessons[0].enddate);
+    let lessonDateA = createDate(a.lessons[0].startDate);
+    let lessonDateB = createDate(b.lessons[0].endDate);
     let hoursDateA = parseInt(a.starttime.split(':')[0]);
     let hoursDateB = parseInt(b.starttime.split(':')[0]);
     if(lessonDateA.getDay() == lessonDateB.getDay()) {
