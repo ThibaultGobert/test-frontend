@@ -42,7 +42,10 @@ class ClanPage extends React.Component {
 
 ClanPage.propTypes = {
   actions: PropTypes.object.isRequired,
-  lessons: PropTypes.arrayOf(PropTypes.object)
+  lessons: PropTypes.arrayOf(PropTypes.object),
+  loading: PropTypes.bool.isRequired,
+  error: PropTypes.object.isRequired,
+  hasError: PropTypes.bool.isRequired,
 };
 
 function mapStateToProps(state, ownProps) {

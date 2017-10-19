@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import SlideTypeLabel from "../SlideTypeLabel";
 import TagMetaList from "./TagMetaList";
 import ProjectionTagList from './ProjectionTagList';
@@ -22,6 +23,15 @@ const TagBar = ({title, version, slideType, tags, viewType, isStudent}) => {
       </div>
     </div>
   );
+};
+
+TagBar.propTypes = {
+  title: PropTypes.string.isRequired,
+  version: PropTypes.string,
+  slideType: PropTypes.string.isRequired,
+  tags: PropTypes.array,
+  viewType: PropTypes.string.isRequired,
+  isStudent: PropTypes.bool.isRequired
 };
 
 export default TagBar;

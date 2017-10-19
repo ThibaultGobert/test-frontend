@@ -119,7 +119,7 @@ class ClassListPage extends React.Component {
             <DataTable data={data} columns={columns}/>
             <div className="legende">
               <div className="legende-trial">
-                <span className="symbol trial"></span>
+                <span className="symbol trial" />
                 <span className="explanation">Proefles</span>
               </div>
             </div>
@@ -143,13 +143,18 @@ function getCourseById(courses, id) {
 
 ClassListPage.propTypes = {
   actions: PropTypes.object.isRequired,
-  course: PropTypes.object,
+  course: PropTypes.object.isRequired,
+  loading: PropTypes.bool.isRequired,
+  error: PropTypes.object.isRequired,
+  hasError: PropTypes.bool.isRequired,
+  courseId: PropTypes.string.isRequired,
+  classlist: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 // redux connect and related functions
 function mapStateToProps(state, ownProps) {
   const courseId = ownProps.params.id; // from path /course/:id
-  const course = getCourseById(state.courses.data, courseId)
+  const course = getCourseById(state.courses.data, courseId);
   return {
     classlist: state.classlist.data,
     loading: state.classlist.loading,

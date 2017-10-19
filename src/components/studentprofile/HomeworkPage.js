@@ -34,7 +34,7 @@ class HomeworkPage extends React.Component {
         <h1>De thuisversies</h1>
         <Reloader action={this.props.actions.loadLessons}/>
         <Loader active={this.props.loading}/>
-        <LessonList lessons={this.props.lessons} slideType={slideTypes.HOME} showLockedLessons={true}/>
+        <LessonList lessons={this.props.lessons} slideType={slideTypes.HOME} />
       </div>
     );
   }
@@ -42,7 +42,10 @@ class HomeworkPage extends React.Component {
 
 HomeworkPage.propTypes = {
   actions: PropTypes.object.isRequired,
-  lessons: PropTypes.arrayOf(PropTypes.object)
+  lessons: PropTypes.arrayOf(PropTypes.object),
+  loading: PropTypes.bool.isRequired,
+  error: PropTypes.object.isRequired,
+  hasError: PropTypes.bool.isRequired,
 };
 
 function mapStateToProps(state, ownProps) {

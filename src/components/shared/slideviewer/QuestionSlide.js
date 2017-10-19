@@ -4,6 +4,7 @@ import renderHtml from 'react-render-html';
 import {Grid, Segment, Label} from 'semantic-ui-react';
 import _ from 'lodash';
 import Modal from '../Modal';
+import toastr from 'toastr';
 import questionApi from '../../../api/questions';
 
 class QuestionSlide extends React.Component {
@@ -76,7 +77,7 @@ class QuestionSlide extends React.Component {
         this.showModal("Goed zo", renderedExplanation, "Verder");
       }
     }).catch(error => {
-      console.log(error);
+      toastr.error(error);
     });
   }
 
