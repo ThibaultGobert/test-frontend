@@ -57,6 +57,7 @@ class SlideViewerPage extends React.Component {
 
     let metadata = {"title": this.state.lesson.name, "version": this.state.lesson.version, "slideType": this.state.lesson.slideType};
 
+    debugger;
     return (
       <div className="slideViewerPage">
         { (!_.isEmpty(this.state.lesson) && !this.state.loading && !this.state.hasError) &&
@@ -89,7 +90,7 @@ function mapStateToProps(state, ownProps) {
   return {
     lessonId: lessonId,
     slideType: slideType,
-    isStudent: state.loggedIn.data.role == userRoles.STUDENT_ROLE
+    isStudent: state.loggedIn.data.role == userRoles.STUDENT_ROLE || state.loggedIn.data.role == userRoles.WORKSHOP_STUDENT_ROLE
   };
 }
 

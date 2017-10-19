@@ -2,7 +2,7 @@ import React from 'react';
 import {PropTypes} from 'prop-types';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import LessonList from "./LessonList";
+import LessonList from "../shared/LessonList";
 import * as lessonActions from '../../actions/lessons';
 
 class ChallengesPage extends React.Component {

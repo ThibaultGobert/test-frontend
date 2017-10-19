@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {Link} from 'react-router';
 import {Image} from 'semantic-ui-react';
 
-const LessonList = ({lessons, slideType}) => {
+const LessonList = ({lessons, slideType, showLockedLessons}) => {
   let lessonCount = lessons.length;
   let lessonLocked = [];
   for(let i = 0; i < 10 - lessonCount; i++) {
@@ -25,7 +25,7 @@ const LessonList = ({lessons, slideType}) => {
           );
         })
       }
-      {
+      { showLockedLessons &&
         lessonLocked.map(lessonOrder => {
           return renderLocked(lessonOrder);
         })
@@ -44,7 +44,8 @@ function renderLocked(index) {
 
 LessonList.propTypes = {
   lessons: PropTypes.arrayOf(PropTypes.object),
-  slideType: PropTypes.string.isRequired
+  slideType: PropTypes.string.isRequired,
+  showLockedLessons: PropTypes.bool.isRequired
 };
 
 export default LessonList;

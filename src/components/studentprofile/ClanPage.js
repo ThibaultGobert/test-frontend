@@ -1,7 +1,7 @@
 import React from 'react';
 import {PropTypes} from 'prop-types';
 import {connect} from 'react-redux';
-import LessonList from './LessonList';
+import LessonList from '../shared/LessonList';
 import {bindActionCreators} from 'redux';
 import * as lessonActions from '../../actions/lessons';
 import Loader from '../shared/Loader';
@@ -34,7 +34,7 @@ class ClanPage extends React.Component {
         <h1>Klaslessen</h1>
         <Reloader action={this.props.actions.loadLessons} />
         <Loader active={this.props.loading}/>
-        <LessonList lessons={this.props.lessons} slideType={slideTypes.CLASS}/>
+        <LessonList lessons={this.props.lessons} slideType={slideTypes.CLASS} showLockedLessons={true}/>
       </div>
     );
   }

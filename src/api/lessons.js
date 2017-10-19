@@ -48,6 +48,8 @@ class LessonApi {
         throw "Les is niet beschikbaar";
       }
 
+      debugger;
+
       return lesson;
     }).catch(error => {
       throw error;

@@ -645,6 +645,17 @@ i.eye-icon {
   font-size: 18px !important;
 }
 
+.answer .ui.floating.label {
+  top: -1.5em;
+}
+
+.meta-slide-data .child-id {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  color: #333;
+}
+
 
 
 
