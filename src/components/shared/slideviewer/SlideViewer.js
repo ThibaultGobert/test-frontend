@@ -4,6 +4,7 @@ import QuestionSlide from "./QuestionSlide";
 import TextSlide from './TextSlide';
 import TagBar from "./TagBar";
 import { Progress } from 'semantic-ui-react';
+import MetaSlideData from './MetaSlideData';
 import { Scrollbars } from 'react-custom-scrollbars';
 
 class SlideViewer extends React.Component {
@@ -127,6 +128,7 @@ class SlideViewer extends React.Component {
             </div>
           </div>
         </div>
+        <MetaSlideData slide={this.state.slide} slideType={this.props.metadata.slideType}/>
         <div className="progress-bar">
           <Progress percent={((this.state.index + 1) / this.props.slides.length)*100} />
         </div>
