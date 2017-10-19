@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Table, Menu, Icon, Segment, Input, Popup } from "semantic-ui-react";
+import { Table, Menu, Icon, Segment, Input, Popup, Image } from "semantic-ui-react";
 import {orderBy, flatten, capitalize, isEmpty} from "lodash";
 import striptags from 'striptags';
 
@@ -136,13 +136,27 @@ class DataTable extends Component {
         if (!data) return <Table.Cell key={idx}/>;
         let value = (accessor) ? accessor(data, key) : (data[key] || defaults);
         if (decorator) value = decorator(value);
-        return (<Table.Cell key={idx}>{(idx == 0 && hidden_info) && <Popup
-          trigger={<Icon name="info"/>}
-          content={data.hidden_info}
-          inverted>
-            { data.parentremark && <p>Opmerkingen ouders: {striptags(data.parentremark)}</p>}
-            { data.teacherremark && <p>Opmerkingen leraren: {striptags(data.teacherremark)}</p>}
-        </Popup>} {value}</Table.Cell>);
+        if (idx == 0) {
+          return (
+            <Image src={value} verticalAlign="middle" size="tiny" className="avatar"/>
+          );
+        }
+
+        return (
+          <Table.Cell key={idx}>
+            {(idx == 1 && hidden_info) &&
+              <Popup
+                trigger={<Icon name="info"/>}
+                content={data.hidden_info}
+                inverted
+              >
+                { data.parentremark && <p>Opmerkingen ouders: {striptags(data.parentremark)}</p>}
+                { data.teacherremark && <p>Opmerkingen leraren: {striptags(data.teacherremark)}</p>}
+              </Popup>
+            }
+            {value}
+          </Table.Cell>
+        );
       })}
       </Table.Row>
     );

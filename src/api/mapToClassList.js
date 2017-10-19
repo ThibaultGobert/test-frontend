@@ -11,6 +11,10 @@ export default (data) => {
       parent_name: student.parent.firstName + " " + student.parent.lastName,
       usernames_platform: student.login
     });
+
+    if (!_.has(stud, 'avatarurl')) {
+      stud.avatarurl = "images/placeholders/boy.png";
+    }
     return stud;
   });
 };
