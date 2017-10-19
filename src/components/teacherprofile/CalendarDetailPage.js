@@ -6,7 +6,6 @@ import {Link,browserHistory} from 'react-router';
 import * as calendarActions from '../../actions/calendar';
 import {bindActionCreators} from 'redux';
 import moment from 'moment';
-import AttendanceList from './AttendanceList';
 import * as slideTypes from '../../constants/slideTypes';
 import lessonApi from '../../api/lessons';
 import _ from 'lodash';
