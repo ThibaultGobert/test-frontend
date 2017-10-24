@@ -45,12 +45,6 @@ class ClassListPage extends React.Component {
     let columns = [
       {
         defaults: "",
-        display: "",
-        key: "avatarurl",
-        type: "string"
-      },
-      {
-        defaults: "",
         display: "Naam",
         key: "name",
         type: "string"

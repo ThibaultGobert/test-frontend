@@ -35,7 +35,7 @@ LoginForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
   error: PropTypes.bool.isRequired,
-  errorMessage: PropTypes.string.isRequired,
+  errorMessage: PropTypes.string,
   toggleHidden: PropTypes.func.isRequired,
   hidden: PropTypes.bool.isRequired,
   credentials: PropTypes.object.isRequired

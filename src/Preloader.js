@@ -14,7 +14,7 @@ class Preloader extends React.Component {
   }
 
   componentWillMount(){
-    persistStore(this.props.store, {whitelist: ['loggedIn', 'calendar', 'courses', 'lessons']}, () => {
+    persistStore(this.props.store, {whitelist: ['loggedIn', 'calendar', 'courses']}, () => {
       this.setState({ rehydrated: true });
     });
   }

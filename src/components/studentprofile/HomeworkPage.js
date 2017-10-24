@@ -2,12 +2,12 @@ import React from 'react';
 import {PropTypes} from 'prop-types';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import * as lessonActions from '../../actions/lessons';
-import * as slideTypes from '../../constants/slideTypes';
 import Loader from '../shared/Loader';
 import Reloader from "../shared/Reloader";
 import LessonList from "../shared/LessonList";
-import _ from 'lodash';
+import * as lessonActions from '../../actions/lessons';
+import * as lessonTypes from '../../constants/lessonTypes';
+import * as slideTypes from '../../constants/slideTypes';
 
 class HomeworkPage extends React.Component {
   constructor(props, context) {
@@ -15,26 +15,25 @@ class HomeworkPage extends React.Component {
   }
 
   componentDidMount() {
-    if(this.props.error == null) {
-      this.props.actions.loadLessons(slideTypes.HOME);
-    }
+    this.fetchLessons();
   }
 
-  componentDidUpdate() {
-    if (_.isEmpty(this.props.lessons)) {
-      if (!this.props.loading && !this.props.hasError) {
-        this.props.actions.loadLessons(slideTypes.HOME);
-      }
-    }
+  fetchLessons() {
+    this.props.actions.loadLessons(lessonTypes.CLASSHOME, slideTypes.HOME);
   }
 
   render() {
+    const {
+      loading,
+      lessons
+    } = this.props;
+
     return(
-      <div>
+      <div className="homework-page">
         <h1>De thuisversies</h1>
-        <Reloader action={this.props.actions.loadLessons}/>
-        <Loader active={this.props.loading}/>
-        <LessonList lessons={this.props.lessons} slideType={slideTypes.HOME} />
+        <Reloader action={this.fetchLessons}/>
+        <Loader active={loading}/>
+        <LessonList lessons={lessons} slideType={slideTypes.HOME} showLockedLessons />
       </div>
     );
   }
@@ -44,7 +43,7 @@ HomeworkPage.propTypes = {
   actions: PropTypes.object.isRequired,
   lessons: PropTypes.arrayOf(PropTypes.object),
   loading: PropTypes.bool.isRequired,
-  error: PropTypes.object.isRequired,
+  error: PropTypes.object,
   hasError: PropTypes.bool.isRequired,
 };
 
