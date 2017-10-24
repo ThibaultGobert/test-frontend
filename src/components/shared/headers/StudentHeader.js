@@ -44,6 +44,8 @@ class StudentHeader extends React.Component {
                 className="group layout icon" />Klas</Link>
               <Link to="/studentprofile/homework" className="item" activeClassName="active"><i
                 className="home layout icon" />Thuis</Link>
+              <Link to="/studentprofile/extra" className="item" activeClassName="active"><i
+                className="trophy layout icon" />Extra</Link>
             </div>
           </div>
 
