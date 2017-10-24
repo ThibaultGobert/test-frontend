@@ -1,6 +1,5 @@
 // Set up your root reducer here...
 import { combineReducers } from 'redux';
-import ajaxCallsInProgress from './ajaxStatus';
 import loggedIn from './auth';
 import courses from './courses';
 import lessons from './lessons';
@@ -11,7 +10,6 @@ import * as types from '../actions/types';
 import initialState from './initialState';
 
 const appReducer = combineReducers({
-  ajaxCallsInProgress,
   loggedIn,
   courses,
   lessons,
