@@ -1,6 +1,6 @@
 import axios from 'axios';
 import store from '../index';
-import mapToCalendar from './mapToCalendar';
+import mapToCalendar from './mappers/mapToCalendar';
 import baseUrl from './baseUrl';
 
 class CalendarApi {

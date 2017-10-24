@@ -1,6 +1,6 @@
 import axios from 'axios';
 import baseUrl from './baseUrl';
-import mapToUser from './mapToUser';
+import mapToUser from './mappers/mapToUser';
 
 class AuthApi {
   static login(credentials) {
