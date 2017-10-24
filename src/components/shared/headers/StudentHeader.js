@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, IndexLink } from 'react-router';
+import { Link } from 'react-router';
 import * as authActions from '../../../actions/auth';
 import {Button} from 'semantic-ui-react';
 import {connect} from 'react-redux';
@@ -21,6 +21,10 @@ class StudentHeader extends React.Component {
   }
 
   render() {
+    const {
+      user
+    } = this.props;
+
     return (
       <div className="header">
         <div className="banner" />
@@ -29,7 +33,7 @@ class StudentHeader extends React.Component {
           <div className="wrapper">
             <div className="header-lockup">
               <img className="logo" src={require('../../../../images/logo.png')}/>
-              <span className="welcome-message">Hey {this.props.user.fullname}</span>
+              <span className="welcome-message">Hey {user.fullname}</span>
             </div>
 
             <Button primary onClick={this.logOut}>Uitloggen</Button>
@@ -44,8 +48,8 @@ class StudentHeader extends React.Component {
                 className="group layout icon" />Klas</Link>
               <Link to="/studentprofile/homework" className="item" activeClassName="active"><i
                 className="home layout icon" />Thuis</Link>
-              <Link to="/studentprofile/extra" className="item" activeClassName="active"><i
-                className="trophy layout icon" />Extra</Link>
+              { !user.isVersion2 && <Link to="/studentprofile/extra" className="item" activeClassName="active"><i
+                className="trophy layout icon" />Extra</Link>}
             </div>
           </div>
 
