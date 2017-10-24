@@ -6,10 +6,14 @@ import * as userRoles from '../constants/roles';
 
 class LessonApi {
 
-  static getLessonsForStudent(slidetype) {
+  static getLessonsForStudent(lessonType, slideType) {
+    let url = baseUrl + '/lessons/getAllLessons?type=' + lessonType;
+    if (slideType) {
+      url = url + "&slidetype=" + slideType;
+    }
     return axios.request({
       method: 'get',
-      url: baseUrl + '/lessons/getAllLessons?type=CLASSHOME&slidetype=' + slidetype,
+      url: url,
       timeout: 3000,
       headers: {
         'Content-Type': 'application/json',

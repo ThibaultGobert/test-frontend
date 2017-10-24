@@ -10,10 +10,10 @@ export function loadLessonSlidesSuccess(lessonInfo) {
   return {type: types.LOAD_LESSON_SLIDES_SUCCESS, lessonInfo };
 }
 
-export function loadLessons(slidetype) {
+export function loadLessons(lessonType, slideType) {
   return function(dispatch) {
     dispatch(beginAjaxCall(types.FETCH_LESSONS));
-    return lessonApi.getLessonsForStudent(slidetype).then((lessons) => {
+    return lessonApi.getLessonsForStudent(lessonType, slideType).then((lessons) => {
       dispatch(loadLessonsSuccess(lessons));
     }).catch(error => {
       dispatch(ajaxCallError(types.FETCH_LESSONS_ERROR, error));
