@@ -12,6 +12,7 @@ import * as lessonTypes from '../../constants/lessonTypes';
 class ClassPage extends React.Component {
   constructor(props, context) {
     super(props, context);
+    this.fetchLessons = this.fetchLessons.bind(this);
   }
 
   componentDidMount() {

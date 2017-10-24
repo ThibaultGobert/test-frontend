@@ -12,6 +12,7 @@ import * as slideTypes from '../../constants/slideTypes';
 class HomeworkPage extends React.Component {
   constructor(props, context) {
     super(props, context);
+    this.fetchLessons = this.fetchLessons.bind(this);
   }
 
   componentDidMount() {
