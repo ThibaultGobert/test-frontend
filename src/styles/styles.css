@@ -214,6 +214,7 @@ i.eye-icon {
 
 .symbol.trial {
   background: #db2828;
+  border-radius: 4px;
 }
 
 .legende .explanation {
@@ -277,7 +278,6 @@ i.eye-icon {
 
 .class-list .ui.top.floated.segment.right {
   border-width: 0;
-  border-bottom-width: 1px;
 }
 
 .class-list .ui.top.floated.segment.right .input {
@@ -293,6 +293,7 @@ i.eye-icon {
   height: 70px !important;
   object-fit: cover;
   padding: 5px;
+  min-width: 70px;
 }
 
 .class-list-header h1 {
@@ -662,6 +663,29 @@ i.eye-icon {
   bottom: 30px;
   font-size: 0.9em;
   color: #333;
+}
+
+td.avatar-lock-up {
+  padding: 0 !important;
+  border: none !important;
+}
+
+.class-list table {
+  border-left: none !important;
+  border-top: none !important;
+}
+
+.class-list .hide-border {
+  border: none !important;
+  background: #fff !important;
+}
+
+.class-list thead tr th:not(.hide-border) {
+  border-top: 1px solid rgba(34, 36, 38, 0.1);
+}
+
+.class-list table tfoot th {
+  border-left: 1px solid rgba(34, 36, 38, 0.15) !important;
 }
 
 

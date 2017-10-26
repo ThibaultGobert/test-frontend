@@ -11,10 +11,6 @@ export default (data) => {
       parent_name: student.parent.firstName + " " + student.parent.lastName,
       usernames_platform: student.login
     });
-
-    if (!_.has(stud, 'avatarurl')) {
-      stud.avatarurl = "images/placeholders/boy.png";
-    }
     return stud;
   });
 };
@@ -41,9 +37,6 @@ let categoryMap = {
 
 function mapToPasswordHint(category, hint) {
   if (category == "other") {
-    if (hint.includes("tijdelijke_wachtwoord")) {
-      return "Wachtwoord is CFR17!";
-    }
     return hint;
   } else {
     return categoryMap[category];

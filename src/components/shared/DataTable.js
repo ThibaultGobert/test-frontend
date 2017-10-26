@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Table, Menu, Icon, Segment, Input, Popup, Image } from "semantic-ui-react";
-import {orderBy, flatten, capitalize, isEmpty} from "lodash";
+import {orderBy, flatten, capitalize} from "lodash";
+import _ from 'lodash';
 import striptags from 'striptags';
 
 const dataParser = (obj) => {
@@ -116,11 +117,16 @@ class DataTable extends Component {
   defaultRenderHeaderRow(columns, onClick, classNameGenerator) {
     return (
       <Table.Row>
-        {columns.map((column, index) => (
-          <Table.HeaderCell onClick={() => onClick(column)} className={classNameGenerator(column.key)} key={index}>
-            {column.display}
-          </Table.HeaderCell>
-        ))}
+        {columns.map((column, index) => {
+          if (!_.isEmpty(column.display)) {
+            return (
+              <Table.HeaderCell onClick={() => onClick(column)} className={classNameGenerator(column.key)} key={index}>
+                {column.display}
+              </Table.HeaderCell>);
+          } else {
+            return (<Table.HeaderCell className="hide-border" />);
+          }
+        })}
       </Table.Row>
     );
   }
@@ -138,7 +144,9 @@ class DataTable extends Component {
         if (decorator) value = decorator(value);
         if (idx == 0) {
           return (
-            <Image src={value} verticalAlign="middle" size="tiny" className="avatar"/>
+            <Table.Cell key={idx} className="avatar-lock-up">
+              <Image src={value} size="tiny" className="avatar middle aligned"/>
+            </Table.Cell>
           );
         }
 
@@ -262,7 +270,7 @@ class DataTable extends Component {
 
           <Input icon="search" value={this.state.query || ""} onChange={this.onSearch} placeholder="Zoek..." />
         </Segment>
-        <Table celled attached className="sortable" >
+        <Table celled compact attached className="sortable" >
           <Table.Header>
             {this.columns && this.renderHeader(this.columns, this.onSort, this.headerClass)}
           </Table.Header>

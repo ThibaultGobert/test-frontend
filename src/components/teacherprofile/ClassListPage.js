@@ -44,6 +44,12 @@ class ClassListPage extends React.Component {
 
     let columns = [
       {
+        defaults: require('../../../images/placeholders/no-user.png'),
+        display: "",
+        key: "avatarurlmedium",
+        type: "string"
+      },
+      {
         defaults: "",
         display: "Naam",
         key: "name",
@@ -102,11 +108,6 @@ class ClassListPage extends React.Component {
 
     return (
       <div className="class-list">
-        <Message className="aanwezigheden-info">
-          <Message.Header>Opgelet: Tijdelijk wachtwoord</Message.Header>
-          <p>Spreek de ouders van de kinderen aan waarvan het tijdelijk wachtwoord (CFR17!) nog actief staat, spoor ze aan om dit via het ouderprofiel te wijzigen</p>
-        </Message>
-
         <Button labelPosition="left" icon="left chevron" content="Terug" onClick={this.redirectToClassGroups}/>
         <div className="class-list-header">
           <h1>Klaslijst {this.props.course? this.props.course.name: ""} </h1>
