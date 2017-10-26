@@ -8,6 +8,7 @@ import {bindActionCreators} from 'redux';
 import moment from 'moment';
 import * as slideTypes from '../../constants/slideTypes';
 import lessonApi from '../../api/lessons';
+import * as lessonTypes from '../../constants/lessonTypes';
 import _ from 'lodash';
 
 class CalendarDetailPage extends React.Component {
@@ -46,19 +47,38 @@ class CalendarDetailPage extends React.Component {
   }
 
   render() {
-    let slideviewerUrl = "/slideviewer/" + this.props.event.programlessonid;
+    const {
+      event
+    } = this.props;
+
+    let classhome = _.find(event.lessonEntities, {lessonType: lessonTypes.CLASSHOME});
+    let extra = _.find(event.lessonEntities, {lessonType: lessonTypes.EXTRA});
+
+    let slideviewerUrl;
+    let extraSlideviewerUrl;
+    let hasExtraLesson = false;
+
+    if (classhome) {
+      slideviewerUrl = "/slideviewer/" + classhome.lessonId;
+    }
+
+    if (extra) {
+      extraSlideviewerUrl = "/slideviewer/" + extra.lessonId;
+      hasExtraLesson = true;
+    }
+
     return(
       <div className="calendar-details">
         <div className="back-button">
           <Button labelPosition="left" icon="left chevron" content="Terug" onClick={this.goBack}/>
         </div>
-        <Header as="h1">{this.props.event.name} - {new Date(this.props.event.start).toLocaleDateString()}</Header>
+        <Header as="h1">{event.name} - {new Date(event.start).toLocaleDateString()}</Header>
 
         <div className="calendar-details-content">
-          <div className="starttime">Startuur: {moment(this.props.event.start).format("HHumm")}</div>
-          <div className="endtime">Einduur: {moment(this.props.event.end).format("HHumm")}</div>
-          <div className="clan">Clan: {this.props.event.clan}</div>
-          <div className="level">Level: {this.props.event.level}</div>
+          <div className="starttime">Startuur: {moment(event.start).format("HHumm")}</div>
+          <div className="endtime">Einduur: {moment(event.end).format("HHumm")}</div>
+          <div className="clan">Clan: {event.clan}</div>
+          <div className="level">Level: {event.level}</div>
         </div>
 
         <Message className="aanwezigheden-info">
@@ -78,6 +98,9 @@ class CalendarDetailPage extends React.Component {
           </Link>
           <Link to={slideviewerUrl + "/" + slideTypes.INFO}>
             <Button primary><Icon name="info"/>Info</Button>
+          </Link>
+          <Link to={extraSlideviewerUrl}>
+            { hasExtraLesson && <Button primary ><Icon name="trophy"/>Extra</Button>}
           </Link>
           <Button loading={this.state.lessonContentLoading} onClick={this.downloadLescontent} disabled={this.state.contentUrl == undefined}>Download lescontent</Button>
         </div>

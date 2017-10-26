@@ -14,7 +14,11 @@ const LessonList = ({lessons, slideType, showLockedLessons}) => {
     <div className="cards">
       {
         lessons.map(lesson => {
-          let slideViewerLink = "/slideviewer/" + lesson.programlessonid + '/' + slideType;
+          let slideViewerLink = "/slideviewer/" + lesson.id;
+          if (slideType) {
+            slideViewerLink += '/' + slideType;
+          }
+
           let lessonKey = "card" + lesson.programlessonid;
           return(
             <div className="cardholder" key={lessonKey}>
@@ -38,7 +42,7 @@ const LessonList = ({lessons, slideType, showLockedLessons}) => {
 
 LessonList.propTypes = {
   lessons: PropTypes.arrayOf(PropTypes.object),
-  slideType: PropTypes.string.isRequired,
+  slideType: PropTypes.string,
   showLockedLessons: PropTypes.bool.isRequired
 };
 

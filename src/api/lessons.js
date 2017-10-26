@@ -6,10 +6,14 @@ import * as userRoles from '../constants/roles';
 
 class LessonApi {
 
-  static getLessonsForStudent(slidetype) {
+  static getLessonsForStudent(lessonType, slideType) {
+    let url = baseUrl + '/lessons/getAllLessons?type=' + lessonType;
+    if (slideType) {
+      url = url + "&slidetype=" + slideType;
+    }
     return axios.request({
       method: 'get',
-      url: baseUrl + '/lessons/getAllLessons?type=CLASSHOME&slidetype=' + slidetype,
+      url: url,
       timeout: 3000,
       headers: {
         'Content-Type': 'application/json',
@@ -28,10 +32,10 @@ class LessonApi {
   }
 
   // TODO: this endpoint will be refactored - lose the NEW suffix (SOON)
-  static getLessonSlides(programLessonId, lessonType, slideType) {
+  static getLessonSlides(lessonId, lessonType, slideType) {
     return axios.request({
       method: 'get',
-      url: baseUrl + "/lessons/getLessonNEW?programlessonid=" + programLessonId + "&lessontype=" + lessonType + "&slidetype=" + slideType,
+      url: baseUrl + "/lessons/getLessonNEW?lessonId=" + lessonId + "&slideType=" + slideType,
       timeout: 3000,
       headers: {
         'Content-Type': 'application/json',

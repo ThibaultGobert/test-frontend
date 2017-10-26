@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import * as subscriptionTypes from '../constants/subscriptionTypes';
+import * as subscriptionTypes from '../../constants/subscriptionTypes';
 
 export default (data) => {
   return data.map(student => {

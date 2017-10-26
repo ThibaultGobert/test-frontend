@@ -2,14 +2,13 @@ import React from 'react';
 import {PropTypes} from 'prop-types';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
+import LessonList from '../shared/LessonList';
 import Loader from '../shared/Loader';
 import Reloader from "../shared/Reloader";
-import LessonList from "../shared/LessonList";
 import * as lessonActions from '../../actions/lessons';
 import * as lessonTypes from '../../constants/lessonTypes';
-import * as slideTypes from '../../constants/slideTypes';
 
-class HomeworkPage extends React.Component {
+class ExtraPage extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.fetchLessons = this.fetchLessons.bind(this);
@@ -20,7 +19,7 @@ class HomeworkPage extends React.Component {
   }
 
   fetchLessons() {
-    this.props.actions.loadLessons(lessonTypes.CLASSHOME, slideTypes.HOME);
+    this.props.actions.loadLessons(lessonTypes.EXTRA);
   }
 
   render() {
@@ -30,17 +29,17 @@ class HomeworkPage extends React.Component {
     } = this.props;
 
     return(
-      <div className="homework-page">
-        <h1>De thuisversies</h1>
-        <Reloader action={this.fetchLessons}/>
+      <div className="extra-page">
+        <h1>Extra lessen</h1>
+        <Reloader action={this.fetchLessons} />
         <Loader active={loading}/>
-        <LessonList lessons={lessons} slideType={slideTypes.HOME} showLockedLessons />
+        <LessonList lessons={lessons} showLockedLessons/>
       </div>
     );
   }
 }
 
-HomeworkPage.propTypes = {
+ExtraPage.propTypes = {
   actions: PropTypes.object.isRequired,
   lessons: PropTypes.arrayOf(PropTypes.object),
   loading: PropTypes.bool.isRequired,
@@ -64,4 +63,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(HomeworkPage);
+export default connect(mapStateToProps, mapDispatchToProps)(ExtraPage);

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import store from '../index';
-import mapToCourses from './mapToCourses';
-import mapToClassList from './mapToClassList';
+import mapToCourses from './mappers/mapToCourses';
+import mapToClassList from './mappers/mapToClassList';
 import baseUrl from './baseUrl';
 
 class CourseApi {

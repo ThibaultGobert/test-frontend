@@ -1,40 +1,39 @@
 import React from 'react';
 import {PropTypes} from 'prop-types';
 import {connect} from 'react-redux';
-import LessonList from '../shared/LessonList';
 import {bindActionCreators} from 'redux';
-import * as lessonActions from '../../actions/lessons';
+import LessonList from '../shared/LessonList';
 import Loader from '../shared/Loader';
-import * as slideTypes from '../../constants/slideTypes';
 import Reloader from "../shared/Reloader";
-import _ from 'lodash';
+import * as lessonActions from '../../actions/lessons';
+import * as slideTypes from '../../constants/slideTypes';
+import * as lessonTypes from '../../constants/lessonTypes';
 
 class ClassPage extends React.Component {
   constructor(props, context) {
     super(props, context);
+    this.fetchLessons = this.fetchLessons.bind(this);
   }
 
   componentDidMount() {
-    if( this.props.error == null) {
-      this.props.actions.loadLessons("CLASS");
-    }
+    this.fetchLessons();
   }
 
-  componentDidUpdate() {
-    if (_.isEmpty(this.props.lessons)) {
-      if (!this.props.loading && !this.props.hasError) {
-        this.props.actions.loadLessons("CLASS");
-      }
-    }
+  fetchLessons() {
+    this.props.actions.loadLessons(lessonTypes.CLASSHOME, slideTypes.CLASS);
   }
 
   render() {
+    const {
+      loading,
+      lessons
+    } = this.props;
     return(
       <div>
         <h1>Klaslessen</h1>
-        <Reloader action={this.props.actions.loadLessons} />
-        <Loader active={this.props.loading}/>
-        <LessonList lessons={this.props.lessons} slideType={slideTypes.CLASS} showLockedLessons/>
+        <Reloader action={this.fetchLessons} />
+        <Loader active={loading}/>
+        <LessonList lessons={lessons} slideType={slideTypes.CLASS} showLockedLessons/>
       </div>
     );
   }
@@ -44,7 +43,7 @@ ClassPage.propTypes = {
   actions: PropTypes.object.isRequired,
   lessons: PropTypes.arrayOf(PropTypes.object),
   loading: PropTypes.bool.isRequired,
-  error: PropTypes.object.isRequired,
+  error: PropTypes.object,
   hasError: PropTypes.bool.isRequired,
 };
 

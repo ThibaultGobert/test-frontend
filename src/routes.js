@@ -8,7 +8,7 @@ import isEmpty from './functions/isEmpty';
 import ClanPage from "./components/studentprofile/ClassPage";
 import EditorOverviewPage from "./components/editorprofile/OverviewPage";
 import WorkshopOverviewPage from './components/workshopprofile/OverviewPage';
-import ChallengesPage from "./components/studentprofile/ChallengesPage";
+import ExtraPage from "./components/studentprofile/ExtraPage";
 import HomeworkPage from "./components/studentprofile/HomeworkPage";
 import SlideViewerPage from "./components/shared/slideviewer/SlideViewerPage";
 import CalendarPage from "./components/teacherprofile/CalendarPage";
@@ -30,9 +30,9 @@ const routes = (store) => {
       </Route>
 
       <Route path="/studentprofile" onEnter={requireAuth(store)}>
-        <Route path="/studentprofile/challenges" component={ChallengesPage}/>
         <Route path="/studentprofile/clan" component={ClanPage}/>
         <Route path="/studentprofile/homework" component={HomeworkPage}/>
+        <Route path="/studentprofile/extra" component={ExtraPage}/>
       </Route>
 
       <Route path="/editorprofile" onEnter={requireAuth(store)}>
@@ -45,6 +45,7 @@ const routes = (store) => {
 
       <Route path="/slideviewer" onEnter={requireAuth(store)}>
         <Route path="/slideviewer/:id/:type" component={SlideViewerPage}/>
+        <Route path="/slideviewer/:id" component={SlideViewerPage}/>
       </Route>
       <Route name="login" path="/login" component={LoginPage} onEnter={requireNoAuth(store)}/>
       <Route name="impersonate" path="/impersonate" component={ImpersonatePage} onEnter={requireNoAuth(store)}/>
