@@ -32,10 +32,10 @@ class LessonApi {
   }
 
   // TODO: this endpoint will be refactored - lose the NEW suffix (SOON)
-  static getLessonSlides(programLessonId, lessonType, slideType) {
+  static getLessonSlides(lessonId, lessonType, slideType) {
     return axios.request({
       method: 'get',
-      url: baseUrl + "/lessons/getLessonNEW?programlessonid=" + programLessonId + "&lessontype=" + lessonType + "&slidetype=" + slideType,
+      url: baseUrl + "/lessons/getLessonNEW?lessonId=" + lessonId + "&slideType=" + slideType,
       timeout: 3000,
       headers: {
         'Content-Type': 'application/json',

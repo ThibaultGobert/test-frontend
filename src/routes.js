@@ -45,6 +45,7 @@ const routes = (store) => {
 
       <Route path="/slideviewer" onEnter={requireAuth(store)}>
         <Route path="/slideviewer/:id/:type" component={SlideViewerPage}/>
+        <Route path="/slideviewer/:id" component={SlideViewerPage}/>
       </Route>
       <Route name="login" path="/login" component={LoginPage} onEnter={requireNoAuth(store)}/>
       <Route name="impersonate" path="/impersonate" component={ImpersonatePage} onEnter={requireNoAuth(store)}/>
