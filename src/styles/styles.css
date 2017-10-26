@@ -288,6 +288,13 @@ i.eye-icon {
   float: right;
 }
 
+.class-list .avatar{
+  width: 70px !important;
+  height: 70px !important;
+  object-fit: cover;
+  padding: 5px;
+}
+
 .class-list-header h1 {
   display: inline-block;
   margin-bottom: 0;
