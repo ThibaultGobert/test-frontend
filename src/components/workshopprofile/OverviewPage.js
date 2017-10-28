@@ -6,35 +6,46 @@ import LessonList from '../shared/LessonList';
 import * as lessonActions from '../../actions/lessons';
 import Loader from '../shared/Loader';
 import * as slideTypes from '../../constants/slideTypes';
+import * as lessonTypes from '../../constants/lessonTypes';
 import Reloader from "../shared/Reloader";
 import _ from 'lodash';
 
 class ClanPage extends React.Component {
   constructor(props, context) {
     super(props, context);
+    this.fetchLessons = this.fetchLessons.bind(this);
   }
 
   componentDidMount() {
     if( this.props.error == null) {
-      this.props.actions.loadLessons("CLASS");
+      this.fetchLessons();
     }
+  }
+
+  fetchLessons() {
+    this.props.actions.loadLessons(lessonTypes.CLASSHOME, slideTypes.CLASS);
   }
 
   componentDidUpdate() {
     if (_.isEmpty(this.props.lessons)) {
       if (!this.props.loading && !this.props.hasError) {
-        this.props.actions.loadLessons("CLASS");
+        this.fetchLessons();
       }
     }
   }
 
   render() {
+    const {
+      loading,
+      lessons
+    } = this.props;
+
     return(
       <div>
         <h1>Workshops</h1>
-        <Reloader action={this.props.actions.loadLessons} />
-        <Loader active={this.props.loading}/>
-        <LessonList lessons={this.props.lessons} slideType={slideTypes.CLASS} showLockedLessons={false} />
+        <Reloader action={this.fetchLessons} />
+        <Loader active={loading}/>
+        <LessonList lessons={lessons} slideType={slideTypes.CLASS} showLockedLessons={false} />
       </div>
     );
   }
