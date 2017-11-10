@@ -33,7 +33,7 @@ class ClassListPage extends React.Component {
 
   // render function --> typically calling child component, here is markup inline
   render() {
-    let data = this.props.classlist.map(student => {
+    let data = this.props.classList.map(student => {
       let highlight = false;
       if (student.subscription_type == subscriptionTypes.TRIAL) {
         highlight = true;
@@ -149,20 +149,22 @@ ClassListPage.propTypes = {
   error: PropTypes.object.isRequired,
   hasError: PropTypes.bool.isRequired,
   courseId: PropTypes.string.isRequired,
-  classlist: PropTypes.arrayOf(PropTypes.object).isRequired,
+  classList: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 // redux connect and related functions
 function mapStateToProps(state, ownProps) {
   const courseId = ownProps.params.id; // from path /course/:id
   const course = getCourseById(state.courses.data, courseId);
+  const classList = _.find(state.classlists, function(o) { return o.courseId == courseId; });
+
   return {
-    classlist: state.classlist.data,
-    loading: state.classlist.loading,
-    error: state.classlist.error,
-    hasError: state.classlist.hasError,
-    courseId: courseId,
-    course: course
+    classList: classList.data,
+    loading: classList.loading,
+    error: classList.error,
+    hasError: classList.hasError,
+    courseId,
+    course
   };
 }
 

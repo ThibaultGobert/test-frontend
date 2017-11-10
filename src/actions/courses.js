@@ -6,8 +6,12 @@ export function loadCoursesSuccess(courses) {
   return {type: types.LOAD_COURSES_SUCCESS, courses };
 }
 
-export function loadChildrenSuccess(children) {
-  return { type: types.LOAD_CHILDREN_SUCCESS, children};
+export function loadChildrenSuccess(children, courseId) {
+  let childrenCourse = {
+    children: children,
+    courseId: courseId
+  };
+  return { type: types.LOAD_CHILDREN_SUCCESS, childrenCourse};
 }
 
 export function loadCourses() {
@@ -25,7 +29,7 @@ export function loadChildren(courseId) {
   return function(dispatch) {
     dispatch(beginAjaxCall(types.FETCH_CHILDREN));
     return courseApi.getChildrenForCourse(courseId).then((children) => {
-      dispatch(loadChildrenSuccess(children));
+      dispatch(loadChildrenSuccess(children, courseId));
     }).catch(error => {
       dispatch(ajaxCallError(types.FETCH_CHILDREN_ERROR, error));
     });
