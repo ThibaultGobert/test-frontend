@@ -21,7 +21,6 @@ const ManageLessonList = ({lessons}) => {
             <Table.HeaderCell>Beschikbaar leerlingen</Table.HeaderCell>
             <Table.HeaderCell>Laatst gewijzigd door</Table.HeaderCell>
             <Table.HeaderCell />
-
           </Table.Row>
         </Table.Header>
 
