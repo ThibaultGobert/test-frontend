@@ -13,7 +13,7 @@ class StudentHeader extends React.Component {
     this.logOut = this.logOut.bind(this);
   }
 
-  logOut() {
+  logOut(event) {
     event.preventDefault();
     this.props.actions.logOut();
     toastr.remove();
@@ -28,7 +28,7 @@ class StudentHeader extends React.Component {
         <div className="header-bar">
           <div className="wrapper">
             <div className="header-lockup">
-              <img className="logo" src={require('../../../../images/logo.png')}/>
+              <img className="logo" src={require('../../../assets/images/logo.png')}/>
               <span className="welcome-message">{this.props.user.fullname}</span>
             </div>
 

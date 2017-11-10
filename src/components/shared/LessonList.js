@@ -23,7 +23,6 @@ const LessonList = ({lessons, slideType, showLockedLessons}) => {
           return(
             <div className="cardholder" key={lessonKey}>
               <Link to={slideViewerLink}>
-                <Image src={require(`../../../images/placeholders/les${lesson.order}.png`)} alt="" shape="rounded"/>
               </Link>
             </div>
           );
@@ -32,7 +31,6 @@ const LessonList = ({lessons, slideType, showLockedLessons}) => {
       { showLockedLessons &&
         lessonLocked.map(lessonOrder => {
           return (<div className="cardholder" key={"lessonOrder-" + lessonOrder}>
-            <Image src={require(`../../../images/placeholders/les${lessonOrder}-locked.png`)} alt="" shape="rounded"/>
           </div>);
         })
       }

@@ -5,7 +5,7 @@ body {
 @font-face {
   font-family: sribbleFont;
   src:
-    url('./../../fonts/scribblebox.ttf');
+    url('../assets/fonts/scribblebox.ttf');
 }
 
 .page {

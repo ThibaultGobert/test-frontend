@@ -62,7 +62,7 @@ class SlideViewerPage extends React.Component {
         { (!_.isEmpty(this.state.lesson) && !this.state.loading && !this.state.hasError) &&
           <div className="slide-show">
             <div className="close-presentation" onClick={this.redirectToOverview}>
-              <img src={require('../../../../images/slideviewer/close.png')} alt=""/>
+              <img src={require('../../../assets/images/slideviewer/close.png')} alt=""/>
             </div>
 
             <SlideViewer

@@ -55,7 +55,7 @@ class ImpersonatePage extends React.Component {
   render() {
     return(
       <div className="login-form">
-        <img className="rambdass-welcome" src={require('../../../images/login/ramdass-welkom.png')}/>
+        <img className="rambdass-welcome" src={require('../../assets/images/login/ramdass-welkom.png')}/>
         <Loader active={this.props.loading}/>
         <div className="login-form-wrapper">
           <LoginForm

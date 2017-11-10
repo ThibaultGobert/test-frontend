@@ -44,7 +44,7 @@ class ClassListPage extends React.Component {
 
     let columns = [
       {
-        defaults: require('../../../images/placeholders/no-user.png'),
+        defaults: require('../../assets/images/placeholders/no-user.png'),
         display: "",
         key: "avatarurlmedium",
         type: "string"

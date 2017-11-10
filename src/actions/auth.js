@@ -1,6 +1,8 @@
 import * as types from './types';
 import authApi from '../api/auth';
 import {beginAjaxCall, ajaxCallError} from "./ajaxStatus";
+import * as userRoles from '../constants/roles';
+import * as lessonActions from './lessons';
 
 export function loginSuccess(user) {
   return {

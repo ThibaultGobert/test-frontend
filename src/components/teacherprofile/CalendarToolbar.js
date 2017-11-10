@@ -39,7 +39,7 @@ class CalendarToolbar extends React.Component {
       );
     }
   }
-  
+
   render() {
     let {label} = this.props;
     return (
@@ -51,8 +51,8 @@ class CalendarToolbar extends React.Component {
         </div>
         <div className="view-details">
           <span className="calendar-control">
-            <img src={require('../../../images/calendar/left-arrow.png')} onClick={() => this.navigate(navigate.PREVIOUS)}/>
-            <img src={require('../../../images/calendar/right-arrow.png')} onClick={() => this.navigate(navigate.NEXT)}/>
+            <img src={require('../../assets/images/calendar/left-arrow.png')} onClick={() => this.navigate(navigate.PREVIOUS)}/>
+            <img src={require('../../assets/images/calendar/right-arrow.png')} onClick={() => this.navigate(navigate.NEXT)}/>
           </span>
           <span className="calendar-label">
             <Label>{label}</Label>

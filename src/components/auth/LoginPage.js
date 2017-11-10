@@ -4,6 +4,7 @@ import * as authActions from '../../actions/auth';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {Link} from 'react-router';
+import {Icon} from 'semantic-ui-react';
 import {bindActionCreators} from 'redux';
 import * as roles from '../../constants/roles';
 import Loader from '../shared/Loader';
@@ -65,7 +66,7 @@ class LoginPage extends React.Component {
   render() {
     return(
       <div className="login-form">
-        <img className="rambdass-welcome" src={require('../../../images/login/ramdass-welkom.png')}/>
+        <img className="rambdass-welcome" src={require('../../assets/images/login/ramdass-welkom.png')}/>
         <Loader active={this.props.loading}/>
         <div className="login-form-wrapper">
           <LoginForm

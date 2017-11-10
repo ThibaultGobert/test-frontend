@@ -13,7 +13,7 @@ class EditorHeader extends React.Component {
     this.logOut = this.logOut.bind(this);
   }
 
-  logOut() {
+  logOut(event) {
     event.preventDefault();
     this.props.actions.logOut();
     toastr.remove();
