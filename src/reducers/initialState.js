@@ -35,5 +35,19 @@ export default {
     loading: false,
     error: null,
     hasError: false
+  },
+  organisation: {
+    groups: {
+      data: {},
+      loading: false,
+      error: null,
+      hasError: false
+    },
+    levels: {
+      data: {},
+      loading: false,
+      error: null,
+      hasError: false
+    }
   }
 };

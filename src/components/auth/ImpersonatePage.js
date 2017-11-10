@@ -35,7 +35,7 @@ class ImpersonatePage extends React.Component {
 
   onLoginSubmit(event) {
     event.preventDefault();
-    this.props.actions.impersonate(this.state.credentials).then((data) => {
+    this.props.actions.login(this.state.credentials).then((data) => {
       if (this.props.loggedIn.role == roles.STUDENT_ROLE) {
         this.context.router.push('/studentprofile/clan');
       } else if (this.props.loggedIn.role == roles.TEACHER_ROLE) {

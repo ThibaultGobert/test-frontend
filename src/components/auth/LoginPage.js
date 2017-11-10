@@ -6,8 +6,8 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router';
 import {bindActionCreators} from 'redux';
 import * as roles from '../../constants/roles';
-import {Icon} from 'semantic-ui-react';
 import Loader from '../shared/Loader';
+import _ from 'lodash';
 import toastr from 'toastr';
 
 class LoginPage extends React.Component {
@@ -36,21 +36,24 @@ class LoginPage extends React.Component {
 
   onLoginSubmit(event) {
     event.preventDefault();
-    this.props.actions.login(this.state.credentials).then((data) => {
-      if (this.props.loggedIn.role == roles.STUDENT_ROLE) {
+    this.props.actions.login(this.state.credentials);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (!_.isEmpty(nextProps.loggedIn)) {
+      if (nextProps.loggedIn.role == roles.STUDENT_ROLE) {
         this.context.router.push('/studentprofile/clan');
-      } else if (this.props.loggedIn.role == roles.TEACHER_ROLE) {
+      } else if (nextProps.loggedIn.role == roles.TEACHER_ROLE) {
         this.context.router.push('/teacherprofile/overview');
-      } else if (this.props.loggedIn.role == roles.WORKSHOP_STUDENT_ROLE) {
+      } else if (nextProps.loggedIn.role == roles.WORKSHOP_STUDENT_ROLE) {
         this.context.router.push('/workshopprofile/overview');
-      } else if (this.props.loggedIn.role == roles.ADMIN_ROLE){
+      } else if (nextProps.loggedIn.role == roles.EDITOR_ROLE) {
+        this.context.router.push('/editorprofile/overview');
+      } else if (nextProps.loggedIn.role == roles.ADMIN_ROLE){
         toastr.error("Geen toegang voor admins");
         this.props.actions.logOut();
-      } else if (this.props.loggedIn.role == roles.EDITOR_ROLE) {
-        toastr.error("Geen toegang voor lesmakers");
-        this.props.actions.logOut();
       }
-    });
+    }
   }
 
   toggleHidden() {

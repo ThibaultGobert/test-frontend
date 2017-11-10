@@ -19,17 +19,6 @@ export function login(credentials) {
   };
 }
 
-export function impersonate(credentials) {
-  return function(dispatch) {
-    dispatch(beginAjaxCall(types.BEGIN_LOGIN));
-    return authApi.login(credentials).then((user) => {
-      dispatch(loginSuccess(user));
-    }).catch(error => {
-      dispatch(ajaxCallError(types.LOGIN_ERROR, error));
-    });
-  };
-}
-
 export function logOut() {
   return {type: types.LOGOUT};
 }

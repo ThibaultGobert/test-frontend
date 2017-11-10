@@ -74,6 +74,24 @@ class LessonApi {
       throw error;
     });
   }
+
+  static searchLessons(filterValues) {
+    return axios.request({
+      method: 'post',
+      url: baseUrl + "/lessons/searchLessons",
+      timeout: 3000,
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+        'x-token': store.getState().loggedIn.data.token
+      },
+      data: filterValues
+    }).then(response => {
+      return response.data;
+    }).catch(error => {
+      throw error;
+    });
+  }
 }
 
 export default LessonApi;

@@ -688,7 +688,30 @@ td.avatar-lock-up {
   border-left: 1px solid rgba(34, 36, 38, 0.15) !important;
 }
 
+.select-lesson-form {
+  padding: 2em;
+  background: #f7f7f7;
+  border-bottom: 4px solid #eaeaea;
+  margin-bottom: 2em;
+}
+
+.header.editor .menu {
+  box-shadow: none;
+  border-radius: 0;
+  border-width: 0px;
+}
+
+.show-filters-btn.button {
+  margin-bottom: 1em !important;
+}
 
 
+.clearfix {
+  clear: both;
+}
+
+.manage-lesson-list-icons a {
+  display: inline-block;
+}
 
 /*TODO: better css structure --> USE SASS INSTEAD OF CSS*/
