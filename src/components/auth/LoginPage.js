@@ -28,18 +28,6 @@ class LoginPage extends React.Component {
     this.toggleHidden = this.toggleHidden.bind(this);
   }
 
-  onLoginChange(event) {
-    let field = event.target.name;
-    const credentials = Object.assign({}, this.state.credentials);
-    credentials[field] = event.target.value;
-    this.setState({credentials: credentials});
-  }
-
-  onLoginSubmit(event) {
-    event.preventDefault();
-    this.props.actions.login(this.state.credentials);
-  }
-
   componentWillReceiveProps(nextProps) {
     if (!_.isEmpty(nextProps.loggedIn)) {
       if (nextProps.loggedIn.role == roles.STUDENT_ROLE) {
@@ -57,10 +45,22 @@ class LoginPage extends React.Component {
     }
   }
 
+  onLoginSubmit(event) {
+    event.preventDefault();
+    this.props.actions.login(this.state.credentials);
+  }
+
+  onLoginChange(event) {
+    const field = event.target.name;
+    const credentials = Object.assign({}, this.state.credentials);
+    credentials[field] = event.target.value;
+    this.setState({credentials: credentials});
+  }
+
   toggleHidden() {
-    this.setState((prevState) => {
-      return {hidden: !prevState.hidden};
-    });
+    this.setState((prevState) => ({
+        hidden: !prevState.hidden,
+    }));
   }
 
   render() {
@@ -85,7 +85,6 @@ class LoginPage extends React.Component {
           </Link>
         </div>
       </div>
-
     );
   }
 }
@@ -116,6 +115,5 @@ function mapDispatchToProps(dispatch) {
     actions: bindActionCreators(authActions, dispatch)
   };
 }
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);
