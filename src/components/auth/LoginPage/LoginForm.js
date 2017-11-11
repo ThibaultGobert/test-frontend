@@ -21,7 +21,7 @@ const LoginForm = ({
           <Form.Field>
             <label className="code-tag">&lt;Gebruikersnaam /&gt;</label>
             <input
-              placeholder="username"
+              placeholder="Gebruikersnaam"
               onChange={onChange}
               name="username"
               value={credentials.username}
@@ -34,7 +34,7 @@ const LoginForm = ({
             <label className="code-tag">&lt;Wachtwoord /&gt;</label>
             <Input
               type={passwordtype}
-              placeholder="paswoord"
+              placeholder="Wachtwoord"
               onChange={onChange}
               name="password"
               value={credentials.password}
