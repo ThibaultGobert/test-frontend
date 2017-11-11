@@ -2,10 +2,10 @@ import React from 'react';
 import LoginForm from './LoginForm';
 import * as authActions from '../../actions/auth';
 import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
-import {Link} from 'react-router';
-import {Icon} from 'semantic-ui-react';
-import {bindActionCreators} from 'redux';
+import { connect } from 'react-redux';
+import { Link } from 'react-router';
+import { Icon } from 'semantic-ui-react';
+import { bindActionCreators } from 'redux';
 import * as roles from '../../constants/roles';
 import Loader from '../shared/Loader';
 import _ from 'lodash';
@@ -18,9 +18,9 @@ class LoginPage extends React.Component {
     this.state = {
       credentials: {
         username: '',
-        password: '',
+        password: ''
       },
-      hidden: true,
+      hidden: true
     };
 
     this.onLoginChange = this.onLoginChange.bind(this);
@@ -38,8 +38,8 @@ class LoginPage extends React.Component {
         this.context.router.push('/workshopprofile/overview');
       } else if (nextProps.loggedIn.role == roles.EDITOR_ROLE) {
         this.context.router.push('/editorprofile/overview');
-      } else if (nextProps.loggedIn.role == roles.ADMIN_ROLE){
-        toastr.error("Geen toegang voor admins");
+      } else if (nextProps.loggedIn.role == roles.ADMIN_ROLE) {
+        toastr.error('Geen toegang voor admins');
         this.props.actions.logOut();
       }
     }
@@ -54,20 +54,23 @@ class LoginPage extends React.Component {
     const field = event.target.name;
     const credentials = Object.assign({}, this.state.credentials);
     credentials[field] = event.target.value;
-    this.setState({credentials: credentials});
+    this.setState({ credentials: credentials });
   }
 
   toggleHidden() {
-    this.setState((prevState) => ({
-        hidden: !prevState.hidden,
+    this.setState(prevState => ({
+      hidden: !prevState.hidden
     }));
   }
 
   render() {
-    return(
+    return (
       <div className="login-form">
-        <img className="rambdass-welcome" src={require('../../assets/images/login/ramdass-welkom.png')}/>
-        <Loader active={this.props.loading}/>
+        <img
+          className="rambdass-welcome"
+          src={require('../../assets/images/login/ramdass-welkom.png')}
+        />
+        <Loader active={this.props.loading} />
         <div className="login-form-wrapper">
           <LoginForm
             onChange={this.onLoginChange}
@@ -106,7 +109,7 @@ function mapStateToProps(state, ownProps) {
     loggedIn: state.loggedIn.data,
     loading: state.loggedIn.loading,
     error: state.loggedIn.error,
-    hasError: state.loggedIn.hasError,
+    hasError: state.loggedIn.hasError
   };
 }
 
