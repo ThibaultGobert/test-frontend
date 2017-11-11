@@ -54,8 +54,6 @@ class LoginContainer extends Component {
   }
 
   onChange({ target }) {
-    console.log(target);
-
     this.setState(prevState => ({
       credentials: {
         ...prevState.credentials,
@@ -73,6 +71,7 @@ class LoginContainer extends Component {
   toggleImpersonate() {
     this.setState(prevState => ({
       impersonate: !prevState.impersonate,
+      hidden: true,
       credentials: { ...prevState.credentials, child_username: '' }
     }));
   }

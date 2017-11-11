@@ -62,7 +62,7 @@ const Login = ({
                 onChange={onChange}
                 name="password"
                 value={credentials.password}
-                icon={<Icon name="eye" className="eye-icon" inverted link onClick={toggleHidden} />}
+                icon={!impersonate && <Icon name="eye" className="eye-icon" inverted link onClick={toggleHidden} />}
               />
             </Form.Field>
           </Form.Group>
