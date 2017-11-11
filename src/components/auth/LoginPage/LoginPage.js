@@ -38,14 +38,14 @@ class LoginPage extends Component {
         this.context.router.push('/editorprofile/overview');
       } else if (nextProps.loggedIn.role == roles.ADMIN_ROLE) {
         toastr.error('Geen toegang voor admins');
-        this.props.logOut();
+        this.props.actions.logOut();
       }
     }
   }
 
   onLoginSubmit(event) {
     event.preventDefault();
-    this.props.login(this.state.credentials);
+    this.props.actions.login(this.state.credentials);
   }
 
   onLoginChange(event) {
@@ -95,8 +95,7 @@ LoginPage.propTypes = {
   hasError: PropTypes.bool,
   loading: PropTypes.bool,
   error: PropTypes.object,
-  login: PropTypes.function,
-  logOut: PropTypes.function
+  actions: PropTypes.object
 };
 
 LoginPage.contextTypes = {
