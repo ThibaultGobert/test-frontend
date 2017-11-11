@@ -26,9 +26,9 @@
     "redux-persist": "4.9.1",
     "redux-persist-migrate": "^5.0.0",
     "redux-thunk": "2.1.0",
+    "sanitize-html": "^1.15.0",
     "semantic-ui-css": "2.2.12",
     "semantic-ui-react": "0.71.5",
-    "striptags": "^3.1.0",
     "toastr": "2.1.2"
   },
   "scripts": {

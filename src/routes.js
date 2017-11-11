@@ -15,7 +15,6 @@ import CalendarPage from "./components/teacherprofile/CalendarPage";
 import CalendarDetailPage from "./components/teacherprofile/CalendarDetailPage";
 import InfoPage from "./components/teacherprofile/InfoPage";
 import * as authActions from './actions/auth';
-import ImpersonatePage from "./components/auth/ImpersonatePage";
 
 const routes = (store) => {
   return (
@@ -48,7 +47,6 @@ const routes = (store) => {
         <Route path="/slideviewer/:id" component={SlideViewerPage}/>
       </Route>
       <Route name="login" path="/login" component={Login} onEnter={requireNoAuth(store)}/>
-      <Route name="impersonate" path="/impersonate" component={ImpersonatePage} onEnter={requireNoAuth(store)}/>
 
       <Redirect from="/" to="login" />
       <Redirect from="*" to="login" />

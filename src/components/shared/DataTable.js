@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Table, Menu, Icon, Segment, Input, Popup, Image } from "semantic-ui-react";
 import {orderBy, flatten, capitalize} from "lodash";
 import _ from 'lodash';
-import striptags from 'striptags';
+import striptags from 'sanitize-html';
 
 const dataParser = (obj) => {
   if(!obj) return [{}];
