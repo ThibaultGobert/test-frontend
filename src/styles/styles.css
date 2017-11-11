@@ -62,11 +62,6 @@ body {
   font-size: 1.1em;
 }
 
-.code-tag {
-  font-size: 1.3em !important;
-  color: #fff;
-}
-
 .eye-icon {
   background-color: #008BCE;
 }
@@ -75,40 +70,6 @@ i.eye-icon {
   opacity: 0.7 !important;
 }
 
-.login-form button {
-  float: right;
-}
-
-.login-form .field {
-  margin-left: 1em !important;
-}
-
-.login-form .field .code-tag {
-  color: yellow !important;
-}
-
-.login-form .field input {
-  width: 20em !important;
-}
-
-.impersonate-link {
-  position: absolute;
-  right: 10px;
-  bottom: 10px;
-}
-
-
-.login-form label {
-  min-width: 9.5em;
-}
-
-.login-form.impersonate-form {
-  min-width: 750px;
-}
-
-.impersonate-form label {
-  min-width: 12em;
-}
 
 
 .header-bar .welcome-message {
@@ -119,14 +80,6 @@ i.eye-icon {
   left: 20px;
   font-size: 40px;
   -webkit-font-smoothing: antialiased;
-}
-
-.login-form button {
-  margin-top: 1.5em !important;
-}
-
-.login-form-wrapper {
-  margin-top: 50px;
 }
 
 .page {
@@ -190,11 +143,6 @@ i.eye-icon {
   box-shadow: none;
 }
 
-.login-form {
-  min-width: 700px;
-  margin: 0 auto;
-}
-
 .highlight {
   background: #db2828 !important;
   color: #fff !important;
@@ -223,19 +171,6 @@ i.eye-icon {
   vertical-align: top;
   margin-left: 0.5em;
   display: inline-block;
-}
-
-.login-form form {
-  padding: 5em 3em;
-  background: #F4F4F4;
-  border-radius: 3px;
-  background: #262626;
-  border-radius: 25px;
-  border: 10px solid #222;
-}
-
-.login-form .ui.form .field>label {
-  color: #fff;
 }
 
 .ui.accordion .title .dropdown.icon {
@@ -550,21 +485,6 @@ i.eye-icon {
 
 .view-type .icon.active {
   background: #2185d0;
-}
-
-.rambdass-welcome {
-  position: absolute;
-  bottom: 50px;
-  left: 50px;
-  width: 250px;
-}
-
-.login-form-wrapper {
-  background: #337ab7;
-  display: inline-block;
-  margin-left: 250px;
-  padding: 2em;
-  border-radius: 1em;
 }
 
 .slide-show {

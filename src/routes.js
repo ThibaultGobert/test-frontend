@@ -3,7 +3,7 @@ import { Route, Redirect, IndexRoute } from 'react-router';
 import App from './components/App';
 import TeacherOverviewPage from "./components/teacherprofile/ClassGroupsPage";
 import ClassListPage from "./components/teacherprofile/ClassListPage";
-import LoginPage from "./components/auth/LoginPage";
+import Login from "./components/Login";
 import isEmpty from './functions/isEmpty';
 import ClanPage from "./components/studentprofile/ClassPage";
 import EditorOverviewPage from "./components/editorprofile/OverviewPage";
@@ -20,7 +20,7 @@ import ImpersonatePage from "./components/auth/ImpersonatePage";
 const routes = (store) => {
   return (
     <Route path="/" component={App}>
-      <IndexRoute component={LoginPage} onEnter={requireNoAuth(store)}/>
+      <IndexRoute component={Login} onEnter={requireNoAuth(store)}/>
       <Route path="/teacherprofile" onEnter={requireAuth(store)}>
         <Route path="/teacherprofile/overview" component={TeacherOverviewPage}/>
         <Route path="/teacherprofile/calendar" component={CalendarPage}/>
@@ -47,7 +47,7 @@ const routes = (store) => {
         <Route path="/slideviewer/:id/:type" component={SlideViewerPage}/>
         <Route path="/slideviewer/:id" component={SlideViewerPage}/>
       </Route>
-      <Route name="login" path="/login" component={LoginPage} onEnter={requireNoAuth(store)}/>
+      <Route name="login" path="/login" component={Login} onEnter={requireNoAuth(store)}/>
       <Route name="impersonate" path="/impersonate" component={ImpersonatePage} onEnter={requireNoAuth(store)}/>
 
       <Redirect from="/" to="login" />
