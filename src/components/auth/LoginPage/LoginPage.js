@@ -1,17 +1,15 @@
-import React from 'react';
+import React, { Component } from 'react';
 import LoginForm from './LoginForm';
-import * as authActions from '../../actions/auth';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { Icon } from 'semantic-ui-react';
 import { bindActionCreators } from 'redux';
-import * as roles from '../../constants/roles';
-import Loader from '../shared/Loader';
+import * as roles from '../../../constants/roles';
+import Loader from '../../shared/Loader';
 import _ from 'lodash';
 import toastr from 'toastr';
 
-class LoginPage extends React.Component {
+class LoginPage extends Component {
   constructor(props, context) {
     super(props, context);
 
@@ -40,14 +38,14 @@ class LoginPage extends React.Component {
         this.context.router.push('/editorprofile/overview');
       } else if (nextProps.loggedIn.role == roles.ADMIN_ROLE) {
         toastr.error('Geen toegang voor admins');
-        this.props.actions.logOut();
+        this.props.logOut();
       }
     }
   }
 
   onLoginSubmit(event) {
     event.preventDefault();
-    this.props.actions.login(this.state.credentials);
+    this.props.login(this.state.credentials);
   }
 
   onLoginChange(event) {
@@ -68,7 +66,7 @@ class LoginPage extends React.Component {
       <div className="login-form">
         <img
           className="rambdass-welcome"
-          src={require('../../assets/images/login/ramdass-welkom.png')}
+          src={require('../../../assets/images/login/ramdass-welkom.png')}
         />
         <Loader active={this.props.loading} />
         <div className="login-form-wrapper">
@@ -93,30 +91,16 @@ class LoginPage extends React.Component {
 }
 
 LoginPage.propTypes = {
-  actions: PropTypes.object.isRequired,
   loggedIn: PropTypes.object.isRequired,
   hasError: PropTypes.bool,
   loading: PropTypes.bool,
-  error: PropTypes.object
+  error: PropTypes.object,
+  login: PropTypes.function,
+  logOut: PropTypes.function
 };
 
 LoginPage.contextTypes = {
   router: PropTypes.object
 };
 
-function mapStateToProps(state, ownProps) {
-  return {
-    loggedIn: state.loggedIn.data,
-    loading: state.loggedIn.loading,
-    error: state.loggedIn.error,
-    hasError: state.loggedIn.hasError
-  };
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(authActions, dispatch)
-  };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);
+export default LoginPage;
