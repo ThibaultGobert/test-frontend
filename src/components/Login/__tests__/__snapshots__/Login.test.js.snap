@@ -1,0 +1,189 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login should render Login 1`] = `
+<Login
+  credentials={Object {}}
+>
+  <div
+    className="Login"
+  >
+    <img
+      className="Login__Rambdass"
+      src="ramdass-welkom.png"
+    />
+    <CFLoader>
+      <Dimmer
+        active={false}
+      >
+        <div
+          className="ui dimmer"
+          onClick={[Function]}
+        >
+          <div
+            className="content"
+          >
+            <div
+              className="center"
+            >
+              <Loader
+                size="medium"
+              >
+                <div
+                  className="ui medium text loader"
+                >
+                  Loading
+                </div>
+              </Loader>
+            </div>
+          </div>
+        </div>
+      </Dimmer>
+    </CFLoader>
+    <div
+      className="Login__Wrapper"
+    >
+      <Form
+        as="form"
+        className="Login__Form"
+      >
+        <form
+          className="ui form Login__Form"
+          onSubmit={[Function]}
+        >
+          <div
+            className="Login__CodeTag"
+          >
+            &lt;Start&gt;
+          </div>
+          <FormGroup
+            inline={true}
+          >
+            <div
+              className="inline fields"
+            >
+              <FormField>
+                <div
+                  className="field"
+                >
+                  <label
+                    className="Login__CodeTag Login__CodeTag--highlight"
+                  >
+                    &lt;Uw gebruikersnaam /&gt;
+                  </label>
+                  <input
+                    name="username"
+                    placeholder="Uw gebruikersnaam"
+                  />
+                </div>
+              </FormField>
+            </div>
+          </FormGroup>
+          <FormGroup
+            inline={true}
+          >
+            <div
+              className="inline fields"
+            >
+              <FormField>
+                <div
+                  className="field"
+                >
+                  <label
+                    className="Login__CodeTag Login__CodeTag--highlight"
+                  >
+                    &lt;Wachtwoord /&gt;
+                  </label>
+                  <Input
+                    icon={
+                      <Icon
+                        as="i"
+                        className="eye-icon"
+                        inverted={true}
+                        link={true}
+                        name="eye"
+                        onClick={undefined}
+                      />
+                    }
+                    name="password"
+                    placeholder="Wachtwoord"
+                    type="text"
+                  >
+                    <div
+                      className="ui icon input"
+                    >
+                      <input
+                        key="text"
+                        name="password"
+                        onChange={[Function]}
+                        placeholder="Wachtwoord"
+                        type="text"
+                      />
+                      <Icon
+                        as="i"
+                        className="eye-icon"
+                        inverted={true}
+                        link={true}
+                        name="eye"
+                      >
+                        <i
+                          aria-hidden="true"
+                          className="eye inverted link icon eye-icon"
+                        />
+                      </Icon>
+                    </div>
+                  </Input>
+                </div>
+              </FormField>
+            </div>
+          </FormGroup>
+          <div
+            className="Login__CodeTag"
+          >
+            &lt;/Start&gt;
+          </div>
+          <FormButton
+            as={[Function]}
+            control={[Function]}
+            primary={true}
+          >
+            <FormField
+              control={[Function]}
+              primary={true}
+            >
+              <div
+                className="field"
+              >
+                <Button
+                  as="button"
+                  primary={true}
+                >
+                  <button
+                    className="ui primary button"
+                    onClick={[Function]}
+                    role="button"
+                  >
+                    Login
+                  </button>
+                </Button>
+              </div>
+            </FormField>
+          </FormButton>
+        </form>
+      </Form>
+    </div>
+    <button
+      className="Login__ImpersonateLink"
+    >
+      <Icon
+        as="i"
+        name="lock"
+      >
+        <i
+          aria-hidden="true"
+          className="lock icon"
+        />
+      </Icon>
+    </button>
+  </div>
+</Login>
+`;
