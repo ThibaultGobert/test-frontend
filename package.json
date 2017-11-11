@@ -10,6 +10,8 @@
     "lodash": "4.17.4",
     "lodash-webpack-plugin": "^0.11.4",
     "moment": "2.18.1",
+    "node-sass-chokidar": "^0.0.3",
+    "npm-run-all": "^4.1.2",
     "object-assign": "4.1.0",
     "react": "^16.1.0",
     "react-big-calendar": "0.15.0",
@@ -32,9 +34,13 @@
     "toastr": "2.1.2"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom"
+    "start-js": "react-scripts start",
+    "start": "npm-run-all -p watch-css start-js",
+    "build-js": "react-scripts build",
+    "build": "rnpm-run-all build-css build-js",
+    "test": "react-scripts test --env=jsdom",
+    "build-css": "node-sass-chokidar src/ -o src/",
+    "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive"
   },
   "devDependencies": {
     "prettier": "1.8.2"
