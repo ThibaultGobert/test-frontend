@@ -18,15 +18,11 @@
   border: 10px solid #222;
 }
 
-.Login .Login__CodeTag {
-  color: #fff;
-  font-size: 1.3em !important;
-}
-
 .Login .Login__CodeTag--highlight {
-  color: yellow !important;
-  color: #fff;
+  color: yellow;
   margin-left: 1em !important;
+  min-width: 12em;
+  display: inline-block;
 }
 
 .Login .field input {
@@ -40,10 +36,6 @@
 .Login button {
   float: right;
   margin-top: 1.5em !important;
-}
-
-.Login label {
-  min-width: 12em;
 }
 
 .Login .Login__ImpersonateLink {

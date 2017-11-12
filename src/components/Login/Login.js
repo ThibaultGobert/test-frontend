@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Form, Input, Icon } from 'semantic-ui-react';
 
+import CodeTag from '../CodeTag';
 import Loader from '../shared/Loader';
 import ErrorMessage from '../shared/ErrorMessage';
 
@@ -27,10 +28,10 @@ const Login = ({
 
       <div className="Login__Wrapper">
         <Form className="Login__Form" onSubmit={submit}>
-          <div className="Login__CodeTag">&lt;Start&gt;</div>
+          <CodeTag text="Start" />
           <Form.Group inline>
             <Form.Field>
-              <label className="Login__CodeTag Login__CodeTag--highlight">&lt;Uw gebruikersnaam /&gt;</label>
+              <CodeTag text="Uw gebruikersnaam" className="Login__CodeTag--highlight" closing />
               <input
                 placeholder="Uw gebruikersnaam"
                 onChange={onChange}
@@ -43,7 +44,7 @@ const Login = ({
           {impersonate && (
             <Form.Group inline>
               <Form.Field>
-                <label className="Login__CodeTag Login__CodeTag--highlight">&lt;Gebruikersnaam kind /&gt;</label>
+                <CodeTag text="Gebruikersnaam kind" className="Login__CodeTag--highlight" closing />
                 <input
                   placeholder="Gebruikersnaam kind"
                   onChange={onChange}
@@ -55,18 +56,22 @@ const Login = ({
 
           <Form.Group inline>
             <Form.Field>
-              <label className="Login__CodeTag Login__CodeTag--highlight">&lt;Wachtwoord /&gt;</label>
+              <CodeTag text="Wachtwoord" className="Login__CodeTag--highlight" closing />
               <Input
                 type={hidden ? 'password' : 'text'}
                 placeholder="Wachtwoord"
                 onChange={onChange}
                 name="password"
                 value={credentials.password}
-                icon={!impersonate && <Icon name="eye" className="eye-icon" inverted link onClick={toggleHidden} />}
+                icon={
+                  !impersonate && (
+                    <Icon name="eye" className="eye-icon" inverted link onClick={toggleHidden} />
+                  )
+                }
               />
             </Form.Field>
           </Form.Group>
-          <div className="Login__CodeTag">&lt;/Start&gt;</div>
+          <CodeTag text="Start" closing />
           {hasError && <ErrorMessage header="Login mislukt" message={error} />}
           <Form.Button primary>Login</Form.Button>
         </Form>
