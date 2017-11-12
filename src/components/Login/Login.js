@@ -89,7 +89,7 @@ Login.propTypes = {
   credentials: PropTypes.object,
   hidden: PropTypes.bool,
   hasError: PropTypes.bool,
-  error: PropTypes.object,
+  error: PropTypes.string,
   loading: PropTypes.bool
 };
 

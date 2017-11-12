@@ -9,4 +9,24 @@ describe('Login', () => {
 
     expect(component).toMatchSnapshot();
   });
+
+  it('should render Login form with impersonate', () => {
+    const component = mountToJson(<Login credentials={{}} impersonate />);
+
+    expect(component).toMatchSnapshot();
+  });
+
+  it('should render Login with plain text password', () => {
+    const component = mountToJson(<Login credentials={{}} hidden={false} />);
+
+    expect(component).toMatchSnapshot();
+  });
+
+  it('should show error when hasError', () => {
+    const component = mountToJson(
+      <Login credentials={{}} hasError error="We failed!" />
+    );
+
+    expect(component).toMatchSnapshot();
+  });
 });
