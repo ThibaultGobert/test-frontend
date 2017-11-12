@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import renderHtml from 'react-render-html';
-import {Grid, Segment, Label} from 'semantic-ui-react';
+import {Grid, Label} from 'semantic-ui-react';
 import _ from 'lodash';
 import Modal from '../Modal';
 import toastr from 'toastr';

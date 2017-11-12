@@ -1,5 +1,5 @@
 import React from 'react';
-import { Accordion, Table, Label, Grid } from 'semantic-ui-react';
+import { Accordion } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import AccordionTitle from "./AccordionTitle";
 import ClassGroupContent from '../teacherprofile/ClassGroupContent';

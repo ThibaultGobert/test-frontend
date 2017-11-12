@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import * as subscriptionTypes from '../../constants/subscriptionTypes';
 
 export default (data) => {

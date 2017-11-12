@@ -22,7 +22,7 @@ const Login = ({
 }) => {
   return (
     <div className="Login">
-      <img className="Login__Rambdass" src={ramdassWelcome} />
+      <img className="Login__Rambdass" src={ramdassWelcome} alt=""/>
       <Loader active={loading} message="Even geduld. Wij proberen u in te loggen..." />
 
       <div className="Login__Wrapper">

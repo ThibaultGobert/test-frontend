@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 import * as authActions from '../../../actions/auth';
-import { Sidebar, Segment, Button, Menu, Image, Icon, Header } from 'semantic-ui-react';
+import { Menu, Icon } from 'semantic-ui-react';
 import {connect} from 'react-redux';
 import {PropTypes} from 'prop-types';
 import {bindActionCreators} from 'redux';
@@ -21,7 +21,6 @@ class EditorHeader extends React.Component {
   }
 
   render() {
-    const visible = true;
     return (
       <div className="header editor">
         <Menu inverted>

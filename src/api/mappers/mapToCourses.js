@@ -4,8 +4,8 @@ export default (data) => {
   data = data.sort((a, b) => {
     let lessonDateA = createDate(a.lessons[0].courseStartdate);
     let lessonDateB = createDate(b.lessons[0].courseEnddate);
-    let hoursDateA = parseInt(a.starttime.split(':')[0]);
-    let hoursDateB = parseInt(b.starttime.split(':')[0]);
+    let hoursDateA = parseInt(a.starttime.split(':')[0], 10);
+    let hoursDateB = parseInt(b.starttime.split(':')[0], 10);
     if(lessonDateA.getDay() == lessonDateB.getDay()) {
       return hoursDateA - hoursDateB;
     }
@@ -23,7 +23,7 @@ const createDate = (dateString) => {
   const minutes = splitted[1].split(':')[1];
   let dayMonthYear = splitted[0].split('-');
   const day = dayMonthYear[0];
-  const month = parseInt(dayMonthYear[1]);
+  const month = parseInt(dayMonthYear[1], 10);
   const year = dayMonthYear[2];
   let date = new Date(year, month - 1, day, hour, minutes);
   return date;

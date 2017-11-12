@@ -1,6 +1,5 @@
 import * as types from '../actions/types';
 import initialState from './initialState';
-import _ from 'lodash';
 
 export default function lessonReducer(state = initialState.lessons, action) {
   switch (action.type) {

@@ -4,7 +4,7 @@ import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import * as courseActions from "../../actions/courses";
 import {browserHistory} from "react-router";
-import {Button, Message} from "semantic-ui-react";
+import {Button} from "semantic-ui-react";
 import ErrorMessage from '../shared/ErrorMessage';
 import Loader from '../shared/Loader';
 import DataTable from "../shared/DataTable";

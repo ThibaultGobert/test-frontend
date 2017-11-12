@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link, IndexLink } from 'react-router';
 import * as authActions from '../../../actions/auth';
 import {Button} from 'semantic-ui-react';
 import {connect} from 'react-redux';
@@ -28,7 +27,7 @@ class StudentHeader extends React.Component {
         <div className="header-bar">
           <div className="wrapper">
             <div className="header-lockup">
-              <img className="logo" src={require('../../../assets/images/logo.png')}/>
+              <img className="logo" src={require('../../../assets/images/logo.png')} alt=""/>
               <span className="welcome-message">{this.props.user.fullname}</span>
             </div>
 

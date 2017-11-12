@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router';
-import {Image} from 'semantic-ui-react';
 
 const LessonList = ({lessons, slideType, showLockedLessons}) => {
   let lessonCount = lessons.length;

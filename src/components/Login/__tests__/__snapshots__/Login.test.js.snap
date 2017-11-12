@@ -8,6 +8,7 @@ exports[`Login should render Login 1`] = `
     className="Login"
   >
     <img
+      alt=""
       className="Login__Rambdass"
       src="ramdass-welkom.png"
     />
@@ -232,6 +233,7 @@ exports[`Login should render Login form with impersonate 1`] = `
     className="Login"
   >
     <img
+      alt=""
       className="Login__Rambdass"
       src="ramdass-welkom.png"
     />
@@ -467,6 +469,7 @@ exports[`Login should render Login with plain text password 1`] = `
     className="Login"
   >
     <img
+      alt=""
       className="Login__Rambdass"
       src="ramdass-welkom.png"
     />
@@ -692,6 +695,7 @@ exports[`Login should show error when hasError 1`] = `
     className="Login"
   >
     <img
+      alt=""
       className="Login__Rambdass"
       src="ramdass-welkom.png"
     />
@@ -939,6 +943,7 @@ exports[`Login should show loading screen when loading 1`] = `
     className="Login"
   >
     <img
+      alt=""
       className="Login__Rambdass"
       src="ramdass-welkom.png"
     />

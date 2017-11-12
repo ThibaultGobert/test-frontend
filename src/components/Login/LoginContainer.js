@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router';
-import { Form, Input, Icon } from 'semantic-ui-react';
 import { isEmpty } from 'lodash';
 import toastr from 'toastr';
 
