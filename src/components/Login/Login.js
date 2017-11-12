@@ -23,7 +23,7 @@ const Login = ({
   return (
     <div className="Login">
       <img className="Login__Rambdass" src={ramdassWelcome} />
-      <Loader active={loading} />
+      <Loader active={loading} message="Even geduld. Wij proberen u in te loggen..." />
 
       <div className="Login__Wrapper">
         <Form className="Login__Form" onSubmit={submit}>

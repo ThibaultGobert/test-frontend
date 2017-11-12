@@ -11,7 +11,9 @@ exports[`Login should render Login 1`] = `
       className="Login__Rambdass"
       src="ramdass-welkom.png"
     />
-    <CFLoader>
+    <Loader
+      message="Even geduld. Wij proberen u in te loggen..."
+    >
       <Dimmer
         active={false}
       >
@@ -31,14 +33,14 @@ exports[`Login should render Login 1`] = `
                 <div
                   className="ui medium text loader"
                 >
-                  Loading
+                  Even geduld. Wij proberen u in te loggen...
                 </div>
               </Loader>
             </div>
           </div>
         </div>
       </Dimmer>
-    </CFLoader>
+    </Loader>
     <div
       className="Login__Wrapper"
     >
@@ -233,7 +235,9 @@ exports[`Login should render Login form with impersonate 1`] = `
       className="Login__Rambdass"
       src="ramdass-welkom.png"
     />
-    <CFLoader>
+    <Loader
+      message="Even geduld. Wij proberen u in te loggen..."
+    >
       <Dimmer
         active={false}
       >
@@ -253,14 +257,14 @@ exports[`Login should render Login form with impersonate 1`] = `
                 <div
                   className="ui medium text loader"
                 >
-                  Loading
+                  Even geduld. Wij proberen u in te loggen...
                 </div>
               </Loader>
             </div>
           </div>
         </div>
       </Dimmer>
-    </CFLoader>
+    </Loader>
     <div
       className="Login__Wrapper"
     >
@@ -466,7 +470,9 @@ exports[`Login should render Login with plain text password 1`] = `
       className="Login__Rambdass"
       src="ramdass-welkom.png"
     />
-    <CFLoader>
+    <Loader
+      message="Even geduld. Wij proberen u in te loggen..."
+    >
       <Dimmer
         active={false}
       >
@@ -486,14 +492,14 @@ exports[`Login should render Login with plain text password 1`] = `
                 <div
                   className="ui medium text loader"
                 >
-                  Loading
+                  Even geduld. Wij proberen u in te loggen...
                 </div>
               </Loader>
             </div>
           </div>
         </div>
       </Dimmer>
-    </CFLoader>
+    </Loader>
     <div
       className="Login__Wrapper"
     >
@@ -689,7 +695,9 @@ exports[`Login should show error when hasError 1`] = `
       className="Login__Rambdass"
       src="ramdass-welkom.png"
     />
-    <CFLoader>
+    <Loader
+      message="Even geduld. Wij proberen u in te loggen..."
+    >
       <Dimmer
         active={false}
       >
@@ -709,14 +717,14 @@ exports[`Login should show error when hasError 1`] = `
                 <div
                   className="ui medium text loader"
                 >
-                  Loading
+                  Even geduld. Wij proberen u in te loggen...
                 </div>
               </Loader>
             </div>
           </div>
         </div>
       </Dimmer>
-    </CFLoader>
+    </Loader>
     <div
       className="Login__Wrapper"
     >
@@ -934,8 +942,9 @@ exports[`Login should show loading screen when loading 1`] = `
       className="Login__Rambdass"
       src="ramdass-welkom.png"
     />
-    <CFLoader
+    <Loader
       active={true}
+      message="Even geduld. Wij proberen u in te loggen..."
     >
       <Dimmer
         active={true}
@@ -956,14 +965,14 @@ exports[`Login should show loading screen when loading 1`] = `
                 <div
                   className="ui medium text loader"
                 >
-                  Loading
+                  Even geduld. Wij proberen u in te loggen...
                 </div>
               </Loader>
             </div>
           </div>
         </div>
       </Dimmer>
-    </CFLoader>
+    </Loader>
     <div
       className="Login__Wrapper"
     >
