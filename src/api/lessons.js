@@ -47,9 +47,9 @@ class LessonApi {
       lesson.slideType = slideType;
       let role = store.getState().loggedIn.data.role;
 
-      if (role === userRoles.TEACHER_ROLE && !lesson.activateTeacher ||
-        role === userRoles.STUDENT_ROLE && !lesson.activateStudent) {
-        throw "Les is niet beschikbaar";
+      if ((role === userRoles.TEACHER_ROLE && !lesson.activateTeacher) ||
+        (role === userRoles.STUDENT_ROLE && !lesson.activateStudent)) {
+        throw new Error("Les is niet beschikbaar");
       }
 
       return lesson;
