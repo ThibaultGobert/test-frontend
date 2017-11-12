@@ -1,13 +1,13 @@
 import * as types from './types';
 
-export function beginAjaxCall(requestType, meta) {
+export function beginAjaxCall(requestType, data) {
   if (!requestType) {
     return { type: types.AJAX_CALL_BEGIN };
   }
 
-  return { type: requestType, meta};
+  return { type: requestType, data};
 }
 
-export function ajaxCallError(errorType, error) {
-  return { type: errorType, error };
+export function ajaxCallError(errorType, error, data) {
+  return { type: errorType, error, data};
 }

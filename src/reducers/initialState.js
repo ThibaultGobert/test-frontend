@@ -24,7 +24,7 @@ export default {
     error: null,
     hasError: false
   },
-  classlist: {
+  classlists: {
     data: [],
     loading: false,
     error: null,

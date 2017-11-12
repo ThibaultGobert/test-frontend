@@ -29,13 +29,21 @@ class ClassListPage extends React.Component {
 
   // render function --> typically calling child component, here is markup inline
   render() {
-    let data = this.props.classList.map(student => {
+    const {
+      classList,
+      loading,
+      hasError,
+      error,
+      course
+    } = this.props;
+
+    let data = classList.map(student => {
       let highlight = false;
       if (student.subscription_type === subscriptionTypes.TRIAL) {
         highlight = true;
       }
 
-      return Object.assign(student, {highlight: highlight});
+      return Object.assign(student, {highlight});
     });
 
     let columns = [
@@ -106,12 +114,12 @@ class ClassListPage extends React.Component {
       <div className="class-list">
         <Button labelPosition="left" icon="left chevron" content="Terug" onClick={this.redirectToClassGroups}/>
         <div className="class-list-header">
-          <h1>Klaslijst {this.props.course? this.props.course.name: ""} </h1>
+          <h1>Klaslijst {course? course.name: ""} </h1>
           <Button className="download-classlist" disabled>Download klaslijst</Button>
         </div>
 
-        <Loader active={this.props.loading}/>
-        {!this.props.hasError &&
+        <Loader active={loading}/>
+        {!hasError &&
           <div>
             <DataTable data={data} columns={columns}/>
             <div className="legende">
@@ -124,7 +132,7 @@ class ClassListPage extends React.Component {
           </div>
         }
 
-        { this.props.hasError && <ErrorMessage header="Fout bij inladen" message={this.props.error.message} />}
+        { hasError && <ErrorMessage header="Fout bij inladen" message={error.message} />}
       </div>
     );
   }
@@ -152,13 +160,16 @@ ClassListPage.propTypes = {
 function mapStateToProps(state, ownProps) {
   const courseId = ownProps.params.id; // from path /course/:id
   const course = getCourseById(state.courses.data, courseId);
-  const classList = _.find(state.classlists, function(o) { return o.courseId === courseId; });
+  let classList = state.classlists[courseId];
+  if (!classList) {
+    classList = [];
+  }
 
   return {
-    classList: classList.data,
-    loading: classList.loading,
-    error: classList.error,
-    hasError: classList.hasError,
+    classList: classList,
+    loading: state.classlists.loading,
+    hasError: state.classlists.hasError,
+    error: state.classlists.error,
     courseId,
     course
   };
