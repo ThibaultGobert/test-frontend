@@ -24,11 +24,9 @@ class CalendarDetailPage extends React.Component {
 
   componentDidMount() {
     lessonApi.getLessonMetaData(this.props.event.programlessonid).then(metadata => {
-      let contentUrls = metadata.map(dataForLesson => {
-        if(dataForLesson.ziplocation !== undefined && dataForLesson.ziplocation) {
-          return dataForLesson.ziplocation;
-        }
-      });
+      let contentUrls = metadata.filter(dataForLesson => {
+          return dataForLesson.ziplocation !== undefined && dataForLesson.ziplocation;
+      }).map(dataForLesson => dataForLesson.ziplocation);
       contentUrls = _.without(contentUrls, undefined);
       this.setState({
         lessonContentLoading: false,
