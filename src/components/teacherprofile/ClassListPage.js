@@ -20,7 +20,7 @@ class ClassListPage extends React.Component {
   }
 
   componentDidMount() {
-    this.props.actions.loadChildren(this.props.courseId);
+    this.props.actions.loadChildrenIfNeeded(this.props.courseId);
   }
 
   redirectToClassGroups() {

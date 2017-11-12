@@ -36,4 +36,21 @@ export function loadChildren(courseId) {
   };
 }
 
-// TODO:: hard coded false value
+function shouldFetchChildren(state, courseId) {
+  const classList = state.classlists[courseId];
+  if (!classList) {
+    return true
+  } else if (state.classlists.loading) {
+    return false
+  } else {
+    return state.classlists.hasError
+  }
+}
+
+export function loadChildrenIfNeeded(courseId) {
+  return (dispatch, getState) => {
+    if (shouldFetchChildren(getState(), courseId)) {
+      return dispatch(loadChildren(courseId))
+    }
+  };
+}
