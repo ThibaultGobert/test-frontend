@@ -7,7 +7,7 @@ const SlideTypeLabel = ({slideType}) => {
   let labelText;
   let iconName;
   switch (slideType) {
-    case slideTypes.HOME:
+    default: case slideTypes.HOME:
       labelText = "Thuis";
       iconName = "home";
       break;
