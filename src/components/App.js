@@ -17,13 +17,13 @@ class App extends React.Component {
 
     return (
       <div className="full-container">
-        {!isEmpty(loggedIn) && loggedIn.role == userRoles.TEACHER_ROLE && <TeacherHeader user={loggedIn}/>}
-        {!isEmpty(loggedIn) && loggedIn.role == userRoles.STUDENT_ROLE && <StudentHeader user={loggedIn}/>}
-        {!isEmpty(loggedIn) && loggedIn.role == userRoles.WORKSHOP_STUDENT_ROLE &&
+        {!isEmpty(loggedIn) && loggedIn.role === userRoles.TEACHER_ROLE && <TeacherHeader user={loggedIn}/>}
+        {!isEmpty(loggedIn) && loggedIn.role === userRoles.STUDENT_ROLE && <StudentHeader user={loggedIn}/>}
+        {!isEmpty(loggedIn) && loggedIn.role === userRoles.WORKSHOP_STUDENT_ROLE &&
         <WorkshopStudentHeader user={loggedIn}/>}
-        {!isEmpty(loggedIn) && loggedIn.role == userRoles.WORKSHOP_STUDENT_ROLE &&
+        {!isEmpty(loggedIn) && loggedIn.role === userRoles.WORKSHOP_STUDENT_ROLE &&
         <WorkshopStudentHeader user={loggedIn}/>}
-        {!isEmpty(loggedIn) && loggedIn.role == userRoles.EDITOR_ROLE && <EditorHeader user={loggedIn}/>}
+        {!isEmpty(loggedIn) && loggedIn.role === userRoles.EDITOR_ROLE && <EditorHeader user={loggedIn}/>}
         {isEmpty(loggedIn) && <LoginHeader/>}
 
         <div className="page-wrapper">

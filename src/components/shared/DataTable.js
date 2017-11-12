@@ -134,7 +134,7 @@ class DataTable extends Component {
   defaultRenderBodyRow(data, index) {
     let highlight = data.highlight ? 'highlight': '';
 
-    let hidden_info = (data.parentremark != undefined && data.parentremark != "") || (data.teacherremark != undefined && data.teacherremark != "");
+    let hidden_info = (data.parentremark !== undefined && data.parentremark !== "") || (data.teacherremark !== undefined && data.teacherremark !== "");
     return (
       <Table.Row key={index} className={highlight}>
         {this.columns.map(({key, defaults, accessor, decorator}, idx) => {
@@ -142,7 +142,7 @@ class DataTable extends Component {
         if (!data) return <Table.Cell key={idx}/>;
         let value = (accessor) ? accessor(data, key) : (data[key] || defaults);
         if (decorator) value = decorator(value);
-        if (idx == 0) {
+        if (idx === 0) {
           return (
             <Table.Cell key={idx} className="avatar-lock-up">
               <Image src={value} size="tiny" className="avatar middle aligned"/>
@@ -152,7 +152,7 @@ class DataTable extends Component {
 
         return (
           <Table.Cell key={idx}>
-            {(idx == 1 && hidden_info) &&
+            {(idx === 1 && hidden_info) &&
               <Popup
                 trigger={<Icon name="info"/>}
                 content={data.hidden_info}

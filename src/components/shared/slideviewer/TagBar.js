@@ -17,7 +17,7 @@ const TagBar = ({title, version, slideType, tags, viewType, isStudent}) => {
         </span>
         <span className="meta-tags">
           { (slideType !== slideTypes.PROJECTION && !isStudent) &&  <TagMetaList tags={tags} viewType={viewType}/>}
-          { (slideType == slideTypes.PROJECTION && !isStudent) &&  <ProjectionTagList viewType={viewType}/>}
+          { (slideType === slideTypes.PROJECTION && !isStudent) &&  <ProjectionTagList viewType={viewType}/>}
         </span>
         <div className="clearfix"/>
       </div>

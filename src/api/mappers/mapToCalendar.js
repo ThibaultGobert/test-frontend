@@ -3,7 +3,7 @@ import _ from 'lodash';
 export default (data) => {
   let lessons = data.map(course => {
     return course.lessons.map(lesson => {
-      if (lesson.courseStartdate == undefined || lesson.courseEnddate == undefined) {
+      if (lesson.courseStartdate === undefined || lesson.courseEnddate === undefined) {
         return null;
       }
 

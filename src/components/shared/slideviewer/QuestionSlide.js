@@ -64,7 +64,7 @@ class QuestionSlide extends React.Component {
             }
           });
         } else {
-          if (this.result.correctanswers == this.result.totalcorrectanswers) {
+          if (this.result.correctanswers === this.result.totalcorrectanswers) {
             this.showModal("Goed zo", renderedExplanation, "Volgende slide", this.goToNextSlide);
           } else {
             this.showModal("Goed zo", renderedExplanation, "Er zijn nog mogelijke antwoorden");

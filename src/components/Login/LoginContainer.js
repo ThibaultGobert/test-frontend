@@ -28,15 +28,15 @@ class LoginContainer extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (!isEmpty(nextProps.loggedIn)) {
-      if (nextProps.loggedIn.role == roles.STUDENT_ROLE) {
+      if (nextProps.loggedIn.role === roles.STUDENT_ROLE) {
         this.context.router.push('/studentprofile/clan');
-      } else if (nextProps.loggedIn.role == roles.TEACHER_ROLE) {
+      } else if (nextProps.loggedIn.role === roles.TEACHER_ROLE) {
         this.context.router.push('/teacherprofile/overview');
-      } else if (nextProps.loggedIn.role == roles.WORKSHOP_STUDENT_ROLE) {
+      } else if (nextProps.loggedIn.role === roles.WORKSHOP_STUDENT_ROLE) {
         this.context.router.push('/workshopprofile/overview');
-      } else if (nextProps.loggedIn.role == roles.EDITOR_ROLE) {
+      } else if (nextProps.loggedIn.role === roles.EDITOR_ROLE) {
         this.context.router.push('/editorprofile/overview');
-      } else if (nextProps.loggedIn.role == roles.ADMIN_ROLE) {
+      } else if (nextProps.loggedIn.role === roles.ADMIN_ROLE) {
         toastr.error('Geen toegang voor admins');
         this.props.actions.logOut();
       }

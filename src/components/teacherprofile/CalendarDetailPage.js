@@ -102,7 +102,7 @@ class CalendarDetailPage extends React.Component {
           <Link to={extraSlideviewerUrl}>
             { hasExtraLesson && <Button primary ><Icon name="trophy"/>Extra</Button>}
           </Link>
-          <Button loading={this.state.lessonContentLoading} onClick={this.downloadLescontent} disabled={this.state.contentUrl == undefined}>Download lescontent</Button>
+          <Button loading={this.state.lessonContentLoading} onClick={this.downloadLescontent} disabled={this.state.contentUrl === undefined}>Download lescontent</Button>
         </div>
       </div>
     );
@@ -118,7 +118,7 @@ CalendarDetailPage.contextTypes = {
 };
 
 function getEventById(events, id) {
-  const event = events.filter(event => event.id == id);
+  const event = events.filter(event => event.id === id);
   if (event) {
     return event[0];
   }

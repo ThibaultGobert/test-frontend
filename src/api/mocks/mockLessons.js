@@ -649,7 +649,7 @@ class LessonApi {
   static getLessonSlides(type, lessonId) {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        if (lessonId == 193 || lessonId == "193") {
+        if (lessonId === 193 || lessonId === "193") {
           resolve(Object.assign([], lessonInfo));
         } else {
           reject("De slides werden niet gevonden");

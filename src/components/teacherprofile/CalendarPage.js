@@ -11,7 +11,7 @@ import Reloader from '../shared/Reloader';
 
 class CalendarPage extends React.Component {
   componentDidMount() {
-    if(_.isEmpty(this.props.calendar) && this.props.error == null) {
+    if(_.isEmpty(this.props.calendar) && this.props.error === null) {
       this.props.actions.loadCalendar();
     }
   }

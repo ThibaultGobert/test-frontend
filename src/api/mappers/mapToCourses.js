@@ -6,7 +6,7 @@ export default (data) => {
     let lessonDateB = createDate(b.lessons[0].courseEnddate);
     let hoursDateA = parseInt(a.starttime.split(':')[0], 10);
     let hoursDateB = parseInt(b.starttime.split(':')[0], 10);
-    if(lessonDateA.getDay() == lessonDateB.getDay()) {
+    if(lessonDateA.getDay() === lessonDateB.getDay()) {
       return hoursDateA - hoursDateB;
     }
     return lessonDateA.getDay() - lessonDateB.getDay();

@@ -92,7 +92,7 @@ function mapStateToProps(state, ownProps) {
   return {
     lessonId: lessonId,
     slideType: slideType,
-    isStudent: state.loggedIn.data.role == userRoles.STUDENT_ROLE || state.loggedIn.data.role == userRoles.WORKSHOP_STUDENT_ROLE
+    isStudent: state.loggedIn.data.role === userRoles.STUDENT_ROLE || state.loggedIn.data.role === userRoles.WORKSHOP_STUDENT_ROLE
   };
 }
 

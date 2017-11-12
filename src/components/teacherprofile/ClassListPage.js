@@ -11,10 +11,6 @@ import DataTable from "../shared/DataTable";
 import * as subscriptionTypes from '../../constants/subscriptionTypes';
 import _ from 'lodash';
 
-String.prototype.replaceAll = function(target, replacement) {
-  return this.split(target).join(replacement);
-};
-
 class ClassListPage extends React.Component {
   // init state + bind functions
   constructor(props, context) {
@@ -35,7 +31,7 @@ class ClassListPage extends React.Component {
   render() {
     let data = this.props.classList.map(student => {
       let highlight = false;
-      if (student.subscription_type == subscriptionTypes.TRIAL) {
+      if (student.subscription_type === subscriptionTypes.TRIAL) {
         highlight = true;
       }
 
@@ -135,7 +131,7 @@ class ClassListPage extends React.Component {
 }
 
 function getCourseById(courses, id) {
-  const course = courses.filter(course => course.id == id);
+  const course = courses.filter(course => course.id === id);
   if (course) {
     return course[0];
   }
@@ -156,7 +152,7 @@ ClassListPage.propTypes = {
 function mapStateToProps(state, ownProps) {
   const courseId = ownProps.params.id; // from path /course/:id
   const course = getCourseById(state.courses.data, courseId);
-  const classList = _.find(state.classlists, function(o) { return o.courseId == courseId; });
+  const classList = _.find(state.classlists, function(o) { return o.courseId === courseId; });
 
   return {
     classList: classList.data,
