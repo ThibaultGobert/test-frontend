@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Dimmer, Loader } from 'semantic-ui-react';
+import { Dimmer, Loader as SemanticLoader } from 'semantic-ui-react';
 
-const CFLoader = ({active = false }) => {
+const Loader = ({active = false, message = 'Laden...' }) => {
     return(
       <Dimmer active={active}>
-        <Loader size="medium">Loading</Loader>
+        <SemanticLoader size="medium">{message}</SemanticLoader>
       </Dimmer>
     );
 };
 
-CFLoader.propTypes = {
+Loader.propTypes = {
   active: PropTypes.bool
 };
 
-export default CFLoader;
+export default Loader;
