@@ -23,7 +23,7 @@ class LessonApi {
     }).then(response => {
       let lessons = response.data.filter(lesson => lesson.activateStudent);
       if (_.isEmpty(lessons)) {
-        throw "Geen lessen beschikbaar";
+        throw new Error("Geen lessen beschikbaar");
       }
       return lessons;
     }).catch(error => {
