@@ -50,11 +50,18 @@ exports[`Login should render Login 1`] = `
           className="ui form Login__Form"
           onSubmit={[Function]}
         >
-          <div
-            className="Login__CodeTag"
+          <CodeTag
+            close={false}
+            text="Start"
           >
-            &lt;Start&gt;
-          </div>
+            <div
+              className="CodeTag"
+            >
+              &lt;
+              Start
+              &gt;
+            </div>
+          </CodeTag>
           <FormGroup
             inline={true}
           >
@@ -65,11 +72,20 @@ exports[`Login should render Login 1`] = `
                 <div
                   className="field"
                 >
-                  <label
-                    className="Login__CodeTag Login__CodeTag--highlight"
+                  <CodeTag
+                    className="Login__CodeTag--highlight"
+                    close={false}
+                    closing={true}
+                    text="Uw gebruikersnaam"
                   >
-                    &lt;Uw gebruikersnaam /&gt;
-                  </label>
+                    <div
+                      className="CodeTag Login__CodeTag--highlight"
+                    >
+                      &lt;
+                      Uw gebruikersnaam
+                      &gt;
+                    </div>
+                  </CodeTag>
                   <input
                     name="username"
                     placeholder="Uw gebruikersnaam"
@@ -88,11 +104,20 @@ exports[`Login should render Login 1`] = `
                 <div
                   className="field"
                 >
-                  <label
-                    className="Login__CodeTag Login__CodeTag--highlight"
+                  <CodeTag
+                    className="Login__CodeTag--highlight"
+                    close={false}
+                    closing={true}
+                    text="Wachtwoord"
                   >
-                    &lt;Wachtwoord /&gt;
-                  </label>
+                    <div
+                      className="CodeTag Login__CodeTag--highlight"
+                    >
+                      &lt;
+                      Wachtwoord
+                      &gt;
+                    </div>
+                  </CodeTag>
                   <Input
                     icon={
                       <Icon
@@ -136,11 +161,19 @@ exports[`Login should render Login 1`] = `
               </FormField>
             </div>
           </FormGroup>
-          <div
-            className="Login__CodeTag"
+          <CodeTag
+            close={false}
+            closing={true}
+            text="Start"
           >
-            &lt;/Start&gt;
-          </div>
+            <div
+              className="CodeTag"
+            >
+              &lt;
+              Start
+              &gt;
+            </div>
+          </CodeTag>
           <FormButton
             as={[Function]}
             control={[Function]}
