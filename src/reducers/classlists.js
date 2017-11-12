@@ -16,4 +16,3 @@ export default function classlistsReducer(state = initialState.classlists, {type
       return state;
   }
 }
-
