@@ -921,3 +921,227 @@ exports[`Login should show error when hasError 1`] = `
   </div>
 </Login>
 `;
+
+exports[`Login should show loading screen when loading 1`] = `
+<Login
+  credentials={Object {}}
+  loading={true}
+>
+  <div
+    className="Login"
+  >
+    <img
+      className="Login__Rambdass"
+      src="ramdass-welkom.png"
+    />
+    <CFLoader
+      active={true}
+    >
+      <Dimmer
+        active={true}
+      >
+        <div
+          className="ui active transition visible dimmer"
+          onClick={[Function]}
+        >
+          <div
+            className="content"
+          >
+            <div
+              className="center"
+            >
+              <Loader
+                size="medium"
+              >
+                <div
+                  className="ui medium text loader"
+                >
+                  Loading
+                </div>
+              </Loader>
+            </div>
+          </div>
+        </div>
+      </Dimmer>
+    </CFLoader>
+    <div
+      className="Login__Wrapper"
+    >
+      <Form
+        as="form"
+        className="Login__Form"
+      >
+        <form
+          className="ui form Login__Form"
+          onSubmit={[Function]}
+        >
+          <CodeTag
+            close={false}
+            text="Start"
+          >
+            <div
+              className="CodeTag"
+            >
+              &lt;
+              Start
+              &gt;
+            </div>
+          </CodeTag>
+          <FormGroup
+            inline={true}
+          >
+            <div
+              className="inline fields"
+            >
+              <FormField>
+                <div
+                  className="field"
+                >
+                  <CodeTag
+                    className="Login__CodeTag--highlight"
+                    close={false}
+                    closing={true}
+                    text="Uw gebruikersnaam"
+                  >
+                    <div
+                      className="CodeTag Login__CodeTag--highlight"
+                    >
+                      &lt;
+                      Uw gebruikersnaam
+                      &gt;
+                    </div>
+                  </CodeTag>
+                  <input
+                    name="username"
+                    placeholder="Uw gebruikersnaam"
+                  />
+                </div>
+              </FormField>
+            </div>
+          </FormGroup>
+          <FormGroup
+            inline={true}
+          >
+            <div
+              className="inline fields"
+            >
+              <FormField>
+                <div
+                  className="field"
+                >
+                  <CodeTag
+                    className="Login__CodeTag--highlight"
+                    close={false}
+                    closing={true}
+                    text="Wachtwoord"
+                  >
+                    <div
+                      className="CodeTag Login__CodeTag--highlight"
+                    >
+                      &lt;
+                      Wachtwoord
+                      &gt;
+                    </div>
+                  </CodeTag>
+                  <Input
+                    icon={
+                      <Icon
+                        as="i"
+                        className="eye-icon"
+                        inverted={true}
+                        link={true}
+                        name="eye"
+                        onClick={undefined}
+                      />
+                    }
+                    name="password"
+                    placeholder="Wachtwoord"
+                    type="text"
+                  >
+                    <div
+                      className="ui icon input"
+                    >
+                      <input
+                        key="text"
+                        name="password"
+                        onChange={[Function]}
+                        placeholder="Wachtwoord"
+                        type="text"
+                      />
+                      <Icon
+                        as="i"
+                        className="eye-icon"
+                        inverted={true}
+                        link={true}
+                        name="eye"
+                      >
+                        <i
+                          aria-hidden="true"
+                          className="eye inverted link icon eye-icon"
+                        />
+                      </Icon>
+                    </div>
+                  </Input>
+                </div>
+              </FormField>
+            </div>
+          </FormGroup>
+          <CodeTag
+            close={false}
+            closing={true}
+            text="Start"
+          >
+            <div
+              className="CodeTag"
+            >
+              &lt;
+              Start
+              &gt;
+            </div>
+          </CodeTag>
+          <FormButton
+            as={[Function]}
+            control={[Function]}
+            primary={true}
+          >
+            <FormField
+              control={[Function]}
+              primary={true}
+            >
+              <div
+                className="field"
+              >
+                <Button
+                  as="button"
+                  primary={true}
+                >
+                  <button
+                    className="ui primary button"
+                    onClick={[Function]}
+                    role="button"
+                  >
+                    Login
+                  </button>
+                </Button>
+              </div>
+            </FormField>
+          </FormButton>
+        </form>
+      </Form>
+    </div>
+    <button
+      className="Login__ImpersonateLink"
+    >
+      <Icon
+        as="i"
+        name="lock"
+      >
+        <i
+          aria-hidden="true"
+          className="lock icon"
+        />
+      </Icon>
+    </button>
+  </div>
+</Login>
+`;

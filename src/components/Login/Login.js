@@ -13,7 +13,6 @@ const Login = ({
   impersonate,
   credentials,
   hidden,
-  hasError,
   error,
   loading,
   submit,
@@ -72,7 +71,7 @@ const Login = ({
             </Form.Field>
           </Form.Group>
           <CodeTag text="Start" closing />
-          {hasError && <ErrorMessage header="Login mislukt" message={error} />}
+          {error && <ErrorMessage header="Login mislukt" message={error} />}
           <Form.Button primary>Login</Form.Button>
         </Form>
       </div>
@@ -89,7 +88,6 @@ Login.propTypes = {
   credentials: PropTypes.object,
   hidden: PropTypes.bool,
   hasError: PropTypes.bool,
-  error: PropTypes.string,
   loading: PropTypes.bool
 };
 

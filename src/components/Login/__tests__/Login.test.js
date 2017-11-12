@@ -23,9 +23,13 @@ describe('Login', () => {
   });
 
   it('should show error when hasError', () => {
-    const component = mountToJson(
-      <Login credentials={{}} hasError error="We failed!" />
-    );
+    const component = mountToJson(<Login credentials={{}} hasError error="We failed!" />);
+
+    expect(component).toMatchSnapshot();
+  });
+
+  it('should show loading screen when loading', () => {
+    const component = mountToJson(<Login credentials={{}} loading />);
 
     expect(component).toMatchSnapshot();
   });

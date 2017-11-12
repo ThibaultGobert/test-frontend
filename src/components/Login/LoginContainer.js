@@ -77,12 +77,12 @@ class LoginContainer extends Component {
   }
 
   render() {
-    const { hasError, error } = this.props;
+    const { error, loading } = this.props;
 
     return (
       <Login
-        hasError={hasError}
         error={error}
+        loading={loading}
         submit={this.submit}
         onChange={this.onChange}
         toggleHidden={this.toggleHidden}
@@ -96,7 +96,6 @@ class LoginContainer extends Component {
 
 LoginContainer.propTypes = {
   loggedIn: PropTypes.object.isRequired,
-  hasError: PropTypes.bool,
   loading: PropTypes.bool,
   error: PropTypes.object,
   actions: PropTypes.object
