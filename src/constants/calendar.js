@@ -5,7 +5,6 @@ export const navigate = {
   DATE: 'DATE'
 };
 
-
 export const views = {
   MONTH: 'month',
   WEEK: 'week',

@@ -21,14 +21,14 @@ class AuthApi {
     }).then(response => {
       return mapToUser(response.data);
     }).catch(error => {
-      if(error.code == "ECONNABORTED") {
-        throw "Timeout error";
+      if(error.code === "ECONNABORTED") {
+        throw new Error("Timeout error");
       }
 
       let errorReturned = error.response.data;
 
-      if (errorReturned.status == 401 || errorReturned.status == 500) {
-        throw "Geen geldige username - wachtwoord combinatie";
+      if (errorReturned.status === 401 || errorReturned.status === 500) {
+        throw new Error("Geen geldige username - wachtwoord combinatie");
       }
 
       throw error;

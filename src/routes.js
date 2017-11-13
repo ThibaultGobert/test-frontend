@@ -3,7 +3,7 @@ import { Route, Redirect, IndexRoute } from 'react-router';
 import App from './components/App';
 import TeacherOverviewPage from "./components/teacherprofile/ClassGroupsPage";
 import ClassListPage from "./components/teacherprofile/ClassListPage";
-import LoginPage from "./components/auth/LoginPage";
+import Login from "./components/Login";
 import isEmpty from './functions/isEmpty';
 import ClanPage from "./components/studentprofile/ClassPage";
 import EditorOverviewPage from "./components/editorprofile/OverviewPage";
@@ -15,12 +15,11 @@ import CalendarPage from "./components/teacherprofile/CalendarPage";
 import CalendarDetailPage from "./components/teacherprofile/CalendarDetailPage";
 import InfoPage from "./components/teacherprofile/InfoPage";
 import * as authActions from './actions/auth';
-import ImpersonatePage from "./components/auth/ImpersonatePage";
 
 const routes = (store) => {
   return (
     <Route path="/" component={App}>
-      <IndexRoute component={LoginPage} onEnter={requireNoAuth(store)}/>
+      <IndexRoute component={Login} onEnter={requireNoAuth(store)}/>
       <Route path="/teacherprofile" onEnter={requireAuth(store)}>
         <Route path="/teacherprofile/overview" component={TeacherOverviewPage}/>
         <Route path="/teacherprofile/calendar" component={CalendarPage}/>
@@ -35,10 +34,6 @@ const routes = (store) => {
         <Route path="/studentprofile/extra" component={ExtraPage}/>
       </Route>
 
-      <Route path="/editorprofile" onEnter={requireAuth(store)}>
-        <Route path="/editorprofile/overview" component={EditorOverviewPage}/>
-      </Route>
-
       <Route path="/workshopprofile" onEnter={requireAuth(store)}>
         <Route path="/workshopprofile/overview" component={WorkshopOverviewPage}/>
       </Route>
@@ -47,8 +42,7 @@ const routes = (store) => {
         <Route path="/slideviewer/:id/:type" component={SlideViewerPage}/>
         <Route path="/slideviewer/:id" component={SlideViewerPage}/>
       </Route>
-      <Route name="login" path="/login" component={LoginPage} onEnter={requireNoAuth(store)}/>
-      <Route name="impersonate" path="/impersonate" component={ImpersonatePage} onEnter={requireNoAuth(store)}/>
+      <Route name="login" path="/login" component={Login} onEnter={requireNoAuth(store)}/>
 
       <Redirect from="/" to="login" />
       <Redirect from="*" to="login" />

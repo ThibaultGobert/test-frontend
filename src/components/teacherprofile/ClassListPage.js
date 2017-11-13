@@ -4,16 +4,12 @@ import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import * as courseActions from "../../actions/courses";
 import {browserHistory} from "react-router";
-import {Button, Message} from "semantic-ui-react";
+import {Button} from "semantic-ui-react";
 import ErrorMessage from '../shared/ErrorMessage';
 import Loader from '../shared/Loader';
 import DataTable from "../shared/DataTable";
 import * as subscriptionTypes from '../../constants/subscriptionTypes';
 import _ from 'lodash';
-
-String.prototype.replaceAll = function(target, replacement) {
-  return this.split(target).join(replacement);
-};
 
 class ClassListPage extends React.Component {
   // init state + bind functions
@@ -24,7 +20,7 @@ class ClassListPage extends React.Component {
   }
 
   componentDidMount() {
-    this.props.actions.loadChildren(this.props.courseId);
+    this.props.actions.loadChildrenIfNeeded(this.props.courseId);
   }
 
   redirectToClassGroups() {
@@ -33,18 +29,26 @@ class ClassListPage extends React.Component {
 
   // render function --> typically calling child component, here is markup inline
   render() {
-    let data = this.props.classlist.map(student => {
+    const {
+      classList,
+      loading,
+      hasError,
+      error,
+      course
+    } = this.props;
+
+    let data = classList.map(student => {
       let highlight = false;
-      if (student.subscription_type == subscriptionTypes.TRIAL) {
+      if (student.subscription_type === subscriptionTypes.TRIAL) {
         highlight = true;
       }
 
-      return Object.assign(student, {highlight: highlight});
+      return Object.assign(student, {highlight});
     });
 
     let columns = [
       {
-        defaults: require('../../../images/placeholders/no-user.png'),
+        defaults: require('../../assets/images/placeholders/no-user.png'),
         display: "",
         key: "avatarurlmedium",
         type: "string"
@@ -110,12 +114,12 @@ class ClassListPage extends React.Component {
       <div className="class-list">
         <Button labelPosition="left" icon="left chevron" content="Terug" onClick={this.redirectToClassGroups}/>
         <div className="class-list-header">
-          <h1>Klaslijst {this.props.course? this.props.course.name: ""} </h1>
+          <h1>Klaslijst {course? course.name: ""} </h1>
           <Button className="download-classlist" disabled>Download klaslijst</Button>
         </div>
 
-        <Loader active={this.props.loading}/>
-        {!this.props.hasError &&
+        <Loader active={loading}/>
+        {!hasError &&
           <div>
             <DataTable data={data} columns={columns}/>
             <div className="legende">
@@ -128,7 +132,7 @@ class ClassListPage extends React.Component {
           </div>
         }
 
-        { this.props.hasError && <ErrorMessage header="Fout bij inladen" message={this.props.error.message} />}
+        { hasError && <ErrorMessage header="Fout bij inladen" message={error.message} />}
       </div>
     );
   }
@@ -149,20 +153,25 @@ ClassListPage.propTypes = {
   error: PropTypes.object.isRequired,
   hasError: PropTypes.bool.isRequired,
   courseId: PropTypes.string.isRequired,
-  classlist: PropTypes.arrayOf(PropTypes.object).isRequired,
+  classList: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 // redux connect and related functions
 function mapStateToProps(state, ownProps) {
   const courseId = ownProps.params.id; // from path /course/:id
   const course = getCourseById(state.courses.data, courseId);
+  let classList = state.classlists[courseId];
+  if (!classList) {
+    classList = [];
+  }
+
   return {
-    classlist: state.classlist.data,
-    loading: state.classlist.loading,
-    error: state.classlist.error,
-    hasError: state.classlist.hasError,
-    courseId: courseId,
-    course: course
+    classList: classList,
+    loading: state.classlists.loading,
+    hasError: state.classlists.hasError,
+    error: state.classlists.error,
+    courseId,
+    course
   };
 }
 

@@ -10,13 +10,8 @@ import Loader from "../shared/Loader";
 import Reloader from '../shared/Reloader';
 
 class CalendarPage extends React.Component {
-  // init state + bind functions
-  constructor(props, context) {
-    super(props, context);
-  }
-
   componentDidMount() {
-    if(_.isEmpty(this.props.calendar) && this.props.error == null) {
+    if(_.isEmpty(this.props.calendar) && this.props.error === null) {
       this.props.actions.loadCalendar();
     }
   }
@@ -63,18 +58,6 @@ function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(calendarActions, dispatch)
   };
-}
-
-function findByKey(obj, key) {
-  if (_.has(obj, key))
-    return [obj[key]];
-
-  let res = [];
-  _.forEach(obj, function(v) {
-    if (typeof v == "object" && (v = findByKey(v, key)).length)
-      res.push.apply(res, v);
-  });
-  return res;
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CalendarPage);

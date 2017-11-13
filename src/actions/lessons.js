@@ -33,3 +33,14 @@ export function loadLessonSlides(lessonId, lessonType, slideType){
     });
   };
 }
+
+export function searchLessons(filterValues) {
+  return function(dispatch) {
+    dispatch(beginAjaxCall(types.FETCH_LESSONS));
+    return lessonApi.searchLessons(filterValues).then((lessons) => {
+      dispatch(loadLessonsSuccess(lessons));
+    }).catch(error => {
+      dispatch(ajaxCallError(types.FETCH_LESSONS_ERROR, error));
+    });
+  };
+}

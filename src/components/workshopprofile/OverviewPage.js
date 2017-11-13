@@ -17,7 +17,7 @@ class ClanPage extends React.Component {
   }
 
   componentDidMount() {
-    if( this.props.error == null) {
+    if( this.props.error === null) {
       this.fetchLessons();
     }
   }

@@ -24,7 +24,7 @@ export default {
     error: null,
     hasError: false
   },
-  classlist: {
+  classlists: {
     data: [],
     loading: false,
     error: null,
@@ -35,5 +35,19 @@ export default {
     loading: false,
     error: null,
     hasError: false
+  },
+  organisation: {
+    groups: {
+      data: {},
+      loading: false,
+      error: null,
+      hasError: false
+    },
+    levels: {
+      data: {},
+      loading: false,
+      error: null,
+      hasError: false
+    }
   }
 };

@@ -5,7 +5,7 @@ import * as slideTypes from '../../../constants/slideTypes';
 const MetaSlideData = ({slide, slideType}) => {
   return(
     <div className="meta-slide-data">
-      { slideType == slideTypes.INFO &&
+      { slideType === slideTypes.INFO &&
         <div className="slide-id">
           ID: {slide.id}
         </div>

@@ -23,7 +23,7 @@ class LessonApi {
     }).then(response => {
       let lessons = response.data.filter(lesson => lesson.activateStudent);
       if (_.isEmpty(lessons)) {
-        throw "Geen lessen beschikbaar";
+        throw new Error("Geen lessen beschikbaar");
       }
       return lessons;
     }).catch(error => {
@@ -47,9 +47,9 @@ class LessonApi {
       lesson.slideType = slideType;
       let role = store.getState().loggedIn.data.role;
 
-      if (role === userRoles.TEACHER_ROLE && !lesson.activateTeacher ||
-        role === userRoles.STUDENT_ROLE && !lesson.activateStudent) {
-        throw "Les is niet beschikbaar";
+      if ((role === userRoles.TEACHER_ROLE && !lesson.activateTeacher) ||
+        (role === userRoles.STUDENT_ROLE && !lesson.activateStudent)) {
+        throw new Error("Les is niet beschikbaar");
       }
 
       return lesson;
@@ -68,6 +68,24 @@ class LessonApi {
         'Access-Control-Allow-Origin': '*',
         'x-token': store.getState().loggedIn.data.token
       }
+    }).then(response => {
+      return response.data;
+    }).catch(error => {
+      throw error;
+    });
+  }
+
+  static searchLessons(filterValues) {
+    return axios.request({
+      method: 'post',
+      url: baseUrl + "/lessons/searchLessons",
+      timeout: 3000,
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+        'x-token': store.getState().loggedIn.data.token
+      },
+      data: filterValues
     }).then(response => {
       return response.data;
     }).catch(error => {

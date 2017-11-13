@@ -18,7 +18,7 @@ class AuthApi {
   static login(credentials) {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        if (credentials.username == "deghesellesimon") {
+        if (credentials.username === "deghesellesimon") {
           reject('Geen juiste username - paswoord combinatie, probeer opnieuw');
         }
 

@@ -1,19 +1,20 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {Message} from 'semantic-ui-react';
 
 const ErrorMessage = ({header, message}) => {
+  const displayMessage = message instanceof Error
+    ? message.message
+    : message;
+
   return (
     <Message negative>
       <Message.Header>{header? header: ""}</Message.Header>
-      <p>{message? message: ""}</p>
+      <p>{displayMessage ? displayMessage : ""}</p>
     </Message>
   );
 };
 
 ErrorMessage.propTypes = {
-  header: PropTypes.string,
-  message: PropTypes.string
 };
 
 export default ErrorMessage;

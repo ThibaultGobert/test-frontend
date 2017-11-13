@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import * as subscriptionTypes from '../../constants/subscriptionTypes';
 
 export default (data) => {
@@ -16,11 +15,11 @@ export default (data) => {
 };
 
 function mapToSubscriptionType(type) {
-  if (type == "Subscription") {
+  if (type === "Subscription") {
     return subscriptionTypes.SUBSCRIPTION;
   }
 
-  if (type == "Trial") {
+  if (type === "Trial") {
     return subscriptionTypes.TRIAL;
   }
 
@@ -36,7 +35,7 @@ let categoryMap = {
 };
 
 function mapToPasswordHint(category, hint) {
-  if (category == "other") {
+  if (category === "other") {
     return hint;
   } else {
     return categoryMap[category];

@@ -118,13 +118,13 @@ class SlideViewer extends React.Component {
         <div className="slide-show-content">
           <div className="slide-show-inner-content">
             <div className={hideLeftButton + " left control-button"} onClick={this.previousSlide}>
-              <img src={require('../../../../images/slideviewer/back.png')} alt=""/>
+              <img src={require('../../../assets/images/slideviewer/back.png')} alt=""/>
             </div>
             <Scrollbars className="scrollbars" autoHeightMax={200}>
               { this.renderSlide() }
             </Scrollbars>
             <div className={hideRightButton + " right control-button"} onClick={this.nextSlide}>
-              <img src={require('../../../../images/slideviewer/next.png')} alt=""/>
+              <img src={require('../../../assets/images/slideviewer/next.png')} alt=""/>
             </div>
           </div>
         </div>

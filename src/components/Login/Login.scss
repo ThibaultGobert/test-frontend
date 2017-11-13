@@ -1,0 +1,53 @@
+.Login .Login__Wrapper {
+  background: #337ab7;
+  display: inline-block;
+  margin-left: 250px;
+  margin-top: 50px;
+
+  padding: 2em;
+  border-radius: 1em;
+}
+
+.Login .Login__Form {
+  min-width: 750px;
+  margin: 0 auto;
+
+  padding: 5em 3em;
+  background: #262626;
+  border-radius: 25px;
+  border: 10px solid #222;
+}
+
+.Login .Login__CodeTag--highlight {
+  color: yellow;
+  margin-left: 1em !important;
+  min-width: 12em;
+  display: inline-block;
+}
+
+.Login .field input {
+  width: 20em !important;
+}
+
+.Login .ui.form .field > label {
+  color: #fff;
+}
+
+.Login button {
+  float: right;
+  margin-top: 1.5em !important;
+}
+
+.Login .Login__ImpersonateLink {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  cursor: pointer;
+}
+
+.Login .Login__Rambdass {
+  position: absolute;
+  bottom: 50px;
+  left: 50px;
+  width: 250px;
+}

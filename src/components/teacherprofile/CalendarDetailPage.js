@@ -24,11 +24,9 @@ class CalendarDetailPage extends React.Component {
 
   componentDidMount() {
     lessonApi.getLessonMetaData(this.props.event.programlessonid).then(metadata => {
-      let contentUrls = metadata.map(dataForLesson => {
-        if(dataForLesson.ziplocation !== undefined && dataForLesson.ziplocation) {
-          return dataForLesson.ziplocation;
-        }
-      });
+      let contentUrls = metadata.filter(dataForLesson => {
+          return dataForLesson.ziplocation !== undefined && dataForLesson.ziplocation;
+      }).map(dataForLesson => dataForLesson.ziplocation);
       contentUrls = _.without(contentUrls, undefined);
       this.setState({
         lessonContentLoading: false,
@@ -51,8 +49,12 @@ class CalendarDetailPage extends React.Component {
       event
     } = this.props;
 
-    let classhome = _.find(event.lessonEntities, {lessonType: lessonTypes.CLASSHOME});
-    let extra = _.find(event.lessonEntities, {lessonType: lessonTypes.EXTRA});
+    let classhome;
+    let extra;
+    if (event) {
+      classhome = _.find(event.lessonEntities, {lessonType: lessonTypes.CLASSHOME});
+      extra = _.find(event.lessonEntities, {lessonType: lessonTypes.EXTRA});
+    }
 
     let slideviewerUrl;
     let extraSlideviewerUrl;
@@ -102,7 +104,7 @@ class CalendarDetailPage extends React.Component {
           <Link to={extraSlideviewerUrl}>
             { hasExtraLesson && <Button primary ><Icon name="trophy"/>Extra</Button>}
           </Link>
-          <Button loading={this.state.lessonContentLoading} onClick={this.downloadLescontent} disabled={this.state.contentUrl == undefined}>Download lescontent</Button>
+          <Button loading={this.state.lessonContentLoading} onClick={this.downloadLescontent} disabled={this.state.contentUrl === undefined}>Download lescontent</Button>
         </div>
       </div>
     );
@@ -118,7 +120,7 @@ CalendarDetailPage.contextTypes = {
 };
 
 function getEventById(events, id) {
-  const event = events.filter(event => event.id == id);
+  const event = _.filter(events, event => event.id == id);
   if (event) {
     return event[0];
   }
@@ -129,7 +131,6 @@ function getEventById(events, id) {
 function mapStateToProps(state, ownProps) {
   const eventId = ownProps.params.eventId; // from path /course/:id
   let event = getEventById(state.calendar.data, eventId);
-
   return {
     event: event,
   };
