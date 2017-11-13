@@ -1,10 +1,17 @@
 import _ from 'lodash';
+import * as lessonTypes from '../../constants/lessonTypes';
 
 export default (data) => {
   let lessons = data.map(course => {
     return course.lessons.map(lesson => {
       if (lesson.courseStartdate === undefined || lesson.courseEnddate === undefined) {
         return null;
+      }
+
+      let classhome = _.find(lesson.lessonEntities, {lessonType: lessonTypes.CLASSHOME});
+
+      if (classhome) {
+        lesson.name = `${course.clan} ${course.level} ${classhome.name}`;
       }
 
       let element =Object.assign(lesson, {

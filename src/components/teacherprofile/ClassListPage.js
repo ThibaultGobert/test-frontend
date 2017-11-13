@@ -139,7 +139,7 @@ class ClassListPage extends React.Component {
 }
 
 function getCourseById(courses, id) {
-  const course = courses.filter(course => course.id === id);
+  const course = courses.filter(course => course.id == id);
   if (course) {
     return course[0];
   }

@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router';
+import {Image} from 'semantic-ui-react';
+import _ from 'lodash';
 
 const LessonList = ({lessons, slideType, showLockedLessons}) => {
   let lessonCount = lessons.length;
@@ -12,7 +14,7 @@ const LessonList = ({lessons, slideType, showLockedLessons}) => {
   return (
     <div className="cards">
       {
-        lessons.map(lesson => {
+        _.map(lessons, lesson => {
           let slideViewerLink = "/slideviewer/" + lesson.id;
           if (slideType) {
             slideViewerLink += '/' + slideType;
@@ -22,14 +24,16 @@ const LessonList = ({lessons, slideType, showLockedLessons}) => {
           return(
             <div className="cardholder" key={lessonKey}>
               <Link to={slideViewerLink}>
+                <Image src={require(`../../assets/images/placeholders/les${lesson.order}.png`)} alt="" shape="rounded"/>
               </Link>
             </div>
           );
         })
       }
       { showLockedLessons &&
-        lessonLocked.map(lessonOrder => {
+        _.map(lessonLocked, lessonOrder => {
           return (<div className="cardholder" key={"lessonOrder-" + lessonOrder}>
+            <Image src={require(`../../assets/images/placeholders/les${lessonOrder}-locked.png`)} alt="" shape="rounded"/>
           </div>);
         })
       }

@@ -48,6 +48,7 @@ const Login = ({
                   placeholder="Gebruikersnaam kind"
                   onChange={onChange}
                   name="child_username"
+                  value={credentials.child_username}
                 />
               </Form.Field>
             </Form.Group>
@@ -76,9 +77,7 @@ const Login = ({
         </Form>
       </div>
 
-      <button className="Login__ImpersonateLink" onClick={toggleImpersonate}>
-        <Icon name="lock" />
-      </button>
+      <Icon name={ impersonate ? "unlock" : "lock"} className="Login__ImpersonateLink" onClick={toggleImpersonate} />
     </div>
   );
 };

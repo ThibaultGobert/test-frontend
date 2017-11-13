@@ -49,8 +49,12 @@ class CalendarDetailPage extends React.Component {
       event
     } = this.props;
 
-    let classhome = _.find(event.lessonEntities, {lessonType: lessonTypes.CLASSHOME});
-    let extra = _.find(event.lessonEntities, {lessonType: lessonTypes.EXTRA});
+    let classhome;
+    let extra;
+    if (event) {
+      classhome = _.find(event.lessonEntities, {lessonType: lessonTypes.CLASSHOME});
+      extra = _.find(event.lessonEntities, {lessonType: lessonTypes.EXTRA});
+    }
 
     let slideviewerUrl;
     let extraSlideviewerUrl;
@@ -116,7 +120,7 @@ CalendarDetailPage.contextTypes = {
 };
 
 function getEventById(events, id) {
-  const event = events.filter(event => event.id === id);
+  const event = _.filter(events, event => event.id == id);
   if (event) {
     return event[0];
   }
@@ -127,7 +131,6 @@ function getEventById(events, id) {
 function mapStateToProps(state, ownProps) {
   const eventId = ownProps.params.eventId; // from path /course/:id
   let event = getEventById(state.calendar.data, eventId);
-
   return {
     event: event,
   };

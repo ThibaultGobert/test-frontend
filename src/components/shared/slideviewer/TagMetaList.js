@@ -36,11 +36,13 @@ const TagMetaList = ({ tags, viewType }) => {
   return (
     <div className="meta-list">
       <ul>
-        {tags.filter(tag => tag !== '').map(tag => (
-          <li key={tag}>
-            <Label>{mapToTag(tag)}</Label>
-          </li>
-        ))}
+        {tags.filter(tag => tag !== '').map(tag => {
+          if (tag) {
+            return (<li key={tag}>
+              <Label>{mapToTag(tag)}</Label>
+            </li>);
+          }
+        })}
       </ul>
       <span className="view-type">
         <Icon circular className={classClassName} name="group" />
