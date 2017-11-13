@@ -34,10 +34,6 @@ const routes = (store) => {
         <Route path="/studentprofile/extra" component={ExtraPage}/>
       </Route>
 
-      <Route path="/editorprofile" onEnter={requireAuth(store)}>
-        <Route path="/editorprofile/overview" component={EditorOverviewPage}/>
-      </Route>
-
       <Route path="/workshopprofile" onEnter={requireAuth(store)}>
         <Route path="/workshopprofile/overview" component={WorkshopOverviewPage}/>
       </Route>

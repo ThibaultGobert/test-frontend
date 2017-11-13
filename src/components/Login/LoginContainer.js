@@ -35,7 +35,8 @@ class LoginContainer extends Component {
       } else if (nextProps.loggedIn.role === roles.WORKSHOP_STUDENT_ROLE) {
         this.context.router.push('/workshopprofile/overview');
       } else if (nextProps.loggedIn.role === roles.EDITOR_ROLE) {
-        this.context.router.push('/editorprofile/overview');
+        toastr.error('Geen toegang voor lesmakers');
+        this.props.actions.logOut();
       } else if (nextProps.loggedIn.role === roles.ADMIN_ROLE) {
         toastr.error('Geen toegang voor admins');
         this.props.actions.logOut();
