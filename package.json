@@ -2,6 +2,7 @@
   "name": "lpf-frontend-cra",
   "version": "0.1.0",
   "private": true,
+  "homepage": ".",
   "dependencies": {
     "axios": "0.16.2",
     "babel-polyfill": "^6.26.0",
