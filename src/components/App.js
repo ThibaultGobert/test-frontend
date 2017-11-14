@@ -21,8 +21,6 @@ class App extends React.Component {
         {!isEmpty(loggedIn) && loggedIn.role === userRoles.STUDENT_ROLE && <StudentHeader user={loggedIn}/>}
         {!isEmpty(loggedIn) && loggedIn.role === userRoles.WORKSHOP_STUDENT_ROLE &&
         <WorkshopStudentHeader user={loggedIn}/>}
-        {!isEmpty(loggedIn) && loggedIn.role === userRoles.WORKSHOP_STUDENT_ROLE &&
-        <WorkshopStudentHeader user={loggedIn}/>}
         {!isEmpty(loggedIn) && loggedIn.role === userRoles.EDITOR_ROLE && <EditorHeader user={loggedIn}/>}
         {isEmpty(loggedIn) && <LoginHeader/>}
 
