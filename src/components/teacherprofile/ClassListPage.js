@@ -43,7 +43,7 @@ class ClassListPage extends React.Component {
         highlight = true;
       }
 
-      return Object.assign(student, {highlight});
+      return Object.assign({}, student, {highlight});
     });
 
     let columns = [
@@ -150,7 +150,7 @@ ClassListPage.propTypes = {
   actions: PropTypes.object.isRequired,
   course: PropTypes.object.isRequired,
   loading: PropTypes.bool.isRequired,
-  error: PropTypes.object.isRequired,
+  error: PropTypes.object,
   hasError: PropTypes.bool.isRequired,
   courseId: PropTypes.string.isRequired,
   classList: PropTypes.arrayOf(PropTypes.object).isRequired,
@@ -160,7 +160,7 @@ ClassListPage.propTypes = {
 function mapStateToProps(state, ownProps) {
   const courseId = ownProps.params.id; // from path /course/:id
   const course = getCourseById(state.courses.data, courseId);
-  let classList = state.classlists[courseId];
+  let classList = state.classlists.data[courseId];
   if (!classList) {
     classList = [];
   }

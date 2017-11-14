@@ -6,7 +6,6 @@ import ClassListPage from "./components/teacherprofile/ClassListPage";
 import Login from "./components/Login";
 import isEmpty from './functions/isEmpty';
 import ClanPage from "./components/studentprofile/ClassPage";
-import EditorOverviewPage from "./components/editorprofile/OverviewPage";
 import WorkshopOverviewPage from './components/workshopprofile/OverviewPage';
 import ExtraPage from "./components/studentprofile/ExtraPage";
 import HomeworkPage from "./components/studentprofile/HomeworkPage";
@@ -14,6 +13,7 @@ import SlideViewerPage from "./components/shared/slideviewer/SlideViewerPage";
 import CalendarPage from "./components/teacherprofile/CalendarPage";
 import CalendarDetailPage from "./components/teacherprofile/CalendarDetailPage";
 import InfoPage from "./components/teacherprofile/InfoPage";
+import Attendance from './components/teacherprofile/Attendance';
 import * as authActions from './actions/auth';
 
 const routes = (store) => {
@@ -25,6 +25,7 @@ const routes = (store) => {
         <Route path="/teacherprofile/calendar" component={CalendarPage}/>
         <Route path="/teacherprofile/calendar/:eventId" component={CalendarDetailPage}/>
         <Route path="/teacherprofile/classlist/:id" component={ClassListPage}/>
+        <Route path="/teacherprofile/feedback/:id" component={Attendance}/>
         <Route path="/teacherprofile/info" component={InfoPage}/>
       </Route>
 

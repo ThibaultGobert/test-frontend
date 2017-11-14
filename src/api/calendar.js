@@ -15,8 +15,7 @@ class CalendarApi {
         'x-token': store.getState().loggedIn.data.token
       }
     }).then(response => {
-      let calendar = mapToCalendar(response.data);
-      return calendar;
+      return mapToCalendar(response.data);
     }).catch(error => {
       throw error;
     });

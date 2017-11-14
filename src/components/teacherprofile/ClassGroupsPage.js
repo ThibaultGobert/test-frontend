@@ -79,8 +79,8 @@ ClassGroupsPage.propTypes = {
   actions: PropTypes.object.isRequired,
   courses: PropTypes.arrayOf(PropTypes.object),
   loading: PropTypes.bool,
-  error: PropTypes.object.isRequired,
-  hasError: PropTypes.bool.isRequired,
+  error: PropTypes.object,
+  hasError: PropTypes.bool,
 };
 
 function mapStateToProps(state, ownProps) {

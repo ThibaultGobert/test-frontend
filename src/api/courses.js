@@ -16,8 +16,7 @@ class CourseApi {
         'x-token': store.getState().loggedIn.data.token
       }
     }).then(response => {
-      let courses = mapToCourses(response.data);
-      return courses;
+      return mapToCourses(response.data);
     }).catch(error => {
       throw error;
     });
@@ -34,8 +33,7 @@ class CourseApi {
         'x-token': store.getState().loggedIn.data.token
       }
     }).then(response => {
-      let classlist = mapToClassList(response.data);
-      return classlist;
+      return mapToClassList(response.data);
     }).catch(error => {
       throw error;
     });

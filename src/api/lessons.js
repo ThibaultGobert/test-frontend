@@ -1,7 +1,8 @@
 import axios from 'axios';
 import store from '../index';
 import baseUrl from './baseUrl';
-import _ from 'lodash';
+import mapToLessons from './mappers/mapToLessons'
+import mapToLessonSlides from './mappers/mapToLessonSlides';
 import * as userRoles from '../constants/roles';
 
 class LessonApi {
@@ -21,11 +22,7 @@ class LessonApi {
         'x-token': store.getState().loggedIn.data.token
       }
     }).then(response => {
-      let lessons = response.data.filter(lesson => lesson.activateStudent);
-      if (_.isEmpty(lessons)) {
-        throw new Error("Geen lessen beschikbaar");
-      }
-      return lessons;
+      return mapToLessons(response.data);
     }).catch(error => {
       throw error;
     });
@@ -43,16 +40,7 @@ class LessonApi {
         'x-token': store.getState().loggedIn.data.token
       }
     }).then(response => {
-      let lesson =  response.data;
-      lesson.slideType = slideType;
-      let role = store.getState().loggedIn.data.role;
-
-      if ((role === userRoles.TEACHER_ROLE && !lesson.activateTeacher) ||
-        (role === userRoles.STUDENT_ROLE && !lesson.activateStudent)) {
-        throw new Error("Les is niet beschikbaar");
-      }
-
-      return lesson;
+      return mapToLessonSlides(response.data);
     }).catch(error => {
       throw error;
     });

@@ -37,7 +37,7 @@ export function loadChildren(courseId) {
 }
 
 function shouldFetchChildren(state, courseId) {
-  const classList = state.classlists[courseId];
+  const classList = state.classlists.data[courseId];
   if (!classList) {
     return true
   } else if (state.classlists.loading) {
@@ -51,6 +51,22 @@ export function loadChildrenIfNeeded(courseId) {
   return (dispatch, getState) => {
     if (shouldFetchChildren(getState(), courseId)) {
       return dispatch(loadChildren(courseId))
+    }
+  };
+}
+
+function shouldFetchCourses(state) {
+  if (state.courses.loading) {
+    return false
+  } else {
+    return state.courses.hasError
+  }
+}
+
+export function loadCoursesIfNeeded() {
+  return (dispatch, getState) => {
+    if (shouldFetchCourses(getState())) {
+      return dispatch(loadCourses())
     }
   };
 }
