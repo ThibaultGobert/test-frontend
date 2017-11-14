@@ -28,18 +28,6 @@ const Login = ({
       <div className="Login__Wrapper">
         <Form className="Login__Form" onSubmit={submit}>
           <CodeTag text="Start" />
-          <Form.Group inline>
-            <Form.Field>
-              <CodeTag text="Uw gebruikersnaam" className="Login__CodeTag--highlight" closing />
-              <input
-                placeholder="Uw gebruikersnaam"
-                onChange={onChange}
-                name="username"
-                value={credentials.username}
-              />
-            </Form.Field>
-          </Form.Group>
-
           {impersonate && (
             <Form.Group inline>
               <Form.Field>
@@ -53,6 +41,19 @@ const Login = ({
               </Form.Field>
             </Form.Group>
           )}
+          
+          <Form.Group inline>
+            <Form.Field>
+              <CodeTag text="Gebruikersnaam" className="Login__CodeTag--highlight" closing />
+              <input
+                placeholder="Gebruikersnaam"
+                onChange={onChange}
+                name="username"
+                value={credentials.username}
+              />
+            </Form.Field>
+          </Form.Group>
+
 
           <Form.Group inline>
             <Form.Field>
