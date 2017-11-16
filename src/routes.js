@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Redirect, IndexRoute } from 'react-router';
 import App from './components/App';
 import TeacherOverviewPage from "./components/teacherprofile/ClassGroupsPage";
-import ClassListPage from "./components/teacherprofile/ClassListPage";
+import ClassList from "./components/teacherprofile/ClassList";
 import Login from "./components/Login";
 import isEmpty from './functions/isEmpty';
 import ClanPage from "./components/studentprofile/ClassPage";
@@ -24,7 +24,7 @@ const routes = (store) => {
         <Route path="/teacherprofile/overview" component={TeacherOverviewPage}/>
         <Route path="/teacherprofile/calendar" component={CalendarPage}/>
         <Route path="/teacherprofile/calendar/:eventId" component={CalendarDetailPage}/>
-        <Route path="/teacherprofile/classlist/:id" component={ClassListPage}/>
+        <Route path="/teacherprofile/classlist/:id" component={ClassList}/>
         <Route path="/teacherprofile/feedback/:id" component={Attendance}/>
         <Route path="/teacherprofile/info" component={InfoPage}/>
       </Route>

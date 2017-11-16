@@ -18,13 +18,13 @@ const ClassGroupContent = ({content}) => {
             <h3>Hoofdlesgever</h3>
             <Grid>
               <Grid.Row >
-                <Grid.Column width={3}>
+                <Grid.Column width={5}>
                   {content.headteacher.name}
                 </Grid.Column>
-                <Grid.Column width={6}>
+                <Grid.Column width={7}>
                   {content.headteacher.email}
                 </Grid.Column>
-                <Grid.Column width={6}>
+                <Grid.Column width={4}>
                   {content.headteacher.cellphone}
                 </Grid.Column>
               </Grid.Row>

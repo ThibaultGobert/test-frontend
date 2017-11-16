@@ -17,6 +17,6 @@ export default (data) => {
   data = data.map(course => {
     return _.omit(course, 'lessons');
   });
-  let newData = normalize(data, [ schema.course ]);
-  return newData;
+  data = normalize(data, [ schema.course ]);
+  return data;
 };

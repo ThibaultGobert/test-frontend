@@ -5,7 +5,6 @@ import {loadCoursesIfNeeded, loadChildrenIfNeeded} from "../../../actions/course
 import AttendanceContainer from './AttendanceContainer';
 
 const mapStateToProps = (state, ownProps) => {
-  debugger;
   const courseId = ownProps.params.id;
   const course = state.courses.data[courseId];
   const classList = state.classlists.data[courseId];
