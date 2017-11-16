@@ -1,8 +1,7 @@
 import { POST_ATTENDANCE_START, POST_ATTENDANCE_SUCCESS, POST_ATTENDANCE_ERROR } from './types';
-import userAdministrationApi from '../api/userAdministration';
 
-export function postAttendanceStart(response) {
-  return { type: POST_ATTENDANCE_START, response };
+export function postAttendanceStart() {
+  return { type: POST_ATTENDANCE_START };
 }
 
 export function postAttendanceSuccess(response) {
