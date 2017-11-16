@@ -24,12 +24,6 @@ export default {
     error: null,
     hasError: false
   },
-  classlists: {
-    data: [],
-    loading: false,
-    error: null,
-    hasError: false
-  },
   currentLesson: {
     data: {},
     loading: false,

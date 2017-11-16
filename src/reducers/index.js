@@ -5,7 +5,6 @@ import courses from './courses';
 import lessons from './lessons';
 import calendar from './calendar';
 import currentLesson from './currentLesson';
-import classlists from './classlists';
 import organisation from'./organisation';
 import users from './users';
 import locations from './locations';
@@ -18,7 +17,6 @@ const appReducer = combineReducers({
   lessons,
   calendar,
   currentLesson,
-  classlists,
   organisation,
   users,
   locations

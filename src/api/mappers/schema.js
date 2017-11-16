@@ -11,3 +11,5 @@ export const course = new schema.Entity('courses', {
   headTeacher: user,
   location: location
 });
+
+export const classList = [user];

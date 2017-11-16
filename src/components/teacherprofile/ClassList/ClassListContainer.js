@@ -32,10 +32,12 @@ class ClassListContainer extends React.Component {
       loading,
       hasError,
       error,
-      course
+      course,
+      users,
     } = this.props;
 
-    let data = classList.map(student => {
+    let data = classList.map(studentId => {
+      let student = users[studentId];
       let highlight = false;
       if (student.subscription_type === subscriptionTypes.TRIAL) {
         highlight = true;

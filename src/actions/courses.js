@@ -37,14 +37,11 @@ export function loadChildren(courseId) {
 }
 
 function shouldFetchChildren(state, courseId) {
-  const classList = state.classlists.data[courseId];
-  if (!classList) {
-    return true
-  } else if (state.classlists.loading) {
-    return false
-  } else {
-    return state.classlists.hasError
+  const course = state.courses.data[courseId];
+  if (course) {
+    return !course.hasOwnProperty('classList');
   }
+  return true;
 }
 
 export function loadChildrenIfNeeded(courseId) {
