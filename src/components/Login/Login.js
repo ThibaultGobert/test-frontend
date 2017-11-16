@@ -63,12 +63,11 @@ const Login = ({
                 onChange={onChange}
                 name="password"
                 value={credentials.password}
-              >
-                <input autocomplete={hidden ? 'on' : 'off'}/>
-                {!impersonate && (
+                autoComplete={hidden ? 'on' : 'off'}
+                icon={!impersonate && (
                   <Icon name="eye" className="eye-icon" inverted link onClick={toggleHidden} />
                 )}
-              </Input>
+              />
             </Form.Field>
           </Form.Group>
           <CodeTag text="Start" closing />
