@@ -8,13 +8,13 @@ export default function usersReducer(state = initialState.users, action) {
       return merge({}, state, { data: action.data.entities.users, loading: false, error: null, hasError: false});
 
     case types.FETCH_CHILDREN:
-      return Object.assign({}, state, {loading: true, error: null, hasError: false});
+      return merge({}, state, {loading: true, error: null, hasError: false});
 
     case types.LOAD_CHILDREN_SUCCESS:
       return merge({}, state, { data: action.data.children.entities.users, loading: false, error: null, hasError: false});
 
     case types.FETCH_CHILDREN_ERROR:
-      return Object.assign({}, state, {loading: true, error: action.error, hasError: false});
+      return merge({}, state, {loading: true, error: action.error, hasError: false});
 
     default:
       return state;
