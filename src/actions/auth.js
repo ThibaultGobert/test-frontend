@@ -1,6 +1,5 @@
 import * as types from './types';
 import authApi from '../api/auth';
-import {beginAjaxCall, ajaxCallError} from "./ajaxStatus";
 
 export function loginSuccess(user) {
   return {

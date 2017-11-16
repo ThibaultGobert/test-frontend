@@ -1,6 +1,5 @@
 import * as types from './types';
 import courseApi from '../api/courses';
-import {ajaxCallError, beginAjaxCall} from "./ajaxStatus";
 import _ from 'lodash';
 
 export function loadCoursesSuccess(data) {

@@ -1,6 +1,5 @@
 import * as types from './types';
 import organisationApi from '../api/organisation';
-import {ajaxCallError, beginAjaxCall} from "./ajaxStatus";
 
 export function loadAllLevelsSuccess(levels) {
   return {type: types.LOAD_LEVELS_SUCCESS, levels };

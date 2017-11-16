@@ -1,6 +1,5 @@
 import * as types from './types';
 import lessonApi from '../api/lessons';
-import {ajaxCallError, beginAjaxCall} from "./ajaxStatus";
 
 export function loadLessonsStart() {
   return { type: types.FETCH_LESSONS };

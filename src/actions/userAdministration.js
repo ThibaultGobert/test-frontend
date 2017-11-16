@@ -1,6 +1,5 @@
 import * as types from './types';
 import userAdministrationApi from '../api/userAdministration';
-import {ajaxCallError, beginAjaxCall} from "./ajaxStatus";
 
 export function markPresenceSuccess(response) {
   return {type: types.MARK_PRESENCE_SUCCESS, response };
