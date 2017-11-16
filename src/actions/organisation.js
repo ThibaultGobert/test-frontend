@@ -30,27 +30,3 @@ export function fetchGroupsSuccess(response) {
 export function fetchGroupsError(error) {
   return { type: FETCH_GROUPS_ERROR, error };
 }
-
-/*
-export function loadAllLevels() {
-  return function(dispatch) {
-    dispatch(beginAjaxCall(types.FETCH_LEVELS));
-    return organisationApi.getAllLevels().then((levels) => {
-      dispatch(loadAllLevelsSuccess(levels));
-    }).catch(error => {
-      dispatch(ajaxCallError(types.FETCH_LEVELS_ERROR, error));
-    });
-  };
-}
-
-export function loadAllGroups() {
-  return function(dispatch) {
-    dispatch(beginAjaxCall(types.FETCH_GROUPS));
-    return organisationApi.getAllGroups().then((groups) => {
-      dispatch(loadAllGroupsSuccess(groups));
-    }).catch(error => {
-      dispatch(ajaxCallError(types.FETCH_GROUPS_ERROR, error));
-    });
-  };
-}
-*/

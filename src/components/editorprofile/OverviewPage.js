@@ -50,11 +50,11 @@ class OverviewPage extends React.Component {
 
     organisationsApi.getAllLevels()
       .then((response) => fetchLevelsSuccess(response))
-      .then((error) => fetchLevelsError(error));
+      .catch((error) => fetchLevelsError(error));
 
     organisationsApi.getAllGroups()
       .then((response) => fetchGroupsSuccess(response))
-      .then((error) => fetchGroupsError(error));
+      .catch((error) => fetchGroupsError(error));
   }
 
   searchLessons() {
