@@ -5,7 +5,7 @@ import Login from '../Login';
 
 describe('Login', () => {
   it('should render Login', () => {
-    const component = mountToJson(<Login credentials={{}} />);
+    const component = mountToJson(<Login credentials={{}} hidden />);
 
     expect(component).toMatchSnapshot();
   });
