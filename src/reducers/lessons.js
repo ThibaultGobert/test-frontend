@@ -4,10 +4,10 @@ import merge from "lodash/merge";
 
 export default function lessonReducer(state = initialState.lessons, action) {
   switch (action.type) {
-    case types.FETCH_LESSONS:
+    case types.FETCH_LESSONS_START:
       return Object.assign({}, { data:[], loading: true, error: null, hasError: false});
 
-    case types.LOAD_LESSONS_SUCCESS:
+    case types.FETCH_LESSONS_SUCCESS:
       return Object.assign({}, { data: action.lessons, loading: false, error: null, hasError: false});
 
     case types.FETCH_LESSONS_ERROR:

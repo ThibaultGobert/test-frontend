@@ -1,16 +1,20 @@
 import * as types from './types';
 import lessonApi from '../api/lessons';
 
-export function loadLessonsStart() {
-  return { type: types.FETCH_LESSONS };
+export function fetchLessonsStart() {
+  return { type: types.FETCH_LESSONS_START };
 }
 
-export function loadLessonsSuccess(lessons) {
-  return {type: types.LOAD_LESSONS_SUCCESS, lessons };
+export function fetchLessonsSuccess(lessons) {
+  return {type: types.FETCH_LESSONS_SUCCESS, lessons };
 }
 
-export function loadLessonsError(error) {
+export function fetchLessonsError(error) {
   return { type: types.FETCH_LESSONS_ERROR, error};
+}
+
+export function fetchLessonSlidesStart() {
+
 }
 
 export function loadLessonSlidesSuccess(lessonInfo) {
