@@ -1,6 +1,7 @@
 import { normalize } from 'normalizr';
 import * as schema from './schema';
 import createDate from '../../functions/createDate';
+import _ from 'lodash';
 
 export default (data) => {
   data = data.sort((a, b) => {
@@ -13,7 +14,9 @@ export default (data) => {
     }
     return lessonDateA.getDay() - lessonDateB.getDay();
   });
-  debugger;
+  data = data.map(course => {
+    return _.omit(course, 'lessons');
+  });
   let newData = normalize(data, [ schema.course ]);
   return newData;
 };

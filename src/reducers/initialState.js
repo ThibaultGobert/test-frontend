@@ -7,7 +7,7 @@ export default {
     hasError: false
   },
   courses: {
-    data: [],
+    data: {},
     loading: false,
     error: null,
     hasError: false
@@ -49,5 +49,17 @@ export default {
       error: null,
       hasError: false
     }
+  },
+  users: {
+    data: {},
+    loading: false,
+    error: null,
+    hasError: false,
+  },
+  locations: {
+    data: {},
+    loading: false,
+    error: null,
+    hasError: false,
   }
 };

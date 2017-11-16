@@ -2,8 +2,8 @@ import * as types from './types';
 import courseApi from '../api/courses';
 import {ajaxCallError, beginAjaxCall} from "./ajaxStatus";
 
-export function loadCoursesSuccess(courses) {
-  return {type: types.LOAD_COURSES_SUCCESS, courses };
+export function loadCoursesSuccess(data) {
+  return {type: types.LOAD_COURSES_SUCCESS, data };
 }
 
 export function loadChildrenSuccess(children, courseId) {
@@ -17,8 +17,8 @@ export function loadChildrenSuccess(children, courseId) {
 export function loadCourses() {
   return function(dispatch) {
     dispatch(beginAjaxCall(types.FETCH_COURSES));
-    return courseApi.getCourses(false).then((courses) => {
-      dispatch(loadCoursesSuccess(courses));
+    return courseApi.getCourses(false).then((data) => {
+      dispatch(loadCoursesSuccess(data));
     }).catch(error => {
       dispatch(ajaxCallError(types.FETCH_COURSES_ERROR, error));
     });

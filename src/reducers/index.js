@@ -7,6 +7,8 @@ import calendar from './calendar';
 import currentLesson from './currentLesson';
 import classlists from './classlists';
 import organisation from'./organisation';
+import users from './users';
+import locations from './locations';
 import * as types from '../actions/types';
 import initialState from './initialState';
 
@@ -17,7 +19,9 @@ const appReducer = combineReducers({
   calendar,
   currentLesson,
   classlists,
-  organisation
+  organisation,
+  users,
+  locations
 });
 
 const rootReducer = (state, action) => {

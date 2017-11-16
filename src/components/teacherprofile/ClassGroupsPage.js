@@ -29,30 +29,42 @@ class ClassGroupsPage extends React.Component {
   }
 
   mapToPanels(data) {
+
+    const {
+      locations,
+      users
+    } = this.props;
+
     let panels = data.map((course) => {
+      let headTeacher = users[course.headTeacher];
+      let assistants = course.assistants.map((userId) => {
+        return users[userId];
+      });
+      let location = locations[course.location]
+
       return {
         title: {
           name: course.name,
           type: course.type,
           group: course.clan,
           level: course.level,
-          location: course.location.name,
+          location: location.name,
         },
         content: {
           id: course.id,
           headteacher: {
-            name: course.headTeacher.firstname + ' ' + course.headTeacher.lastname,
-            email: course.headTeacher.email,
-            phone: course.headTeacher.phone,
-            cellphone: course.headTeacher.cellphone
+            name: headTeacher.firstname + ' ' + headTeacher.lastname,
+            email: headTeacher.email,
+            phone: headTeacher.phone,
+            cellphone: headTeacher.cellphone
           },
-          assistants: course.assistants,
+          assistants: assistants,
           location: {
-            address: course.location.address,
-            city: course.location.city,
-            organisation: course.location.organisation,
-            room: course.location.roomname,
-            roomremark: course.location.roomremark
+            address: location.address,
+            city: location.city,
+            organisation: location.organisation,
+            room: location.roomname,
+            roomremark: location.roomremark
           }
         }
       };
@@ -86,9 +98,11 @@ ClassGroupsPage.propTypes = {
 function mapStateToProps(state, ownProps) {
   return {
     loading: state.courses.loading,
-    courses: state.courses.data,
+    courses: Object.values(state.courses.data),
     error: state.courses.error,
-    hasError: state.courses.hasError
+    hasError: state.courses.hasError,
+    users: state.users.data,
+    locations: state.locations.data
   };
 }
 
