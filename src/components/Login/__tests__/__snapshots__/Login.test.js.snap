@@ -3,6 +3,7 @@
 exports[`Login should render Login 1`] = `
 <Login
   credentials={Object {}}
+  hidden={true}
 >
   <div
     className="Login"
@@ -122,6 +123,7 @@ exports[`Login should render Login 1`] = `
                     </div>
                   </CodeTag>
                   <Input
+                    autoComplete="on"
                     icon={
                       <Icon
                         as="i"
@@ -134,17 +136,18 @@ exports[`Login should render Login 1`] = `
                     }
                     name="password"
                     placeholder="Wachtwoord"
-                    type="text"
+                    type="password"
                   >
                     <div
                       className="ui icon input"
                     >
                       <input
-                        key="text"
+                        autoComplete="on"
+                        key="password"
                         name="password"
                         onChange={[Function]}
                         placeholder="Wachtwoord"
-                        type="text"
+                        type="password"
                       />
                       <Icon
                         as="i"
@@ -376,6 +379,7 @@ exports[`Login should render Login form with impersonate 1`] = `
                     </div>
                   </CodeTag>
                   <Input
+                    autoComplete="off"
                     icon={false}
                     name="password"
                     placeholder="Wachtwoord"
@@ -385,6 +389,7 @@ exports[`Login should render Login form with impersonate 1`] = `
                       className="ui input"
                     >
                       <input
+                        autoComplete="off"
                         key="text"
                         name="password"
                         onChange={[Function]}
@@ -577,6 +582,7 @@ exports[`Login should render Login with plain text password 1`] = `
                     </div>
                   </CodeTag>
                   <Input
+                    autoComplete="off"
                     icon={
                       <Icon
                         as="i"
@@ -595,6 +601,7 @@ exports[`Login should render Login with plain text password 1`] = `
                       className="ui icon input"
                     >
                       <input
+                        autoComplete="off"
                         key="text"
                         name="password"
                         onChange={[Function]}
@@ -800,6 +807,7 @@ exports[`Login should show error when hasError 1`] = `
                     </div>
                   </CodeTag>
                   <Input
+                    autoComplete="off"
                     icon={
                       <Icon
                         as="i"
@@ -818,6 +826,7 @@ exports[`Login should show error when hasError 1`] = `
                       className="ui icon input"
                     >
                       <input
+                        autoComplete="off"
                         key="text"
                         name="password"
                         onChange={[Function]}
@@ -1046,6 +1055,7 @@ exports[`Login should show loading screen when loading 1`] = `
                     </div>
                   </CodeTag>
                   <Input
+                    autoComplete="off"
                     icon={
                       <Icon
                         as="i"
@@ -1064,6 +1074,7 @@ exports[`Login should show loading screen when loading 1`] = `
                       className="ui icon input"
                     >
                       <input
+                        autoComplete="off"
                         key="text"
                         name="password"
                         onChange={[Function]}

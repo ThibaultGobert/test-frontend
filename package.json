@@ -42,7 +42,8 @@
     "build": "npm-run-all build-css build-js",
     "test": "react-scripts test --env=jsdom",
     "build-css": "node-sass-chokidar src/ -o src/",
-    "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive"
+    "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
+    "coverage": "yarn test --coverage && open ./coverage/lcov-report/index.html"
   },
   "devDependencies": {
     "enzyme": "^3.1.1",
