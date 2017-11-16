@@ -1,46 +1,35 @@
 import * as types from './types';
 import lessonApi from '../api/lessons';
+import {
+  FETCH_LESSONS_START,
+  FETCH_LESSONS_SUCCESS,
+  FETCH_LESSONS_ERROR,
+  FETCH_LESSON_SLIDES_START,
+  FETCH_LESSON_SLIDES_ERROR,
+  FETCH_LESSON_SLIDES_SUCCESS
+} from "./types/lesson";
 
 export function fetchLessonsStart() {
-  return { type: types.FETCH_LESSONS_START };
+  return { type: FETCH_LESSONS_START };
 }
 
 export function fetchLessonsSuccess(lessons) {
-  return {type: types.FETCH_LESSONS_SUCCESS, lessons };
+  return {type: FETCH_LESSONS_SUCCESS, lessons };
 }
 
 export function fetchLessonsError(error) {
-  return { type: types.FETCH_LESSONS_ERROR, error};
+  return { type: FETCH_LESSONS_ERROR, error};
 }
 
 export function fetchLessonSlidesStart() {
-
+  return { type: FETCH_LESSON_SLIDES_START };
 }
 
-export function loadLessonSlidesSuccess(lessonInfo) {
-  return {type: types.LOAD_LESSON_SLIDES_SUCCESS, lessonInfo };
+export function fetchLessonSlidesSuccess(lessonInfo) {
+  return {type: FETCH_LESSON_SLIDES_SUCCESS, lessonInfo };
 }
 
-export function loadLessonSlides(lessonId, lessonType, slideType){
-  return function(dispatch) {
-    dispatch(beginAjaxCall(types.FETCH_LESSON_SLIDES));
-    return lessonApi.getLessonSlides(lessonId, lessonType, slideType).then(lessonInfo => {
-      dispatch(loadLessonSlidesSuccess(lessonInfo));
-      return lessonInfo;
-    }).catch(error => {
-      dispatch(ajaxCallError(types.FETCH_LESSON_SLIDES_ERROR, error));
-      throw error;
-    });
-  };
+export function fetchLessonSlidesError(error) {
+  return { type: FETCH_LESSON_SLIDES_ERROR, error };
 }
 
-export function searchLessons(filterValues) {
-  return function(dispatch) {
-    dispatch(beginAjaxCall(types.FETCH_LESSONS));
-    return lessonApi.searchLessons(filterValues).then((lessons) => {
-      dispatch(loadLessonsSuccess(lessons));
-    }).catch(error => {
-      dispatch(ajaxCallError(types.FETCH_LESSONS_ERROR, error));
-    });
-  };
-}

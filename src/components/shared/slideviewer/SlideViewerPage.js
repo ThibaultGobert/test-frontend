@@ -23,25 +23,29 @@ class SlideViewerPage extends React.Component {
   }
 
   componentWillMount() {
-      if(_.isEmpty(this.state.lesson) && !this.state.hasError) {
-        this.setState({loading: true});
-        this.props.actions.loadLessonSlides(this.props.lessonId, "CLASSHOME", this.props.slideType).then(data => {
-          this.setState({
-            lesson: data,
-            hasError: false,
-            error: null,
-            loading: false,
-          });
-        }).catch(error => {
-          this.setState({
-            hasError: true,
-            error: error,
-            loading: false,
-          });
-          this.redirectToOverview();
-          toastr.error(error);
+    const {fetchLessonSlidesStart, fetchLessonSlidesSuccess, fetchLessonSlidesError} = this.props;
+    if(_.isEmpty(this.state.lesson) && !this.state.hasError) {
+      this.setState({loading: true});
+      fetchLessonSlidesStart();
+      lessonApi.getLessonSlides(this.props.lessonId, "CLASSHOME", this.props.slideType).then(data => {
+        fetchLessonSlidesSuccess(data);
+        this.setState({
+          lesson: data,
+          hasError: false,
+          error: null,
+          loading: false,
         });
-      }
+      }).catch(error => {
+        fetchLessonSlidesError();
+        this.setState({
+          hasError: true,
+          error: error,
+          loading: false,
+        });
+        this.redirectToOverview();
+        toastr.error(error);
+      });
+    }
   }
 
   redirectToOverview() {

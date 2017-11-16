@@ -9,6 +9,7 @@ import ErrorMessage from "../shared/ErrorMessage";
 import Loader from '../shared/Loader';
 import _ from 'lodash';
 import ManageLessonList from './ManageLessonList';
+import lessonApi from '../../api/lessons';
 import * as lessonTypes from '../../constants/lessonTypes';
 import {Button} from 'semantic-ui-react';
 
@@ -46,7 +47,14 @@ class OverviewPage extends React.Component {
   }
 
   searchLessons() {
-    this.props.lessonActions.searchLessons(Object.assign({}, this.state.filterValues));
+    const {fetchLessonsStart, fetchLessonsSuccess, fetchLessonsError} = this.props.actions;
+
+    fetchLessonsStart();
+    lessonApi.searchLessons(Object.assign({}, this.state.filterValues)).then((data) => {
+      fetchLessonsSuccess(data);
+    }).catch(error => {
+      fetchLessonsError(error);
+    });
   }
 
   onSubmit() {
