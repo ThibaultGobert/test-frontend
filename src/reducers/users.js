@@ -5,7 +5,7 @@ import merge from "lodash/merge";
 export default function usersReducer(state = initialState.users, action) {
   switch (action.type) {
     case types.LOAD_COURSES_SUCCESS:
-      return Object.assign({}, state, { data: action.data.entities.users, loading: false, error: null, hasError: false});
+      return merge({}, state, { data: action.data.entities.users, loading: false, error: null, hasError: false});
 
     case types.FETCH_CHILDREN:
       return Object.assign({}, state, {loading: true, error: null, hasError: false});

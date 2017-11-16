@@ -1,6 +1,7 @@
 import * as types from './types';
 import courseApi from '../api/courses';
 import {ajaxCallError, beginAjaxCall} from "./ajaxStatus";
+import _ from 'lodash';
 
 export function loadCoursesSuccess(data) {
   return {type: types.LOAD_COURSES_SUCCESS, data };
@@ -53,6 +54,10 @@ export function loadChildrenIfNeeded(courseId) {
 }
 
 function shouldFetchCourses(state) {
+  if (_.isEmpty(state.courses.data)) {
+    return true;
+  }
+
   if (state.courses.loading) {
     return false
   } else {

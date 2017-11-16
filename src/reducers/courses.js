@@ -8,7 +8,7 @@ export default function courseReducer(state = initialState.courses, action) {
       return Object.assign({}, { data: {}, loading: true, error: null, hasError: false});
 
     case types.LOAD_COURSES_SUCCESS:
-      return Object.assign({}, { data: action.data.entities.courses, loading: false, error: null, hasError: false});
+      return merge({}, state, { data: action.data.entities.courses, loading: false, error: null, hasError: false});
 
     case types.FETCH_COURSES_ERROR:
       return Object.assign({}, { data: {}, loading: false, error: action.error, hasError: true});
