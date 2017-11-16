@@ -3,8 +3,7 @@ export default {
   loggedIn: {
     data: {},
     loading: false,
-    error: null,
-    hasError: false
+    error: undefined,
   },
   courses: {
     data: {},

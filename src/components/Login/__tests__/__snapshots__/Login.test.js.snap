@@ -79,19 +79,19 @@ exports[`Login should render Login 1`] = `
                     className="Login__CodeTag--highlight"
                     close={false}
                     closing={true}
-                    text="Uw gebruikersnaam"
+                    text="Gebruikersnaam"
                   >
                     <div
                       className="CodeTag Login__CodeTag--highlight"
                     >
                       &lt;
-                      Uw gebruikersnaam
+                      Gebruikersnaam
                       &gt;
                     </div>
                   </CodeTag>
                   <input
                     name="username"
-                    placeholder="Uw gebruikersnaam"
+                    placeholder="Gebruikersnaam"
                   />
                 </div>
               </FormField>
@@ -207,19 +207,16 @@ exports[`Login should render Login 1`] = `
         </form>
       </Form>
     </div>
-    <button
+    <Icon
+      as="i"
       className="Login__ImpersonateLink"
+      name="lock"
     >
-      <Icon
-        as="i"
-        name="lock"
-      >
-        <i
-          aria-hidden="true"
-          className="lock icon"
-        />
-      </Icon>
-    </button>
+      <i
+        aria-hidden="true"
+        className="lock icon Login__ImpersonateLink"
+      />
+    </Icon>
   </div>
 </Login>
 `;
@@ -304,19 +301,19 @@ exports[`Login should render Login form with impersonate 1`] = `
                     className="Login__CodeTag--highlight"
                     close={false}
                     closing={true}
-                    text="Uw gebruikersnaam"
+                    text="Gebruikersnaam kind"
                   >
                     <div
                       className="CodeTag Login__CodeTag--highlight"
                     >
                       &lt;
-                      Uw gebruikersnaam
+                      Gebruikersnaam kind
                       &gt;
                     </div>
                   </CodeTag>
                   <input
-                    name="username"
-                    placeholder="Uw gebruikersnaam"
+                    name="child_username"
+                    placeholder="Gebruikersnaam kind"
                   />
                 </div>
               </FormField>
@@ -336,19 +333,19 @@ exports[`Login should render Login form with impersonate 1`] = `
                     className="Login__CodeTag--highlight"
                     close={false}
                     closing={true}
-                    text="Gebruikersnaam kind"
+                    text="Gebruikersnaam"
                   >
                     <div
                       className="CodeTag Login__CodeTag--highlight"
                     >
                       &lt;
-                      Gebruikersnaam kind
+                      Gebruikersnaam
                       &gt;
                     </div>
                   </CodeTag>
                   <input
-                    name="child_username"
-                    placeholder="Gebruikersnaam kind"
+                    name="username"
+                    placeholder="Gebruikersnaam"
                   />
                 </div>
               </FormField>
@@ -443,19 +440,16 @@ exports[`Login should render Login form with impersonate 1`] = `
         </form>
       </Form>
     </div>
-    <button
+    <Icon
+      as="i"
       className="Login__ImpersonateLink"
+      name="unlock"
     >
-      <Icon
-        as="i"
-        name="lock"
-      >
-        <i
-          aria-hidden="true"
-          className="lock icon"
-        />
-      </Icon>
-    </button>
+      <i
+        aria-hidden="true"
+        className="unlock icon Login__ImpersonateLink"
+      />
+    </Icon>
   </div>
 </Login>
 `;
@@ -540,19 +534,19 @@ exports[`Login should render Login with plain text password 1`] = `
                     className="Login__CodeTag--highlight"
                     close={false}
                     closing={true}
-                    text="Uw gebruikersnaam"
+                    text="Gebruikersnaam"
                   >
                     <div
                       className="CodeTag Login__CodeTag--highlight"
                     >
                       &lt;
-                      Uw gebruikersnaam
+                      Gebruikersnaam
                       &gt;
                     </div>
                   </CodeTag>
                   <input
                     name="username"
-                    placeholder="Uw gebruikersnaam"
+                    placeholder="Gebruikersnaam"
                   />
                 </div>
               </FormField>
@@ -668,19 +662,16 @@ exports[`Login should render Login with plain text password 1`] = `
         </form>
       </Form>
     </div>
-    <button
+    <Icon
+      as="i"
       className="Login__ImpersonateLink"
+      name="lock"
     >
-      <Icon
-        as="i"
-        name="lock"
-      >
-        <i
-          aria-hidden="true"
-          className="lock icon"
-        />
-      </Icon>
-    </button>
+      <i
+        aria-hidden="true"
+        className="lock icon Login__ImpersonateLink"
+      />
+    </Icon>
   </div>
 </Login>
 `;
@@ -766,19 +757,19 @@ exports[`Login should show error when hasError 1`] = `
                     className="Login__CodeTag--highlight"
                     close={false}
                     closing={true}
-                    text="Uw gebruikersnaam"
+                    text="Gebruikersnaam"
                   >
                     <div
                       className="CodeTag Login__CodeTag--highlight"
                     >
                       &lt;
-                      Uw gebruikersnaam
+                      Gebruikersnaam
                       &gt;
                     </div>
                   </CodeTag>
                   <input
                     name="username"
-                    placeholder="Uw gebruikersnaam"
+                    placeholder="Gebruikersnaam"
                   />
                 </div>
               </FormField>
@@ -917,19 +908,16 @@ exports[`Login should show error when hasError 1`] = `
         </form>
       </Form>
     </div>
-    <button
+    <Icon
+      as="i"
       className="Login__ImpersonateLink"
+      name="lock"
     >
-      <Icon
-        as="i"
-        name="lock"
-      >
-        <i
-          aria-hidden="true"
-          className="lock icon"
-        />
-      </Icon>
-    </button>
+      <i
+        aria-hidden="true"
+        className="lock icon Login__ImpersonateLink"
+      />
+    </Icon>
   </div>
 </Login>
 `;
@@ -1015,19 +1003,19 @@ exports[`Login should show loading screen when loading 1`] = `
                     className="Login__CodeTag--highlight"
                     close={false}
                     closing={true}
-                    text="Uw gebruikersnaam"
+                    text="Gebruikersnaam"
                   >
                     <div
                       className="CodeTag Login__CodeTag--highlight"
                     >
                       &lt;
-                      Uw gebruikersnaam
+                      Gebruikersnaam
                       &gt;
                     </div>
                   </CodeTag>
                   <input
                     name="username"
-                    placeholder="Uw gebruikersnaam"
+                    placeholder="Gebruikersnaam"
                   />
                 </div>
               </FormField>
@@ -1143,19 +1131,16 @@ exports[`Login should show loading screen when loading 1`] = `
         </form>
       </Form>
     </div>
-    <button
+    <Icon
+      as="i"
       className="Login__ImpersonateLink"
+      name="lock"
     >
-      <Icon
-        as="i"
-        name="lock"
-      >
-        <i
-          aria-hidden="true"
-          className="lock icon"
-        />
-      </Icon>
-    </button>
+      <i
+        aria-hidden="true"
+        className="lock icon Login__ImpersonateLink"
+      />
+    </Icon>
   </div>
 </Login>
 `;
