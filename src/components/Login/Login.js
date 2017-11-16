@@ -61,15 +61,14 @@ const Login = ({
                 type={hidden ? 'password' : 'text'}
                 placeholder="Wachtwoord"
                 onChange={onChange}
-                autocomplete={hidden}
                 name="password"
                 value={credentials.password}
-                icon={
-                  !impersonate && (
-                    <Icon name="eye" className="eye-icon" inverted link onClick={toggleHidden} />
-                  )
-                }
-              />
+              >
+                <input autocomplete={hidden ? 'on' : 'off'}/>
+                {!impersonate && (
+                  <Icon name="eye" className="eye-icon" inverted link onClick={toggleHidden} />
+                )}
+              </Input>
             </Form.Field>
           </Form.Group>
           <CodeTag text="Start" closing />
