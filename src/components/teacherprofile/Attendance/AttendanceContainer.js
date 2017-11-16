@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Attendance from "./Attendance";
 import Loader from "../../shared/Loader";
 import ErrorMessage from "../../shared/ErrorMessage";
+import userAdministrationApi from '../../../api/userAdministration';
 
 class AttendanceContainer extends Component {
   constructor(props, context) {
@@ -23,8 +24,11 @@ class AttendanceContainer extends Component {
   submit(event) {
     event.preventDefault();
 
-    const { markPresence } = this.props.actions;
+    const { postAttendanceStart, postAttendanceSuccess, postAttendanceError } = this.props.actions;
 
+    postAttendanceStart();
+
+    // TODO: POST => ( FINISH, SUCCESS )
   }
 
   redirectToOverview() {

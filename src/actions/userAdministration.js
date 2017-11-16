@@ -1,17 +1,14 @@
-import * as types from './types';
+import { POST_ATTENDANCE_START, POST_ATTENDANCE_SUCCESS, POST_ATTENDANCE_ERROR } from './types';
 import userAdministrationApi from '../api/userAdministration';
 
-export function markPresenceSuccess(response) {
-  return {type: types.MARK_PRESENCE_SUCCESS, response };
+export function postAttendanceStart(response) {
+  return { type: POST_ATTENDANCE_START, response };
 }
 
-export function markPresence() {
-  return function(dispatch) {
-    dispatch(beginAjaxCall(types.MARK_PRESENCE));
-    return userAdministrationApi.markPresence().then((response) => {
-      dispatch(markPresenceSuccess(response));
-    }).catch(error => {
-      dispatch(ajaxCallError(types.MARK_PRESENCE_ERROR, error));
-    });
-  };
+export function postAttendanceSuccess(response) {
+  return { type: POST_ATTENDANCE_SUCCESS, response };
+}
+
+export function postAttendanceError(error) {
+  return { type: POST_ATTENDANCE_ERROR, error };
 }

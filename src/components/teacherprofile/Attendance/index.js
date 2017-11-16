@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import mapActionCreatorsToProps from '../../../functions/mapActionCreatorsToProps';
-import { markPresence } from '../../../actions/userAdministration';
+import { postAttendanceStart, postAttendanceSuccess, postAttendanceError } from '../../../actions/userAdministration';
 import {loadCoursesIfNeeded, loadChildrenIfNeeded} from "../../../actions/courses";
 import AttendanceContainer from './AttendanceContainer';
 
@@ -21,7 +21,9 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const actionCreators = mapActionCreatorsToProps({
-  markPresence,
+  postAttendanceStart,
+  postAttendanceSuccess,
+  postAttendanceError,
   loadCoursesIfNeeded,
   loadChildrenIfNeeded
 });
