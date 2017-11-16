@@ -2,12 +2,12 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import PropTypes from 'prop-types';
-import * as calendarActions from '../../actions/calendar';
-import ErrorMessage from '../shared/ErrorMessage';
+import * as calendarActions from '../../../actions/calendar';
+import ErrorMessage from '../../shared/ErrorMessage';
 import Calendar from './Calendar';
 import _ from 'lodash';
-import Loader from "../shared/Loader";
-import Reloader from '../shared/Reloader';
+import Loader from "../../shared/Loader";
+import Reloader from '../../shared/Reloader';
 
 class CalendarPage extends React.Component {
   componentDidMount() {

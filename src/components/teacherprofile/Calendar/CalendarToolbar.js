@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Button, Label} from 'semantic-ui-react';
-import {navigate, messages} from "../../constants/calendar";
+import {navigate, messages} from "../../../constants/calendar";
 import cn from 'classnames';
 
 class CalendarToolbar extends React.Component {
@@ -51,8 +51,8 @@ class CalendarToolbar extends React.Component {
         </div>
         <div className="view-details">
           <span className="calendar-control">
-            <img src={require('../../assets/images/calendar/left-arrow.png')} alt="Navigate left" onClick={() => this.navigate(navigate.PREVIOUS)}/>
-            <img src={require('../../assets/images/calendar/right-arrow.png')} alt="Navigate right" onClick={() => this.navigate(navigate.NEXT)}/>
+            <img src={require('../../../assets/images/calendar/left-arrow.png')} alt="Navigate left" onClick={() => this.navigate(navigate.PREVIOUS)}/>
+            <img src={require('../../../assets/images/calendar/right-arrow.png')} alt="Navigate right" onClick={() => this.navigate(navigate.NEXT)}/>
           </span>
           <span className="calendar-label">
             <Label>{label}</Label>

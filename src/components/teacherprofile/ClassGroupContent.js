@@ -3,7 +3,7 @@ import {Link} from 'react-router';
 import PropTypes from 'prop-types';
 import { Grid, Segment, Button } from 'semantic-ui-react';
 import renderHtml from 'react-render-html';
-import ContactList from "./ContactList";
+import ContactList from "../shared/ContactList";
 import _ from 'lodash';
 
 const ClassGroupContent = ({content}) => {

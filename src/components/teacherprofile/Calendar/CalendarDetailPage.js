@@ -3,12 +3,12 @@ import {Button, Message, Header, Icon} from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {Link,browserHistory} from 'react-router';
-import * as calendarActions from '../../actions/calendar';
+import * as calendarActions from '../../../actions/calendar';
 import {bindActionCreators} from 'redux';
 import moment from 'moment';
-import * as slideTypes from '../../constants/slideTypes';
-import lessonApi from '../../api/lessons';
-import * as lessonTypes from '../../constants/lessonTypes';
+import * as slideTypes from '../../../constants/slideTypes';
+import lessonApi from '../../../api/lessons';
+import * as lessonTypes from '../../../constants/lessonTypes';
 import _ from 'lodash';
 
 class CalendarDetailPage extends React.Component {
