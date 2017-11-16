@@ -1,4 +1,4 @@
-export default createDate = (dateString) => {
+export default (dateString) => {
   let splitted = dateString.split(' ');
   const hour = splitted[1].split(':')[0];
   const minutes = splitted[1].split(':')[1];

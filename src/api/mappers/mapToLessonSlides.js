@@ -1,13 +1,12 @@
-export default (data) => {
-  let lesson =  response.data;
+import * as userRoles from '../../constants/roles';
 
-  lesson.slideType = slideType;
-  let role = store.getState().loggedIn.data.role;
+export default (role, slideType, data) => {
+  data.slideType = slideType;
 
-  if ((role === userRoles.TEACHER_ROLE && !lesson.activateTeacher) ||
-    (role === userRoles.STUDENT_ROLE && !lesson.activateStudent)) {
+  if ((role === userRoles.TEACHER_ROLE && !data.activateTeacher) ||
+    (role === userRoles.STUDENT_ROLE && !data.activateStudent)) {
     throw new Error("Les is niet beschikbaar");
   }
 
-  return lesson;
+  return data;
 }

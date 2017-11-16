@@ -40,7 +40,8 @@ class LessonApi {
         'x-token': store.getState().loggedIn.data.token
       }
     }).then(response => {
-      return mapToLessonSlides(response.data);
+      const role = store.getState().loggedIn.data.role;
+      return mapToLessonSlides(role, slideType, response.data);
     }).catch(error => {
       throw error;
     });
