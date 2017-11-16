@@ -1,22 +1,8 @@
-import axios from 'axios';
-import baseUrl from './baseUrl';
+import api from './api';
 
 class UserAdministrationApi {
   static getUserInformation(token) {
-    return axios.request({
-      method: 'get',
-      url: baseUrl + "/useradministration/getUserInformation",
-      timeout: 3000,
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-        'x-token': token
-      }
-    }).then(response => {
-      return response.data;
-    }).catch(error => {
-      throw error;
-    });
+    return api.get('/useradministration/getUserInformation').then(response => response.data);
   }
 }
 

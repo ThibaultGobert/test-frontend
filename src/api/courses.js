@@ -1,42 +1,18 @@
-import axios from 'axios';
-import store from '../index';
+import api from './api';
 import mapToCourses from './mappers/mapToCourses';
 import mapToClassList from './mappers/mapToClassList';
-import baseUrl from './baseUrl';
 
 class CourseApi {
   static getCourses(replacementsIncluded) {
-    return axios.request({
-      method: 'get',
-      url: baseUrl + '/courses/getTeacherCourse?replacements=' + replacementsIncluded,
-      timeout: 3000,
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-        'x-token': store.getState().loggedIn.data.token
-      }
-    }).then(response => {
-      return mapToCourses(response.data);
-    }).catch(error => {
-      throw error;
-    });
+    return api
+      .get(`/courses/getTeacherCourse?replacements=${replacementsIncluded}`)
+      .then(response => mapToCourses(response.data));
   }
 
   static getChildrenForCourse(courseId) {
-    return axios.request({
-      method: 'get',
-      url: baseUrl + '/courses/getChildrenForCours?courseid=' + courseId,
-      timeout: 3000,
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-        'x-token': store.getState().loggedIn.data.token
-      }
-    }).then(response => {
-      return mapToClassList(response.data);
-    }).catch(error => {
-      throw error;
-    });
+    return api
+      .get(`/courses/getChildrenForCours?courseid=${courseId}`)
+      .then(response => mapToClassList(response.data));
   }
 }
 
