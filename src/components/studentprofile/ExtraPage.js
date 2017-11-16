@@ -19,7 +19,14 @@ class ExtraPage extends React.Component {
   }
 
   fetchLessons() {
-    this.props.actions.loadLessons(lessonTypes.EXTRA);
+    const {loadLessonsStart, loadLessonsSuccess, loadLessonsError} = this.props.actions;
+
+    loadLessonsStart();
+    this.props.actions.lessonApi.getLessonsForStudent(lessonTypes.EXTRA).then((lessons) => {
+      loadLessonsSuccess(lessons);
+    }).catch(error => {
+      loadLessonsError(error);
+    });
   }
 
   render() {

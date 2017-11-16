@@ -2,23 +2,20 @@ import * as types from './types';
 import lessonApi from '../api/lessons';
 import {ajaxCallError, beginAjaxCall} from "./ajaxStatus";
 
+export function loadLessonsStart() {
+  return { type: types.FETCH_LESSONS };
+}
+
 export function loadLessonsSuccess(lessons) {
   return {type: types.LOAD_LESSONS_SUCCESS, lessons };
 }
 
-export function loadLessonSlidesSuccess(lessonInfo) {
-  return {type: types.LOAD_LESSON_SLIDES_SUCCESS, lessonInfo };
+export function loadLessonsError(error) {
+  return { type: types.FETCH_LESSONS_ERROR, error};
 }
 
-export function loadLessons(lessonType, slideType) {
-  return function(dispatch) {
-    dispatch(beginAjaxCall(types.FETCH_LESSONS));
-    return lessonApi.getLessonsForStudent(lessonType, slideType).then((lessons) => {
-      dispatch(loadLessonsSuccess(lessons));
-    }).catch(error => {
-      dispatch(ajaxCallError(types.FETCH_LESSONS_ERROR, error));
-    });
-  };
+export function loadLessonSlidesSuccess(lessonInfo) {
+  return {type: types.LOAD_LESSON_SLIDES_SUCCESS, lessonInfo };
 }
 
 export function loadLessonSlides(lessonId, lessonType, slideType){

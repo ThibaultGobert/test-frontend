@@ -20,7 +20,14 @@ class ClassPage extends React.Component {
   }
 
   fetchLessons() {
-    this.props.actions.loadLessons(lessonTypes.CLASSHOME, slideTypes.CLASS);
+    const {loadLessonsStart, loadLessonsSuccess, loadLessonsError} = this.props.actions;
+
+    loadLessonsStart();
+    this.props.actions.lessonApi.getLessonsForStudent(lessonTypes.CLASSHOME, slideTypes.CLASS).then((lessons) => {
+      loadLessonsSuccess(lessons);
+    }).catch(error => {
+      loadLessonsError(error);
+    });
   }
 
   render() {

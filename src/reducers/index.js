@@ -15,7 +15,6 @@ const appReducer = combineReducers({
   loggedIn,
   courses,
   lessons,
-  calendar,
   currentLesson,
   organisation,
   users,

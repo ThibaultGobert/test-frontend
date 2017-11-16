@@ -1,26 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BigCalendar from 'react-big-calendar';
+import Reloader from '../../shared/Reloader';
 import moment from 'moment';
 import Toolbar from './CalendarToolbar';
 
-class Calendar extends React.Component {
-  constructor(props, context) {
-    super(props, context);
+const Calendar = ({refreshCalendar, events, showEventDetails}) => {
     BigCalendar.momentLocalizer(moment); // or globalizeLocalizer
-    this.showEventDetails = this.showEventDetails.bind(this);
-    this.onDetailsClose = this.onDetailsClose.bind(this);
-  }
 
-  showEventDetails(event){
-    this.context.router.push('/teacherprofile/calendar/' + event.id);
-  }
-
-  onDetailsClose() {
-    this.setState({insert:false, event: null});
-  }
-
-  render() {
     let components = {
       toolbar: Toolbar
     };
@@ -28,26 +15,32 @@ class Calendar extends React.Component {
     let views = ['month', 'week', 'day'];
 
     return (
-      <div className="calendar-wrapper">
-        <div className="calendar">
-          <BigCalendar
-            views={views}
-            culture="nl"
-            events={this.props.dates}
-            titleAccessor="name"
-            defaultView="month"
-            components={components}
-            defaultDate={new Date()}
-            onSelectEvent={event => this.showEventDetails(event)}
-          />
+      <div className="container">
+        <Reloader action={refreshCalendar}/>
+        <h1>Jouw kalender</h1>
+        <p>Bekijk hier de lessen en klik door op een les om de details ervan te zien</p>
+        <div className="calendar-wrapper">
+          <div className="calendar">
+            <BigCalendar
+              views={views}
+              culture="nl"
+              events={events}
+              titleAccessor="name"
+              defaultView="month"
+              components={components}
+              defaultDate={new Date()}
+              onSelectEvent={event => showEventDetails(event)}
+            />
+          </div>
         </div>
       </div>
     );
-  }
-}
+};
 
 Calendar.propTypes = {
-  dates: PropTypes.array.isRequired
+  events: PropTypes.array.isRequired,
+  refreshCalendar: PropTypes.func.isRequired,
+  showEventDetails: PropTypes.func.isRequired
 };
 
 Calendar.contextTypes = {

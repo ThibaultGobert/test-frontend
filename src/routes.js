@@ -10,8 +10,8 @@ import WorkshopOverviewPage from './components/workshopprofile/OverviewPage';
 import ExtraPage from "./components/studentprofile/ExtraPage";
 import HomeworkPage from "./components/studentprofile/HomeworkPage";
 import SlideViewerPage from "./components/shared/slideviewer/SlideViewerPage";
-import CalendarPage from "./components/teacherprofile/Calendar/CalendarPage";
-import CalendarDetailPage from "./components/teacherprofile/Calendar/CalendarDetailPage";
+import Calendar from "./components/teacherprofile/Calendar";
+import CalendarDetail from "./components/teacherprofile/Calendar/CalendarDetail";
 import InfoPage from "./components/teacherprofile/InfoPage";
 import Attendance from './components/teacherprofile/Attendance';
 import * as authActions from './actions/auth';
@@ -22,8 +22,8 @@ const routes = (store) => {
       <IndexRoute component={Login} onEnter={requireNoAuth(store)}/>
       <Route path="/teacherprofile" onEnter={requireAuth(store)}>
         <Route path="/teacherprofile/overview" component={TeacherOverviewPage}/>
-        <Route path="/teacherprofile/calendar" component={CalendarPage}/>
-        <Route path="/teacherprofile/calendar/:eventId" component={CalendarDetailPage}/>
+        <Route path="/teacherprofile/calendar" component={Calendar}/>
+        <Route path="/teacherprofile/calendar/:eventId" component={CalendarDetail}/>
         <Route path="/teacherprofile/classlist/:id" component={ClassList}/>
         <Route path="/teacherprofile/feedback/:id" component={Attendance}/>
         <Route path="/teacherprofile/info" component={InfoPage}/>

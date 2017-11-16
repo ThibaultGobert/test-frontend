@@ -20,7 +20,14 @@ class HomeworkPage extends React.Component {
   }
 
   fetchLessons() {
-    this.props.actions.loadLessons(lessonTypes.CLASSHOME, slideTypes.HOME);
+    const {loadLessonsStart, loadLessonsSuccess, loadLessonsError} = this.props.actions;
+
+    loadLessonsStart();
+    this.props.actions.lessonApi.getLessonsForStudent(lessonTypes.CLASSHOME, slideTypes.HOME).then((lessons) => {
+      loadLessonsSuccess(lessons);
+    }).catch(error => {
+      loadLessonsError(error);
+    });
   }
 
   render() {
