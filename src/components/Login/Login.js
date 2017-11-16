@@ -22,7 +22,7 @@ const Login = ({
 }) => {
   return (
     <div className="Login">
-      <img className="Login__Rambdass" src={ramdassWelcome} alt=""/>
+      <img className="Login__Rambdass" src={ramdassWelcome} alt="" />
       <Loader active={loading} message="Even geduld. Wij proberen u in te loggen..." />
 
       <div className="Login__Wrapper">
@@ -41,7 +41,7 @@ const Login = ({
               </Form.Field>
             </Form.Group>
           )}
-          
+
           <Form.Group inline>
             <Form.Field>
               <CodeTag text="Gebruikersnaam" className="Login__CodeTag--highlight" closing />
@@ -54,7 +54,6 @@ const Login = ({
             </Form.Field>
           </Form.Group>
 
-
           <Form.Group inline>
             <Form.Field>
               <CodeTag text="Wachtwoord" className="Login__CodeTag--highlight" closing />
@@ -62,6 +61,7 @@ const Login = ({
                 type={hidden ? 'password' : 'text'}
                 placeholder="Wachtwoord"
                 onChange={onChange}
+                autocomplete={hidden}
                 name="password"
                 value={credentials.password}
                 icon={
@@ -78,7 +78,11 @@ const Login = ({
         </Form>
       </div>
 
-      <Icon name={ impersonate ? "unlock" : "lock"} className="Login__ImpersonateLink" onClick={toggleImpersonate} />
+      <Icon
+        name={impersonate ? 'unlock' : 'lock'}
+        className="Login__ImpersonateLink"
+        onClick={toggleImpersonate}
+      />
     </div>
   );
 };
