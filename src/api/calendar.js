@@ -5,7 +5,7 @@ class CalendarApi {
   static getCalendar() {
     return api
       .get('/courses/getTeacherCourse?replacements=false')
-      .then(response => mapToCalendar(response.data));
+      .then(mapToCalendar);
   }
 }
 

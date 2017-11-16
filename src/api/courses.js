@@ -6,13 +6,13 @@ class CourseApi {
   static getCourses(replacementsIncluded) {
     return api
       .get(`/courses/getTeacherCourse?replacements=${replacementsIncluded}`)
-      .then(response => mapToCourses(response.data));
+      .then(mapToCourses);
   }
 
   static getChildrenForCourse(courseId) {
     return api
       .get(`/courses/getChildrenForCours?courseid=${courseId}`)
-      .then(response => mapToClassList(response.data));
+      .then(mapToClassList);
   }
 }
 

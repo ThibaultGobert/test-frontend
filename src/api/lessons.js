@@ -12,31 +12,29 @@ class LessonApi {
       url = `${url} &slidetype=${slideType}`;
     }
 
-    return api.get(url).then(response => mapToLessons(response.data));
+    return api.get(url).then(mapToLessons);
   }
 
   // TODO: this endpoint will be refactored - lose the NEW suffix (SOON)
   static getLessonSlides(lessonId, lessonType, slideType) {
     return api
       .get('/lessons/getLessonNEW?lessonId=' + lessonId + '&slideType=' + slideType)
-      .then(response => {
+      .then(data => {
         const role = store.getState().loggedIn.data.role;
-        return mapToLessonSlides(role, slideType, response.data);
+        return mapToLessonSlides(role, slideType, data);
       });
   }
 
   static getLessonMetaData(programLessonId) {
     return api
-      .get('/lessons/getLessonMetaData?programlessonid=' + programLessonId)
-      .then(response => response.data);
+      .get('/lessons/getLessonMetaData?programlessonid=' + programLessonId);
   }
 
   static searchLessons(filterValues) {
     return api
       .post('/lessons/searchLessons', {
         body: filterValues
-      })
-      .then(response => response.data);
+      });
   }
 }
 

@@ -16,7 +16,7 @@ class AuthApi {
 
     return api
       .get('/usersession/authUser', { headers })
-      .then(response => mapToUser(response.data))
+      .then(mapToUser)
       .catch(error => {
         if (error.code === 'ECONNABORTED') {
           throw new Error('Timeout error');
