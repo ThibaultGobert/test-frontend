@@ -11,6 +11,7 @@ import _ from 'lodash';
 import ManageLessonList from './ManageLessonList';
 import * as lessonTypes from '../../constants/lessonTypes';
 import {Button} from 'semantic-ui-react';
+import organisationsApi from '../../api/organisation';
 
 class OverviewPage extends React.Component {
   constructor(props, context) {
@@ -41,8 +42,18 @@ class OverviewPage extends React.Component {
   }
 
   fetchOrganisation() {
-    this.props.organisationActions.loadAllLevels();
-    this.props.organisationActions.loadAllGroups();
+    const { fetchLevelsStart, fetchLevelsSuccess, fetchLevelsError, fetchGroupsStart, fetchGroupsSuccess, fetchGroupsError } = this.props.organisationActions;
+
+    fetchLevelsStart();
+    fetchGroupsStart();
+
+    organisationsApi.getAllLevels()
+      .then((response) => fetchLevelsSuccess(response))
+      .then((error) => fetchLevelsError(error));
+
+    organisationsApi.getAllGroups()
+      .then((response) => fetchGroupsSuccess(response))
+      .then((error) => fetchGroupsError(error));
   }
 
   searchLessons() {
