@@ -10,6 +10,7 @@ import WorkshopOverviewPage from './components/workshopprofile/OverviewPage';
 import ExtraPage from "./components/studentprofile/ExtraPage";
 import HomeworkPage from "./components/studentprofile/HomeworkPage";
 import SlideViewerPage from "./components/shared/slideviewer/SlideViewerPage";
+import EditorOverviewPage from "./components/editorprofile/OverviewPage";
 import Calendar from "./components/teacherprofile/Calendar";
 import CalendarDetail from "./components/teacherprofile/Calendar/CalendarDetail";
 import InfoPage from "./components/teacherprofile/InfoPage";
@@ -33,6 +34,10 @@ const routes = (store) => {
         <Route path="/studentprofile/clan" component={ClanPage}/>
         <Route path="/studentprofile/homework" component={HomeworkPage}/>
         <Route path="/studentprofile/extra" component={ExtraPage}/>
+      </Route>
+
+      <Route path="/editorprofile" onEnter={requireAuth(store)}>
+        <Route path="/editorprofile/overview" component={EditorOverviewPage}/>
       </Route>
 
       <Route path="/workshopprofile" onEnter={requireAuth(store)}>
