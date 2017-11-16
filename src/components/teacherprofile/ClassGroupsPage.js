@@ -7,6 +7,7 @@ import ErrorMessage from '../shared/ErrorMessage';
 import * as courseActions from '../../actions/courses';
 import Loader from '../shared/Loader';
 import _ from 'lodash';
+import courseApi from '../../api/courses';
 import Reloader from "../shared/Reloader";
 
 class ClassGroupsPage extends React.Component {
@@ -18,8 +19,15 @@ class ClassGroupsPage extends React.Component {
 
   componentDidMount() {
     if(_.isEmpty(this.props.courses) && !this.props.hasError) {
-      this.props.actions.loadCourses();
+      this.fetchCourses();
     }
+  }
+
+  fetchCourses() {
+    const {} = this.props;
+    courseApi.getCourses(false).then((data) => {
+      dispatch(loadCoursesSuccess(data));
+    })
   }
 
   componentDidUpdate() {

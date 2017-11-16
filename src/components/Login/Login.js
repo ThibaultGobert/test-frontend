@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Form, Input, Icon } from 'semantic-ui-react';
 
-import CodeTag from '../CodeTag';
+import CodeTag from './CodeTag';
 import Loader from '../shared/Loader';
 import ErrorMessage from '../shared/ErrorMessage';
 

@@ -1,10 +1,11 @@
-import React from "react";
-import PropTypes from "prop-types";
-import {browserHistory} from "react-router";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { browserHistory } from 'react-router';
 import ErrorMessage from '../../shared/ErrorMessage';
 import Loader from '../../shared/Loader';
+import courseApi from '../../../api/courses';
 import * as subscriptionTypes from '../../../constants/subscriptionTypes';
-import ClassList from "./ClassList";
+import ClassList from './ClassList';
 
 class ClassListContainer extends React.Component {
   // init state + bind functions
@@ -15,10 +16,13 @@ class ClassListContainer extends React.Component {
   }
 
   componentDidMount() {
-    const {courseId} = this.props;
-    const {loadChildrenIfNeeded, loadCoursesIfNeeded} = this.props.actions;
-    loadChildrenIfNeeded(courseId);
-    loadCoursesIfNeeded();
+    const { courseId } = this.props;
+
+    Promise.all(courseApi.getChildrenForCourse(courseId))
+      .then(data => {
+        let children = data[0];
+      })
+      .catch(error => {});
   }
 
   redirectToClassGroups() {
@@ -27,14 +31,7 @@ class ClassListContainer extends React.Component {
 
   // render function --> typically calling child component, here is markup inline
   render() {
-    const {
-      classList,
-      loading,
-      hasError,
-      error,
-      course,
-      users,
-    } = this.props;
+    const { classList, loading, hasError, error, course, users } = this.props;
 
     let data = classList.map(studentId => {
       let student = users[studentId];
@@ -43,80 +40,78 @@ class ClassListContainer extends React.Component {
         highlight = true;
       }
 
-      return Object.assign({}, student, {highlight});
+      return Object.assign({}, student, { highlight });
     });
 
     let columns = [
       {
         defaults: require('../../../assets/images/placeholders/no-user.png'),
-        display: "",
-        key: "avatarurlmedium",
-        type: "string"
+        display: '',
+        key: 'avatarurlmedium',
+        type: 'string',
       },
       {
-        defaults: "",
-        display: "Naam",
-        key: "name",
-        type: "string"
+        defaults: '',
+        display: 'Naam',
+        key: 'name',
+        type: 'string',
       },
       {
-        defaults: "",
-        display: "Geboortedatum",
-        key: "birthdate",
-        type: "number"
+        defaults: '',
+        display: 'Geboortedatum',
+        key: 'birthdate',
+        type: 'number',
       },
       {
-        defaults: "",
-        display: "Leerjaar",
-        key: "grade",
-        type: "number"
+        defaults: '',
+        display: 'Leerjaar',
+        key: 'grade',
+        type: 'number',
       },
       {
-        defaults: "",
-        display: "Naam ouder",
-        key: "parent_name",
-        type: "string"
+        defaults: '',
+        display: 'Naam ouder',
+        key: 'parent_name',
+        type: 'string',
       },
       {
-        defaults: "",
-        display: "Contact ouder",
-        key: "parent_contact",
-        type: "string"
+        defaults: '',
+        display: 'Contact ouder',
+        key: 'parent_contact',
+        type: 'string',
       },
       {
-        defaults: "",
-        display: "Leerplatform username",
-        key: "usernames_platform",
-        type: "string"
+        defaults: '',
+        display: 'Leerplatform username',
+        key: 'usernames_platform',
+        type: 'string',
       },
       {
-        defaults: "",
-        display: "Leerplatform hint",
-        key: "password_hint",
-        type: "string"
+        defaults: '',
+        display: 'Leerplatform hint',
+        key: 'password_hint',
+        type: 'string',
       },
       {
-        defaults: "",
-        display: "Scratch username",
-        key: "scratchusername",
-        type: "string"
+        defaults: '',
+        display: 'Scratch username',
+        key: 'scratchusername',
+        type: 'string',
       },
       {
-        defaults: "",
-        display: "Scratch paswoord",
-        key: "scratchpassword",
-        type: "string"
+        defaults: '',
+        display: 'Scratch paswoord',
+        key: 'scratchpassword',
+        type: 'string',
       },
     ];
 
     if (hasError) {
-      return(
-        <ErrorMessage header="Fout bij inladen" message={error.message} />
-      );
+      return <ErrorMessage header="Fout bij inladen" message={error.message} />;
     }
 
     if (loading) {
-      return (<Loader active/>);
+      return <Loader active />;
     }
 
     return (

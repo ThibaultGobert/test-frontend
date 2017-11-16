@@ -1,12 +1,10 @@
-import * as types from './types';
-import lessonApi from '../api/lessons';
 import {
   FETCH_LESSONS_START,
   FETCH_LESSONS_SUCCESS,
   FETCH_LESSONS_ERROR,
   FETCH_LESSON_SLIDES_START,
+  FETCH_LESSON_SLIDES_SUCCESS,
   FETCH_LESSON_SLIDES_ERROR,
-  FETCH_LESSON_SLIDES_SUCCESS
 } from "./types/lesson";
 
 export function fetchLessonsStart() {
@@ -14,11 +12,11 @@ export function fetchLessonsStart() {
 }
 
 export function fetchLessonsSuccess(lessons) {
-  return {type: FETCH_LESSONS_SUCCESS, lessons };
+  return { type: FETCH_LESSONS_SUCCESS, lessons };
 }
 
 export function fetchLessonsError(error) {
-  return { type: FETCH_LESSONS_ERROR, error};
+  return { type: FETCH_LESSONS_ERROR, error };
 }
 
 export function fetchLessonSlidesStart() {
