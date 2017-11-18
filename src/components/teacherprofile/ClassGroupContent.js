@@ -7,8 +7,8 @@ import ContactList from '../shared/ContactList';
 import _ from 'lodash';
 
 const ClassGroupContent = ({ content }) => {
-  let classListKey = 'classlist' + content.id;
-  let feedbackKey = 'feedback' + content.id;
+  const classListKey = 'classlist' + content.id;
+  const feedbackKey = 'feedback' + content.id;
   // TODO Simon: use contact list for headteachers
   return (
     <Grid className="class-group-details">
