@@ -4,8 +4,8 @@ import {
   FETCH_LESSONS_ERROR,
   FETCH_LESSON_SLIDES_START,
   FETCH_LESSON_SLIDES_SUCCESS,
-  FETCH_LESSON_SLIDES_ERROR,
-} from "./types/lesson";
+  FETCH_LESSON_SLIDES_ERROR
+} from './types';
 
 export function fetchLessonsStart() {
   return { type: FETCH_LESSONS_START };
@@ -24,10 +24,9 @@ export function fetchLessonSlidesStart() {
 }
 
 export function fetchLessonSlidesSuccess(lessonInfo) {
-  return {type: FETCH_LESSON_SLIDES_SUCCESS, lessonInfo };
+  return { type: FETCH_LESSON_SLIDES_SUCCESS, lessonInfo };
 }
 
 export function fetchLessonSlidesError(error) {
   return { type: FETCH_LESSON_SLIDES_ERROR, error };
 }
-
