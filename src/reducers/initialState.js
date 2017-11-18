@@ -2,7 +2,7 @@ export default {
   loggedIn: {
     data: {},
     loading: false,
-    error: undefined,
+    error: undefined
   },
   courses: {
     data: {},
@@ -46,12 +46,12 @@ export default {
     data: {},
     loading: false,
     error: null,
-    hasError: false,
+    hasError: false
   },
   locations: {
     data: {},
     loading: false,
     error: null,
-    hasError: false,
+    hasError: false
   }
 };

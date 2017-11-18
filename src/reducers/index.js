@@ -3,13 +3,12 @@ import { combineReducers } from 'redux';
 import loggedIn from './auth';
 import courses from './courses';
 import lessons from './lessons';
-import calendar from './calendar';
 import currentLesson from './currentLesson';
-import organisation from'./organisation';
+import organisation from './organisation';
 import users from './users';
 import locations from './locations';
-import * as types from '../actions/types';
 import initialState from './initialState';
+import { LOGOUT } from '../actions/types';
 
 const appReducer = combineReducers({
   loggedIn,
@@ -22,12 +21,11 @@ const appReducer = combineReducers({
 });
 
 const rootReducer = (state, action) => {
-  if (action.type === types.LOGOUT) {
+  if (action.type === LOGOUT) {
     state = initialState;
   }
 
   return appReducer(state, action);
 };
-
 
 export default rootReducer;

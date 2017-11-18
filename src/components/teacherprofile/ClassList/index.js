@@ -1,6 +1,5 @@
 import { connect } from 'react-redux';
 import mapActionCreatorsToProps from '../../../functions/mapActionCreatorsToProps';
-import {loadChildrenIfNeeded, loadCoursesIfNeeded} from "../../../actions/courses";
 import ClassListContainer from './ClassListContainer';
 
 const mapStateToProps = (state, ownProps) => {
@@ -22,9 +21,5 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-const actionCreators = mapActionCreatorsToProps({
-  loadChildrenIfNeeded,
-  loadCoursesIfNeeded
-});
 
-export default connect(mapStateToProps, actionCreators)(ClassListContainer);
+export default connect(mapStateToProps)(ClassListContainer);
