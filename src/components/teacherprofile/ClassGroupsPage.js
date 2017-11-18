@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 import Accordion from '../shared/Accordion';
 import ErrorMessage from '../shared/ErrorMessage';
-import { fetchCoursesSuccess } from '../../actions/courses';
+import { fetchCoursesStart, fetchCoursesSuccess, fetchCoursesError } from '../../actions/courses';
 import Loader from '../shared/Loader';
 import _ from 'lodash';
 import courseApi from '../../api/courses';
@@ -12,37 +12,45 @@ import Reloader from '../shared/Reloader';
 import mapActionCreatorsToProps from '../../functions/mapActionCreatorsToProps';
 
 class ClassGroupsPage extends React.Component {
-  // init state + bind functions
-  constructor(props, context) {
-    super(props, context);
+  constructor(...props) {
+    super(...props);
+
     this.mapToPanels = this.mapToPanels.bind(this);
   }
 
   componentDidMount() {
-    if (_.isEmpty(this.props.courses) && !this.props.hasError) {
+    // TODO: make use of selector
+    if (_.isEmpty(this.props.courses) && !this.props.error) {
+
       this.fetchCourses();
     }
   }
 
   componentDidUpdate() {
-    if (!this.props.loading && _.isEmpty(this.props.courses) && !this.props.hasError) {
+    // TODO: make use of selector
+    if (!this.props.loading && _.isEmpty(this.props.courses) && !this.props.error) {
       this.fetchCourses();
     }
   }
 
   fetchCourses() {
-    courseApi.getCourses(false).then(this.props.actions.fetchCoursesSuccess);
+    this.props.actions.fetchCoursesStart();
+
+    courseApi
+      .getCourses(false)
+      .then(this.props.actions.fetchCoursesSuccess)
+      .catch(this.props.actions.fetchCoursesError);
   }
 
-  mapToPanels(data) {
-    const { locations, users } = this.props;
+  mapToPanels() {
+    const { locations, users, courses } = this.props;
 
-    let panels = data.map(course => {
-      let headTeacher = users[course.headTeacher];
-      let assistants = course.assistants.map(userId => {
+    return courses.map(course => {
+      const headTeacher = users[course.headTeacher];
+      const assistants = course.assistants.map(userId => {
         return users[userId];
       });
-      let location = locations[course.location];
+      const location = locations[course.location];
 
       return {
         title: {
@@ -71,21 +79,22 @@ class ClassGroupsPage extends React.Component {
         }
       };
     });
-    return panels;
   }
 
   render() {
-    let panels = this.mapToPanels(this.props.courses);
+    const { error, loading, actions } = this.props;
+    const panels = this.mapToPanels();
+
     return (
       <div className="container">
-        <Loader active={this.props.loading} />
-        <Reloader action={this.props.actions.loadCourses} />
+        <Loader active={loading} />
+        <Reloader action={actions.loadCourses} />
+
         <h1>Klasgroepen</h1>
         <div className="subtitle">Bekijk hier je lessen en download de klaslijsten</div>
-        {!this.props.hasError && <Accordion panels={panels} />}
-        {this.props.hasError && (
-          <ErrorMessage header="Fout bij inladen" message={this.props.error.message} />
-        )}
+
+        {!error && <Accordion panels={panels} />}
+        {error && <ErrorMessage header="Fout bij inladen" message={error.message} />}
       </div>
     );
   }
@@ -95,23 +104,24 @@ ClassGroupsPage.propTypes = {
   actions: PropTypes.object.isRequired,
   courses: PropTypes.arrayOf(PropTypes.object),
   loading: PropTypes.bool,
-  error: PropTypes.object,
-  hasError: PropTypes.bool
+  error: PropTypes.object
 };
 
+// TODO: move this to an index.js file.
 function mapStateToProps(state, ownProps) {
   return {
     loading: state.courses.loading,
     courses: Object.values(state.courses.data),
     error: state.courses.error,
-    hasError: state.courses.hasError,
     users: state.users.data,
     locations: state.locations.data
   };
 }
 
 const actionCreators = mapActionCreatorsToProps({
-  fetchCoursesSuccess
+  fetchCoursesStart,
+  fetchCoursesSuccess,
+  fetchCoursesError
 });
 
 export default connect(mapStateToProps, actionCreators)(ClassGroupsPage);
