@@ -1,47 +1,54 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Calendar from "./Calendar";
-import Loader from "../../shared/Loader";
-import ErrorMessage from "../../shared/ErrorMessage";
+import Calendar from './Calendar';
+import Loader from '../../shared/Loader';
+import ErrorMessage from '../../shared/ErrorMessage';
+import _ from 'lodash';
+import courseApi from '../../../api/courses';
 
 class CalendarContainer extends Component {
   constructor(props, context) {
     super(props, context);
-    this.loadCalendar = this.loadCalendar.bind(this);
+
+    this.fetchCourses.bind(this);
   }
 
   componentDidMount() {
-    this.loadCalendar();
+    // TODO: make use of selector
+    if (_.isEmpty(this.props.courses) && !this.props.error) {
+      this.fetchCourses();
+    }
   }
 
-  showEventDetails(event){
+  fetchCourses() {
+    this.props.actions.fetchCoursesStart();
+
+    courseApi
+      .getCourses(false)
+      .then(this.props.actions.fetchCoursesSuccess)
+      .catch(this.props.actions.fetchCoursesError);
+  }
+
+  showEventDetails(event) {
     this.context.router.push('/teacherprofile/calendar/' + event.id);
   }
 
-  loadCalendar() {
-    const {loadCoursesIfNeeded} = this.props.actions;
-    loadCoursesIfNeeded();
-  }
-
   render() {
-    const { error, loading, events, hasError } = this.props;
-    debugger;
+    const { error, loading, courses } = this.props;
 
     if (loading) {
-      return (
-        <Loader active/>
-      );
+      return <Loader active />;
     }
 
-    if (hasError) {
-      return (<ErrorMessage message={error.message} />);
+    if (error) {
+      return <ErrorMessage message={error.message} />;
     }
 
     return (
       <div className="CalendarContainer">
         <Calendar
-          events={events}
-          refreshCalendar={this.loadCalendar}
+          events={courses}
+          refreshCalendar={this.fetchCourses}
           showEventDetails={this.showEventDetails}
           {...this.state}
         />
@@ -52,11 +59,9 @@ class CalendarContainer extends Component {
 
 CalendarContainer.propTypes = {
   loading: PropTypes.bool,
-  events: PropTypes.array,
-  hasError: PropTypes.bool.isRequired,
-  error: PropTypes.object.isRequired
+  courses: PropTypes.array,
+  error: PropTypes.object
 };
-
 
 CalendarContainer.contextTypes = {
   router: PropTypes.object

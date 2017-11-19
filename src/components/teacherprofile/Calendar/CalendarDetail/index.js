@@ -1,6 +1,5 @@
 import { connect } from 'react-redux';
 import mapActionCreatorsToProps from '../../../../functions/mapActionCreatorsToProps';
-import {loadCoursesIfNeeded} from '../../../../actions/courses';
 import CalendarDetailContainer from './CalendarDetailContainer';
 
 function mapStateToProps(state, ownProps) {
@@ -11,10 +10,5 @@ function mapStateToProps(state, ownProps) {
   };
 }
 
-const actionCreators = mapActionCreatorsToProps({
-  loadCoursesIfNeeded
-});
-
-
-export default connect(mapStateToProps, actionCreators)(CalendarDetailContainer);
+export default connect(mapStateToProps)(CalendarDetailContainer);
 

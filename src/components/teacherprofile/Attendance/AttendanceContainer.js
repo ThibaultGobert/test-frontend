@@ -14,13 +14,6 @@ class AttendanceContainer extends Component {
     this.redirectToOverview = this.redirectToOverview.bind(this);
   }
 
-  componentDidMount() {
-    const { loadChildrenIfNeeded, loadCoursesIfNeeded } = this.props.actions;
-    const { courseId } = this.props;
-    loadChildrenIfNeeded(courseId);
-    loadCoursesIfNeeded();
-  }
-
   submit(event) {
     event.preventDefault();
 
@@ -43,13 +36,7 @@ class AttendanceContainer extends Component {
   render() {
     const { error, loading, classList, course, hasError } = this.props;
 
-    if (loading) {
-      return (
-        <Loader active/>
-      );
-    }
-
-    if (!loading && hasError) {
+    if (error) {
       return (<ErrorMessage message="Fout bij inladen van de lesdata" />);
     }
     return (
@@ -73,7 +60,6 @@ AttendanceContainer.propTypes = {
   loading: PropTypes.bool,
   error: PropTypes.object,
   actions: PropTypes.object,
-  hasError: PropTypes.bool
 };
 
 AttendanceContainer.contextTypes = {

@@ -9,6 +9,7 @@ import * as userRoles from '../../../constants/roles';
 import Loader from '../../shared/Loader';
 import toastr from 'toastr';
 import _ from 'lodash';
+import lessonApi from '../../../api/lessons';
 
 class SlideViewerPage extends React.Component {
   constructor(props, context) {

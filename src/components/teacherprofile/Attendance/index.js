@@ -1,31 +1,27 @@
 import { connect } from 'react-redux';
 import mapActionCreatorsToProps from '../../../functions/mapActionCreatorsToProps';
-import { postAttendanceStart, postAttendanceSuccess, postAttendanceError } from '../../../actions/userAdministration';
-import {loadCoursesIfNeeded, loadChildrenIfNeeded} from "../../../actions/courses";
+import {
+  postAttendanceStart,
+  postAttendanceSuccess,
+  postAttendanceError
+} from '../../../actions/userAdministration';
 import AttendanceContainer from './AttendanceContainer';
 
-const mapStateToProps = (state, ownProps) => {
-  const courseId = ownProps.params.id;
-  const course = state.courses.data[courseId];
-  const classList = state.classlists.data[courseId];
-  const loading = state.classlists.loading || state.courses.loading;
-  const hasError = state.classlists.hasError || state.courses.hasError;
+const mapStateToProps = (state, { params }) => {
+  const courseId = params.id;
 
   return {
-    courseId,
-    course,
-    classList,
-    loading,
-    hasError
-  }
+    courseId: courseId,
+    //course: state.courses.data[courseId],
+    //classList: state.classlists.data[courseId],
+    //loading: state.classlists.loading || state.courses.loading
+  };
 };
 
 const actionCreators = mapActionCreatorsToProps({
   postAttendanceStart,
   postAttendanceSuccess,
-  postAttendanceError,
-  loadCoursesIfNeeded,
-  loadChildrenIfNeeded
+  postAttendanceError
 });
 
 export default connect(mapStateToProps, actionCreators)(AttendanceContainer);

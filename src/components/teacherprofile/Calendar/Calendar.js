@@ -4,37 +4,44 @@ import BigCalendar from 'react-big-calendar';
 import Reloader from '../../shared/Reloader';
 import moment from 'moment';
 import Toolbar from './CalendarToolbar';
+import isEmpty from '../../../functions/isEmpty';
+import { values } from 'lodash';
+import mapToCalendar from '../../../api/mappers/mapToCalendar';
 
-const Calendar = ({refreshCalendar, events, showEventDetails}) => {
-    BigCalendar.momentLocalizer(moment); // or globalizeLocalizer
+const Calendar = ({ refreshCalendar, events, showEventDetails }) => {
+  console.log('DEMIAN', isEmpty(events) ? [] : events);
+  console.log('DEMIAN', values(events));
+  console.log('DEMIAN', mapToCalendar(isEmpty(events) ? [] : events));
 
-    let components = {
-      toolbar: Toolbar
-    };
+  BigCalendar.momentLocalizer(moment); // or globalizeLocalizer
 
-    let views = ['month', 'week', 'day'];
+  const components = {
+    toolbar: Toolbar
+  };
 
-    return (
-      <div className="container">
-        <Reloader action={refreshCalendar}/>
-        <h1>Jouw kalender</h1>
-        <p>Bekijk hier de lessen en klik door op een les om de details ervan te zien</p>
-        <div className="calendar-wrapper">
-          <div className="calendar">
-            <BigCalendar
-              views={views}
-              culture="nl"
-              events={events}
-              titleAccessor="name"
-              defaultView="month"
-              components={components}
-              defaultDate={new Date()}
-              onSelectEvent={event => showEventDetails(event)}
-            />
-          </div>
+  const views = ['month', 'week', 'day'];
+
+  return (
+    <div className="container">
+      <Reloader action={refreshCalendar} />
+      <h1>Jouw kalender</h1>
+      <p>Bekijk hier de lessen en klik door op een les om de details ervan te zien</p>
+      <div className="calendar-wrapper">
+        <div className="calendar">
+          <BigCalendar
+            views={views}
+            culture="nl"
+            events={[events[191]]}
+            titleAccessor="name"
+            defaultView="month"
+            components={components}
+            defaultDate={new Date()}
+            onSelectEvent={event => showEventDetails(event)}
+          />
         </div>
       </div>
-    );
+    </div>
+  );
 };
 
 Calendar.propTypes = {

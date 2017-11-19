@@ -22,6 +22,11 @@ class AuthApi {
           throw new Error('Timeout error');
         }
 
+        // When the can't connect to the API we will get no response.
+        if(!error || !error.response || !error.response.data) {
+          throw new Error('Er is een onverwachte fout opgetreden');
+        }
+
         const errorReturned = error.response.data;
 
         if (errorReturned.status === 401 || errorReturned.status === 500) {

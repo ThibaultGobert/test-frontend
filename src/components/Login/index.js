@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import mapActionCreatorsToProps from '../../functions/mapActionCreatorsToProps';
-import { login, logOut } from '../../actions/auth';
+import { loginStart, loginSuccess, loginError, logOut } from '../../actions/auth';
 import LoginContainer from './LoginContainer';
 
 const mapStateToProps = state => ({
@@ -10,7 +10,9 @@ const mapStateToProps = state => ({
 });
 
 const actionCreators = mapActionCreatorsToProps({
-  login,
+  loginStart,
+  loginSuccess,
+  loginError,
   logOut
 });
 

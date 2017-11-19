@@ -4,6 +4,7 @@ import { isEmpty } from 'lodash';
 import toastr from 'toastr';
 
 import Login from './Login';
+import api from '../../api/auth';
 import * as roles from '../../constants/roles';
 
 class LoginContainer extends Component {
@@ -26,17 +27,19 @@ class LoginContainer extends Component {
     this.toggleImpersonate = this.toggleImpersonate.bind(this);
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (!isEmpty(nextProps.loggedIn)) {
-      if (nextProps.loggedIn.role === roles.STUDENT_ROLE) {
+  componentWillReceiveProps({ loggedIn }) {
+    console.log(loggedIn);
+
+    if (!isEmpty(loggedIn)) {
+      if (loggedIn.role === roles.STUDENT_ROLE) {
         this.context.router.push('/studentprofile/clan');
-      } else if (nextProps.loggedIn.role === roles.TEACHER_ROLE) {
+      } else if (loggedIn.role === roles.TEACHER_ROLE) {
         this.context.router.push('/teacherprofile/overview');
-      } else if (nextProps.loggedIn.role === roles.WORKSHOP_STUDENT_ROLE) {
+      } else if (loggedIn.role === roles.WORKSHOP_STUDENT_ROLE) {
         this.context.router.push('/workshopprofile/overview');
-      } else if (nextProps.loggedIn.role === roles.EDITOR_ROLE) {
+      } else if (loggedIn.role === roles.EDITOR_ROLE) {
         this.context.router.push('/editorprofile/overview');
-      } else if (nextProps.loggedIn.role === roles.ADMIN_ROLE) {
+      } else if (loggedIn.role === roles.ADMIN_ROLE) {
         toastr.error('Geen toegang voor admins');
         this.props.actions.logOut();
       }
@@ -46,9 +49,15 @@ class LoginContainer extends Component {
   submit(event) {
     event.preventDefault();
 
-    const { login } = this.props.actions;
+    const { loginStart, loginSuccess, loginError } = this.props.actions;
 
-    login(this.state.credentials);
+
+    loginStart();
+
+    api
+      .login(this.state.credentials)
+      .then(loginSuccess)
+      .catch(loginError);
   }
 
   onChange({ target }) {

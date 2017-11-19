@@ -4,6 +4,7 @@ import createDate from '../../functions/createDate';
 
 export default (data) => {
   let lessons = data.map(course => {
+
     return course.lessons.map(lesson => {
       if (lesson.courseStartdate === undefined || lesson.courseEnddate === undefined) {
         return null;
