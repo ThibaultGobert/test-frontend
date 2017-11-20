@@ -28,8 +28,6 @@ class LoginContainer extends Component {
   }
 
   componentWillReceiveProps({ loggedIn }) {
-    console.log(loggedIn);
-
     if (!isEmpty(loggedIn)) {
       if (loggedIn.role === roles.STUDENT_ROLE) {
         this.context.router.push('/studentprofile/clan');

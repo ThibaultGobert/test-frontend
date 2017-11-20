@@ -42,8 +42,6 @@ class CalendarDetailContainer extends React.Component {
   render() {
     const { event } = this.props;
 
-    console.log(event);
-
     return null;
     return(
       <CalendarDetail

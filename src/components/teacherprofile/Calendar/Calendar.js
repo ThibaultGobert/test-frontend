@@ -9,10 +9,6 @@ import { values } from 'lodash';
 import mapToCalendar from '../../../api/mappers/mapToCalendar';
 
 const Calendar = ({ refreshCalendar, events, showEventDetails }) => {
-  console.log('DEMIAN', isEmpty(events) ? [] : events);
-  console.log('DEMIAN', values(events));
-  console.log('DEMIAN', mapToCalendar(isEmpty(events) ? [] : events));
-
   BigCalendar.momentLocalizer(moment); // or globalizeLocalizer
 
   const components = {
