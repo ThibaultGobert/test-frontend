@@ -2,7 +2,7 @@ import React from 'react';
 import { Accordion } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import AccordionTitle from "./AccordionTitle";
-import ClassGroupContent from '../teacherprofile/ClassGroupContent';
+import ClassGroupContent from '../Teacher/ClassGroupContent';
 import _ from 'lodash';
 
 const CFAccordion = ({panels}) => {
