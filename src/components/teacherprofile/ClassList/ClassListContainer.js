@@ -7,6 +7,69 @@ import courseApi from '../../../api/courses';
 import * as subscriptionTypes from '../../../constants/subscriptionTypes';
 import ClassList from './ClassList';
 
+const columns = [
+  {
+    defaults: require('../../../assets/images/placeholders/no-user.png'),
+    display: '',
+    key: 'avatarurlmedium',
+    type: 'string'
+  },
+  {
+    defaults: '',
+    display: 'Naam',
+    key: 'name',
+    type: 'string'
+  },
+  {
+    defaults: '',
+    display: 'Geboortedatum',
+    key: 'birthdate',
+    type: 'number'
+  },
+  {
+    defaults: '',
+    display: 'Leerjaar',
+    key: 'grade',
+    type: 'number'
+  },
+  {
+    defaults: '',
+    display: 'Naam ouder',
+    key: 'parent_name',
+    type: 'string'
+  },
+  {
+    defaults: '',
+    display: 'Contact ouder',
+    key: 'parent_contact',
+    type: 'string'
+  },
+  {
+    defaults: '',
+    display: 'Leerplatform username',
+    key: 'usernames_platform',
+    type: 'string'
+  },
+  {
+    defaults: '',
+    display: 'Leerplatform hint',
+    key: 'password_hint',
+    type: 'string'
+  },
+  {
+    defaults: '',
+    display: 'Scratch username',
+    key: 'scratchusername',
+    type: 'string'
+  },
+  {
+    defaults: '',
+    display: 'Scratch paswoord',
+    key: 'scratchpassword',
+    type: 'string'
+  }
+];
+
 class ClassListContainer extends React.Component {
   // init state + bind functions
   constructor(props, context) {
@@ -17,96 +80,28 @@ class ClassListContainer extends React.Component {
 
   componentDidMount() {
     const { courseId } = this.props;
+    const { fetchChildrenStart, fetchChildrenSuccess, fetchChildrenError } = this.props.actions;
 
-    Promise.all(courseApi.getChildrenForCourse(courseId))
-      .then(data => {
-        let children = data[0];
-      })
-      .catch(error => {});
+    fetchChildrenStart();
+
+    courseApi
+      .getChildrenForCourse(courseId)
+      .then(data => fetchChildrenSuccess(data, courseId))
+      .catch(fetchChildrenError);
   }
 
   redirectToClassGroups() {
     browserHistory.goBack();
   }
 
-  // render function --> typically calling child component, here is markup inline
   render() {
-    const { classList, loading, hasError, error, course, users } = this.props;
+    const { classlist, loading, error, course, users } = this.props;
 
-    let data = classList.map(studentId => {
-      let student = users[studentId];
-      let highlight = false;
-      if (student.subscription_type === subscriptionTypes.TRIAL) {
-        highlight = true;
-      }
-
-      return Object.assign({}, student, { highlight });
+    const classListWithHighlights = classlist.map(child => {
+      return { ...child, highlight: child.subscription_type == subscriptionTypes.TRIAL };
     });
 
-    let columns = [
-      {
-        defaults: require('../../../assets/images/placeholders/no-user.png'),
-        display: '',
-        key: 'avatarurlmedium',
-        type: 'string',
-      },
-      {
-        defaults: '',
-        display: 'Naam',
-        key: 'name',
-        type: 'string',
-      },
-      {
-        defaults: '',
-        display: 'Geboortedatum',
-        key: 'birthdate',
-        type: 'number',
-      },
-      {
-        defaults: '',
-        display: 'Leerjaar',
-        key: 'grade',
-        type: 'number',
-      },
-      {
-        defaults: '',
-        display: 'Naam ouder',
-        key: 'parent_name',
-        type: 'string',
-      },
-      {
-        defaults: '',
-        display: 'Contact ouder',
-        key: 'parent_contact',
-        type: 'string',
-      },
-      {
-        defaults: '',
-        display: 'Leerplatform username',
-        key: 'usernames_platform',
-        type: 'string',
-      },
-      {
-        defaults: '',
-        display: 'Leerplatform hint',
-        key: 'password_hint',
-        type: 'string',
-      },
-      {
-        defaults: '',
-        display: 'Scratch username',
-        key: 'scratchusername',
-        type: 'string',
-      },
-      {
-        defaults: '',
-        display: 'Scratch paswoord',
-        key: 'scratchpassword',
-        type: 'string',
-      },
-    ];
-
-    if (hasError) {
+    if (error) {
       return <ErrorMessage header="Fout bij inladen" message={error.message} />;
     }
 
@@ -116,7 +111,7 @@ class ClassListContainer extends React.Component {
 
     return (
       <ClassList
-        data={data}
+        data={classListWithHighlights}
         columns={columns}
         redirectToClassGroups={this.redirectToClassGroups}
         course={course}

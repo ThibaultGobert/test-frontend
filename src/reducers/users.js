@@ -17,7 +17,7 @@ export default function usersReducer(state = initialState.users, action) {
 
     case types.FETCH_CHILDREN_SUCCESS:
       return merge({}, state, {
-        data: action.data.children.entities.users,
+        data: action.data.entities.users,
         loading: false,
         error: null,
         hasError: false

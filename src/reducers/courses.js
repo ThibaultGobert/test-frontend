@@ -25,7 +25,7 @@ export default function courseReducer(state = initialState.courses, action) {
 
     case FETCH_CHILDREN_SUCCESS:
       return merge({}, state, {
-        data: { [action.data.courseId]: { classList: action.data.children.result } }
+        data: { [action.courseId]: { children: action.data.result } }
       });
 
     default:

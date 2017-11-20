@@ -23,20 +23,10 @@ export function fetchChildrenStart() {
   return { type: FETCH_CHILDREN_START };
 }
 
-export function fetchChildrenSuccess(data) {
-  return { type: FETCH_CHILDREN_SUCCESS, data };
+export function fetchChildrenSuccess(data, courseId) {
+  return { type: FETCH_CHILDREN_SUCCESS, data, courseId };
 }
 
 export function fetchChildrenError(error) {
   return { type: FETCH_CHILDREN_ERROR, error };
-}
-
-export function loadChildrenSuccess(children, courseId) {
-  return {
-    type: FETCH_CHILDREN_SUCCESS,
-    data: {
-      children: children,
-      courseId: courseId
-    }
-  };
 }

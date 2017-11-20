@@ -30,7 +30,7 @@ function mapToSubscriptionType(type) {
   return null;
 }
 
-let categoryMap = {
+const categoryMap = {
   grandparent_name_plus_number: "Naam grootouder + huisnummer",
   pet_name_plus_number: "naam huisdier + huisnummer",
   best_friend_name_plus_number: "naam beste vriend of vriendin + huisnummer",
@@ -41,7 +41,7 @@ let categoryMap = {
 function mapToPasswordHint(category, hint) {
   if (category === "other") {
     return hint;
-  } else {
-    return categoryMap[category];
   }
+
+  return categoryMap[category];
 }

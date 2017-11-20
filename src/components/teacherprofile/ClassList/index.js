@@ -1,27 +1,27 @@
 import { connect } from 'react-redux';
-import mapActionCreatorsToProps from '../../../functions/mapActionCreatorsToProps';
 import ClassListContainer from './ClassListContainer';
+
+import { fetchChildrenStart, fetchChildrenSuccess, fetchChildrenError } from '../../../actions/courses';
+import { getCourseById, getChildrenByCourseId } from '../../../selectors';
+import mapActionCreatorsToProps from '../../../functions/mapActionCreatorsToProps';
 
 const mapStateToProps = (state, { params }) => {
   const courseId = params.id; // from path /course/:id
 
-  let classList =
-    state.courses.data[courseId] && state.courses.data[courseId].classList
-      ? state.courses.data[courseId].classList
-      : undefined;
-  if (!classList) {
-    classList = [];
-  }
-
   return {
     courseId,
-    course: state.courses.data[courseId],
-    classList: classList,
+    course: getCourseById(state, courseId),
+    classlist: getChildrenByCourseId(state, courseId),
     loading: state.users.loading,
-    hasError: state.users.hasError,
     error: state.users.error,
     users: state.users.data
   };
 };
 
-export default connect(mapStateToProps)(ClassListContainer);
+const actionCreators = mapActionCreatorsToProps({
+  fetchChildrenStart,
+  fetchChildrenSuccess,
+  fetchChildrenError
+});
+
+export default connect(mapStateToProps, actionCreators)(ClassListContainer);
