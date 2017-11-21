@@ -26,25 +26,25 @@ class ClassGroups extends React.Component {
           type: course.type,
           group: course.clan,
           level: course.level,
-          location: location.name
+          location: location.name,
         },
         content: {
           id: course.id,
           headteacher: {
-            name: headTeacher.firstname + ' ' + headTeacher.lastname,
+            name: `${headTeacher.firstname} ${headTeacher.lastname}`,
             email: headTeacher.email,
             phone: headTeacher.phone,
-            cellphone: headTeacher.cellphone
+            cellphone: headTeacher.cellphone,
           },
-          assistants: assistants,
+          assistants,
           location: {
             address: location.address,
             city: location.city,
             organisation: location.organisation,
             room: location.roomname,
-            roomremark: location.roomremark
-          }
-        }
+            roomremark: location.roomremark,
+          },
+        },
       };
     });
   }

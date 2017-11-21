@@ -7,8 +7,8 @@ import ContactList from '../../../shared/ContactList';
 import _ from 'lodash';
 
 const ClassGroupContent = ({ content }) => {
-  const classListKey = 'classlist' + content.id;
-  const feedbackKey = 'feedback' + content.id;
+  const classListKey = `classlist${content.id}`;
+  const feedbackKey = `feedback${content.id}`;
   // TODO Simon: use contact list for headteachers
   return (
     <Grid className="class-group-details">
@@ -50,10 +50,10 @@ const ClassGroupContent = ({ content }) => {
           </Segment>
         </Grid.Column>
         <Grid.Column width={2}>
-          <Link to={'/teacherprofile/classlist/' + content.id} key={classListKey}>
+          <Link to={`/teacherprofile/classlist/${content.id}`} key={classListKey}>
             <Button primary>Klaslijst</Button>
           </Link>
-          <Link to={'/teacherprofile/feedback/' + content.id} key={feedbackKey}>
+          <Link to={`/teacherprofile/feedback/${content.id}`} key={feedbackKey}>
             <Button>Aanwezigheden</Button>
           </Link>
         </Grid.Column>
@@ -63,7 +63,7 @@ const ClassGroupContent = ({ content }) => {
 };
 
 ClassGroupContent.propTypes = {
-  content: PropTypes.object
+  content: PropTypes.object,
 };
 
 export default ClassGroupContent;

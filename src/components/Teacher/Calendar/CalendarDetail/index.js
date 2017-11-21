@@ -7,7 +7,7 @@ function mapStateToProps(state, ownProps) {
   const eventId = ownProps.params.eventId; // from path /course/:id
   const event = state.events[eventId];
   return {
-    event: event,
+    event,
   };
 }
 

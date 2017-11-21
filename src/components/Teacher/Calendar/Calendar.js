@@ -12,7 +12,7 @@ const Calendar = ({ refreshCalendar, events, showEventDetails }) => {
   BigCalendar.momentLocalizer(moment); // or globalizeLocalizer
 
   const components = {
-    toolbar: Toolbar
+    toolbar: Toolbar,
   };
 
   const views = ['month', 'week', 'day'];
@@ -43,11 +43,11 @@ const Calendar = ({ refreshCalendar, events, showEventDetails }) => {
 Calendar.propTypes = {
   events: PropTypes.array.isRequired,
   refreshCalendar: PropTypes.func.isRequired,
-  showEventDetails: PropTypes.func.isRequired
+  showEventDetails: PropTypes.func.isRequired,
 };
 
 Calendar.contextTypes = {
-  router: PropTypes.object
+  router: PropTypes.object,
 };
 
 export default Calendar;

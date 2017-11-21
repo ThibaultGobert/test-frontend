@@ -11,62 +11,62 @@ const columns = [
     defaults: require('../../../assets/images/placeholders/no-user.png'),
     display: '',
     key: 'avatarurlmedium',
-    type: 'string'
+    type: 'string',
   },
   {
     defaults: '',
     display: 'Naam',
     key: 'name',
-    type: 'string'
+    type: 'string',
   },
   {
     defaults: '',
     display: 'Geboortedatum',
     key: 'birthdate',
-    type: 'number'
+    type: 'number',
   },
   {
     defaults: '',
     display: 'Leerjaar',
     key: 'grade',
-    type: 'number'
+    type: 'number',
   },
   {
     defaults: '',
     display: 'Naam ouder',
     key: 'parent_name',
-    type: 'string'
+    type: 'string',
   },
   {
     defaults: '',
     display: 'Contact ouder',
     key: 'parent_contact',
-    type: 'string'
+    type: 'string',
   },
   {
     defaults: '',
     display: 'Leerplatform username',
     key: 'usernames_platform',
-    type: 'string'
+    type: 'string',
   },
   {
     defaults: '',
     display: 'Leerplatform hint',
     key: 'password_hint',
-    type: 'string'
+    type: 'string',
   },
   {
     defaults: '',
     display: 'Scratch username',
     key: 'scratchusername',
-    type: 'string'
+    type: 'string',
   },
   {
     defaults: '',
     display: 'Scratch paswoord',
     key: 'scratchpassword',
-    type: 'string'
-  }
+    type: 'string',
+  },
 ];
 
 class ClassListContainer extends React.Component {
@@ -94,7 +94,9 @@ class ClassListContainer extends React.Component {
   }
 
   render() {
-    const { classlist, loading, error, course, users } = this.props;
+    const {
+      classlist, loading, error, course, users,
+    } = this.props;
 
     const classListWithHighlights = classlist.map(child => {
       return { ...child, highlight: child.subscription_type == subscriptionTypes.TRIAL };

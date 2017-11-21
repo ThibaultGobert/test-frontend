@@ -1,13 +1,13 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
-import Accordion from "../shared/Accordion";
+import Accordion from '../shared/Accordion';
 import ErrorMessage from '../shared/ErrorMessage';
 import * as locationsActions from '../../actions/courses';
 import Loader from '../shared/Loader';
 import _ from 'lodash';
-import Reloader from "../shared/Reloader";
+import Reloader from '../shared/Reloader';
 
 class LocationsPage extends React.Component {
   // init state + bind functions
@@ -18,30 +18,30 @@ class LocationsPage extends React.Component {
   }
 
   componentDidMount() {
-    if(_.isEmpty(this.props.locations) && !this.props.hasError) {
+    if (_.isEmpty(this.props.locations) && !this.props.hasError) {
       this.loadLocations();
     }
   }
 
   componentDidUpdate() {
-    if(!this.props.loading && _.isEmpty(this.props.locations) && !this.props.hasError) {
+    if (!this.props.loading && _.isEmpty(this.props.locations) && !this.props.hasError) {
       this.loadLocations();
     }
   }
 
-  loadLocations(){
+  loadLocations() {
     this.props.actions.loadLocations();
   }
 
   mapToPanels(data) {
-    let panels = data.map((location) => {
+    const panels = data.map((location) => {
       return {
         title: {
           name: location.name,
         },
         content: {
-          teacher_remark: location.teacher_remark
-        }
+          teacher_remark: location.teacher_remark,
+        },
       };
     });
     return panels;
@@ -52,18 +52,18 @@ class LocationsPage extends React.Component {
       locations,
       loading,
       hasError,
-      error
+      error,
     } = this.props;
 
-    let panels = this.mapToPanels(locations);
+    const panels = this.mapToPanels(locations);
 
-    return(
+    return (
       <div className="container">
-        <Loader active={loading}/>
-        <Reloader action={this.loadLocations}/>
+        <Loader active={loading} />
+        <Reloader action={this.loadLocations} />
         <h1>Locaties</h1>
         <div className="subtitle">Bekijk hier je info over de locaties waar je lesgeeft</div>
-        { !hasError && <Accordion panels={panels}/>}
+        { !hasError && <Accordion panels={panels} />}
         { hasError && <ErrorMessage header="Fout bij inladen" message={error.message} />}
       </div>
     );
@@ -83,13 +83,13 @@ function mapStateToProps(state, ownProps) {
     loading: state.locations.loading,
     locations: state.locations.data,
     error: state.locations.error,
-    hasError: state.locations.hasError
+    hasError: state.locations.hasError,
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(locationsActions, dispatch)
+    actions: bindActionCreators(locationsActions, dispatch),
   };
 }
 

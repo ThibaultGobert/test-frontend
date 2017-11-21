@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import lessonApi from '../../../../api/lessons';
 import _ from 'lodash';
-import CalendarDetail from "./CalendarDetail";
+import CalendarDetail from './CalendarDetail';
 
 class CalendarDetailContainer extends React.Component {
   constructor(props) {
@@ -11,7 +11,7 @@ class CalendarDetailContainer extends React.Component {
     this.downloadLesContent = this.downloadLesContent.bind(this);
     this.state = {
       lessonContentLoading: true,
-      contentUrl: null
+      contentUrl: null,
     };
   }
 
@@ -19,12 +19,12 @@ class CalendarDetailContainer extends React.Component {
     // TODO: update redux state with action and reducer
     lessonApi.getLessonMetaData(this.props.event.programlessonid).then(metadata => {
       let contentUrls = metadata.filter(dataForLesson => {
-          return dataForLesson.ziplocation !== undefined && dataForLesson.ziplocation;
+        return dataForLesson.ziplocation !== undefined && dataForLesson.ziplocation;
       }).map(dataForLesson => dataForLesson.ziplocation);
       contentUrls = _.without(contentUrls, undefined);
       this.setState({
         lessonContentLoading: false,
-        contentUrl: contentUrls[0]
+        contentUrl: contentUrls[0],
       });
     });
   }
@@ -42,7 +42,7 @@ class CalendarDetailContainer extends React.Component {
     const { event } = this.props;
 
     return null;
-    return(
+    return (
       <CalendarDetail
         event={event}
         redirectToCalendar={this.redirectToCalendar}
@@ -58,7 +58,7 @@ CalendarDetailContainer.propTypes = {
 };
 
 CalendarDetailContainer.contextTypes = {
-  router: PropTypes.object.isRequired
+  router: PropTypes.object.isRequired,
 };
 
 export default CalendarDetailContainer;

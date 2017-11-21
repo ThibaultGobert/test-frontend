@@ -3,7 +3,7 @@ import mapActionCreatorsToProps from '../../../functions/mapActionCreatorsToProp
 import {
   postAttendanceStart,
   postAttendanceSuccess,
-  postAttendanceError
+  postAttendanceError,
 } from '../../../actions/userAdministration';
 import AttendanceContainer from './AttendanceContainer';
 
@@ -11,17 +11,17 @@ const mapStateToProps = (state, { params }) => {
   const courseId = params.id;
 
   return {
-    courseId: courseId,
-    //course: state.courses.data[courseId],
-    //classList: state.classlists.data[courseId],
-    //loading: state.classlists.loading || state.courses.loading
+    courseId,
+    // course: state.courses.data[courseId],
+    // classList: state.classlists.data[courseId],
+    // loading: state.classlists.loading || state.courses.loading
   };
 };
 
 const actionCreators = mapActionCreatorsToProps({
   postAttendanceStart,
   postAttendanceSuccess,
-  postAttendanceError
+  postAttendanceError,
 });
 
 export default connect(mapStateToProps, actionCreators)(AttendanceContainer);

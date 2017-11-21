@@ -15,14 +15,14 @@ const mapStateToProps = (state, { match }) => {
     classlist: getChildrenByCourseId(state, courseId),
     loading: state.users.loading,
     error: state.users.error,
-    users: state.users.data
+    users: state.users.data,
   };
 };
 
 const actionCreators = mapActionCreatorsToProps({
   fetchChildrenStart,
   fetchChildrenSuccess,
-  fetchChildrenError
+  fetchChildrenError,
 });
 
 export default withRouter(connect(mapStateToProps, actionCreators)(ClassListContainer));

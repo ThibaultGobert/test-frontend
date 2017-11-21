@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Attendance from "./Attendance";
-import Loader from "../../shared/Loader";
-import ErrorMessage from "../../shared/ErrorMessage";
+import Attendance from './Attendance';
+import Loader from '../../shared/Loader';
+import ErrorMessage from '../../shared/ErrorMessage';
 import userAdministrationApi from '../../../api/userAdministration';
 
 class AttendanceContainer extends Component {
@@ -34,7 +34,9 @@ class AttendanceContainer extends Component {
   }
 
   render() {
-    const { error, loading, classList, course, hasError } = this.props;
+    const {
+      error, loading, classList, course, hasError,
+    } = this.props;
 
     if (error) {
       return (<ErrorMessage message="Fout bij inladen van de lesdata" />);
@@ -50,7 +52,7 @@ class AttendanceContainer extends Component {
           {...this.state}
         />
       </div>
-      );
+    );
   }
 }
 
@@ -63,7 +65,7 @@ AttendanceContainer.propTypes = {
 };
 
 AttendanceContainer.contextTypes = {
-  router: PropTypes.object
+  router: PropTypes.object,
 };
 
 export default AttendanceContainer;

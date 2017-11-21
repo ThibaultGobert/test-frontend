@@ -1,11 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Button, Label} from 'semantic-ui-react';
-import {navigate, messages} from "../../../constants/calendar";
+import { Button, Label } from 'semantic-ui-react';
+import { navigate, messages } from '../../../constants/calendar';
 import cn from 'classnames';
 
 class CalendarToolbar extends React.Component {
-
   constructor(props) {
     super(props);
 
@@ -23,25 +22,25 @@ class CalendarToolbar extends React.Component {
 
 
   viewNamesGroup() {
-    let viewNames = this.props.views;
+    const viewNames = this.props.views;
     const view = this.props.view;
 
     if (viewNames.length > 1) {
       return (
         viewNames.map(name =>
-          <Button key={name}
-                  className={cn({'active': view === name})}
-                  onClick={() => this.view(name)}
+          (<Button
+            key={name}
+            className={cn({ active: view === name })}
+            onClick={() => this.view(name)}
           >
             {messages[name]}
-          </Button>
-        )
+           </Button>))
       );
     }
   }
 
   render() {
-    let {label} = this.props;
+    const { label } = this.props;
     return (
       <div className="calendar-toolbar">
         <div className="view-type">
@@ -51,8 +50,8 @@ class CalendarToolbar extends React.Component {
         </div>
         <div className="view-details">
           <span className="calendar-control">
-            <img src={require('../../../assets/images/calendar/left-arrow.png')} alt="Navigate left" onClick={() => this.navigate(navigate.PREVIOUS)}/>
-            <img src={require('../../../assets/images/calendar/right-arrow.png')} alt="Navigate right" onClick={() => this.navigate(navigate.NEXT)}/>
+            <img src={require('../../../assets/images/calendar/left-arrow.png')} alt="Navigate left" onClick={() => this.navigate(navigate.PREVIOUS)} />
+            <img src={require('../../../assets/images/calendar/right-arrow.png')} alt="Navigate right" onClick={() => this.navigate(navigate.NEXT)} />
           </span>
           <span className="calendar-label">
             <Label>{label}</Label>

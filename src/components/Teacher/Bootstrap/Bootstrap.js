@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import courseApi from '../../../api/courses';
 
 class Bootstrap extends Component {
-
   componentDidMount() {
     courseApi
       .getCourses(false)
@@ -12,7 +11,7 @@ class Bootstrap extends Component {
   }
 
   render() {
-    return <div>TODO: een coole loader. Eventueel iets met het Logo van CodeFever.</div>
+    return <div>TODO: een coole loader. Eventueel iets met het Logo van CodeFever.</div>;
   }
 }
 

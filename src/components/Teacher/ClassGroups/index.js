@@ -9,7 +9,7 @@ function mapStateToProps(state, ownProps) {
   return {
     courses: Object.values(state.courses.data),
     users: state.users.data,
-    locations: state.locations.data
+    locations: state.locations.data,
   };
 }
 

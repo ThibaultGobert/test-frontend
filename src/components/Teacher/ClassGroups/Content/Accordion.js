@@ -1,32 +1,32 @@
 import React from 'react';
 import { Accordion } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
-import AccordionTitle from "./AccordionTitle";
+import AccordionTitle from './AccordionTitle';
 import ClassGroupContent from './ClassGroupContent';
 import _ from 'lodash';
 
-const CFAccordion = ({panels}) => {
+const CFAccordion = ({ panels }) => {
   let tries =
     panels.map((panel, index) => {
-      let title =
-        <Accordion.Title>
-          <AccordionTitle fields={panel.title}/>
-        </Accordion.Title>;
+      const title =
+        (<Accordion.Title>
+          <AccordionTitle fields={panel.title} />
+         </Accordion.Title>);
 
-      let content =
-        <Accordion.Content>
-          <ClassGroupContent content={panel.content}/>
-        </Accordion.Content>;
+      const content =
+        (<Accordion.Content>
+          <ClassGroupContent content={panel.content} />
+         </Accordion.Content>);
       return [
         title,
-        content
+        content,
       ];
     });
-    if (!_.isEmpty(tries)) {
-      tries = tries.reduce(function(a, b) {
-        return a.concat(b);
-      });
-    }
+  if (!_.isEmpty(tries)) {
+    tries = tries.reduce((a, b) => {
+      return a.concat(b);
+    });
+  }
 
   return (
     <Accordion fluid styled className="cf-accordion" children={tries} />
@@ -34,7 +34,7 @@ const CFAccordion = ({panels}) => {
 };
 
 CFAccordion.propTypes = {
-  panels: PropTypes.arrayOf(PropTypes.object)
+  panels: PropTypes.arrayOf(PropTypes.object),
 };
 
 export default CFAccordion;

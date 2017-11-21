@@ -7,7 +7,7 @@ import _ from 'lodash';
 
 class CalendarContainer extends Component {
   showEventDetails(event) {
-    this.context.router.push('/teacherprofile/calendar/' + event.id);
+    this.context.router.push(`/teacherprofile/calendar/${event.id}`);
   }
 
   render() {
@@ -37,11 +37,11 @@ class CalendarContainer extends Component {
 CalendarContainer.propTypes = {
   loading: PropTypes.bool,
   courses: PropTypes.array,
-  error: PropTypes.object
+  error: PropTypes.object,
 };
 
 CalendarContainer.contextTypes = {
-  router: PropTypes.object
+  router: PropTypes.object,
 };
 
 export default CalendarContainer;

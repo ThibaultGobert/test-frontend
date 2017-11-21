@@ -12,7 +12,7 @@ import Attendance from './Attendance';
 import InfoPage from './InfoPage';
 
 const Teacher = ({ isBootstrapped, user }) => {
-  if(!isBootstrapped) {
+  if (!isBootstrapped) {
     return <Bootstrap />;
   }
 

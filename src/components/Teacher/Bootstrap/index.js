@@ -9,7 +9,7 @@ import mapActionCreatorsToProps from '../../../functions/mapActionCreatorsToProp
 
 const actionCreators = mapActionCreatorsToProps({
   fetchCoursesSuccess,
-  finishBootstrap
+  finishBootstrap,
 });
 
 export default connect(null, actionCreators)(Bootstrap);

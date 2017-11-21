@@ -1,7 +1,6 @@
 import React from 'react';
 
 class InfoPage extends React.Component {
-
   render() {
     return (
       <div className="info-page">
@@ -14,7 +13,9 @@ class InfoPage extends React.Component {
         </ul>
         <p>Link	technische	bugs: <a href="https://docs.google.com/spreadsheets/d/1Pg-LG7RrhWF5NhwAwj8JC9v74DkyNn-8OBgXLULByeE/edit?usp=sharing">https://docs.google.com/spreadsheets/d/1Pg-LG7RrhWF5NhwAwj8JC9v74DkyNn-8OBgXLULByeE/edit?usp=sharing</a></p>
         <p>Link	inhoudelijke	bugs: <a href="https://docs.google.com/spreadsheets/d/1ojAF0IjDxgfryNTjsC_S4BEqDpM3kQI9mPtU58JTI3Q/edit?usp=sharing">
-          https://docs.google.com/spreadsheets/d/1ojAF0IjDxgfryNTjsC_S4BEqDpM3kQI9mPtU58JTI3Q/edit?usp=sharing</a></p>
+          https://docs.google.com/spreadsheets/d/1ojAF0IjDxgfryNTjsC_S4BEqDpM3kQI9mPtU58JTI3Q/edit?usp=sharing
+        </a>
+        </p>
 
         <h1>Nieuw	kind	voor	een	proefles</h1>
         <p>Als er in je	les	leerlingen	zijn die komen testen.	Geef	hen	dan	GEEN	inloggegevens.	Vraag	de	ouders	om	de	leerlingen	meteen	in	te	schrijven	op	een	computer	in	het	lokaal,	dan	heeft	het	kind	meteen	een	account.</p>
@@ -41,8 +42,9 @@ class InfoPage extends React.Component {
             <td>Uitleg_ivm_1.2.pdf</td>
           </tr>
           <tr>
-            <td>ByteBusters level 1, <br/>ByteBusters level 5, <br/>CodeKraks level 1, <br/>DigiHeroes level 1, <br/>e-Riders level 1,
-              <br/>ASS-lessen</td>
+            <td>ByteBusters level 1, <br />ByteBusters level 5, <br />CodeKraks level 1, <br />DigiHeroes level 1, <br />e-Riders level 1,
+              <br />ASS-lessen
+            </td>
             <td>Uitleg_ivm_2.0.pdf</td>
           </tr>
         </table>
