@@ -3,11 +3,16 @@ import PropTypes from 'prop-types';
 import Calendar from './Calendar';
 import Loader from '../../shared/Loader';
 import ErrorMessage from '../../shared/ErrorMessage';
-import _ from 'lodash';
 
 class CalendarContainer extends Component {
+  constructor(...props) {
+    super(...props);
+    this.showEventDetails = this.showEventDetails.bind(this);
+  }
+
   showEventDetails(event) {
-    this.context.router.push(`/teacherprofile/calendar/${event.id}`);
+    const { history } = this.props;
+    history.push(`/teacherprofile/calendar/${event.id}`);
   }
 
   render() {

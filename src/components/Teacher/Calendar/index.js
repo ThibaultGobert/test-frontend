@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import { fetchCoursesStart, fetchCoursesSuccess, fetchCoursesError } from '../../../actions/courses';
 import mapActionCreatorsToProps from '../../../functions/mapActionCreatorsToProps';
 import CalendarContainer from './CalendarContainer';
+import { withRouter } from 'react-router-dom';
 import _ from 'lodash';
 
 const mapStateToProps = (state, ownProps) => {
@@ -18,4 +19,4 @@ const actionCreators = mapActionCreatorsToProps({
   fetchCoursesError,
 });
 
-export default connect(mapStateToProps, actionCreators)(CalendarContainer);
+export default withRouter(connect(mapStateToProps, actionCreators)(CalendarContainer));
