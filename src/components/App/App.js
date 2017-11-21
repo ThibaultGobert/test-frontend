@@ -11,10 +11,20 @@ import LoginHeader from '../shared/headers/LoginHeader';
 import { Switch, Route } from 'react-router-dom';
 import Teacher from '../Teacher';
 import Login from '../Login';
+import { getUser } from '../../api/api';
 
 class App extends Component {
+  constructor(...props) {
+    super(...props);
+
+    // Set the user from localStorage
+    if(getUser() !== null) {
+      this.props.actions.loginSuccess(getUser());
+    }
+  }
+
   render() {
-    const loggedIn = this.props.loggedIn.data;
+    const loggedIn = this.props.loggedIn && this.props.loggedIn.data;
 
     return (
       <div className="full-container">

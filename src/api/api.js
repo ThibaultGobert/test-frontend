@@ -1,6 +1,17 @@
 import axios from 'axios';
-import store from '../index';
 import baseUrl from './baseUrl';
+
+export const getUser = () => {
+  return JSON.parse(window.localStorage.getItem('api.user'));
+};
+
+export const setUser = (newUser) => {
+  window.localStorage.setItem('api.user', JSON.stringify(newUser));
+};
+
+export const removeUser = () => {
+  window.localStorage.removeItem('api.user');
+};
 
 const request = (endpoint, { headers = {}, body, ...otherOptions }, method) => {
   const allHeaders = {
@@ -9,8 +20,8 @@ const request = (endpoint, { headers = {}, body, ...otherOptions }, method) => {
     'Access-Control-Allow-Origin': '*'
   };
 
-  if (store.getState().loggedIn) {
-    allHeaders['x-token'] = store.getState().loggedIn.data.token;
+  if (getUser() !== null) {
+    allHeaders['x-token'] = getUser().token;
   }
 
   return axios(`${baseUrl}${endpoint}`, {
