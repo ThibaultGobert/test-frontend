@@ -1,4 +1,7 @@
 export default {
+  application: {
+    bootstrapped: false
+  },
   loggedIn: {
     data: {},
     loading: false,

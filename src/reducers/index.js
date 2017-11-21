@@ -7,6 +7,7 @@ import currentLesson from './currentLesson';
 import organisation from './organisation';
 import users from './users';
 import locations from './locations';
+import application from './application';
 import initialState from './initialState';
 import { LOGOUT } from '../actions/types';
 
@@ -17,7 +18,8 @@ const appReducer = combineReducers({
   currentLesson,
   organisation,
   users,
-  locations
+  locations,
+  application
 });
 
 const rootReducer = (state, action) => {
