@@ -22,7 +22,7 @@ const Teacher = ({ isBootstrapped, user }) => {
       <div className="page">
         <Switch>
           <Route path="/teacherprofile/overview" component={ClassGroups} />
-          <Route path="/teacherprofile/calendar" component={Calendar} />
+          <Route path="/teacherprofile/calendar" exact component={Calendar} />
           <Route path="/teacherprofile/calendar/:eventId" component={CalendarDetail} />
           <Route path="/teacherprofile/classlist/:id" component={ClassList} />
           <Route path="/teacherprofile/feedback/:id" component={Attendance} />
