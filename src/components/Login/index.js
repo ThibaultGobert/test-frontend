@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import mapActionCreatorsToProps from '../../functions/mapActionCreatorsToProps';
 import { loginStart, loginSuccess, loginError, logOut } from '../../actions/auth';
 import LoginContainer from './LoginContainer';
@@ -16,4 +17,4 @@ const actionCreators = mapActionCreatorsToProps({
   logOut
 });
 
-export default connect(mapStateToProps, actionCreators)(LoginContainer);
+export default withRouter(connect(mapStateToProps, actionCreators)(LoginContainer));
