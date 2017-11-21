@@ -1,6 +1,8 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
+import Header from '../shared/headers/TeacherHeader';
+
 import ClassGroups from './ClassGroups';
 import Calendar from './Calendar';
 import CalendarDetail from './Calendar/CalendarDetail';
@@ -8,16 +10,21 @@ import ClassList from './ClassList';
 import Attendance from './Attendance';
 import InfoPage from './InfoPage';
 
-const Teacher = () => {
+const Teacher = ({ user }) => {
   return (
-    <Switch>
-      <Route path="/teacherprofile/overview" component={ClassGroups}/>
-      <Route path="/teacherprofile/calendar" component={Calendar}/>
-      <Route path="/teacherprofile/calendar/:eventId" component={CalendarDetail}/>
-      <Route path="/teacherprofile/classlist/:id" component={ClassList}/>
-      <Route path="/teacherprofile/feedback/:id" component={Attendance}/>
-      <Route path="/teacherprofile/info" component={InfoPage}/>
-    </Switch>
+    <div className="page-wrapper">
+      <Header user={user} />
+      <div className="page">
+        <Switch>
+          <Route path="/teacherprofile/overview" component={ClassGroups} />
+          <Route path="/teacherprofile/calendar" component={Calendar} />
+          <Route path="/teacherprofile/calendar/:eventId" component={CalendarDetail} />
+          <Route path="/teacherprofile/classlist/:id" component={ClassList} />
+          <Route path="/teacherprofile/feedback/:id" component={Attendance} />
+          <Route path="/teacherprofile/info" component={InfoPage} />
+        </Switch>
+      </div>
+    </div>
   );
 };
 

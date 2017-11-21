@@ -29,8 +29,6 @@ class App extends Component {
     return (
       <div className="full-container">
         {!isEmpty(loggedIn) &&
-          loggedIn.role === userRoles.TEACHER_ROLE && <TeacherHeader user={loggedIn} />}
-        {!isEmpty(loggedIn) &&
           loggedIn.role === userRoles.STUDENT_ROLE && <StudentHeader user={loggedIn} />}
         {!isEmpty(loggedIn) &&
           loggedIn.role === userRoles.WORKSHOP_STUDENT_ROLE && (
@@ -40,23 +38,13 @@ class App extends Component {
           loggedIn.role === userRoles.EDITOR_ROLE && <EditorHeader user={loggedIn} />}
         {isEmpty(loggedIn) && <LoginHeader />}
 
-        <div className="page-wrapper">
-          <div className="page">
+
             <Switch>
               <Route exact path="/" component={Login} />
               {!isEmpty(loggedIn) && <Route path="/teacherprofile" component={Teacher} />}
             </Switch>
             {/*
           <Route path="/" component={App}>
-      <IndexRoute component={Login} onEnter={requireNoAuth(store)}/>
-      <Route path="/teacherprofile" onEnter={requireAuth(store)}>
-        <Route path="/teacherprofile/overview" component={TeacherOverviewPage}/>
-        <Route path="/teacherprofile/calendar" component={Calendar}/>
-        <Route path="/teacherprofile/calendar/:eventId" component={CalendarDetail}/>
-        <Route path="/teacherprofile/classlist/:id" component={ClassList}/>
-        <Route path="/teacherprofile/feedback/:id" component={Attendance}/>
-        <Route path="/teacherprofile/info" component={InfoPage}/>
-      </Route>
 
       <Route path="/studentprofile" onEnter={requireAuth(store)}>
         <Route path="/studentprofile/clan" component={ClanPage}/>
@@ -81,8 +69,6 @@ class App extends Component {
       <Redirect from="/" to="login" />
       <Redirect from="*" to="login" />
     </Route>*/}
-          </div>
-        </div>
       </div>
     );
   }

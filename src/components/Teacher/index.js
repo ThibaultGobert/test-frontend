@@ -1,4 +1,10 @@
 import { connect } from 'react-redux';
 import Teacher from './Teacher';
 
-export default Teacher;
+const mapStateToProps = (state) => {
+  return {
+    user: state.loggedIn
+  };
+};
+
+export default connect(mapStateToProps)(Teacher);
