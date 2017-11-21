@@ -6,8 +6,8 @@ import { fetchChildrenStart, fetchChildrenSuccess, fetchChildrenError } from '..
 import { getCourseById, getChildrenByCourseId } from '../../../selectors';
 import mapActionCreatorsToProps from '../../../functions/mapActionCreatorsToProps';
 
-const mapStateToProps = (state, { params }) => {
-  const courseId = params.id; // from path /course/:id
+const mapStateToProps = (state, { match }) => {
+  const courseId = match.params.id; // from path /course/:id
 
   return {
     courseId,

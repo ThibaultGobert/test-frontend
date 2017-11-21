@@ -90,7 +90,7 @@ class ClassListContainer extends React.Component {
   }
 
   redirectToClassGroups() {
-    this.props.history.goBack;
+    this.props.history.goBack();
   }
 
   render() {
