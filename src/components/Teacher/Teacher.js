@@ -3,6 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 
 import Header from '../shared/headers/TeacherHeader';
 
+import Bootstrap from './Bootstrap';
 import ClassGroups from './ClassGroups';
 import Calendar from './Calendar';
 import CalendarDetail from './Calendar/CalendarDetail';
@@ -10,7 +11,11 @@ import ClassList from './ClassList';
 import Attendance from './Attendance';
 import InfoPage from './InfoPage';
 
-const Teacher = ({ user }) => {
+const Teacher = ({ isBootstrapped, user }) => {
+  if(!isBootstrapped) {
+    return <Bootstrap />;
+  }
+
   return (
     <div className="page-wrapper">
       <Header user={user} />

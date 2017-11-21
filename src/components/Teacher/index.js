@@ -3,7 +3,8 @@ import Teacher from './Teacher';
 
 const mapStateToProps = (state) => {
   return {
-    user: state.loggedIn
+    user: state.loggedIn,
+    isBootstrapped: state.application.bootstrapped
   };
 };
 
