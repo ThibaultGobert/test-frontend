@@ -1,5 +1,4 @@
 import { connect } from 'react-redux';
-import ClassGroups from './ClassGroups';
+import Teacher from './Teacher';
 
-
-export default ClassGroups;
+export default Teacher;
