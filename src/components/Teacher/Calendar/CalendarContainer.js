@@ -4,31 +4,8 @@ import Calendar from './Calendar';
 import Loader from '../../shared/Loader';
 import ErrorMessage from '../../shared/ErrorMessage';
 import _ from 'lodash';
-import courseApi from '../../../api/courses';
 
 class CalendarContainer extends Component {
-  constructor(props, context) {
-    super(props, context);
-
-    this.fetchCourses.bind(this);
-  }
-
-  componentDidMount() {
-    // TODO: make use of selector
-    if (_.isEmpty(this.props.courses) && !this.props.error) {
-      this.fetchCourses();
-    }
-  }
-
-  fetchCourses() {
-    this.props.actions.fetchCoursesStart();
-
-    courseApi
-      .getCourses(false)
-      .then(this.props.actions.fetchCoursesSuccess)
-      .catch(this.props.actions.fetchCoursesError);
-  }
-
   showEventDetails(event) {
     this.context.router.push('/teacherprofile/calendar/' + event.id);
   }
