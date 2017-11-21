@@ -1,6 +1,6 @@
 /* global window */
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, withRouter } from 'react-router-dom';
 import { Button } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
@@ -83,4 +83,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(TeacherHeader);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(TeacherHeader));
