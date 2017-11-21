@@ -2,12 +2,13 @@ import { connect } from 'react-redux';
 import { fetchCoursesStart, fetchCoursesSuccess, fetchCoursesError } from '../../../actions/courses';
 import mapActionCreatorsToProps from '../../../functions/mapActionCreatorsToProps';
 import CalendarContainer from './CalendarContainer';
+import _ from 'lodash';
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    loading: state.courses.loading,
-    error: state.courses.error,
-    courses: state.courses.data,
+    loading: state.lessons.loading,
+    error: state.lessons.error,
+    lessons: _.values(state.lessons.data),
   };
 };
 

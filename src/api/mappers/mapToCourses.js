@@ -1,6 +1,7 @@
 import { normalize } from 'normalizr';
 import * as schema from './schema';
 import createDate from '../../functions/createDate';
+import mapToCalendar from "./mapToCalendar";
 import _ from 'lodash';
 
 export default (data) => {
@@ -14,9 +15,12 @@ export default (data) => {
     }
     return lessonDateA.getDay() - lessonDateB.getDay();
   });
-  data = data.map(course => {
-    return _.omit(course, 'lessons');
+
+  data = _.values(data).map( (course) => {
+    course.lessons = mapToCalendar(course.lessons);
+    return course;
   });
+
   data = normalize(data, [ schema.course ]);
   return data;
 };

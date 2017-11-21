@@ -4,9 +4,6 @@ import BigCalendar from 'react-big-calendar';
 import Reloader from '../../shared/Reloader';
 import moment from 'moment';
 import Toolbar from './CalendarToolbar';
-import isEmpty from '../../../functions/isEmpty';
-import { values } from 'lodash';
-import mapToCalendar from '../../../api/mappers/mapToCalendar';
 
 const Calendar = ({ refreshCalendar, events, showEventDetails }) => {
   BigCalendar.momentLocalizer(moment); // or globalizeLocalizer
@@ -16,7 +13,6 @@ const Calendar = ({ refreshCalendar, events, showEventDetails }) => {
   };
 
   const views = ['month', 'week', 'day'];
-
   return (
     <div className="container">
       <Reloader action={refreshCalendar} />
@@ -27,7 +23,7 @@ const Calendar = ({ refreshCalendar, events, showEventDetails }) => {
           <BigCalendar
             views={views}
             culture="nl"
-            events={[events[191]]}
+            events={events}
             titleAccessor="name"
             defaultView="month"
             components={components}

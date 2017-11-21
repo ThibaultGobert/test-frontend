@@ -11,7 +11,7 @@ class CalendarContainer extends Component {
   }
 
   render() {
-    const { error, loading, courses } = this.props;
+    const { error, loading, lessons } = this.props;
 
     if (loading) {
       return <Loader active />;
@@ -24,7 +24,7 @@ class CalendarContainer extends Component {
     return (
       <div className="CalendarContainer">
         <Calendar
-          events={courses}
+          events={lessons}
           refreshCalendar={this.fetchCourses}
           showEventDetails={this.showEventDetails}
           {...this.state}
@@ -36,7 +36,7 @@ class CalendarContainer extends Component {
 
 CalendarContainer.propTypes = {
   loading: PropTypes.bool,
-  courses: PropTypes.array,
+  lessons: PropTypes.object,
   error: PropTypes.object,
 };
 

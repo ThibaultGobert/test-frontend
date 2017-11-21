@@ -17,12 +17,13 @@ export default function lessonReducer(state = initialState.lessons, action) {
       return Object.assign({}, { data: [], loading: false, error: action.error, hasError: true });
 
     case types.FETCH_COURSES_SUCCESS:
-      return merge({}, state, {
+      return  Object.assign({}, state, {
         data: action.data.entities.lessons,
         loading: false,
         error: null,
         hasError: false
       });
+
 
     default:
       return state;
