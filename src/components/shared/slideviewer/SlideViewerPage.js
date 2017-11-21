@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {browserHistory} from 'react-router';
+import {browserHistory} from 'react-router-dom';
 import SlideViewer from './SlideViewer';
 import * as lessonActions from '../../../actions/lessons';
 import * as userRoles from '../../../constants/roles';

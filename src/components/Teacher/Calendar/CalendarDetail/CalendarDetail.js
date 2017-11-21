@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 import {Button, Message, Header, Icon} from 'semantic-ui-react';
-import {Link} from 'react-router';
+import {Link} from 'react-router-dom';
 import moment from 'moment';
 import * as lessonTypes from '../../../../constants/lessonTypes';
 import * as slideTypes from '../../../../constants/slideTypes';

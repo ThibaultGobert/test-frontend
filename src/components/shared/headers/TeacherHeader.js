@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import * as authActions from '../../../actions/auth';
 import {Button} from 'semantic-ui-react';
 import {connect} from 'react-redux';

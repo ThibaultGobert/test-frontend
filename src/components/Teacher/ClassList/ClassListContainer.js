@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { browserHistory } from 'react-router';
+import { browserHistory } from 'react-router-dom';
 import ErrorMessage from '../../shared/ErrorMessage';
 import Loader from '../../shared/Loader';
 import courseApi from '../../../api/courses';

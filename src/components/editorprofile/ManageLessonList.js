@@ -1,7 +1,7 @@
 import React from 'react';
 import {Table, Icon, Button} from 'semantic-ui-react';
 import * as slideTypes from '../../constants/slideTypes';
-import {Link} from 'react-router';
+import {Link} from 'react-router-dom';
 import _ from 'lodash';
 
 const ManageLessonList = ({lessons}) => {
