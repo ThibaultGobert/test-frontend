@@ -1,9 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Grid, Segment, Button } from 'semantic-ui-react';
 import renderHtml from 'react-render-html';
-import ContactList from '../shared/ContactList';
+import ContactList from '../../../shared/ContactList';
 import _ from 'lodash';
 
 const ClassGroupContent = ({ content }) => {
