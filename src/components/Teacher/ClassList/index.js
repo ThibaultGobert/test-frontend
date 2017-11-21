@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import ClassListContainer from './ClassListContainer';
 
 import { fetchChildrenStart, fetchChildrenSuccess, fetchChildrenError } from '../../../actions/courses';
@@ -24,4 +25,4 @@ const actionCreators = mapActionCreatorsToProps({
   fetchChildrenError
 });
 
-export default connect(mapStateToProps, actionCreators)(ClassListContainer);
+export default withRouter(connect(mapStateToProps, actionCreators)(ClassListContainer));

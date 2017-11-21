@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import lessonApi from '../../../../api/lessons';
-import {browserHistory} from 'react-router-dom';
 import _ from 'lodash';
 import CalendarDetail from "./CalendarDetail";
 
@@ -31,7 +30,7 @@ class CalendarDetailContainer extends React.Component {
   }
 
   redirectToCalendar() {
-    browserHistory.goBack();
+    this.props.history.goBack();
   }
 
   downloadLesContent(e) {

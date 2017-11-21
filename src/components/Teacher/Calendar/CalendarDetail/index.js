@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import mapActionCreatorsToProps from '../../../../functions/mapActionCreatorsToProps';
 import CalendarDetailContainer from './CalendarDetailContainer';
 
@@ -10,5 +11,5 @@ function mapStateToProps(state, ownProps) {
   };
 }
 
-export default connect(mapStateToProps)(CalendarDetailContainer);
+export default withRouter(connect(mapStateToProps)(CalendarDetailContainer));
 
