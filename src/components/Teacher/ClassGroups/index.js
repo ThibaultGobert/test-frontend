@@ -1,11 +1,7 @@
 import { connect } from 'react-redux';
 import ClassGroups from './ClassGroups';
 
-import { fetchCoursesStart, fetchCoursesSuccess, fetchCoursesError } from '../../../actions/courses';
-import { getCourseById, getChildrenByCourseId } from '../../../selectors';
-import mapActionCreatorsToProps from '../../../functions/mapActionCreatorsToProps';
-
-function mapStateToProps(state, ownProps) {
+function mapStateToProps(state) {
   return {
     courses: Object.values(state.courses.data),
     users: state.users.data,
