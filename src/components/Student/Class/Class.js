@@ -1,8 +1,6 @@
 import React from 'react';
 import {PropTypes} from 'prop-types';
 import LessonList from '../../shared/LessonList';
-import Loader from '../../shared/Loader';
-import Reloader from "../../shared/Reloader";
 import * as slideTypes from '../../../constants/slideTypes';
 
 const Class = ({lessons}) => {
@@ -12,6 +10,10 @@ const Class = ({lessons}) => {
         <LessonList lessons={lessons} slideType={slideTypes.CLASS} showLockedLessons/>
       </div>
     );
+};
+
+Class.propTypes = {
+  lessons: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default Class;

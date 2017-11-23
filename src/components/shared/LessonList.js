@@ -42,7 +42,7 @@ const LessonList = ({lessons, slideType, showLockedLessons}) => {
 };
 
 LessonList.propTypes = {
-  lessons: PropTypes.arrayOf(PropTypes.object),
+  lessons: PropTypes.arrayOf(PropTypes.object).isRequired,
   slideType: PropTypes.string,
   showLockedLessons: PropTypes.bool.isRequired
 };

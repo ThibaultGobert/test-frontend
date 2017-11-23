@@ -43,12 +43,8 @@ class ClassContainer extends Component {
 
 ClassContainer.propTypes = {
   loading: PropTypes.bool,
-  lessons: PropTypes.object,
+  lessons: PropTypes.arrayOf(PropTypes.object),
   error: PropTypes.object,
-};
-
-ClassContainer.contextTypes = {
-  router: PropTypes.object,
 };
 
 export default ClassContainer;
