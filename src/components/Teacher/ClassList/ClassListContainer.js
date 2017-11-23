@@ -89,7 +89,8 @@ class ClassListContainer extends React.Component {
   }
 
   redirectToClassGroups() {
-    this.props.history.goBack();
+    const { history } = this.props;
+    history.push('/teacherprofile/overview');
   }
 
   render() {
@@ -98,7 +99,7 @@ class ClassListContainer extends React.Component {
     } = this.props;
 
     const classListWithHighlights = classlist.map(child => {
-      return Object.assign( ...child, {highlight: child.subscription_type === subscriptionTypes.TRIAL });
+      return { ...child, highlight: child.subscription_type === subscriptionTypes.TRIAL };
     });
 
     if (error) {
