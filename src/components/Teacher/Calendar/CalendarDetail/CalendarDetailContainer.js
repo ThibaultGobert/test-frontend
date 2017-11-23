@@ -30,7 +30,8 @@ class CalendarDetailContainer extends React.Component {
   }
 
   redirectToCalendar() {
-    this.props.history.goBack();
+    const { history } = this.props;
+    history.push('/teacherprofile/calendar');
   }
 
   downloadLesContent(e) {
