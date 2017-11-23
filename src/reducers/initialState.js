@@ -62,5 +62,8 @@ export default {
     loading: true,
     error: null,
     hasError: false
-  }
+  },
+  attendances: {
+    data: {},
+  },
 };

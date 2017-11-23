@@ -9,6 +9,7 @@ import users from './users';
 import slides from './slides';
 import locations from './locations';
 import application from './application';
+import attendances from './attendances';
 import initialState from './initialState';
 import { LOGOUT } from '../actions/types';
 
@@ -22,6 +23,7 @@ const appReducer = combineReducers({
   locations,
   application,
   slides,
+  attendances,
 });
 
 const rootReducer = (state, action) => {
