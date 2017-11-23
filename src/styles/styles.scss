@@ -635,3 +635,17 @@ td.avatar-lock-up {
 }
 
 /*TODO: better css structure --> USE SASS INSTEAD OF CSS*/
+
+/*
+ * GENERAL
+ */
+$accentColor: rgb(126, 15, 17);
+h1, h2 {
+  font-weight: normal;
+}
+
+h2 {
+  color: $accentColor;
+  margin-top: 0rem;
+  margin-bottom: 2rem;
+}

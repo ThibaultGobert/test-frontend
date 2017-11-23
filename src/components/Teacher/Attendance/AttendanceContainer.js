@@ -3,7 +3,10 @@ import PropTypes from 'prop-types';
 import Attendance from './Attendance';
 import Loader from '../../shared/Loader';
 import ErrorMessage from '../../shared/ErrorMessage';
-import userAdministrationApi from '../../../api/userAdministration';
+import courseApi from '../../../api/courses';
+
+import {normalize} from 'normalizr';
+import * as schema from '../../../api/mappers/schema';
 
 class AttendanceContainer extends Component {
   constructor(props, context) {
@@ -12,6 +15,28 @@ class AttendanceContainer extends Component {
     this.onChange = this.onChange.bind(this);
     this.submit = this.submit.bind(this);
     this.redirectToOverview = this.redirectToOverview.bind(this);
+  }
+
+  componentDidMount() {
+    const courseId = this.props.course.id;
+    const { fetchChildrenStart, fetchChildrenSuccess, fetchChildrenError, fetchAttendancesSuccess } = this.props.actions;
+
+    fetchChildrenStart();
+
+    courseApi
+      .getChildrenForCourse(courseId)
+      .then(data => fetchChildrenSuccess(data, courseId))
+      .catch(fetchChildrenError);
+
+    courseApi
+      .getAttendanceForCourse(courseId)
+      .then((attendancesPerLesson) => {
+        attendancesPerLesson.forEach((data) => {
+          console.log('original', data);
+          console.log('formatted', normalize(data.attendanceList, schema.lists));
+         // fetchAttendancesSuccess(attendances, lessonId);
+        });
+      });
   }
 
   submit(event) {
@@ -34,20 +59,20 @@ class AttendanceContainer extends Component {
   }
 
   render() {
-    const {
-      error, loading, classList, course, hasError,
-    } = this.props;
+    const { error, course, lessons, children } = this.props;
 
     if (error) {
       return (<ErrorMessage message="Fout bij inladen van de lesdata" />);
     }
+
     return (
       <div className="AttendanceContainer">
         <Attendance
           submit={this.submit}
           onChange={this.onChange}
-          classList={classList}
           course={course}
+          lessons={lessons}
+          students={children}
           redirectToOverview={this.redirectToOverview}
           {...this.state}
         />

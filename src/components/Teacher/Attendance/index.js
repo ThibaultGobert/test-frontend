@@ -5,16 +5,47 @@ import {
   postAttendanceSuccess,
   postAttendanceError,
 } from '../../../actions/userAdministration';
-import AttendanceContainer from './AttendanceContainer';
 
-const mapStateToProps = (state, { params }) => {
-  const courseId = params.id;
+import {
+  fetchChildrenStart,
+  fetchChildrenSuccess,
+  fetchChildrenError,
+} from '../../../actions/courses';
+
+import {
+  fetchAttendancesStart,
+  fetchAttendancesSuccess,
+  fetchAttendancesError,
+} from '../../../actions/lessons';
+
+import AttendanceContainer from './AttendanceContainer';
+import { getCourseById, getLessonById, getChildById, getAttendanceById } from '../../../selectors';
+
+const mapStateToProps = (state, { match }) => {
+  const course = getCourseById(state, match.params.id);
+
+  const lessons = course.lessons.map(lessonId => {
+    const lesson = getLessonById(state, lessonId);
+
+    return {
+      ...lesson,
+      attendances: lesson.attendances.map((attendanceId) => {
+        return getAttendanceById(state, attendanceId);
+      }),
+    }
+
+  });
+
+  const children = course.children
+    ? course.children.map(childId => {
+      return getChildById(state, childId);
+    })
+    : [];
 
   return {
-    courseId,
-    // course: state.courses.data[courseId],
-    // classList: state.classlists.data[courseId],
-    // loading: state.classlists.loading || state.courses.loading
+    course,
+    lessons,
+    children,
   };
 };
 
@@ -22,6 +53,12 @@ const actionCreators = mapActionCreatorsToProps({
   postAttendanceStart,
   postAttendanceSuccess,
   postAttendanceError,
+  fetchChildrenStart,
+  fetchChildrenSuccess,
+  fetchChildrenError,
+  fetchAttendancesStart,
+  fetchAttendancesSuccess,
+  fetchAttendancesError,
 });
 
 export default connect(mapStateToProps, actionCreators)(AttendanceContainer);
