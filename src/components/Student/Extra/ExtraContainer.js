@@ -6,10 +6,6 @@ import lessonApi from '../../../api/lessons';
 import Extra from './Extra';
 
 class ExtraContainer extends Component {
-  constructor(...props) {
-    super(...props);
-  }
-
   componentDidMount() {
     this.fetchLessons();
   }

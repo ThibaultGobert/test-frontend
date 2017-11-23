@@ -7,10 +7,6 @@ import lessonApi from '../../../api/lessons';
 import Class from './Class';
 
 class ClassContainer extends Component {
-  constructor(...props) {
-    super(...props);
-  }
-
   componentDidMount() {
     this.fetchLessons();
   }
