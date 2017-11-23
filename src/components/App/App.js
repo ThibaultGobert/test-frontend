@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import StudentHeader from '../shared/headers/StudentHeader';
-import WorkshopStudentHeader from '../shared/headers/WorkshopStudentHeader';
 import EditorHeader from '../shared/headers/EditorHeader';
 import * as userRoles from '../../constants/roles';
 import isEmpty from '../../functions/isEmpty';

@@ -11,7 +11,6 @@ import '../node_modules/semantic-ui-css/semantic.min.css';
 import '../node_modules/react-big-calendar/lib/css/react-big-calendar.css';
 import '../node_modules/toastr/build/toastr.min.css';
 import './styles/styles.css';
-import SharedRoutes from './components/shared/routes';
 
 /*
  * TODO: don't export the store.
