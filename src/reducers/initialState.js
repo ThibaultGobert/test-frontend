@@ -4,7 +4,7 @@ export default {
   },
   loggedIn: {
     data: {},
-    loading: true,
+    loading: false,
     error: undefined
   },
   courses: {
