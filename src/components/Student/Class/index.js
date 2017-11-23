@@ -9,9 +9,8 @@ import ClassContainer from './ClassContainer';
 const mapStateToProps = (state, { match }) => {
   return {
     lessons: _.values(state.lessons.data),
-    loading: state.users.loading,
-    error: state.users.error,
-    users: state.users.data,
+    loading: state.lessons.loading,
+    error: state.lessons.error,
   };
 };
 

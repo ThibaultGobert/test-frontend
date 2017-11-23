@@ -2,11 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Loader from '../../shared/Loader';
 import * as lessonTypes from '../../../constants/lessonTypes';
-import * as slideTypes from '../../../constants/slideTypes';
 import lessonApi from '../../../api/lessons';
-import Class from './Class';
+import Extra from './Extra';
 
-class ClassContainer extends Component {
+class ExtraContainer extends Component {
   constructor(...props) {
     super(...props);
   }
@@ -19,7 +18,7 @@ class ClassContainer extends Component {
     const {fetchLessonsStart, fetchLessonsSuccess, fetchLessonsError} = this.props.actions;
 
     fetchLessonsStart();
-    lessonApi.getLessonsForStudent(lessonTypes.CLASSHOME, slideTypes.CLASS).then((lessons) => {
+    lessonApi.getLessonsForStudent(lessonTypes.EXTRA).then((lessons) => {
       fetchLessonsSuccess(lessons);
     }).catch(error => {
       fetchLessonsError(error);
@@ -34,21 +33,17 @@ class ClassContainer extends Component {
     }
 
     return (
-      <div className="ClassContainer">
-        <Class lessons={lessons}/>
+      <div className="ExtraContainer">
+        <Extra lessons={lessons}/>
       </div>
     );
   }
 }
 
-ClassContainer.propTypes = {
+ExtraContainer.propTypes = {
   loading: PropTypes.bool,
   lessons: PropTypes.object,
   error: PropTypes.object,
 };
 
-ClassContainer.contextTypes = {
-  router: PropTypes.object,
-};
-
-export default ClassContainer;
+export default ExtraContainer;

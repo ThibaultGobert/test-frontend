@@ -4,9 +4,9 @@ import Loader from '../../shared/Loader';
 import * as lessonTypes from '../../../constants/lessonTypes';
 import * as slideTypes from '../../../constants/slideTypes';
 import lessonApi from '../../../api/lessons';
-import Class from './Class';
+import Home from './Home';
 
-class ClassContainer extends Component {
+class HomeContainer extends Component {
   constructor(...props) {
     super(...props);
   }
@@ -19,7 +19,7 @@ class ClassContainer extends Component {
     const {fetchLessonsStart, fetchLessonsSuccess, fetchLessonsError} = this.props.actions;
 
     fetchLessonsStart();
-    lessonApi.getLessonsForStudent(lessonTypes.CLASSHOME, slideTypes.CLASS).then((lessons) => {
+    lessonApi.getLessonsForStudent(lessonTypes.CLASSHOME, slideTypes.HOME).then((lessons) => {
       fetchLessonsSuccess(lessons);
     }).catch(error => {
       fetchLessonsError(error);
@@ -34,21 +34,17 @@ class ClassContainer extends Component {
     }
 
     return (
-      <div className="ClassContainer">
-        <Class lessons={lessons}/>
+      <div className="HomeContainer">
+        <Home lessons={lessons}/>
       </div>
     );
   }
 }
 
-ClassContainer.propTypes = {
+HomeContainer.propTypes = {
   loading: PropTypes.bool,
   lessons: PropTypes.object,
   error: PropTypes.object,
 };
 
-ClassContainer.contextTypes = {
-  router: PropTypes.object,
-};
-
-export default ClassContainer;
+export default HomeContainer;
