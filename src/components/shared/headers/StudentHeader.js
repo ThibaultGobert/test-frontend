@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink, withRouter } from 'react-router-dom';
 import * as authActions from '../../../actions/auth';
 import {Button} from 'semantic-ui-react';
 import {connect} from 'react-redux';
@@ -17,7 +17,7 @@ class StudentHeader extends React.Component {
     event.preventDefault();
     this.props.actions.logOut();
     toastr.remove();
-    this.context.router.push('/login'); // Redirect to courses page after save
+    window.location = '/';
   }
 
   render() {
@@ -44,12 +44,12 @@ class StudentHeader extends React.Component {
         <nav>
           <div className="ui attached stackable menu">
             <div className="ui container">
-              <Link to="/studentprofile/class" className="item" activeClassName="active"><i
-                className="group layout icon" />Klas</Link>
-              <Link to="/studentprofile/home" className="item" activeClassName="active"><i
-                className="home layout icon" />Thuis</Link>
-              { !user.isVersion2 && <Link to="/studentprofile/extra" className="item" activeClassName="active"><i
-                className="trophy layout icon" />Extra</Link>}
+              <NavLink to="/studentprofile/class" className="item" activeClassName="active"><i
+                className="group layout icon" />Klas</NavLink>
+              <NavLink to="/studentprofile/home" className="item" activeClassName="active"><i
+                className="home layout icon" />Thuis</NavLink>
+              { !user.isVersion2 && <NavLink to="/studentprofile/extra" className="item" activeClassName="active"><i
+                className="trophy layout icon" />Extra</NavLink>}
             </div>
           </div>
 
@@ -81,4 +81,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(StudentHeader);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(StudentHeader));
