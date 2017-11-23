@@ -6,7 +6,7 @@ class LessonApi {
     let url = `/lessons/getAllLessons?type=${lessonType}`;
 
     if (slideType) {
-      url = `${url} &slidetype=${slideType}`;
+      url = `${url}&slidetype=${slideType}`;
     }
 
     return api.get(url).then(mapToLessons);

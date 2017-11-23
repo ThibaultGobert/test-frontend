@@ -10,6 +10,7 @@ import Teacher from '../Teacher';
 import Login from '../Login';
 import { getUser } from '../../api/api';
 import SharedRoutes from '../shared/routes';
+import Student from "../Student";
 
 class App extends Component {
   constructor(...props) {
@@ -27,12 +28,6 @@ class App extends Component {
     return (
       <div className="full-container">
         {!isEmpty(loggedIn) &&
-          loggedIn.role === userRoles.STUDENT_ROLE && <StudentHeader user={loggedIn} />}
-        {!isEmpty(loggedIn) &&
-          loggedIn.role === userRoles.WORKSHOP_STUDENT_ROLE && (
-            <WorkshopStudentHeader user={loggedIn} />
-          )}
-        {!isEmpty(loggedIn) &&
           loggedIn.role === userRoles.EDITOR_ROLE && <EditorHeader user={loggedIn} />}
         {isEmpty(loggedIn) && <LoginHeader />}
 
@@ -40,6 +35,7 @@ class App extends Component {
             <Switch>
               <Route exact path="/" component={Login} />
               {!isEmpty(loggedIn) && <Route path="/teacherprofile" component={Teacher} />}
+              {!isEmpty(loggedIn) && <Route path="/studentprofile" component={Student} />}
               <SharedRoutes/>
             </Switch>
             {/*

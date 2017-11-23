@@ -2,14 +2,14 @@ import React from 'react';
 import {PropTypes} from 'prop-types';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import LessonList from '../shared/LessonList';
-import Loader from '../shared/Loader';
-import Reloader from "../shared/Reloader";
-import * as lessonActions from '../../actions/lessons';
-import * as slideTypes from '../../constants/slideTypes';
-import * as lessonTypes from '../../constants/lessonTypes';
+import Loader from '../../shared/Loader';
+import Reloader from "../../shared/Reloader";
+import LessonList from "../../shared/LessonList";
+import * as lessonActions from '../../../actions/lessons';
+import * as lessonTypes from '../../../constants/lessonTypes';
+import * as slideTypes from '../../../constants/slideTypes';
 
-class ClassPage extends React.Component {
+class HomeworkPage extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.fetchLessons = this.fetchLessons.bind(this);
@@ -23,7 +23,7 @@ class ClassPage extends React.Component {
     const {fetchLessonsStart, fetchLessonsSuccess, fetchLessonsError} = this.props.actions;
 
     fetchLessonsStart();
-    this.props.actions.lessonApi.getLessonsForStudent(lessonTypes.CLASSHOME, slideTypes.CLASS).then((lessons) => {
+    this.props.actions.lessonApi.getLessonsForStudent(lessonTypes.CLASSHOME, slideTypes.HOME).then((lessons) => {
       fetchLessonsSuccess(lessons);
     }).catch(error => {
       fetchLessonsError(error);
@@ -35,18 +35,19 @@ class ClassPage extends React.Component {
       loading,
       lessons
     } = this.props;
+
     return(
-      <div>
-        <h1>Klaslessen</h1>
-        <Reloader action={this.fetchLessons} />
+      <div className="homework-page">
+        <h1>De thuisversies</h1>
+        <Reloader action={this.fetchLessons}/>
         <Loader active={loading}/>
-        <LessonList lessons={lessons} slideType={slideTypes.CLASS} showLockedLessons/>
+        <LessonList lessons={lessons} slideType={slideTypes.HOME} showLockedLessons />
       </div>
     );
   }
 }
 
-ClassPage.propTypes = {
+HomeworkPage.propTypes = {
   actions: PropTypes.object.isRequired,
   lessons: PropTypes.arrayOf(PropTypes.object),
   loading: PropTypes.bool.isRequired,
@@ -70,4 +71,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ClassPage);
+export default connect(mapStateToProps, mapDispatchToProps)(HomeworkPage);

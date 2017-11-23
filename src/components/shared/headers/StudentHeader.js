@@ -44,9 +44,9 @@ class StudentHeader extends React.Component {
         <nav>
           <div className="ui attached stackable menu">
             <div className="ui container">
-              <Link to="/studentprofile/clan" className="item" activeClassName="active"><i
+              <Link to="/studentprofile/class" className="item" activeClassName="active"><i
                 className="group layout icon" />Klas</Link>
-              <Link to="/studentprofile/homework" className="item" activeClassName="active"><i
+              <Link to="/studentprofile/home" className="item" activeClassName="active"><i
                 className="home layout icon" />Thuis</Link>
               { !user.isVersion2 && <Link to="/studentprofile/extra" className="item" activeClassName="active"><i
                 className="trophy layout icon" />Extra</Link>}

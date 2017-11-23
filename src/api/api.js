@@ -19,7 +19,6 @@ const request = (endpoint, { headers = {}, body, ...otherOptions }, method) => {
     'Content-Type': 'application/json',
     'Access-Control-Allow-Origin': '*'
   };
-
   if (getUser() !== null) {
     allHeaders['x-token'] = getUser().token;
   }

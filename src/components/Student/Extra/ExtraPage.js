@@ -2,11 +2,11 @@ import React from 'react';
 import {PropTypes} from 'prop-types';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import LessonList from '../shared/LessonList';
-import Loader from '../shared/Loader';
-import Reloader from "../shared/Reloader";
-import * as lessonActions from '../../actions/lessons';
-import * as lessonTypes from '../../constants/lessonTypes';
+import LessonList from '../../shared/LessonList';
+import Loader from '../../shared/Loader';
+import Reloader from "../../shared/Reloader";
+import * as lessonActions from '../../../actions/lessons';
+import * as lessonTypes from '../../../constants/lessonTypes';
 
 class ExtraPage extends React.Component {
   constructor(props, context) {

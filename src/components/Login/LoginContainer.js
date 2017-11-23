@@ -31,7 +31,7 @@ class LoginContainer extends Component {
 
   redirect(loggedIn) {
     const redirectTo = {
-      [roles.STUDENT_ROLE]: '/studentprofile/clan',
+      [roles.STUDENT_ROLE]: '/studentprofile/class',
       [roles.TEACHER_ROLE]: '/teacherprofile/overview',
       [roles.WORKSHOP_STUDENT_ROLE]: '/workshopprofile/overview',
       [roles.ADMIN_ROLE]: '/editorprofile/overview'
