@@ -14,13 +14,13 @@ export default {
     hasError: false
   },
   lessons: {
-    data: [],
+    data: {},
     loading: false,
     error: null,
     hasError: false
   },
   calendar: {
-    data: [],
+    data: {},
     loading: false,
     error: null,
     hasError: false
@@ -52,6 +52,12 @@ export default {
     hasError: false
   },
   locations: {
+    data: {},
+    loading: false,
+    error: null,
+    hasError: false
+  },
+  slides: {
     data: {},
     loading: false,
     error: null,

@@ -13,4 +13,10 @@ export const course = new schema.Entity('courses', {
   lessons: [lesson]
 });
 
+export const slide = new schema.Entity('slide');
+
+export const lessonContent = new schema.Entity('lessonContent', {
+  slides: [slide]
+});
+
 export const classList = [user];

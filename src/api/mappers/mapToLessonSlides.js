@@ -1,12 +1,8 @@
-import * as userRoles from '../../constants/roles';
+import { normalize } from 'normalizr';
+import * as schema from './schema';
 
-export default (role, slideType, data) => {
+export default (slideType, data) => {
   data.slideType = slideType;
-
-  if ((role === userRoles.TEACHER_ROLE && !data.activateTeacher) ||
-    (role === userRoles.STUDENT_ROLE && !data.activateStudent)) {
-    throw new Error("Les is niet beschikbaar");
-  }
-
+  data = normalize(data, schema.lessonContent);
   return data;
 }

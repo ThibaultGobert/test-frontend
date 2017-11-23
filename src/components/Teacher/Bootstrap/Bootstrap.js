@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import courseApi from '../../../api/courses';
+import Loader from "../../shared/Loader";
 
 class Bootstrap extends Component {
   componentDidMount() {
@@ -11,7 +12,7 @@ class Bootstrap extends Component {
   }
 
   render() {
-    return <div>TODO: een coole loader. Eventueel iets met het Logo van CodeFever.</div>;
+    return <Loader active/>;
   }
 }
 

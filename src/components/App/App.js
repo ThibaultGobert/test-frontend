@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import TeacherHeader from '../shared/headers/TeacherHeader';
 import StudentHeader from '../shared/headers/StudentHeader';
 import WorkshopStudentHeader from '../shared/headers/WorkshopStudentHeader';
 import EditorHeader from '../shared/headers/EditorHeader';
-import { connect } from 'react-redux';
 import * as userRoles from '../../constants/roles';
 import isEmpty from '../../functions/isEmpty';
 import LoginHeader from '../shared/headers/LoginHeader';
@@ -12,6 +9,7 @@ import { Switch, Route } from 'react-router-dom';
 import Teacher from '../Teacher';
 import Login from '../Login';
 import { getUser } from '../../api/api';
+import SharedRoutes from '../shared/routes';
 
 class App extends Component {
   constructor(...props) {
@@ -42,6 +40,7 @@ class App extends Component {
             <Switch>
               <Route exact path="/" component={Login} />
               {!isEmpty(loggedIn) && <Route path="/teacherprofile" component={Teacher} />}
+              <SharedRoutes/>
             </Switch>
             {/*
           <Route path="/" component={App}>
