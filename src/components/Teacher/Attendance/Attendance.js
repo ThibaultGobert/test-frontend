@@ -1,11 +1,13 @@
 import React from 'react';
 import moment from 'moment';
+import PropTypes from 'prop-types';
 import { Table } from 'semantic-ui-react';
 
 import './Attendance.css';
 
 // <Button className="Attendance__Back" labelPosition="left" icon="left chevron" content="Terug" onClick={redirectToOverview} />
 const Attendance = ({ lessons, students }) => {
+  debugger;
   return (
     <div className="Attendance">
       <h1>Aanwezigheden</h1>
@@ -42,7 +44,7 @@ const Attendance = ({ lessons, students }) => {
   );
 };
 
-/*
+
 Attendance.propTypes = {
   course: PropTypes.object.isRequired,
   classList: PropTypes.array.isRequired,
@@ -50,6 +52,5 @@ Attendance.propTypes = {
   onChange: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
 };
-*/
 
 export default Attendance;

@@ -2,6 +2,7 @@ import * as types from '../actions/types';
 import initialState from './initialState';
 import {FETCH_LESSON_SLIDES_SUCCESS} from "../actions/types/slides";
 import _ from 'lodash';
+import {FETCH_ATTENDANCES_SUCCESS} from "../actions/types/lesson";
 
 export default function lessonReducer(state = initialState.lessons, action) {
   switch (action.type) {
@@ -27,6 +28,9 @@ export default function lessonReducer(state = initialState.lessons, action) {
 
     case FETCH_LESSON_SLIDES_SUCCESS:
       return _.merge({}, state, {data: action.data.entities.lessonContent });
+
+    case FETCH_ATTENDANCES_SUCCESS:
+      return _.merge({}, state, {data: {[action.data.lessonId] : action.data.result}});
 
     default:
       return state;

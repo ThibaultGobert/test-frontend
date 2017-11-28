@@ -20,3 +20,10 @@ export const lessonContent = new schema.Entity('lessonContent', {
 });
 
 export const classList = [user];
+
+export const attendances = new schema.Entity('attendances', {
+  idAttribute: 'id',
+});
+
+export const attendancesForLesson = [attendances];
+export const attendancesForCourse = [attendancesForLesson];

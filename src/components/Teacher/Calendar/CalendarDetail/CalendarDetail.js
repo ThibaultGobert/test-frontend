@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 import { Button, Message, Header, Icon } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import moment from 'moment';
 import * as lessonTypes from '../../../../constants/lessonTypes';
 import * as slideTypes from '../../../../constants/slideTypes';
@@ -45,21 +45,21 @@ const CalendarDetail = ({
       </Message>
 
       <div className="calendar-details-buttons">
-        <Link to={`${slideViewerUrl}/${slideTypes.CLASS}`}>
+        <NavLink to={`${slideViewerUrl}/${slideTypes.CLASS}`}>
           <Button primary><Icon name="group" />Klas</Button>
-        </Link>
-        <Link to={`${slideViewerUrl}/${slideTypes.HOME}`}>
+        </NavLink>
+        <NavLink to={`${slideViewerUrl}/${slideTypes.HOME}`}>
           <Button primary><Icon name="home" />Thuis</Button>
-        </Link>
-        <Link to={`${slideViewerUrl}/${slideTypes.PROJECTION}`}>
+        </NavLink>
+        <NavLink to={`${slideViewerUrl}/${slideTypes.PROJECTION}`}>
           <Button primary><Icon name="tv" />Projectie</Button>
-        </Link>
-        <Link to={`${slideViewerUrl}/${slideTypes.INFO}`}>
+        </NavLink>
+        <NavLink to={`${slideViewerUrl}/${slideTypes.INFO}`}>
           <Button primary><Icon name="info" />Info</Button>
-        </Link>
-        <Link to={extraSlideViewerUrl}>
+        </NavLink>
+        <NavLink to={extraSlideViewerUrl}>
           { hasExtraLesson && <Button primary ><Icon name="trophy" />Extra</Button>}
-        </Link>
+        </NavLink>
         <Button loading={lessonContentLoading} onClick={downloadLesContent} disabled={contentUrl === undefined}>Download lescontent</Button>
       </div>
     </div>

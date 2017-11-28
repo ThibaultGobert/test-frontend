@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Attendance from './Attendance';
-import Loader from '../../shared/Loader';
 import ErrorMessage from '../../shared/ErrorMessage';
+import userAdministrationApi from '../../../api/userAdministration';
 import courseApi from '../../../api/courses';
-
-import {normalize} from 'normalizr';
-import * as schema from '../../../api/mappers/schema';
+import Loader from "../../shared/Loader";
+import _ from 'lodash';
 
 class AttendanceContainer extends Component {
   constructor(props, context) {
@@ -15,11 +14,21 @@ class AttendanceContainer extends Component {
     this.onChange = this.onChange.bind(this);
     this.submit = this.submit.bind(this);
     this.redirectToOverview = this.redirectToOverview.bind(this);
+    this.state = {
+      loading: true
+    }
   }
 
   componentDidMount() {
     const courseId = this.props.course.id;
-    const { fetchChildrenStart, fetchChildrenSuccess, fetchChildrenError, fetchAttendancesSuccess } = this.props.actions;
+    const {
+      fetchChildrenStart,
+      fetchChildrenSuccess,
+      fetchChildrenError,
+      fetchAttendancesStart,
+      fetchAttendancesSuccess,
+      fetchAttendancesError,
+    } = this.props.actions;
 
     fetchChildrenStart();
 
@@ -28,15 +37,18 @@ class AttendanceContainer extends Component {
       .then(data => fetchChildrenSuccess(data, courseId))
       .catch(fetchChildrenError);
 
-    courseApi
+    fetchAttendancesStart();
+    userAdministrationApi
       .getAttendanceForCourse(courseId)
-      .then((attendancesPerLesson) => {
-        attendancesPerLesson.forEach((data) => {
-          console.log('original', data);
-          console.log('formatted', normalize(data.attendanceList, schema.lists));
-         // fetchAttendancesSuccess(attendances, lessonId);
+      .then((data) => {
+        debugger;
+        data = _.values(data);
+        _.forEach(data, attendancesForLesson => {
+          debugger;
+          fetchAttendancesSuccess(attendancesForLesson);
         });
-      });
+        this.setState({loading: false});
+      }).catch(fetchAttendancesError);
   }
 
   submit(event) {
@@ -59,10 +71,13 @@ class AttendanceContainer extends Component {
   }
 
   render() {
-    const { error, course, lessons, children } = this.props;
-
+    const { error, course, lessons, children, loading } = this.props;
     if (error) {
       return (<ErrorMessage message="Fout bij inladen van de lesdata" />);
+    }
+
+    if (this.state.loading) {
+      return <Loader active />;
     }
 
     return (

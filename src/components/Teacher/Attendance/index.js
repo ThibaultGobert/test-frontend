@@ -16,10 +16,11 @@ import {
   fetchAttendancesStart,
   fetchAttendancesSuccess,
   fetchAttendancesError,
-} from '../../../actions/lessons';
+} from '../../../actions/userAdministration';
 
 import AttendanceContainer from './AttendanceContainer';
 import { getCourseById, getLessonById, getChildById, getAttendanceById } from '../../../selectors';
+import _ from 'lodash';
 
 const mapStateToProps = (state, { match }) => {
   const course = getCourseById(state, match.params.id);
@@ -27,25 +28,27 @@ const mapStateToProps = (state, { match }) => {
   const lessons = course.lessons.map(lessonId => {
     const lesson = getLessonById(state, lessonId);
 
-    return {
-      ...lesson,
-      attendances: lesson.attendances.map((attendanceId) => {
-        return getAttendanceById(state, attendanceId);
-      }),
+    if (lesson.attendances ) {
+      return {
+        ...lesson,
+        attendances: lesson.attendances.map(attendanceId => {
+          return getAttendanceById(state, attendanceId);
+        }),
+      };
     }
-
   });
 
   const children = course.children
     ? course.children.map(childId => {
-      return getChildById(state, childId);
-    })
+        return getChildById(state, childId);
+      })
     : [];
 
   return {
     course,
     lessons,
     children,
+    loading: state.attendances.loading,
   };
 };
 
