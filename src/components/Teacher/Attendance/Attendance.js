@@ -1,27 +1,28 @@
 import React from 'react';
 import moment from 'moment';
 import PropTypes from 'prop-types';
-import { Table, Button } from 'semantic-ui-react';
+import { Table, Button, Icon } from 'semantic-ui-react';
 
 import './Attendance.css';
 
-const Attendance = ({ lessons, students, redirectToOverview}) => {
+const Attendance = ({ course, lessons, students, redirectToOverview}) => {
   return (
     <div className="Attendance">
       <Button className="Attendance__Back" labelPosition="left" icon="left chevron" content="Terug" onClick={redirectToOverview} />
-      <h1>Aanwezigheden</h1>
+      <h1>Aanwezigheden {course.name}</h1>
       <h2>Vul hier de aanwezigheid in</h2>
 
-      <Table celled>
+      <Table  definition>
         <Table.Header className="Attendance__Header">
           <Table.Row>
-            <Table.HeaderCell>Leerling</Table.HeaderCell>
+            <Table.HeaderCell />
             {lessons.map(lesson => (
               <Table.HeaderCell key={lesson.id}>
                 {moment(lesson.start).format('D/M')}
               </Table.HeaderCell>
             ))}
-          </Table.Row>
+          <Table.HeaderCell/>
+        </Table.Row>
         </Table.Header>
         <Table.Body>
           {students.map(student => (
@@ -35,6 +36,9 @@ const Attendance = ({ lessons, students, redirectToOverview}) => {
                   }
                 </Table.Cell>
               ))}
+              <Table.Cell className="Attendance__Edit">
+                <Icon name="pencil" size="large" onClick={console.log('hello')}/>
+              </Table.Cell>
             </Table.Row>
           ))}
         </Table.Body>
