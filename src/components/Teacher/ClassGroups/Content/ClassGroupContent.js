@@ -5,6 +5,7 @@ import { Grid, Segment, Button } from 'semantic-ui-react';
 import renderHtml from 'react-render-html';
 import ContactList from '../../../shared/ContactList';
 import _ from 'lodash';
+import './ClassGroupContent.css';
 
 const ClassGroupContent = ({ content }) => {
   const classListKey = `classlist${content.id}`;
@@ -49,12 +50,12 @@ const ClassGroupContent = ({ content }) => {
             </p>
           </Segment>
         </Grid.Column>
-        <Grid.Column width={2}>
+        <Grid.Column width={2} className="ClassGroupContent-Buttons">
           <Link to={`/teacherprofile/classlist/${content.id}`} key={classListKey}>
             <Button primary>Klaslijst</Button>
           </Link>
           <Link to={`/teacherprofile/feedback/${content.id}`} key={feedbackKey}>
-            <Button>Aanwezigheden</Button>
+            <Button primary>Aanwezigheden & feedback</Button>
           </Link>
         </Grid.Column>
       </Grid.Row>

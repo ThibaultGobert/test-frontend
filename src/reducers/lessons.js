@@ -30,7 +30,7 @@ export default function lessonReducer(state = initialState.lessons, action) {
       return _.merge({}, state, {data: action.data.entities.lessonContent });
 
     case FETCH_ATTENDANCES_SUCCESS:
-      return _.merge({}, state, {data: {[action.data.lessonId] : action.data.result}});
+      return _.merge({}, state, {data: {[action.data.lessonId] : { attendances: action.data.result}}});
 
     default:
       return state;
