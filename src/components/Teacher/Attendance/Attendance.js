@@ -5,39 +5,44 @@ import { Table, Button, Icon } from 'semantic-ui-react';
 
 import './Attendance.css';
 
-const Attendance = ({ course, lessons, students, redirectToOverview}) => {
+const Attendance = ({ course, lessons, students, redirectToOverview, submit }) => {
   return (
     <div className="Attendance">
       <Button className="Attendance__Back" labelPosition="left" icon="left chevron" content="Terug" onClick={redirectToOverview} />
       <h1>Aanwezigheden {course.name}</h1>
       <h2>Vul hier de aanwezigheid in</h2>
 
-      <Table  definition>
+      <Table definition>
         <Table.Header className="Attendance__Header">
           <Table.Row>
             <Table.HeaderCell />
             {lessons.map(lesson => (
               <Table.HeaderCell key={lesson.id}>
-                {moment(lesson.start).format('D/M')}
+                {moment(lesson.start).format('D/M')} - {lesson.id}
               </Table.HeaderCell>
             ))}
-          <Table.HeaderCell/>
-        </Table.Row>
+            <Table.HeaderCell />
+          </Table.Row>
         </Table.Header>
         <Table.Body>
           {students.map(student => (
             <Table.Row key={student.id}>
-              <Table.Cell>{student.name}</Table.Cell>
-              {lessons.map(lesson => (
-                <Table.Cell>
-                  {lesson.attendances && lesson.attendances.filter(attendance => attendance.userId === student.id)
-                    ? 'Y'
-                    : 'N'
-                  }
-                </Table.Cell>
-              ))}
+              <Table.Cell>{student.name} {student.id}</Table.Cell>
+              {lessons.map(lesson => {
+                const attendance = lesson.attendances && lesson.attendances.find(({ userId, isPresent }) => userId === student.id && isPresent === true);
+                const isPresent = attendance && attendance.isPresent != null;
+
+                return (
+                  <Table.Cell onClick={(event) => submit(event, student, lesson, isPresent)}>
+                    {isPresent
+                      ? 'Y'
+                      : 'N'
+                    }
+                  </Table.Cell>
+                );
+              })}
               <Table.Cell className="Attendance__Edit">
-                <Icon name="pencil" size="large" onClick={console.log('hello')}/>
+                <Icon name="pencil" size="large" />
               </Table.Cell>
             </Table.Row>
           ))}
@@ -50,10 +55,7 @@ const Attendance = ({ course, lessons, students, redirectToOverview}) => {
 
 Attendance.propTypes = {
   course: PropTypes.object.isRequired,
-  classList: PropTypes.array.isRequired,
   redirectToOverview: PropTypes.func.isRequired,
-  onChange: PropTypes.func.isRequired,
-  onSubmit: PropTypes.func.isRequired,
 };
 
 export default Attendance;

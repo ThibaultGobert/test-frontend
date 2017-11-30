@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+
 import Attendance from './Attendance';
 import ErrorMessage from '../../shared/ErrorMessage';
 import userAdministrationApi from '../../../api/userAdministration';
 import courseApi from '../../../api/courses';
-import Loader from "../../shared/Loader";
-import _ from 'lodash';
+import Loader from '../../shared/Loader';
 
 class AttendanceContainer extends Component {
   constructor(...props) {
@@ -40,20 +39,30 @@ class AttendanceContainer extends Component {
     fetchAttendancesStart();
     userAdministrationApi
       .getAttendanceForCourse(courseId)
-      .then((data) => {
-        this.fetchAttendancesSuccess(data);
+      .then(data => {
+        fetchAttendancesSuccess(data);
         this.setState({ loading: false });
-      }).catch(fetchAttendancesError);
+      })
+      .catch(fetchAttendancesError);
   }
 
-  submit(event) {
+  submit(event, student, lesson, isPresent) {
     event.preventDefault();
 
     const { postAttendanceStart, postAttendanceSuccess, postAttendanceError } = this.props.actions;
 
+    const body = [{
+      user_id: student.id,
+      lesson_id: lesson.id,
+      present: !isPresent,
+      role: 'CHILD', // TODO: back-end should be able to get the role based on the user_id.
+    }];
+
     postAttendanceStart();
 
-    // TODO: POST => ( FINISH, SUCCESS )
+    userAdministrationApi.postAttendance(body)
+      .then(postAttendanceSuccess)
+      .catch(postAttendanceError);
   }
 
   redirectToOverview() {
@@ -64,11 +73,11 @@ class AttendanceContainer extends Component {
   render() {
     const { error, course, lessons, children } = this.props;
     if (error) {
-      return (<ErrorMessage message="Fout bij inladen van de lesdata" />);
+      return <ErrorMessage message="Fout bij inladen van de lesdata" />;
     }
 
     if (this.state.loading) {
-      return <Loader active />;
+      return <Loader active={this.state.loading} />;
     }
 
     return (
@@ -85,17 +94,5 @@ class AttendanceContainer extends Component {
     );
   }
 }
-
-AttendanceContainer.propTypes = {
-  classList: PropTypes.array,
-  course: PropTypes.object,
-  loading: PropTypes.bool,
-  error: PropTypes.object,
-  actions: PropTypes.object,
-};
-
-AttendanceContainer.contextTypes = {
-  router: PropTypes.object,
-};
 
 export default AttendanceContainer;

@@ -1,11 +1,14 @@
 import { connect } from 'react-redux';
-import mapActionCreatorsToProps from '../../../functions/mapActionCreatorsToProps';
 import { withRouter } from 'react-router-dom';
+import mapActionCreatorsToProps from '../../../functions/mapActionCreatorsToProps';
 
 import {
   postAttendanceStart,
   postAttendanceSuccess,
   postAttendanceError,
+  fetchAttendancesStart,
+  fetchAttendancesSuccess,
+  fetchAttendancesError,
 } from '../../../actions/userAdministration';
 
 import {
@@ -14,39 +17,31 @@ import {
   fetchChildrenError,
 } from '../../../actions/courses';
 
-import {
-  fetchAttendancesStart,
-  fetchAttendancesSuccess,
-  fetchAttendancesError,
-} from '../../../actions/userAdministration';
-
 import AttendanceContainer from './AttendanceContainer';
-import { getCourseById, getLessonById, getChildById, getAttendanceById } from '../../../selectors';
-import _ from 'lodash';
+import {
+  getCourseById,
+  getLessonById,
+  getChildById,
+  getAttendancesByLessonId,
+} from '../../../selectors';
 
 const mapStateToProps = (state, { match }) => {
   const course = getCourseById(state, match.params.id);
 
   const lessons = course.lessons.map(lessonId => {
     const lesson = getLessonById(state, lessonId);
-
-    const attendances = lesson.attendances
-      ? lesson.attendances.map(attendanceId => {
-        return getAttendanceById(state, attendanceId);
-      })
-      : [];
+    const attendances = getAttendancesByLessonId(state, lessonId);
 
     return {
       ...lesson,
       attendances,
-
     };
   });
 
   const children = course.children
     ? course.children.map(childId => {
-        return getChildById(state, childId);
-      })
+      return getChildById(state, childId);
+    })
     : [];
 
   return {
