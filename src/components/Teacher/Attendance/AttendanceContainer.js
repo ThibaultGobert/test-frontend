@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import _ from 'lodash';
 
 import Attendance from './Attendance';
 import ErrorMessage from '../../shared/ErrorMessage';
@@ -6,8 +7,7 @@ import userAdministrationApi from '../../../api/userAdministration';
 import courseApi from '../../../api/courses';
 
 import Loader from '../../shared/Loader';
-import _ from 'lodash';
-import FeedbackModal from './Feedback/FeedbackModal';
+import Feedback from './Feedback';
 
 class AttendanceContainer extends Component {
   constructor(...props) {
@@ -110,7 +110,7 @@ class AttendanceContainer extends Component {
     return (
       <div className="AttendanceContainer">
         {isOpen && (
-          <FeedbackModal
+          <Feedback
             isOpen={isOpen}
             course={course}
             user={user}

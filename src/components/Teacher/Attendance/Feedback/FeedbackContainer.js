@@ -5,8 +5,9 @@ import './Feedback.css';
 import FeedbackCard from './FeedbackCard';
 import FeedbackForm from './FeedbackForm';
 
-class FeedbackModal extends React.Component {
+class FeedbackContainer extends React.Component {
   constructor(...props) {
+    debugger;
     super(...props);
     this.toggleFeedbackForm = this.toggleFeedbackForm.bind(this);
     this.saveComment = this.saveComment.bind(this);
@@ -68,9 +69,9 @@ class FeedbackModal extends React.Component {
   }
 }
 
-FeedbackModal.propTypes = {
+FeedbackContainer.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
 };
 
-export default FeedbackModal;
+export default FeedbackContainer;
