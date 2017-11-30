@@ -17,7 +17,7 @@ export default function lessonReducer(state = initialState.lessons, action) {
     case FETCH_LESSONS_SUCCESS:
       return Object.assign(
         {},
-        { data: action.lessons, loading: false, error: null, hasError: false },
+        { data: action.lessons.entities.lessons, loading: false, error: null, hasError: false },
       );
 
     case FETCH_LESSONS_ERROR:
