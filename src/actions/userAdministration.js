@@ -4,7 +4,7 @@ import {
   POST_ATTENDANCE_ERROR,
   FETCH_ATTENDANCES_START,
   FETCH_ATTENDANCES_SUCCESS,
-  FETCH_ATTENDANCES_ERROR
+  FETCH_ATTENDANCES_ERROR,
 } from './types';
 
 export function postAttendanceStart() {

@@ -8,11 +8,14 @@ class UserAdministrationApi {
   }
 
   static getAttendanceForCourse(courseId) {
-    console.log(courseId);
-
     return api
       .get(`/courses/getAttendanceForCourse?courseid=${courseId}`)
       .then(mapToAttendances);
+  }
+
+  static postAttendance(body) {
+    return api
+      .post('/useradministration/markpresence', { body });
   }
 }
 
