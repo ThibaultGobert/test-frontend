@@ -11,3 +11,16 @@ td.Attendance__Edit {
     cursor: pointer;
   }
 }
+
+.Attendance__Icon {
+  text-align: center;
+  cursor: pointer;
+}
+
+.Attendance__IconPresent {
+  color: green;
+}
+
+.Attendance__IconNotPresent {
+  color: darken(#D92B2F, 12);
+}

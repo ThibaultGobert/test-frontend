@@ -2,6 +2,7 @@ import React from 'react';
 import moment from 'moment';
 import PropTypes from 'prop-types';
 import { Table, Button, Icon } from 'semantic-ui-react';
+import classNames from '../../../utils/classNames';
 
 import './Attendance.css';
 
@@ -39,14 +40,18 @@ const Attendance = ({ course, lessons, students, redirectToOverview, submit }) =
                   lesson.attendances &&
                   lesson.attendances.find(({ userId }) => userId === student.id);
 
-                const isPresent = attendance && attendance.isPresent != null;
+                const isPresent = attendance && attendance.isPresent === true;
 
                 return (
                   <Table.Cell
-                    onClick={event => submit(event, student, lesson, isPresent)}
+                    onClick={event => submit(event, attendance, lesson)}
                     key={attendance.id}
                   >
-                    {isPresent ? 'Y' : 'N'}
+                    <div
+                      className={classNames('Attendance__Icon', isPresent ? 'Attendance__IconPresent' : 'Attendance__IconNotPresent')}
+                    >
+                      <Icon name={isPresent ? 'checkmark' : 'close'} />
+                    </div>
                   </Table.Cell>
                 );
               })}
