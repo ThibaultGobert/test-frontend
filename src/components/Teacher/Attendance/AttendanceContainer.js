@@ -11,11 +11,12 @@ class AttendanceContainer extends Component {
   constructor(...props) {
     super(...props);
 
+    this.state = {
+      loading: false,
+    };
+
     this.submit = this.submit.bind(this);
     this.redirectToOverview = this.redirectToOverview.bind(this);
-    this.state = {
-      loading: true
-    }
   }
 
   componentDidMount() {
@@ -61,7 +62,7 @@ class AttendanceContainer extends Component {
   }
 
   render() {
-    const { error, course, lessons, children, loading } = this.props;
+    const { error, course, lessons, children } = this.props;
     if (error) {
       return (<ErrorMessage message="Fout bij inladen van de lesdata" />);
     }
