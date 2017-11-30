@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Form, Input, Icon } from 'semantic-ui-react';
+import Header from '../shared/headers/LoginHeader';
 
 import CodeTag from './CodeTag';
 import Loader from '../shared/Loader';
@@ -22,6 +23,7 @@ const Login = ({
 }) => {
   return (
     <div className="Login">
+      <Header />
       <img className="Login__Rambdass" src={ramdassWelcome} alt="" />
       <Loader active={loading} message="Even geduld. Wij proberen u in te loggen..." />
 
