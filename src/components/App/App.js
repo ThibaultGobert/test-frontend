@@ -1,7 +1,4 @@
 import React, { Component } from 'react';
-import EditorHeader from '../shared/headers/EditorHeader';
-import * as userRoles from '../../constants/roles';
-import LoginHeader from '../shared/headers/LoginHeader';
 import { Switch, Route } from 'react-router-dom';
 import Teacher from '../Teacher';
 import Login from '../Login';
@@ -9,6 +6,7 @@ import { getUser } from '../../api/api';
 import SharedRoutes from '../shared/routes';
 import Student from "../Student";
 import isEmpty from 'lodash/isEmpty';
+import NotFound from "../NotFound/NotFound";
 
 class App extends Component {
   constructor(...props) {
@@ -26,13 +24,12 @@ class App extends Component {
     return (
 
       <div className="full-container">
-        {isEmpty(loggedIn) && <LoginHeader />}
-
         <Switch>
-          <Route exact path="/" component={Login} />
-            {!isEmpty(loggedIn) && <Route path="/teacherprofile" component={Teacher} />}
-            {!isEmpty(loggedIn) && <Route path="/studentprofile" component={Student} />}
+          <Route exact path="/" component={Login}/>
+          {!isEmpty(loggedIn) && <Route path="/teacherprofile" component={Teacher} />}
+          {!isEmpty(loggedIn) && <Route path="/studentprofile" component={Student} />}
           <SharedRoutes/>
+          <Route path="*" component={NotFound} />
         </Switch>
             {/*
           <Route path="/" component={App}>
