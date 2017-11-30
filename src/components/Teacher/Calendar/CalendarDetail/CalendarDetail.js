@@ -15,7 +15,6 @@ const CalendarDetail = ({
 
   let slideViewerUrl;
   let extraSlideViewerUrl;
-  let hasExtraLesson = false;
 
   if (classHome) {
     slideViewerUrl = `/slideviewer/${classHome.lessonId}`;
@@ -23,8 +22,8 @@ const CalendarDetail = ({
 
   if (extra) {
     extraSlideViewerUrl = `/slideviewer/${extra.lessonId}`;
-    hasExtraLesson = true;
   }
+
   return (
     <div className="calendar-details">
       <div className="back-button">
@@ -45,21 +44,27 @@ const CalendarDetail = ({
       </Message>
 
       <div className="calendar-details-buttons">
-        <NavLink to={`${slideViewerUrl}/${slideTypes.CLASS}`}>
-          <Button primary><Icon name="group" />Klas</Button>
-        </NavLink>
-        <NavLink to={`${slideViewerUrl}/${slideTypes.HOME}`}>
-          <Button primary><Icon name="home" />Thuis</Button>
-        </NavLink>
-        <NavLink to={`${slideViewerUrl}/${slideTypes.PROJECTION}`}>
-          <Button primary><Icon name="tv" />Projectie</Button>
-        </NavLink>
-        <NavLink to={`${slideViewerUrl}/${slideTypes.INFO}`}>
-          <Button primary><Icon name="info" />Info</Button>
-        </NavLink>
-        <NavLink to={extraSlideViewerUrl}>
-          { hasExtraLesson && <Button primary ><Icon name="trophy" />Extra</Button>}
-        </NavLink>
+        { slideViewerUrl &&
+          <div>
+            <NavLink to={`${slideViewerUrl}/${slideTypes.CLASS}`}>
+              <Button primary><Icon name="group" />Klas</Button>
+            </NavLink>
+            <NavLink to={`${slideViewerUrl}/${slideTypes.HOME}`}>
+              <Button primary><Icon name="home" />Thuis</Button>
+            </NavLink>
+            <NavLink to={`${slideViewerUrl}/${slideTypes.PROJECTION}`}>
+              <Button primary><Icon name="tv" />Projectie</Button>
+            </NavLink>
+            <NavLink to={`${slideViewerUrl}/${slideTypes.INFO}`}>
+              <Button primary><Icon name="info" />Info</Button>
+            </NavLink>
+          </div>
+        }
+        { extraSlideViewerUrl &&
+          <NavLink to={extraSlideViewerUrl}>
+            <Button primary ><Icon name="trophy" />Extra</Button>
+          </NavLink>
+        }
         <Button loading={lessonContentLoading} onClick={downloadLesContent} disabled={contentUrl === undefined}>Download lescontent</Button>
       </div>
     </div>
