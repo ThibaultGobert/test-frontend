@@ -31,32 +31,6 @@ class App extends Component {
           <SharedRoutes/>
           <Route path="*" component={NotFound} />
         </Switch>
-            {/*
-          <Route path="/" component={App}>
-
-      <Route path="/studentprofile" onEnter={requireAuth(store)}>
-        <Route path="/studentprofile/clan" component={ClanPage}/>
-        <Route path="/studentprofile/homework" component={HomeworkPage}/>
-        <Route path="/studentprofile/extra" component={ExtraPage}/>
-      </Route>
-
-      <Route path="/editorprofile" onEnter={requireAuth(store)}>
-        <Route path="/editorprofile/overview" component={EditorOverviewPage}/>
-      </Route>
-
-      <Route path="/workshopprofile" onEnter={requireAuth(store)}>
-        <Route path="/workshopprofile/overview" component={WorkshopOverviewPage}/>
-      </Route>
-
-      <Route path="/slideviewer" onEnter={requireAuth(store)}>
-        <Route path="/slideviewer/:id/:type" component={SlideViewerPage}/>
-        <Route path="/slideviewer/:id" component={SlideViewerPage}/>
-      </Route>
-      <Route name="login" path="/login" component={Login} onEnter={requireNoAuth(store)}/>
-
-      <Redirect from="/" to="login" />
-      <Redirect from="*" to="login" />
-    </Route>*/}
       </div>
     );
   }
