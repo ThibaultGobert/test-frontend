@@ -6,9 +6,10 @@ import { NavLink } from 'react-router-dom';
 import moment from 'moment';
 import * as lessonTypes from '../../../../constants/lessonTypes';
 import * as slideTypes from '../../../../constants/slideTypes';
+import ErrorMessage from "../../../shared/ErrorMessage";
 
 const CalendarDetail = ({
-  event, downloadLesContent, redirectToCalendar, lessonContentLoading, contentUrl,
+  event, downloadLesContent, redirectToCalendar, hasLessonContent
 }) => {
   const classHome = _.find(event.lessonEntities, { lessonType: lessonTypes.CLASSHOME });
   const extra = _.find(event.lessonEntities, { lessonType: lessonTypes.EXTRA });
@@ -38,14 +39,9 @@ const CalendarDetail = ({
         <div className="level">Level: {event.level}</div>
       </div>
 
-      <Message className="aanwezigheden-info">
-        <Message.Header>De aanwezigheden invullen</Message.Header>
-        <p>Binnenkort gaat het mogelijk zijn om hier de aanwezigheden van de kinderen bij de les in te vullen. Gelieve dit voorlopig nog zelf bij te houden en door te mailen naar<a href="mailto:lieve@codefever.be"> lieve@codefever.be</a></p>
-      </Message>
-
       <div className="calendar-details-buttons">
         { slideViewerUrl &&
-          <div>
+          <span>
             <NavLink to={`${slideViewerUrl}/${slideTypes.CLASS}`}>
               <Button primary><Icon name="group" />Klas</Button>
             </NavLink>
@@ -58,14 +54,17 @@ const CalendarDetail = ({
             <NavLink to={`${slideViewerUrl}/${slideTypes.INFO}`}>
               <Button primary><Icon name="info" />Info</Button>
             </NavLink>
-          </div>
+          </span>
         }
+        { !slideViewerUrl && <ErrorMessage header="Geen links naar de lesinhoud beschikbaar" message="Contacteer CodeFever HQ"/>}
         { extraSlideViewerUrl &&
           <NavLink to={extraSlideViewerUrl}>
             <Button primary ><Icon name="trophy" />Extra</Button>
           </NavLink>
         }
-        <Button loading={lessonContentLoading} onClick={downloadLesContent} disabled={contentUrl === undefined}>Download lescontent</Button>
+
+        { hasLessonContent && <Button onClick={downloadLesContent}>Download lescontent</Button>}
+        { !hasLessonContent &&  <ErrorMessage header="Geen download link beschikbaar" message="Contacteer CodeFever HQ"/>}
       </div>
     </div>
   );
