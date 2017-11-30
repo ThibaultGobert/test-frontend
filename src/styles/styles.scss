@@ -639,7 +639,8 @@ td.avatar-lock-up {
 /*
  * GENERAL
  */
-$accentColor: rgb(126, 15, 17);
+$accentColor: rgba(0,0,0,.60);
+
 h1, h2 {
   font-weight: normal;
 }
@@ -647,5 +648,6 @@ h1, h2 {
 h2 {
   color: $accentColor;
   margin-top: 0rem;
+  font-size: 1.5rem;
   margin-bottom: 2rem;
 }

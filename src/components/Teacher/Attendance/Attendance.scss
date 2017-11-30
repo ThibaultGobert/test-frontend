@@ -2,3 +2,12 @@
   font-weight: 400 !important;
   font-size: 1.2em;
 }
+
+td.Attendance__Edit {
+  padding: 0 !important;
+  border-left: none !important;
+
+  & i {
+    cursor: pointer;
+  }
+}

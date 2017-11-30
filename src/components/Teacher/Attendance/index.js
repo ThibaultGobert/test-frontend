@@ -1,5 +1,7 @@
 import { connect } from 'react-redux';
 import mapActionCreatorsToProps from '../../../functions/mapActionCreatorsToProps';
+import { withRouter } from 'react-router-dom';
+
 import {
   postAttendanceStart,
   postAttendanceSuccess,
@@ -28,14 +30,16 @@ const mapStateToProps = (state, { match }) => {
   const lessons = course.lessons.map(lessonId => {
     const lesson = getLessonById(state, lessonId);
 
-    if (lesson.attendances ) {
-      return {
-        ...lesson,
-        attendances: lesson.attendances.map(attendanceId => {
-          return getAttendanceById(state, attendanceId);
-        }),
-      };
-    }
+    const attendances = lesson.attendances
+      ? lesson.attendances.map(attendanceId => {
+        return getAttendanceById(state, attendanceId);
+      })
+      : [];
+
+    return {
+      ...lesson,
+      attendances,
+    };
   });
 
   const children = course.children
@@ -64,4 +68,4 @@ const actionCreators = mapActionCreatorsToProps({
   fetchAttendancesError,
 });
 
-export default connect(mapStateToProps, actionCreators)(AttendanceContainer);
+export default withRouter(connect(mapStateToProps, actionCreators)(AttendanceContainer));

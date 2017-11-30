@@ -10,7 +10,9 @@ export default function attendanceReducer(state = initialState.attendances, acti
       return Object.assign({}, { data: {}, loading: true, error: null, hasError: false });
 
     case FETCH_ATTENDANCES_SUCCESS:
-      return merge({}, state, {data: action.data.entities.attendances }, {loading: false, error: null, hasError: false })
+      return merge({}, state, {
+        data: action.data.entities.attendances,
+      });
 
     case FETCH_ATTENDANCES_ERROR:
       return Object.assign({}, { data: {}, loading: false, error: action.error, hasError: true });

@@ -8,8 +8,8 @@ import Loader from "../../shared/Loader";
 import _ from 'lodash';
 
 class AttendanceContainer extends Component {
-  constructor(props, context) {
-    super(props, context);
+  constructor(...props) {
+    super(...props);
 
     this.onChange = this.onChange.bind(this);
     this.submit = this.submit.bind(this);
@@ -41,14 +41,16 @@ class AttendanceContainer extends Component {
     userAdministrationApi
       .getAttendanceForCourse(courseId)
       .then((data) => {
-        debugger;
+        console.log(data);
+        /*
         data = _.values(data);
         _.forEach(data, attendancesForLesson => {
-          debugger;
           fetchAttendancesSuccess(attendancesForLesson);
         });
+        */
         this.setState({loading: false});
       }).catch(fetchAttendancesError);
+    // .then((data) => fetchAttendancesSuccess(data));
   }
 
   submit(event) {
@@ -62,7 +64,8 @@ class AttendanceContainer extends Component {
   }
 
   redirectToOverview() {
-    this.context.router.push('/teacherprofile/overview');
+    const { history } = this.props;
+    history.push('/teacherprofile/overview');
   }
 
   onChange({ target }) {

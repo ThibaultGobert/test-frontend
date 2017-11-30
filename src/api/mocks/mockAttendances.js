@@ -18,7 +18,7 @@ const attendances = [
       {
         id: 2,
         userId: 1007,
-        isPresent: null,
+        isPresent: true,
         isAssistant: null,
         arrivalTime: null,
         departureTime: null,
@@ -26,7 +26,7 @@ const attendances = [
       {
         id: 3,
         userId: 1301,
-        isPresent: null,
+        isPresent: true,
         isAssistant: null,
         arrivalTime: null,
         departureTime: null,
