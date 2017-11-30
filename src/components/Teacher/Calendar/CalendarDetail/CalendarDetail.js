@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
-import { Button, Message, Header, Icon } from 'semantic-ui-react';
+import { Button, Header, Icon } from 'semantic-ui-react';
 import { NavLink } from 'react-router-dom';
 import moment from 'moment';
 import * as lessonTypes from '../../../../constants/lessonTypes';

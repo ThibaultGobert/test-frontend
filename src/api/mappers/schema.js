@@ -8,6 +8,7 @@ export const classList = [user];
 
 export const lesson = new schema.Entity('lessons', {
   attendances: [attendance],
+  slides: [slide],
 });
 
 export const course = new schema.Entity('courses', {
@@ -16,8 +17,3 @@ export const course = new schema.Entity('courses', {
   headTeacher: user,
   lessons: [lesson],
 });
-
-export const lessonContent = new schema.Entity('lessonContent', {
-  slides: [slide],
-});
-

@@ -3,7 +3,6 @@ import { combineReducers } from 'redux';
 import loggedIn from './auth';
 import courses from './courses';
 import lessons from './lessons';
-import currentLesson from './currentLesson';
 import organisation from './organisation';
 import users from './users';
 import slides from './slides';
@@ -17,7 +16,6 @@ const appReducer = combineReducers({
   loggedIn,
   courses,
   lessons,
-  currentLesson,
   organisation,
   users,
   locations,

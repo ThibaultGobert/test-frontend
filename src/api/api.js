@@ -12,6 +12,7 @@ export const setUser = (newUser) => {
 
 export const removeUser = () => {
   window.localStorage.removeItem('api.user');
+  window.location = "/";
 };
 
 const request = (endpoint, { headers = {}, body, ...otherOptions }, method) => {

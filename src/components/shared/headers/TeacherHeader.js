@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import { bindActionCreators } from 'redux';
 import toastr from 'toastr';
+import {removeUser} from "../../../api/api";
 import * as authActions from '../../../actions/auth';
 
 class TeacherHeader extends React.Component {
@@ -16,11 +17,8 @@ class TeacherHeader extends React.Component {
 
   logOut(event) {
     event.preventDefault();
-    this.props.actions.logOut();
-
     toastr.remove();
-
-    window.location = '/';
+    removeUser();
   }
 
   render() {
@@ -65,10 +63,6 @@ TeacherHeader.propTypes = {
   actions: PropTypes.object.isRequired,
   loggedIn: PropTypes.object.isRequired,
   user: PropTypes.object.isRequired,
-};
-
-TeacherHeader.contextTypes = {
-  router: PropTypes.object,
 };
 
 function mapStateToProps(state) {

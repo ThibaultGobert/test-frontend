@@ -32,7 +32,7 @@ export default function lessonReducer(state = initialState.lessons, action) {
       });
 
     case FETCH_LESSON_SLIDES_SUCCESS:
-      return _.merge({}, state, { data: action.data.entities.lessonContent });
+      return _.merge({}, state, { data: action.data.entities.lessons });
 
     case FETCH_ATTENDANCES_SUCCESS:
       return _.merge({}, state, { data: action.data.entities.lessons });

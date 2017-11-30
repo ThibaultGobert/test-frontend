@@ -5,6 +5,7 @@ import {Button} from 'semantic-ui-react';
 import {connect} from 'react-redux';
 import {PropTypes} from 'prop-types';
 import {bindActionCreators} from 'redux';
+import {removeUser} from "../../../api/api";
 import toastr from 'toastr';
 
 class StudentHeader extends React.Component {
@@ -15,9 +16,8 @@ class StudentHeader extends React.Component {
 
   logOut(event) {
     event.preventDefault();
-    this.props.actions.logOut();
     toastr.remove();
-    window.location = '/';
+    removeUser();
   }
 
   render() {
@@ -63,10 +63,6 @@ class StudentHeader extends React.Component {
 StudentHeader.propTypes = {
   actions: PropTypes.object.isRequired,
   user: PropTypes.object.isRequired,
-};
-
-StudentHeader.contextTypes = {
-  router: PropTypes.object
 };
 
 function mapStateToProps(state, ownProps) {

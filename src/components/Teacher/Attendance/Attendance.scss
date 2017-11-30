@@ -21,6 +21,7 @@ td.Attendance__Edit {
   color: green;
 }
 
-.Attendance__IconNotPresent {
-  color: darken(#D92B2F, 12);
+.Attendance__IconNotPresent i {
+  color: #444;
+  font-size: 0.9em;
 }

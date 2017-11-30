@@ -1,9 +1,9 @@
-import _ from 'lodash';
+import { normalize } from 'normalizr';
+import * as schema from './schema';
 
 export default (data) => {
-  const  lessons = data.filter(lesson => lesson.activateStudent);
-  if (_.isEmpty(lessons)) {
-    throw new Error("Geen lessen beschikbaar");
-  }
+  debugger;
+  let lessons = data.filter(lesson => lesson.activateStudent);
+  lessons = normalize(lessons, [schema.lesson]);
   return lessons;
 };
