@@ -1,0 +1,11 @@
+.FeedbackModal .ui.card>.content {
+  padding: 1em 1em 0.5em;
+}
+
+.FeedbackModal__Avatar {
+  max-height: 300px;
+}
+
+.FeedbackModal.modal > .actions {
+  border-top: none !important;
+}

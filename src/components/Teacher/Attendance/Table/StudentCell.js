@@ -1,11 +1,11 @@
 import React from 'react';
 import moment from 'moment';
-import { Table, Checkbox } from 'semantic-ui-react';
+import { Table, Checkbox, Icon } from 'semantic-ui-react';
 
 import classNames from '../../../../utils/classNames';
 import { isToday, diffToday } from '../../../../functions/dateHelpers';
 
-const StudentCell = (attendance, lesson, submit) => {
+const StudentCell = ({ attendance, lesson, submit, showModal }) => {
   const isPresent = attendance && attendance.isPresent === true;
 
   return (
@@ -24,6 +24,15 @@ const StudentCell = (attendance, lesson, submit) => {
           <Checkbox checked={isPresent} defaultChecked={isPresent} />
         </div>
       )}
+      <Table.Cell className="Attendance__Edit">
+        <Icon
+          name="pencil"
+          size="large"
+          onClick={() => {
+            showModal(attendance.userId);
+          }}
+        />
+      </Table.Cell>
     </Table.Cell>
   );
 };

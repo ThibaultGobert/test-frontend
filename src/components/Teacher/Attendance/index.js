@@ -18,13 +18,7 @@ import {
 } from '../../../actions/courses';
 
 import AttendanceContainer from './AttendanceContainer';
-import {
-  getCourseById,
-  getLessonById,
-  getChildById,
-  getAttendancesByLessonId,
-} from '../../../selectors';
-import { getTeachersByCourseId } from '../../../selectors/teachers';
+import { getCourseById, getLessonById, getChildById, getAttendancesByLessonId, getTeachersByCourseId } from '../../../selectors';
 
 const mapStateToProps = (state, { match }) => {
   const course = getCourseById(state, match.params.id);

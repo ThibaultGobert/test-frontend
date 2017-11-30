@@ -9,7 +9,7 @@ import AttendanceTable from './Table/AttendanceTable';
 
 import './Attendance.css';
 
-const Attendance = ({ course, teachers, students, redirectToOverview, ...props }) => {
+const Attendance = ({ course, teachers, students, redirectToOverview, showModal, ...props }) => {
   return (
     <div className="Attendance">
       <Button
