@@ -11,7 +11,7 @@ class AttendanceContainer extends Component {
     super(...props);
 
     this.state = {
-      loading: false,
+      loading: true,
     };
 
     this.submit = this.submit.bind(this);
@@ -51,16 +51,19 @@ class AttendanceContainer extends Component {
 
     const { postAttendanceStart, postAttendanceSuccess, postAttendanceError } = this.props.actions;
 
-    const body = [{
-      user_id: student.id,
-      lesson_id: lesson.id,
-      present: !isPresent,
-      role: 'CHILD', // TODO: back-end should be able to get the role based on the user_id.
-    }];
+    const body = [
+      {
+        user_id: student.id,
+        lesson_id: lesson.id,
+        present: !isPresent,
+        role: 'CHILD', // TODO: back-end should be able to get the role based on the user_id.
+      },
+    ];
 
     postAttendanceStart();
 
-    userAdministrationApi.postAttendance(body)
+    userAdministrationApi
+      .postAttendance(body)
       .then(postAttendanceSuccess)
       .catch(postAttendanceError);
   }

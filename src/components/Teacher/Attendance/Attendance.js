@@ -8,7 +8,13 @@ import './Attendance.css';
 const Attendance = ({ course, lessons, students, redirectToOverview, submit }) => {
   return (
     <div className="Attendance">
-      <Button className="Attendance__Back" labelPosition="left" icon="left chevron" content="Terug" onClick={redirectToOverview} />
+      <Button
+        className="Attendance__Back"
+        labelPosition="left"
+        icon="left chevron"
+        content="Terug"
+        onClick={redirectToOverview}
+      />
       <h1>Aanwezigheden {course.name}</h1>
       <h2>Vul hier de aanwezigheid in</h2>
 
@@ -18,7 +24,7 @@ const Attendance = ({ course, lessons, students, redirectToOverview, submit }) =
             <Table.HeaderCell />
             {lessons.map(lesson => (
               <Table.HeaderCell key={lesson.id}>
-                {moment(lesson.start).format('D/M')} - {lesson.id}
+                {moment(lesson.start).format('D/M')}
               </Table.HeaderCell>
             ))}
             <Table.HeaderCell />
@@ -27,23 +33,23 @@ const Attendance = ({ course, lessons, students, redirectToOverview, submit }) =
         <Table.Body>
           {students.map(student => (
             <Table.Row key={student.id}>
-              <Table.Cell>{student.name} {student.id}</Table.Cell>
+              <Table.Cell>{student.name}</Table.Cell>
               {lessons.map(lesson => {
-                const attendance = lesson.attendances && lesson.attendances.find(({ userId, isPresent }) => userId === student.id && isPresent === true);
+                const attendance =
+                  lesson.attendances &&
+                  lesson.attendances.find(({ userId }) => userId === student.id);
+
                 const isPresent = attendance && attendance.isPresent != null;
 
                 return (
-                  <Table.Cell onClick={(event) => submit(event, student, lesson, isPresent)}>
-                    {isPresent
-                      ? 'Y'
-                      : 'N'
-                    }
+                  <Table.Cell
+                    onClick={event => submit(event, student, lesson, isPresent)}
+                    key={attendance.id}
+                  >
+                    {isPresent ? 'Y' : 'N'}
                   </Table.Cell>
                 );
               })}
-              <Table.Cell className="Attendance__Edit">
-                <Icon name="pencil" size="large" />
-              </Table.Cell>
             </Table.Row>
           ))}
         </Table.Body>
@@ -52,9 +58,7 @@ const Attendance = ({ course, lessons, students, redirectToOverview, submit }) =
   );
 };
 
-
 Attendance.propTypes = {
-  course: PropTypes.object.isRequired,
   redirectToOverview: PropTypes.func.isRequired,
 };
 
