@@ -4,14 +4,11 @@ import mockAttendances from './mocks/mockAttendances';
 
 class UserAdministrationApi {
   static getUserInformation(token) {
-    return api.get('/useradministration/getUserInformation', { headers: { 'x-token': token}});
+    return api.get('/useradministration/getUserInformation', { headers: { 'x-token': token }});
   }
 
   static getAttendanceForCourse(courseId) {
-    if (true) {
-      return mockAttendances()
-        .then(mapToAttendances);
-    }
+    console.log(courseId);
 
     return api
       .get(`/courses/getAttendanceForCourse?courseid=${courseId}`)
