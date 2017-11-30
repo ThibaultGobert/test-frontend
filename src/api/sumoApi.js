@@ -1,12 +1,16 @@
 import axios from 'axios';
 import { sumoUrl } from './baseUrl';
 
-const request = (endpoint, { headers = {}, body, ...otherOptions }, method) => {
+const sumoRequest = (endpoint, { headers = {}, body, ...otherOptions }, method) => {
   const allHeaders = {
     ...headers,
-    'Content-Type': 'application/json',
-    'Access-Control-Allow-Origin': '*'
+    'Content-Type': 'text/plain',
+    'Access-Control-Allow-Origin': '*',
+    'Authorization': 'Token token=nS4riFujBdhsQPQGEU4BCwrNUd8KQKPX7F17ZhSLTsoZnA3i4ZQiMwzn87nbmNXvCP19',
+    'Cache-Control': 'no-cache'
   };
+
+  debugger;
 
   return axios(`${sumoUrl}${endpoint}`, {
     ...otherOptions,
@@ -17,16 +21,16 @@ const request = (endpoint, { headers = {}, body, ...otherOptions }, method) => {
   }).then(response => response.data);
 };
 
-const api = {
+const sumoApi = {
   get(endpoint, options = {}) {
-    return request(endpoint, options, 'get');
+    return sumoRequest(endpoint, options, 'get');
   },
   post(endpoint, options = {}) {
-    return request(endpoint, options, 'post');
+    return sumoRequest(endpoint, options, 'post');
   },
   put(endpoint, options = {}) {
-    return request(endpoint, options, 'put');
+    return sumoRequest(endpoint, options, 'put');
   }
 };
 
-export default api;
+export default sumoApi;

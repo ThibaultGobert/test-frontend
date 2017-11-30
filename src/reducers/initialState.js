@@ -75,4 +75,10 @@ export default {
     error: null,
     hasError: false
   },
+  notes: {
+    data: {},
+    loading: true,
+    error: null,
+    hasError: false
+  },
 };

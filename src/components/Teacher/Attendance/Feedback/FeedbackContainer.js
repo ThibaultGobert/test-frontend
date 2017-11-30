@@ -4,6 +4,7 @@ import { Modal, Button, Icon, Grid } from 'semantic-ui-react';
 import './Feedback.css';
 import FeedbackCard from './FeedbackCard';
 import FeedbackForm from './FeedbackForm';
+import NotesApi from '../../../../api/notes';
 
 class FeedbackContainer extends React.Component {
   constructor(...props) {
@@ -15,6 +16,23 @@ class FeedbackContainer extends React.Component {
       feedbackFormVisible: false,
       comment: ''
     };
+  }
+
+  componentDidMount() {
+    const {
+      fetchNotesStart,
+      fetchNotesSuccess,
+      fetchNotesError,
+    } = this.props.actions;
+
+    fetchNotesStart();
+    NotesApi.getNotes(this.props.user.id).then(data => {
+      debugger;
+      fetchNotesSuccess(data);
+    }).catch(error => {
+      debugger;
+      fetchNotesError(error);
+    })
   }
 
   toggleFeedbackForm() {
@@ -72,6 +90,7 @@ class FeedbackContainer extends React.Component {
 FeedbackContainer.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
+  user: PropTypes.object.isRequired,
 };
 
 export default FeedbackContainer;
