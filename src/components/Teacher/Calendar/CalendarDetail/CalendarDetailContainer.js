@@ -57,9 +57,5 @@ CalendarDetailContainer.propTypes = {
   event: PropTypes.object.isRequired,
 };
 
-CalendarDetailContainer.contextTypes = {
-  router: PropTypes.object.isRequired,
-};
-
 export default CalendarDetailContainer;
 

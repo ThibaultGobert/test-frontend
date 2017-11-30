@@ -41,12 +41,8 @@ class CalendarContainer extends Component {
 
 CalendarContainer.propTypes = {
   loading: PropTypes.bool,
-  lessons: PropTypes.object,
+  lessons: PropTypes.arrayOf(PropTypes.object),
   error: PropTypes.object,
-};
-
-CalendarContainer.contextTypes = {
-  router: PropTypes.object,
 };
 
 export default CalendarContainer;
