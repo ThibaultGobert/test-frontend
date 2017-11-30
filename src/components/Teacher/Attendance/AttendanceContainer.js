@@ -11,7 +11,6 @@ class AttendanceContainer extends Component {
   constructor(...props) {
     super(...props);
 
-    this.onChange = this.onChange.bind(this);
     this.submit = this.submit.bind(this);
     this.redirectToOverview = this.redirectToOverview.bind(this);
     this.state = {
@@ -61,11 +60,6 @@ class AttendanceContainer extends Component {
     history.push('/teacherprofile/overview');
   }
 
-  onChange({ target }) {
-    // change state on form change
-    this.setState(prevState => ({}));
-  }
-
   render() {
     const { error, course, lessons, children, loading } = this.props;
     if (error) {
@@ -80,7 +74,6 @@ class AttendanceContainer extends Component {
       <div className="AttendanceContainer">
         <Attendance
           submit={this.submit}
-          onChange={this.onChange}
           course={course}
           lessons={lessons}
           students={children}
