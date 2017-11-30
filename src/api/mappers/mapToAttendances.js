@@ -1,11 +1,17 @@
 import { normalize } from 'normalizr';
+import _ from 'lodash';
 import * as schema from './schema';
 
 export default data => {
-  const attendances = data.map(({ lessonId, attendanceList }) => {
+  const attendances = _.flatMap(data).map(({ lessonId, attendanceList }) => {
     return {
       id: lessonId,
-      attendances: attendanceList,
+      attendances: attendanceList.map((attendance) => {
+        return {
+          ...attendance,
+          id: `${lessonId}-${attendance.userId}`,
+        };
+      }),
     };
   });
 
