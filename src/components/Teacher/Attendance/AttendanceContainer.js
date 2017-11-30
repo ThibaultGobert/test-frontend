@@ -41,16 +41,9 @@ class AttendanceContainer extends Component {
     userAdministrationApi
       .getAttendanceForCourse(courseId)
       .then((data) => {
-        console.log(data);
-        /*
-        data = _.values(data);
-        _.forEach(data, attendancesForLesson => {
-          fetchAttendancesSuccess(attendancesForLesson);
-        });
-        */
-        this.setState({loading: false});
+        this.fetchAttendancesSuccess(data);
+        this.setState({ loading: false });
       }).catch(fetchAttendancesError);
-    // .then((data) => fetchAttendancesSuccess(data));
   }
 
   submit(event) {

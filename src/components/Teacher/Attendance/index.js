@@ -39,6 +39,7 @@ const mapStateToProps = (state, { match }) => {
     return {
       ...lesson,
       attendances,
+
     };
   });
 
