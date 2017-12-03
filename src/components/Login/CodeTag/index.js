@@ -7,7 +7,7 @@ const CodeTag = ({ className, text, close }) => {
   return (
     <div className={classNames('CodeTag', className)}>
       &lt;{text}
-      {close && '?'}&gt;
+      {close && ' /'}&gt;
     </div>
   );
 };
