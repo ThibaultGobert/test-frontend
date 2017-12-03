@@ -1,15 +1,14 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-
 import _ from 'lodash';
 import { fetchLessonsStart, fetchLessonsSuccess, fetchLessonsError } from '../../../actions/lessons';
 import mapActionCreatorsToProps from '../../../functions/mapActionCreatorsToProps';
-import ClassContainer from './ClassContainer';
+import OverviewPage from './OverviewPage';
 
 const mapStateToProps = (state, { match }) => {
   return {
     lessons: _.values(state.lessons.data),
-    loading: state.lessons.loading && !state.lessons.hasError,
+    loading: state.lessons.loading,
     error: state.lessons.error,
   };
 };
@@ -20,4 +19,4 @@ const actionCreators = mapActionCreatorsToProps({
   fetchLessonsError,
 });
 
-export default withRouter(connect(mapStateToProps, actionCreators)(ClassContainer));
+export default withRouter(connect(mapStateToProps, actionCreators)(OverviewPage));
