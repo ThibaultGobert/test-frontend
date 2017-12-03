@@ -33,7 +33,7 @@ const Login = ({
           {impersonate && (
             <Form.Group inline>
               <Form.Field>
-                <CodeTag text="Gebruikersnaam kind" className="Login__CodeTag--highlight" closing />
+                <CodeTag text="Gebruikersnaam kind" className="Login__CodeTag--highlight" close />
                 <input
                   placeholder="Gebruikersnaam kind"
                   onChange={onChange}
@@ -46,7 +46,7 @@ const Login = ({
 
           <Form.Group inline>
             <Form.Field>
-              <CodeTag text="Gebruikersnaam" className="Login__CodeTag--highlight" closing />
+              <CodeTag text="Gebruikersnaam" className="Login__CodeTag--highlight" close />
               <input
                 placeholder="Gebruikersnaam"
                 onChange={onChange}
@@ -58,7 +58,7 @@ const Login = ({
 
           <Form.Group inline>
             <Form.Field>
-              <CodeTag text="Wachtwoord" className="Login__CodeTag--highlight" closing />
+              <CodeTag text="Wachtwoord" className="Login__CodeTag--highlight" close />
               <Input
                 type={hidden ? 'password' : 'text'}
                 placeholder="Wachtwoord"
@@ -72,7 +72,7 @@ const Login = ({
               />
             </Form.Field>
           </Form.Group>
-          <CodeTag text="Start" closing />
+          <CodeTag text="Start" close />
           {error && <ErrorMessage header="Login mislukt" message={error} />}
           <Form.Button primary>Login</Form.Button>
         </Form>
