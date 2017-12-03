@@ -1,3 +1,7 @@
+import { normalize } from 'normalizr';
+import * as schema from './schema';
+import createDate from '../../functions/createDate';
+import mapToCalendar from "./mapToCalendar";
 import _ from 'lodash';
 
 export default (data) => {
@@ -12,19 +16,11 @@ export default (data) => {
     return lessonDateA.getDay() - lessonDateB.getDay();
   });
 
-  return data.map(course => {
-    return _.omit(course, 'lessons');
+  data = _.values(data).map( (course) => {
+    course.lessons = mapToCalendar(course.lessons);
+    return course;
   });
-};
 
-const createDate = (dateString) => {
-  let splitted = dateString.split(' ');
-  const hour = splitted[1].split(':')[0];
-  const minutes = splitted[1].split(':')[1];
-  let dayMonthYear = splitted[0].split('-');
-  const day = dayMonthYear[0];
-  const month = parseInt(dayMonthYear[1], 10);
-  const year = dayMonthYear[2];
-  let date = new Date(year, month - 1, day, hour, minutes);
-  return date;
+  data = normalize(data, [ schema.course ]);
+  return data;
 };

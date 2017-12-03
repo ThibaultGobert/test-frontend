@@ -1,10 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import * as authActions from '../../../actions/auth';
 import { Menu, Icon } from 'semantic-ui-react';
 import {connect} from 'react-redux';
 import {PropTypes} from 'prop-types';
 import {bindActionCreators} from 'redux';
+import {removeUser} from "../../../api/api";
 import toastr from 'toastr';
 
 class EditorHeader extends React.Component {
@@ -15,9 +16,8 @@ class EditorHeader extends React.Component {
 
   logOut(event) {
     event.preventDefault();
-    this.props.actions.logOut();
     toastr.remove();
-    this.context.router.push('/login'); // Redirect to courses page after save
+    removeUser();
   }
 
   render() {
@@ -46,10 +46,6 @@ EditorHeader.propTypes = {
   actions: PropTypes.object.isRequired,
   loggedIn: PropTypes.object.isRequired,
   user: PropTypes.object.isRequired
-};
-
-EditorHeader.contextTypes = {
-  router: PropTypes.object
 };
 
 function mapStateToProps(state, ownProps) {

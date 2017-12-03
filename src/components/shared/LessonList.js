@@ -1,40 +1,40 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Link} from 'react-router';
+import {Link} from 'react-router-dom';
 import {Image} from 'semantic-ui-react';
 import _ from 'lodash';
 
 const LessonList = ({lessons, slideType, showLockedLessons}) => {
-  let lessonCount = lessons.length;
-  let lessonLocked = [];
-  for(let i = 0; i < 10 - lessonCount; i++) {
-    lessonLocked[i] = lessonCount+i+1;
-  }
+  const sortedLessons = _.sortBy(lessons, 'order');
 
   return (
     <div className="cards">
       {
-        _.map(lessons, lesson => {
-          let slideViewerLink = "/slideviewer/" + lesson.id;
-          if (slideType) {
-            slideViewerLink += '/' + slideType;
+        _.range(1, 11).map(lessonOrder => {
+          const lessons = sortedLessons.filter(lesson => lesson.order === lessonOrder);
+          if (lessons.length === 0 && showLockedLessons) {
+            return (<div className="cardholder" key={"lessonOrder-" + lessonOrder}>
+              <Image src={require(`../../assets/images/placeholders/les${lessonOrder}-locked.png`)} alt=""
+                     shape="rounded"/>
+            </div>);
           }
 
-          let lessonKey = "card" + lesson.programlessonid;
-          return(
-            <div className="cardholder" key={lessonKey}>
-              <Link to={slideViewerLink}>
-                <Image src={require(`../../assets/images/placeholders/les${lesson.order}.png`)} alt="" shape="rounded"/>
-              </Link>
-            </div>
-          );
-        })
-      }
-      { showLockedLessons &&
-        _.map(lessonLocked, lessonOrder => {
-          return (<div className="cardholder" key={"lessonOrder-" + lessonOrder}>
-            <Image src={require(`../../assets/images/placeholders/les${lessonOrder}-locked.png`)} alt="" shape="rounded"/>
-          </div>);
+          return lessons.map(lesson => {
+            let slideViewerLink = "/slideviewer/" + lesson.id;
+            if (slideType) {
+              slideViewerLink += '/' + slideType;
+            }
+
+            let lessonKey = "card" + lesson.programlessonid;
+            return (
+              <div className="cardholder" key={lessonKey}>
+                <Link to={slideViewerLink}>
+                  <Image src={require(`../../assets/images/placeholders/les${lesson.order}.png`)} alt=""
+                         shape="rounded"/>
+                </Link>
+              </div>
+            );
+          })
         })
       }
     </div>
@@ -42,7 +42,7 @@ const LessonList = ({lessons, slideType, showLockedLessons}) => {
 };
 
 LessonList.propTypes = {
-  lessons: PropTypes.arrayOf(PropTypes.object),
+  lessons: PropTypes.arrayOf(PropTypes.object).isRequired,
   slideType: PropTypes.string,
   showLockedLessons: PropTypes.bool.isRequired
 };

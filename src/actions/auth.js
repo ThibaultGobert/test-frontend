@@ -1,24 +1,25 @@
-import * as types from './types';
-import authApi from '../api/auth';
-import {beginAjaxCall, ajaxCallError} from "./ajaxStatus";
+import { LOGIN_START, LOGIN_SUCCES, LOGIN_ERROR, LOGOUT } from './types';
 
-export function loginSuccess(user) {
+export function loginStart() {
   return {
-    type: types.LOGIN_SUCCES, user
+    type: LOGIN_START
   };
 }
 
-export function login(credentials) {
-  return function(dispatch) {
-    dispatch(beginAjaxCall(types.BEGIN_LOGIN));
-    return authApi.login(credentials).then((user) => {
-      dispatch(loginSuccess(user));
-    }).catch(error => {
-      dispatch(ajaxCallError(types.LOGIN_ERROR, error));
-    });
+export function loginSuccess(response) {
+  return {
+    type: LOGIN_SUCCES,
+    user: response
+  };
+}
+
+export function loginError(error) {
+  return {
+    type: LOGIN_ERROR,
+    error
   };
 }
 
 export function logOut() {
-  return {type: types.LOGOUT};
+  return { type: LOGOUT };
 }

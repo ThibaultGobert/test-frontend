@@ -1,11 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import * as authActions from '../../../actions/auth';
 import {Button} from 'semantic-ui-react';
 import {connect} from 'react-redux';
 import {PropTypes} from 'prop-types';
 import {bindActionCreators} from 'redux';
 import toastr from 'toastr';
+import {removeUser} from '../../../api/api';
 
 class AdminHeader extends React.Component {
   constructor(props) {
@@ -15,9 +16,8 @@ class AdminHeader extends React.Component {
 
   logOut(event) {
     event.preventDefault();
-    this.props.actions.logOut();
     toastr.remove();
-    this.context.router.push('/login'); // Redirect to courses page after save
+    removeUser();
   }
 
   render() {
@@ -52,10 +52,6 @@ class AdminHeader extends React.Component {
 AdminHeader.propTypes = {
   actions: PropTypes.object.isRequired,
   loggedIn: PropTypes.object.isRequired
-};
-
-AdminHeader.contextTypes = {
-  router: PropTypes.object
 };
 
 function mapStateToProps(state, ownProps) {

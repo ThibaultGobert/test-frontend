@@ -9,8 +9,10 @@ import ErrorMessage from "../shared/ErrorMessage";
 import Loader from '../shared/Loader';
 import _ from 'lodash';
 import ManageLessonList from './ManageLessonList';
+import lessonApi from '../../api/lessons';
 import * as lessonTypes from '../../constants/lessonTypes';
 import {Button} from 'semantic-ui-react';
+import organisationsApi from '../../api/organisation';
 
 class OverviewPage extends React.Component {
   constructor(props, context) {
@@ -41,12 +43,29 @@ class OverviewPage extends React.Component {
   }
 
   fetchOrganisation() {
-    this.props.organisationActions.loadAllLevels();
-    this.props.organisationActions.loadAllGroups();
+    const { fetchLevelsStart, fetchLevelsSuccess, fetchLevelsError, fetchGroupsStart, fetchGroupsSuccess, fetchGroupsError } = this.props.organisationActions;
+
+    fetchLevelsStart();
+    fetchGroupsStart();
+
+    organisationsApi.getAllLevels()
+      .then((response) => fetchLevelsSuccess(response))
+      .catch((error) => fetchLevelsError(error));
+
+    organisationsApi.getAllGroups()
+      .then((response) => fetchGroupsSuccess(response))
+      .catch((error) => fetchGroupsError(error));
   }
 
   searchLessons() {
-    this.props.lessonActions.searchLessons(Object.assign({}, this.state.filterValues));
+    const {fetchLessonsStart, fetchLessonsSuccess, fetchLessonsError} = this.props.actions;
+
+    fetchLessonsStart();
+    lessonApi.searchLessons(Object.assign({}, this.state.filterValues)).then((data) => {
+      fetchLessonsSuccess(data);
+    }).catch(error => {
+      fetchLessonsError(error);
+    });
   }
 
   onSubmit() {

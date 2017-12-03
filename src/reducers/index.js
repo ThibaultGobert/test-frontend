@@ -3,30 +3,33 @@ import { combineReducers } from 'redux';
 import loggedIn from './auth';
 import courses from './courses';
 import lessons from './lessons';
-import calendar from './calendar';
-import currentLesson from './currentLesson';
-import classlists from './classlists';
-import organisation from'./organisation';
-import * as types from '../actions/types';
+import organisation from './organisation';
+import users from './users';
+import slides from './slides';
+import locations from './locations';
+import application from './application';
+import attendances from './attendances';
 import initialState from './initialState';
+import { LOGOUT } from '../actions/types';
 
 const appReducer = combineReducers({
   loggedIn,
   courses,
   lessons,
-  calendar,
-  currentLesson,
-  classlists,
-  organisation
+  organisation,
+  users,
+  locations,
+  application,
+  slides,
+  attendances,
 });
 
 const rootReducer = (state, action) => {
-  if (action.type === types.LOGOUT) {
+  if (action.type === LOGOUT) {
     state = initialState;
   }
 
   return appReducer(state, action);
 };
-
 
 export default rootReducer;

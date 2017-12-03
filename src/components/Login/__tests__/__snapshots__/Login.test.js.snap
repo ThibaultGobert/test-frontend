@@ -3,6 +3,7 @@
 exports[`Login should render Login 1`] = `
 <Login
   credentials={Object {}}
+  hidden={true}
 >
   <div
     className="Login"
@@ -79,19 +80,19 @@ exports[`Login should render Login 1`] = `
                     className="Login__CodeTag--highlight"
                     close={false}
                     closing={true}
-                    text="Uw gebruikersnaam"
+                    text="Gebruikersnaam"
                   >
                     <div
                       className="CodeTag Login__CodeTag--highlight"
                     >
                       &lt;
-                      Uw gebruikersnaam
+                      Gebruikersnaam
                       &gt;
                     </div>
                   </CodeTag>
                   <input
                     name="username"
-                    placeholder="Uw gebruikersnaam"
+                    placeholder="Gebruikersnaam"
                   />
                 </div>
               </FormField>
@@ -122,6 +123,7 @@ exports[`Login should render Login 1`] = `
                     </div>
                   </CodeTag>
                   <Input
+                    autoComplete="on"
                     icon={
                       <Icon
                         as="i"
@@ -134,17 +136,18 @@ exports[`Login should render Login 1`] = `
                     }
                     name="password"
                     placeholder="Wachtwoord"
-                    type="text"
+                    type="password"
                   >
                     <div
                       className="ui icon input"
                     >
                       <input
-                        key="text"
+                        autoComplete="on"
+                        key="password"
                         name="password"
                         onChange={[Function]}
                         placeholder="Wachtwoord"
-                        type="text"
+                        type="password"
                       />
                       <Icon
                         as="i"
@@ -207,19 +210,16 @@ exports[`Login should render Login 1`] = `
         </form>
       </Form>
     </div>
-    <button
+    <Icon
+      as="i"
       className="Login__ImpersonateLink"
+      name="lock"
     >
-      <Icon
-        as="i"
-        name="lock"
-      >
-        <i
-          aria-hidden="true"
-          className="lock icon"
-        />
-      </Icon>
-    </button>
+      <i
+        aria-hidden="true"
+        className="lock icon Login__ImpersonateLink"
+      />
+    </Icon>
   </div>
 </Login>
 `;
@@ -304,38 +304,6 @@ exports[`Login should render Login form with impersonate 1`] = `
                     className="Login__CodeTag--highlight"
                     close={false}
                     closing={true}
-                    text="Uw gebruikersnaam"
-                  >
-                    <div
-                      className="CodeTag Login__CodeTag--highlight"
-                    >
-                      &lt;
-                      Uw gebruikersnaam
-                      &gt;
-                    </div>
-                  </CodeTag>
-                  <input
-                    name="username"
-                    placeholder="Uw gebruikersnaam"
-                  />
-                </div>
-              </FormField>
-            </div>
-          </FormGroup>
-          <FormGroup
-            inline={true}
-          >
-            <div
-              className="inline fields"
-            >
-              <FormField>
-                <div
-                  className="field"
-                >
-                  <CodeTag
-                    className="Login__CodeTag--highlight"
-                    close={false}
-                    closing={true}
                     text="Gebruikersnaam kind"
                   >
                     <div
@@ -368,6 +336,38 @@ exports[`Login should render Login form with impersonate 1`] = `
                     className="Login__CodeTag--highlight"
                     close={false}
                     closing={true}
+                    text="Gebruikersnaam"
+                  >
+                    <div
+                      className="CodeTag Login__CodeTag--highlight"
+                    >
+                      &lt;
+                      Gebruikersnaam
+                      &gt;
+                    </div>
+                  </CodeTag>
+                  <input
+                    name="username"
+                    placeholder="Gebruikersnaam"
+                  />
+                </div>
+              </FormField>
+            </div>
+          </FormGroup>
+          <FormGroup
+            inline={true}
+          >
+            <div
+              className="inline fields"
+            >
+              <FormField>
+                <div
+                  className="field"
+                >
+                  <CodeTag
+                    className="Login__CodeTag--highlight"
+                    close={false}
+                    closing={true}
                     text="Wachtwoord"
                   >
                     <div
@@ -379,6 +379,7 @@ exports[`Login should render Login form with impersonate 1`] = `
                     </div>
                   </CodeTag>
                   <Input
+                    autoComplete="off"
                     icon={false}
                     name="password"
                     placeholder="Wachtwoord"
@@ -388,6 +389,7 @@ exports[`Login should render Login form with impersonate 1`] = `
                       className="ui input"
                     >
                       <input
+                        autoComplete="off"
                         key="text"
                         name="password"
                         onChange={[Function]}
@@ -443,19 +445,16 @@ exports[`Login should render Login form with impersonate 1`] = `
         </form>
       </Form>
     </div>
-    <button
+    <Icon
+      as="i"
       className="Login__ImpersonateLink"
+      name="unlock"
     >
-      <Icon
-        as="i"
-        name="lock"
-      >
-        <i
-          aria-hidden="true"
-          className="lock icon"
-        />
-      </Icon>
-    </button>
+      <i
+        aria-hidden="true"
+        className="unlock icon Login__ImpersonateLink"
+      />
+    </Icon>
   </div>
 </Login>
 `;
@@ -540,19 +539,19 @@ exports[`Login should render Login with plain text password 1`] = `
                     className="Login__CodeTag--highlight"
                     close={false}
                     closing={true}
-                    text="Uw gebruikersnaam"
+                    text="Gebruikersnaam"
                   >
                     <div
                       className="CodeTag Login__CodeTag--highlight"
                     >
                       &lt;
-                      Uw gebruikersnaam
+                      Gebruikersnaam
                       &gt;
                     </div>
                   </CodeTag>
                   <input
                     name="username"
-                    placeholder="Uw gebruikersnaam"
+                    placeholder="Gebruikersnaam"
                   />
                 </div>
               </FormField>
@@ -583,6 +582,7 @@ exports[`Login should render Login with plain text password 1`] = `
                     </div>
                   </CodeTag>
                   <Input
+                    autoComplete="off"
                     icon={
                       <Icon
                         as="i"
@@ -601,6 +601,7 @@ exports[`Login should render Login with plain text password 1`] = `
                       className="ui icon input"
                     >
                       <input
+                        autoComplete="off"
                         key="text"
                         name="password"
                         onChange={[Function]}
@@ -668,19 +669,16 @@ exports[`Login should render Login with plain text password 1`] = `
         </form>
       </Form>
     </div>
-    <button
+    <Icon
+      as="i"
       className="Login__ImpersonateLink"
+      name="lock"
     >
-      <Icon
-        as="i"
-        name="lock"
-      >
-        <i
-          aria-hidden="true"
-          className="lock icon"
-        />
-      </Icon>
-    </button>
+      <i
+        aria-hidden="true"
+        className="lock icon Login__ImpersonateLink"
+      />
+    </Icon>
   </div>
 </Login>
 `;
@@ -766,19 +764,19 @@ exports[`Login should show error when hasError 1`] = `
                     className="Login__CodeTag--highlight"
                     close={false}
                     closing={true}
-                    text="Uw gebruikersnaam"
+                    text="Gebruikersnaam"
                   >
                     <div
                       className="CodeTag Login__CodeTag--highlight"
                     >
                       &lt;
-                      Uw gebruikersnaam
+                      Gebruikersnaam
                       &gt;
                     </div>
                   </CodeTag>
                   <input
                     name="username"
-                    placeholder="Uw gebruikersnaam"
+                    placeholder="Gebruikersnaam"
                   />
                 </div>
               </FormField>
@@ -809,6 +807,7 @@ exports[`Login should show error when hasError 1`] = `
                     </div>
                   </CodeTag>
                   <Input
+                    autoComplete="off"
                     icon={
                       <Icon
                         as="i"
@@ -827,6 +826,7 @@ exports[`Login should show error when hasError 1`] = `
                       className="ui icon input"
                     >
                       <input
+                        autoComplete="off"
                         key="text"
                         name="password"
                         onChange={[Function]}
@@ -917,19 +917,16 @@ exports[`Login should show error when hasError 1`] = `
         </form>
       </Form>
     </div>
-    <button
+    <Icon
+      as="i"
       className="Login__ImpersonateLink"
+      name="lock"
     >
-      <Icon
-        as="i"
-        name="lock"
-      >
-        <i
-          aria-hidden="true"
-          className="lock icon"
-        />
-      </Icon>
-    </button>
+      <i
+        aria-hidden="true"
+        className="lock icon Login__ImpersonateLink"
+      />
+    </Icon>
   </div>
 </Login>
 `;
@@ -1015,19 +1012,19 @@ exports[`Login should show loading screen when loading 1`] = `
                     className="Login__CodeTag--highlight"
                     close={false}
                     closing={true}
-                    text="Uw gebruikersnaam"
+                    text="Gebruikersnaam"
                   >
                     <div
                       className="CodeTag Login__CodeTag--highlight"
                     >
                       &lt;
-                      Uw gebruikersnaam
+                      Gebruikersnaam
                       &gt;
                     </div>
                   </CodeTag>
                   <input
                     name="username"
-                    placeholder="Uw gebruikersnaam"
+                    placeholder="Gebruikersnaam"
                   />
                 </div>
               </FormField>
@@ -1058,6 +1055,7 @@ exports[`Login should show loading screen when loading 1`] = `
                     </div>
                   </CodeTag>
                   <Input
+                    autoComplete="off"
                     icon={
                       <Icon
                         as="i"
@@ -1076,6 +1074,7 @@ exports[`Login should show loading screen when loading 1`] = `
                       className="ui icon input"
                     >
                       <input
+                        autoComplete="off"
                         key="text"
                         name="password"
                         onChange={[Function]}
@@ -1143,19 +1142,16 @@ exports[`Login should show loading screen when loading 1`] = `
         </form>
       </Form>
     </div>
-    <button
+    <Icon
+      as="i"
       className="Login__ImpersonateLink"
+      name="lock"
     >
-      <Icon
-        as="i"
-        name="lock"
-      >
-        <i
-          aria-hidden="true"
-          className="lock icon"
-        />
-      </Icon>
-    </button>
+      <i
+        aria-hidden="true"
+        className="lock icon Login__ImpersonateLink"
+      />
+    </Icon>
   </div>
 </Login>
 `;

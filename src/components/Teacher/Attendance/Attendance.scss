@@ -1,0 +1,27 @@
+.Attendance__Header > tr > th {
+  font-weight: 400 !important;
+  font-size: 1.2em;
+}
+
+td.Attendance__Edit {
+  padding: 0 !important;
+  border-left: none !important;
+
+  & i {
+    cursor: pointer;
+  }
+}
+
+.Attendance__Icon {
+  text-align: center;
+  cursor: pointer;
+}
+
+.Attendance__IconPresent {
+  color: green;
+}
+
+.Attendance__IconNotPresent i {
+  color: #444;
+  font-size: 0.9em;
+}

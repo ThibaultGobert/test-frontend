@@ -12,6 +12,7 @@
     "lodash-webpack-plugin": "^0.11.4",
     "moment": "2.18.1",
     "node-sass-chokidar": "^0.0.3",
+    "normalizr": "^3.2.4",
     "npm-run-all": "^4.1.2",
     "object-assign": "4.1.0",
     "react": "^16.1.0",
@@ -21,18 +22,16 @@
     "react-keydown": "^1.9.4",
     "react-redux": "5.0.5",
     "react-render-html": "0.5.0",
-    "react-router": "3.0.5",
-    "react-router-redux": "4.0.8",
+    "react-router-dom": "^4.2.2",
     "react-scripts": "1.0.17",
     "redux": "3.6.0",
     "redux-immutable-state-invariant": "^2.1.0",
-    "redux-persist": "4.9.1",
-    "redux-persist-migrate": "^5.0.0",
     "redux-thunk": "2.1.0",
     "sanitize-html": "^1.15.0",
     "semantic-ui-css": "2.2.12",
     "semantic-ui-react": "0.71.5",
-    "toastr": "2.1.2"
+    "toastr": "2.1.2",
+    "prop-types": "^15.6.0"
   },
   "scripts": {
     "start-js": "react-scripts start",
@@ -41,12 +40,20 @@
     "build": "npm-run-all build-css build-js",
     "test": "react-scripts test --env=jsdom",
     "build-css": "node-sass-chokidar src/ -o src/",
-    "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive"
+    "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
+    "coverage": "yarn test --coverage && open ./coverage/lcov-report/index.html"
   },
   "devDependencies": {
+    "babel-eslint": "^8.0.2",
+    "deep-freeze": "^0.0.1",
     "enzyme": "^3.1.1",
     "enzyme-adapter-react-16": "^1.0.4",
     "enzyme-to-json": "^3.2.2",
+    "eslint": "^4.11.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-react": "^7.5.1",
     "prettier": "1.8.2",
     "react-test-renderer": "^16.1.0"
   }

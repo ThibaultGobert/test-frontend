@@ -1,18 +1,28 @@
-import * as types from '../actions/types';
+import { LOGIN_START, LOGIN_SUCCES, LOGIN_ERROR, LOGOUT } from '../actions/types';
 import initialState from './initialState';
 
-export default function authReducer(state = initialState.loggedIn, action) {
+import { setUser, removeUser } from '../api/api';
+
+function authReducer(state = initialState.loggedIn, action) {
   switch (action.type) {
-    case types.BEGIN_LOGIN:
+    case LOGIN_START:
       return { ...state, loading: true };
 
-    case types.LOGIN_SUCCES:
-      return Object.assign({}, { data: action.user, error: undefined, loading: false });
+    case LOGIN_SUCCES: {
+      setUser(action.user);
+      return { data: action.user, error: undefined, loading: false };
+    }
 
-    case types.LOGIN_ERROR:
-      return Object.assign({}, { data: {}, error: action.error, loading: false });
+    case LOGIN_ERROR:
+      return { data: {}, error: action.error, loading: false };
+
+    case LOGOUT: {
+      removeUser();
+    }
 
     default:
       return state;
   }
 }
+
+export default authReducer;
