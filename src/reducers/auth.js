@@ -18,8 +18,6 @@ function authReducer(state = initialState.loggedIn, action) {
 
     case LOGOUT: {
       removeUser();
-
-      return { ...initialState.loggedIn };
     }
 
     default:

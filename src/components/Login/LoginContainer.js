@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { isEmpty } from 'lodash';
 import toastr from 'toastr';
 import { Redirect } from 'react-router-dom';
 

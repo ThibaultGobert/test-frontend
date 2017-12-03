@@ -12,4 +12,8 @@ const Extra = ({lessons}) => {
   );
 };
 
+Extra.propTypes = {
+  lessons: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
+
 export default Extra;

@@ -1,21 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
-import { Button, Message, Header, Icon } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
+import { Button, Header, Icon } from 'semantic-ui-react';
+import { NavLink } from 'react-router-dom';
 import moment from 'moment';
 import * as lessonTypes from '../../../../constants/lessonTypes';
 import * as slideTypes from '../../../../constants/slideTypes';
+import ErrorMessage from "../../../shared/ErrorMessage";
 
 const CalendarDetail = ({
-  event, downloadLesContent, redirectToCalendar, lessonContentLoading, contentUrl,
+  event, downloadLesContent, redirectToCalendar, hasLessonContent
 }) => {
   const classHome = _.find(event.lessonEntities, { lessonType: lessonTypes.CLASSHOME });
   const extra = _.find(event.lessonEntities, { lessonType: lessonTypes.EXTRA });
 
   let slideViewerUrl;
   let extraSlideViewerUrl;
-  let hasExtraLesson = false;
 
   if (classHome) {
     slideViewerUrl = `/slideviewer/${classHome.lessonId}`;
@@ -23,8 +23,8 @@ const CalendarDetail = ({
 
   if (extra) {
     extraSlideViewerUrl = `/slideviewer/${extra.lessonId}`;
-    hasExtraLesson = true;
   }
+
   return (
     <div className="calendar-details">
       <div className="back-button">
@@ -39,28 +39,32 @@ const CalendarDetail = ({
         <div className="level">Level: {event.level}</div>
       </div>
 
-      <Message className="aanwezigheden-info">
-        <Message.Header>De aanwezigheden invullen</Message.Header>
-        <p>Binnenkort gaat het mogelijk zijn om hier de aanwezigheden van de kinderen bij de les in te vullen. Gelieve dit voorlopig nog zelf bij te houden en door te mailen naar<a href="mailto:lieve@codefever.be"> lieve@codefever.be</a></p>
-      </Message>
-
       <div className="calendar-details-buttons">
-        <Link to={`${slideViewerUrl}/${slideTypes.CLASS}`}>
-          <Button primary><Icon name="group" />Klas</Button>
-        </Link>
-        <Link to={`${slideViewerUrl}/${slideTypes.HOME}`}>
-          <Button primary><Icon name="home" />Thuis</Button>
-        </Link>
-        <Link to={`${slideViewerUrl}/${slideTypes.PROJECTION}`}>
-          <Button primary><Icon name="tv" />Projectie</Button>
-        </Link>
-        <Link to={`${slideViewerUrl}/${slideTypes.INFO}`}>
-          <Button primary><Icon name="info" />Info</Button>
-        </Link>
-        <Link to={extraSlideViewerUrl}>
-          { hasExtraLesson && <Button primary ><Icon name="trophy" />Extra</Button>}
-        </Link>
-        <Button loading={lessonContentLoading} onClick={downloadLesContent} disabled={contentUrl === undefined}>Download lescontent</Button>
+        { slideViewerUrl &&
+          <span>
+            <NavLink to={`${slideViewerUrl}/${slideTypes.CLASS}`}>
+              <Button primary><Icon name="group" />Klas</Button>
+            </NavLink>
+            <NavLink to={`${slideViewerUrl}/${slideTypes.HOME}`}>
+              <Button primary><Icon name="home" />Thuis</Button>
+            </NavLink>
+            <NavLink to={`${slideViewerUrl}/${slideTypes.PROJECTION}`}>
+              <Button primary><Icon name="tv" />Projectie</Button>
+            </NavLink>
+            <NavLink to={`${slideViewerUrl}/${slideTypes.INFO}`}>
+              <Button primary><Icon name="info" />Info</Button>
+            </NavLink>
+          </span>
+        }
+        { !slideViewerUrl && <ErrorMessage header="Geen links naar de lesinhoud beschikbaar" message="Contacteer CodeFever HQ"/>}
+        { extraSlideViewerUrl &&
+          <NavLink to={extraSlideViewerUrl}>
+            <Button primary ><Icon name="trophy" />Extra</Button>
+          </NavLink>
+        }
+
+        { hasLessonContent && <Button onClick={downloadLesContent}>Download lescontent</Button>}
+        { !hasLessonContent &&  <ErrorMessage header="Geen download link beschikbaar" message="Contacteer CodeFever HQ"/>}
       </div>
     </div>
   );

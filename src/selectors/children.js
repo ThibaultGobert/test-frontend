@@ -1,5 +1,9 @@
+export const getChildById = (state, childId) => {
+  return state.users.data[childId];
+};
+
 export const getChildrenByCourseId = (state, courseId) => {
-  if(!state.courses.data[courseId] || !state.courses.data[courseId].children) {
+  if (!state.courses.data[courseId] || !state.courses.data[courseId].children) {
     return [];
   }
 
@@ -7,3 +11,4 @@ export const getChildrenByCourseId = (state, courseId) => {
     return state.users.data[childId];
   });
 };
+

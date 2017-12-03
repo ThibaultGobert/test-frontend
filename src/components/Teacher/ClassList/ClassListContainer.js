@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import ErrorMessage from '../../shared/ErrorMessage';
 import Loader from '../../shared/Loader';
 import courseApi from '../../../api/courses';
@@ -90,16 +89,17 @@ class ClassListContainer extends React.Component {
   }
 
   redirectToClassGroups() {
-    this.props.history.goBack();
+    const { history } = this.props;
+    history.push('/teacherprofile/overview');
   }
 
   render() {
     const {
-      classlist, loading, error, course, users,
+      classlist, loading, error, course,
     } = this.props;
 
     const classListWithHighlights = classlist.map(child => {
-      return { ...child, highlight: child.subscription_type == subscriptionTypes.TRIAL };
+      return { ...child, highlight: child.subscription_type === subscriptionTypes.TRIAL };
     });
 
     if (error) {

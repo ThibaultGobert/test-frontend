@@ -1,7 +1,7 @@
 import {
   FETCH_LESSONS_START,
   FETCH_LESSONS_SUCCESS,
-  FETCH_LESSONS_ERROR
+  FETCH_LESSONS_ERROR,
 } from './types';
 
 export function fetchLessonsStart() {

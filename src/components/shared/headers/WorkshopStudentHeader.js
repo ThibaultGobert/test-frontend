@@ -1,9 +1,11 @@
 import React from 'react';
 import * as authActions from '../../../actions/auth';
+import { withRouter } from 'react-router-dom';
 import {Button} from 'semantic-ui-react';
 import {connect} from 'react-redux';
 import {PropTypes} from 'prop-types';
 import {bindActionCreators} from 'redux';
+import {removeUser} from "../../../api/api";
 import toastr from 'toastr';
 
 class StudentHeader extends React.Component {
@@ -14,9 +16,8 @@ class StudentHeader extends React.Component {
 
   logOut(event) {
     event.preventDefault();
-    this.props.actions.logOut();
     toastr.remove();
-    this.context.router.push('/login'); // Redirect to courses page after save
+    removeUser();
   }
 
   render() {
@@ -45,10 +46,6 @@ StudentHeader.propTypes = {
   user: PropTypes.object.isRequired,
 };
 
-StudentHeader.contextTypes = {
-  router: PropTypes.object
-};
-
 function mapStateToProps(state, ownProps) {
   return {
     loggedIn: state.loggedIn
@@ -61,4 +58,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(StudentHeader);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(StudentHeader));

@@ -7,10 +7,6 @@ import lessonApi from '../../../api/lessons';
 import Class from './Class';
 
 class ClassContainer extends Component {
-  constructor(...props) {
-    super(...props);
-  }
-
   componentDidMount() {
     this.fetchLessons();
   }
@@ -43,12 +39,8 @@ class ClassContainer extends Component {
 
 ClassContainer.propTypes = {
   loading: PropTypes.bool,
-  lessons: PropTypes.object,
+  lessons: PropTypes.arrayOf(PropTypes.object),
   error: PropTypes.object,
-};
-
-ClassContainer.contextTypes = {
-  router: PropTypes.object,
 };
 
 export default ClassContainer;

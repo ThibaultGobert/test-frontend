@@ -37,7 +37,6 @@ class SlideViewerContainer extends React.Component {
       isStudent,
       loading,
       hasError,
-      error,
       slideType
     } = this.props;
 

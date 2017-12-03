@@ -12,4 +12,8 @@ const Home = ({lessons}) => {
   );
 };
 
+Home.propTypes = {
+  lessons: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
+
 export default Home;

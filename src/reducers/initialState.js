@@ -9,58 +9,64 @@ export default {
   },
   courses: {
     data: {},
-    loading: false,
+    loading: true,
     error: null,
     hasError: false
   },
   lessons: {
     data: {},
-    loading: false,
+    loading: true,
     error: null,
     hasError: false
   },
   calendar: {
     data: {},
-    loading: false,
+    loading: true,
     error: null,
     hasError: false
   },
   currentLesson: {
     data: {},
-    loading: false,
+    loading: true,
     error: null,
     hasError: false
   },
   organisation: {
     groups: {
       data: {},
-      loading: false,
+      loading: true,
       error: null,
       hasError: false
     },
     levels: {
       data: {},
-      loading: false,
+      loading: true,
       error: null,
       hasError: false
     }
   },
   users: {
     data: {},
-    loading: false,
+    loading: true,
     error: null,
     hasError: false
   },
   locations: {
     data: {},
-    loading: false,
+    loading: true,
     error: null,
     hasError: false
   },
   slides: {
     data: {},
-    loading: false,
+    loading: true,
     error: null,
     hasError: false
-  }
+  },
+  attendances: {
+    data: {},
+    loading: true,
+    error: null,
+    hasError: false
+  },
 };
