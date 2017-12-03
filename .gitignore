@@ -44,3 +44,5 @@ dist
 build/
 
 src/**/*.css
+
+.env
