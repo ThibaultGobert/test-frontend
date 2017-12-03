@@ -17,7 +17,7 @@ const Attendance = ({ course, lessons, students, redirectToOverview, submit }) =
         onClick={redirectToOverview}
       />
       <h1>Aanwezigheden {course.name}</h1>
-      <h2>Vul hier de aanwezigheid in</h2>
+      <h2>Duidt de aanwezigheden aan</h2>
 
       <Table definition>
         <Table.Header className="Attendance__Header">
