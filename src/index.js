@@ -12,6 +12,8 @@ import '../node_modules/react-big-calendar/lib/css/react-big-calendar.css';
 import '../node_modules/toastr/build/toastr.min.css';
 import './styles/styles.css';
 
+window.Raven.config('https://8f8cd090fadf4a509264c7bf4092e1e3@sentry.io/253906').install();
+
 /*
  * TODO: don't export the store.
  */
