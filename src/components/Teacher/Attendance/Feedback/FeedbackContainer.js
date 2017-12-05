@@ -74,12 +74,6 @@ class FeedbackContainer extends React.Component {
             </Grid.Column>
           </Grid>
         </Modal.Content>
-
-        <Modal.Actions>
-          <Button primary onClick={onClose}>
-            <Icon name="save" />Opslaan
-          </Button>
-        </Modal.Actions>
       </Modal>
     );
   }
