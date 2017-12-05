@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button, Form, TextArea } from 'semantic-ui-react';
+import { Button, Form, TextArea, Icon } from 'semantic-ui-react';
 
 const FeedbackForm = ({ cancel, save, onChange}) => {
   const placeholder =
@@ -16,10 +16,11 @@ const FeedbackForm = ({ cancel, save, onChange}) => {
 
   return (
     <div className="FeedbackForm">
+      <Icon name="close" className="FeedbackForm__Icon" onClick={cancel}/>
       <Form onSubmit={save}>
         <Form.Field control={TextArea} label="Opmerking" autoHeight onChange={onChange} />
-        <Button onClick={cancel}>Cancel</Button>
-        <Form.Field control={Button}>Submit</Form.Field>
+        <Form.Field className="alignRight" control={Button}>Voeg toe</Form.Field>
+        <div className="clearfix" />
       </Form>
     </div>
   );

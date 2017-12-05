@@ -9,3 +9,16 @@
 .FeedbackModal.modal > .actions {
   border-top: none !important;
 }
+
+.FeedbackForm {
+  padding: 1em 1em 0.5em;
+  background: darken(#fff, 5%);
+  position: relative;
+
+  .FeedbackForm__Icon {
+    cursor: pointer;
+    position: absolute;
+    top: 0.5em;
+    right: 0.5em;
+  }
+}
