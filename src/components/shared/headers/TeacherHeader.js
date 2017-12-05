@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import { bindActionCreators } from 'redux';
 import toastr from 'toastr';
-import {removeUser} from "../../../api/api";
+import {removeUser} from "../../../api/storage";
 import * as authActions from '../../../actions/auth';
 
 class TeacherHeader extends React.Component {
