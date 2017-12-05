@@ -10,7 +10,7 @@ export default function slidesReducer(state = initialState.slides, action) {
     case types.FETCH_LESSON_SLIDES_SUCCESS:
       return merge(
         {}, state,
-        { data: action.data.entities.slide, loading: false, error: null, hasError: false }
+        { data: action.data.entities.slides, loading: false, error: null, hasError: false }
       );
 
     case types.FETCH_LESSON_SLIDES_ERROR:

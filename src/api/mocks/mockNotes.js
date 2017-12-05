@@ -1,4 +1,5 @@
 import delay from './delay';
+import mapToNotes from '../mappers/mapToNotes';
 
 const notes = [
   {
@@ -21,7 +22,7 @@ class NotesApi {
   static getNotes(studentId) {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        resolve(Object.assign({}, notes));
+        resolve(Object.assign({}, mapToNotes(notes)));
       }, delay);
     });
   }
