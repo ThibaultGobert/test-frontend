@@ -4,13 +4,10 @@ import { sumoUrl } from './baseUrl';
 const sumoRequest = (endpoint, { headers = {}, body, ...otherOptions }, method) => {
   const allHeaders = {
     ...headers,
-    'Content-Type': 'text/plain',
+    'Content-Type': 'application/json',
     'Access-Control-Allow-Origin': '*',
     'Authorization': 'Token token=nS4riFujBdhsQPQGEU4BCwrNUd8KQKPX7F17ZhSLTsoZnA3i4ZQiMwzn87nbmNXvCP19',
-    'Cache-Control': 'no-cache'
   };
-
-  debugger;
 
   return axios(`${sumoUrl}${endpoint}`, {
     ...otherOptions,

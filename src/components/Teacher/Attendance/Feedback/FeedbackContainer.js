@@ -4,11 +4,10 @@ import { Modal, Button, Icon, Grid } from 'semantic-ui-react';
 import './Feedback.css';
 import FeedbackCard from './FeedbackCard';
 import FeedbackForm from './FeedbackForm';
-import NotesApi from '../../../../api/notes';
+import NotesApi from '../../../../api/mocks/mockNotes';
 
 class FeedbackContainer extends React.Component {
   constructor(...props) {
-    debugger;
     super(...props);
     this.toggleFeedbackForm = this.toggleFeedbackForm.bind(this);
     this.saveComment = this.saveComment.bind(this);
@@ -27,7 +26,6 @@ class FeedbackContainer extends React.Component {
 
     fetchNotesStart();
     NotesApi.getNotes(this.props.user.id).then(data => {
-      debugger;
       fetchNotesSuccess(data);
     }).catch(error => {
       debugger;
