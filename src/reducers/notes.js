@@ -8,7 +8,7 @@ export default function notesReducer(state = initialState.notes, action) {
       return Object.assign({}, state, {data: {}, loading: true, error: null, hasError: false });
 
     case types.FETCH_NOTES_SUCCESS:
-      return merge({}, state, {data: action.notes, loading: false, error: null, hasError: false });
+      return merge({}, state, {data: action.notes.entities.notes, loading: false, error: null, hasError: false });
 
     case types.FETCH_NOTES_ERROR:
       return Object.assign({}, state, {data: {}, loading: false, error: action.error, hasError: true });
