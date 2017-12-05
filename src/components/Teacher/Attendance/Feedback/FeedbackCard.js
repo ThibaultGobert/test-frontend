@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {Icon, Card, Image} from 'semantic-ui-react';
 
 const FeedbackCard = ({course, user}) => {
@@ -22,10 +21,6 @@ const FeedbackCard = ({course, user}) => {
       </Card.Content>
     </Card>
   );
-};
-
-FeedbackCard.propTypes = {
-  user: PropTypes.object.isRequired
 };
 
 export default FeedbackCard;

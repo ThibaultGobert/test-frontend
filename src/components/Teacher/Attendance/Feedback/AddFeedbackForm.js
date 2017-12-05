@@ -16,12 +16,14 @@ const FeedbackForm = ({ cancel, save, onChange}) => {
 
   return (
     <div className="FeedbackForm">
-      <Icon name="close" className="FeedbackForm__Icon" onClick={cancel}/>
-      <Form onSubmit={save}>
+      <Form>
         <Form.Field control={TextArea} label="Opmerking" autoHeight onChange={onChange} />
-        <Form.Field className="alignRight" control={Button}>Voeg toe</Form.Field>
-        <div className="clearfix" />
+        <Form.Group className="alignRight">
+          <Form.Field control={Button} color="red" onClick={cancel}>Cancel</Form.Field>
+          <Form.Field control={Button} primary onClick={save}>Voeg toe</Form.Field>
+        </Form.Group>
       </Form>
+      <div className="clearfix"/>
     </div>
   );
 };
