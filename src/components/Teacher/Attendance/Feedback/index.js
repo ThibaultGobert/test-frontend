@@ -3,7 +3,14 @@ import { withRouter } from 'react-router-dom';
 import mapActionCreatorsToProps from '../../../../functions/mapActionCreatorsToProps';
 import FeedbackContainer from './FeedbackContainer';
 import { getNotesByStudentId } from '../../../../selectors';
-import { fetchNotesStart, fetchNotesSuccess, fetchNotesError } from '../../../../actions/notes';
+import {
+  fetchNotesStart,
+  fetchNotesSuccess,
+  fetchNotesError,
+  editNoteStart,
+  editNoteSuccess,
+  editNoteError
+} from '../../../../actions/notes';
 
 function mapStateToProps(state, ownProps) {
   const studentId = ownProps.user.id;
@@ -17,6 +24,9 @@ const actionCreators = mapActionCreatorsToProps({
   fetchNotesStart,
   fetchNotesSuccess,
   fetchNotesError,
+  editNoteStart,
+  editNoteSuccess,
+  editNoteError
 });
 
 export default withRouter(connect(mapStateToProps, actionCreators)(FeedbackContainer));

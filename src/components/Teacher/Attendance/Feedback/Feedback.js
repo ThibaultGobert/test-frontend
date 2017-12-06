@@ -5,7 +5,7 @@ import { Modal, Button, Icon, Grid } from 'semantic-ui-react';
 import NotesList from './NotesList';
 import './Feedback.css';
 
-const Feedback = ({isOpen, onClose, user, course, feedbackFormVisible, toggleFeedbackForm, comment, saveComment, notes}) => {
+const Feedback = ({isOpen, onClose, user, course, feedbackFormVisible, toggleFeedbackForm, saveComment, notes, toggleEditing, onChange}) => {
 
   return (
     <Modal
@@ -13,7 +13,6 @@ const Feedback = ({isOpen, onClose, user, course, feedbackFormVisible, toggleFee
       onClose={onClose}
       onActionClick={onClose}
       className="FeedbackModal"
-      scrolling
     >
       <Modal.Header>Feedback</Modal.Header>
 
@@ -23,16 +22,15 @@ const Feedback = ({isOpen, onClose, user, course, feedbackFormVisible, toggleFee
             <FeedbackCard user={user} course={course} />
           </Grid.Column>
           <Grid.Column width={11}>
-            { !feedbackFormVisible && <Button onClick={toggleFeedbackForm} primary icon="edit" className="alignRight">Voeg opmerking toe</Button> }
+            { !feedbackFormVisible && <Button onClick={toggleFeedbackForm} primary className="alignRight" content='Voeg opmerking toe' icon='pencil' labelPosition='left' /> }
             { feedbackFormVisible &&
-            <AddFeedbackForm
-              cancel={toggleFeedbackForm}
-              save={saveComment}
-              comment={comment}
-            />
+              <AddFeedbackForm
+                cancel={toggleFeedbackForm}
+                save={saveComment}
+              />
             }
             <div className="clearfix" />
-            <NotesList notes={notes}/>
+            <NotesList notes={notes} toggleEditing={toggleEditing} onChange={onChange}/>
           </Grid.Column>
         </Grid>
       </Modal.Content>

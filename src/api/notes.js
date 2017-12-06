@@ -1,4 +1,4 @@
-import api from './sumoApi';
+import api from './api';
 import { getUser } from './storage';
 
 class NotesApi {
@@ -6,7 +6,7 @@ class NotesApi {
     if (!studentId) {
       throw Error('Must provide a studentID to fetch notes');
     }
-    return api.get('/notes?object_id=' + studentId + '&object_type=Child&session_token=' + getUser().token);
+    return api.get('/content/notes/' + studentId + '/Child');
   }
 }
 
