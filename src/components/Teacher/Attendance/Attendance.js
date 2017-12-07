@@ -6,6 +6,10 @@ import classNames from '../../../utils/classNames';
 
 import './Attendance.css';
 
+const isToday = date => {
+  return date.diff(moment(), 'days') === 0;
+};
+
 const Attendance = ({ course, lessons, students, redirectToOverview, submit }) => {
   return (
     <div className="Attendance">
@@ -24,11 +28,14 @@ const Attendance = ({ course, lessons, students, redirectToOverview, submit }) =
           <Table.Row>
             <Table.HeaderCell />
             {lessons.map(lesson => (
-              <Table.HeaderCell key={lesson.id}>
+              <Table.HeaderCell
+                key={lesson.id}
+                className={classNames(isToday(moment(lesson.start)) && 'Attendance__HeaderCell__Today')}
+              >
                 {moment(lesson.start).format('D/M')}
+                {isToday(moment(lesson.start))}
               </Table.HeaderCell>
             ))}
-            <Table.HeaderCell />
           </Table.Row>
         </Table.Header>
         <Table.Body>
@@ -46,9 +53,13 @@ const Attendance = ({ course, lessons, students, redirectToOverview, submit }) =
                   <Table.Cell
                     onClick={event => submit(event, attendance, lesson)}
                     key={attendance.id}
+                    className={classNames(isToday(moment(lesson.start)) && 'Attendance__HeaderCell__Today')}
                   >
                     <div
-                      className={classNames('Attendance__Icon', isPresent ? 'Attendance__IconPresent' : 'Attendance__IconNotPresent')}
+                      className={classNames(
+                        'Attendance__Icon',
+                        isPresent ? 'Attendance__IconPresent' : 'Attendance__IconNotPresent',
+                      )}
                     >
                       <Icon name={isPresent ? 'checkmark' : 'close'} />
                     </div>
