@@ -2,6 +2,8 @@ import React from 'react';
 import moment from 'moment';
 import PropTypes from 'prop-types';
 import { Table, Button, Icon } from 'semantic-ui-react';
+
+import Avatar from '../../shared/Avatar';
 import classNames from '../../../utils/classNames';
 
 import './Attendance.css';
@@ -27,7 +29,7 @@ const Attendance = ({ course, lessons, students, redirectToOverview, submit }) =
       <h1>Aanwezigheden {course.name}</h1>
       <h2>Duidt de aanwezigheden aan</h2>
 
-      <Table definition>
+      <Table striped celled>
         <Table.Header className="Attendance__Header">
           <Table.Row>
             <Table.HeaderCell />
@@ -45,7 +47,15 @@ const Attendance = ({ course, lessons, students, redirectToOverview, submit }) =
         <Table.Body>
           {students.map(student => (
             <Table.Row key={student.id}>
-              <Table.Cell>{student.name}</Table.Cell>
+              <Table.Cell>
+                <div className="Attendance__Student">
+                  <Avatar url={student.avatarurlmedium} gender={student.gender} className="Attendance__Avatar" />
+                  <div className="Attendance__Student__Info">
+                    <div className="Attendance__Student__Name">{student.name}</div>
+                    <div className="Attendance__Student__Extra">{student.grade}</div>
+                  </div>
+                </div>
+              </Table.Cell>
               {lessons.map(lesson => {
                 const attendance =
                   lesson.attendances &&

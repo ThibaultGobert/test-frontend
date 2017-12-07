@@ -1,6 +1,13 @@
+.Attendance__Table {
+  td {
+    background-color: white;
+  }
+}
+
 .Attendance__Header > tr > th {
   font-weight: 400 !important;
   font-size: 1.2em;
+  text-align: center !important;
 }
 
 td.Attendance__Edit {
@@ -27,5 +34,28 @@ td.Attendance__Edit {
 }
 
 .Attendance__HeaderCell__Today {
-  background-color: #9ee2a154 !important;
+  background-color: #9ee2a1 !important;
+}
+
+.Attendance__Student {
+  display: flex;
+  align-items: center;
+}
+
+.Attendance__Avatar {
+  margin-right: 14px;
+}
+
+.Attendance__Student__Info {
+  display: flex;
+  flex-direction: column;
+}
+
+.Attendance__Student__Name {
+  font-size: 1.15em;
+  padding-bottom: 2px;
+}
+.Attendance__Student__Extra {
+  font-size: 1.1em;
+  color: #72828B;
 }
