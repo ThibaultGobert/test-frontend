@@ -6,8 +6,12 @@ import classNames from '../../../utils/classNames';
 
 import './Attendance.css';
 
+const diffToday = date => {
+  return date.diff(moment(), 'days');
+};
+
 const isToday = date => {
-  return date.diff(moment(), 'days') === 0;
+  return diffToday(date) === 0;
 };
 
 const Attendance = ({ course, lessons, students, redirectToOverview, submit }) => {
@@ -55,14 +59,16 @@ const Attendance = ({ course, lessons, students, redirectToOverview, submit }) =
                     key={attendance.id}
                     className={classNames(isToday(moment(lesson.start)) && 'Attendance__HeaderCell__Today')}
                   >
-                    <div
-                      className={classNames(
-                        'Attendance__Icon',
-                        isPresent ? 'Attendance__IconPresent' : 'Attendance__IconNotPresent',
-                      )}
-                    >
-                      <Icon name={isPresent ? 'checkmark' : 'close'} />
-                    </div>
+                    {diffToday(moment(lesson.start)) <= 0 && (
+                      <div
+                        className={classNames(
+                          'Attendance__Icon',
+                          isPresent ? 'Attendance__IconPresent' : 'Attendance__IconNotPresent',
+                        )}
+                      >
+                        <Icon name={isPresent ? 'checkmark' : 'close'} />
+                      </div>
+                    )}
                   </Table.Cell>
                 );
               })}
