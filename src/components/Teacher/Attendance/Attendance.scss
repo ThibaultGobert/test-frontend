@@ -37,7 +37,7 @@ td.Attendance__Edit {
   background-color: #9ee2a1 !important;
 }
 
-.Attendance__Student {
+.Attendance__User {
   display: flex;
   align-items: center;
 }
@@ -46,16 +46,16 @@ td.Attendance__Edit {
   margin-right: 14px;
 }
 
-.Attendance__Student__Info {
+.Attendance__User__Info {
   display: flex;
   flex-direction: column;
 }
 
-.Attendance__Student__Name {
+.Attendance__User__Name {
   font-size: 1.15em;
   padding-bottom: 2px;
 }
-.Attendance__Student__Extra {
+.Attendance__User__Extra {
   font-size: 1.1em;
   color: #72828B;
 }
