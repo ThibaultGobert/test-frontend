@@ -1,12 +1,12 @@
 # CodeFever React + Redux frontend
 ## Machine setup
 1. Install latest version of Node (you can use nvm to install multiple versions of node)
-2. Disable safe write in your editor to assure hot reloading works
+2. Install yarn
 
 ## Getting started
-1. clone this repository
-2. install the dependencies with `npm install`
-3. Run the app locally with `npm start -s`. This will start the build process: compile the code into a single javascript file, serve it on a local webserver and automatically run tests and linting tests. Executing this command will also continue to watch all your files. Every time you make changes to one of your files, the project will be rebuilt.
+1. Clone this repository
+2. Install the dependencies with `npm install` or `yarn`
+3. Run the app locally with `npm start` or `yarn start`. This will start the build process: compile the code into a single javascript file, serve it on a local webserver and automatically linting tests. Executing this command will also continue to watch all your files. Every time you make changes to one of your files, the project will be rebuilt.
 
 ## Extensions
 Install following chrome extensions
@@ -15,12 +15,31 @@ Install following chrome extensions
 3. Allow-Control-Allow-Origin: * Allows to you request any site with ajax from any source. Adds to response 'Allow-Control-Allow-Origin: \*'
 
 ## Development
-1. Create new branch from development
+1. Create new feature branch from development (use following naming convention: 'feature/name-of-new-feature')
 2. Create pull request when merging back into development
 
 ## Deployment
-Run `npm run build` to start a production build. 
+Run `npm run build` or `yarn run build` to start a production build. 
 
+## Redux flow
+Components: REST API calls + dispatch actions 
+Actions: a format to send data from your application to your store
+
+```
+export function fetchLessonsSuccess(lessons) {
+  return { type: FETCH_LESSONS_SUCCESS, lessons };
+}
+```
+Reducer: dispatched action is handled by a reducer
+```case FETCH_LESSONS_SUCCESS:
+  return Object.assign(
+    {},
+    { data: action.lessons.entities.lessons, loading: false, error: null, hasError: false },
+  );
+```
+Store: The store holds the state tree of your application. The state is updated by the reducers and components can subscribe to state properties. When those properties change, the subscribed components will be re-rendered.
+
+ 
 ## Dependencies
 **Dependency**|**Description**
 :-----:|:-----:
@@ -29,9 +48,8 @@ Redux|Unidirectional data flows, immutable state, hot reloading, time-travel deb
 React Router|React routing library
 Babel|Compiles ES6 to ES5, with newer versions of node this might be excluded
 Webpack|pundles npm packages into a single file
-Browser sync|Supports syncronized testing and debugging on mutiple devides
 Jest|Automatic tests
-TrackJS|JavaScript error tracking
 ESLint|Reporting syntax and syle errors
 SASS|Additional CSS functionality
 npm script|Automated build proces
+
