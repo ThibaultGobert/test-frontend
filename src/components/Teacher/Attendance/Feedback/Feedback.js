@@ -26,6 +26,7 @@ const Feedback = ({isOpen, onClose, user, course, feedbackFormVisible, toggleFee
             { feedbackFormVisible &&
               <AddFeedbackForm
                 cancel={toggleFeedbackForm}
+                onChange={onChange}
                 save={saveComment}
               />
             }

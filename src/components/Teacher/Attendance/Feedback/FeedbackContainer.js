@@ -30,6 +30,10 @@ class FeedbackContainer extends React.Component {
   }
 
   componentDidMount() {
+    this.fetchNotes();
+  }
+
+  fetchNotes() {
     const {
       fetchNotesStart,
       fetchNotesSuccess,
@@ -52,7 +56,27 @@ class FeedbackContainer extends React.Component {
   }
 
   saveComment() {
-    // save comment with sumo api call
+    const {
+      addNoteStart,
+      addNoteSuccess,
+      addNoteError,
+    } = this.props.actions;
+
+    const {studentId} = this.props;
+
+    addNoteStart();
+    const data = {
+      content: this.state.comment,
+      object_id: studentId,
+      object_type: "Child",
+    };
+    NotesApi.addNote(data).then(data => {
+      addNoteSuccess(data);
+      this.toggleFeedbackForm();
+      this.fetchNotes();
+    }).catch(error => {
+      addNoteError(error);
+    })
   }
 
   editComment() {
@@ -64,8 +88,10 @@ class FeedbackContainer extends React.Component {
       case EDIT:
         const newNotes = _.merge({}, this.state.notes, {[note.id]: {editcontent: html}});
         this.setState({ notes: newNotes});
+        break;
       case ADD:
-
+        this.setState({comment: html});
+        break;
     }
 
   }

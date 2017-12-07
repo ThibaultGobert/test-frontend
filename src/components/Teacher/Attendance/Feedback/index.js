@@ -9,13 +9,17 @@ import {
   fetchNotesError,
   editNoteStart,
   editNoteSuccess,
-  editNoteError
+  editNoteError,
+  addNoteStart,
+  addNoteSuccess,
+  addNoteError,
 } from '../../../../actions/notes';
 
 function mapStateToProps(state, ownProps) {
   const studentId = ownProps.user.id;
   const notes = getNotesByStudentId(state, studentId);
   return {
+    studentId,
     notes
   };
 }
@@ -26,7 +30,10 @@ const actionCreators = mapActionCreatorsToProps({
   fetchNotesError,
   editNoteStart,
   editNoteSuccess,
-  editNoteError
+  editNoteError,
+  addNoteStart,
+  addNoteSuccess,
+  addNoteError,
 });
 
 export default withRouter(connect(mapStateToProps, actionCreators)(FeedbackContainer));

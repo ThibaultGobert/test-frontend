@@ -34,7 +34,7 @@ class FeedbackForm extends React.Component {
   };
 
   render() {
-    const { cancel, save, onChange} = this.props;
+    const { cancel, save} = this.props;
     return (
       <div className="FeedbackForm">
         <Form>
