@@ -21,20 +21,20 @@ class AttendanceContainer extends Component {
   componentDidMount() {
     const courseId = this.props.course.id;
     const {
-      fetchChildrenStart,
-      fetchChildrenSuccess,
-      fetchChildrenError,
+      fetchStudentsStart,
+      fetchStudentsSuccess,
+      fetchStudentsError,
       fetchAttendancesStart,
       fetchAttendancesSuccess,
       fetchAttendancesError,
     } = this.props.actions;
 
-    fetchChildrenStart();
+    fetchStudentsStart();
 
     courseApi
-      .getChildrenForCourse(courseId)
-      .then(data => fetchChildrenSuccess(data, courseId))
-      .catch(fetchChildrenError);
+      .getStudentsForCourse(courseId)
+      .then(data => fetchStudentsSuccess(data, courseId))
+      .catch(fetchStudentsError);
 
     fetchAttendancesStart();
     userAdministrationApi
@@ -79,7 +79,7 @@ class AttendanceContainer extends Component {
   }
 
   render() {
-    const { error, course, lessons, children } = this.props;
+    const { error, course, lessons, students } = this.props;
     if (error) {
       return <ErrorMessage message="Fout bij inladen van de lesdata" />;
     }
@@ -94,7 +94,7 @@ class AttendanceContainer extends Component {
           submit={this.submit}
           course={course}
           lessons={lessons}
-          students={children}
+          students={students}
           redirectToOverview={this.redirectToOverview}
           {...this.state}
         />

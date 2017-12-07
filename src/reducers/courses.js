@@ -2,7 +2,7 @@ import {
   FETCH_COURSES_START,
   FETCH_COURSES_SUCCESS,
   FETCH_COURSES_ERROR,
-  FETCH_CHILDREN_SUCCESS
+  FETCH_STUDENTS_SUCCESS
 } from '../actions/types';
 import initialState from './initialState';
 import merge from 'lodash/merge';
@@ -23,9 +23,9 @@ export default function courseReducer(state = initialState.courses, action) {
     case FETCH_COURSES_ERROR:
       return Object.assign({}, { data: {}, loading: false, error: action.error, hasError: true });
 
-    case FETCH_CHILDREN_SUCCESS:
+    case FETCH_STUDENTS_SUCCESS:
       return merge({}, state, {
-        data: { [action.courseId]: { children: action.data.result } }
+        data: { [action.courseId]: { students: action.data.result } }
       });
 
     default:

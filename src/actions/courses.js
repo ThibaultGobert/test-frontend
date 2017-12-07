@@ -2,9 +2,9 @@ import {
   FETCH_COURSES_START,
   FETCH_COURSES_SUCCESS,
   FETCH_COURSES_ERROR,
-  FETCH_CHILDREN_START,
-  FETCH_CHILDREN_SUCCESS,
-  FETCH_CHILDREN_ERROR
+  FETCH_STUDENTS_START,
+  FETCH_STUDENTS_SUCCESS,
+  FETCH_STUDENTS_ERROR
 } from './types';
 
 export function fetchCoursesStart() {
@@ -19,14 +19,14 @@ export function fetchCoursesError(error) {
   return { type: FETCH_COURSES_ERROR, error };
 }
 
-export function fetchChildrenStart() {
-  return { type: FETCH_CHILDREN_START };
+export function fetchStudentsStart() {
+  return { type: FETCH_STUDENTS_START };
 }
 
-export function fetchChildrenSuccess(data, courseId) {
-  return { type: FETCH_CHILDREN_SUCCESS, data, courseId };
+export function fetchStudentsSuccess(data, courseId) {
+  return { type: FETCH_STUDENTS_SUCCESS, data, courseId };
 }
 
-export function fetchChildrenError(error) {
-  return { type: FETCH_CHILDREN_ERROR, error };
+export function fetchStudentsError(error) {
+  return { type: FETCH_STUDENTS_ERROR, error };
 }

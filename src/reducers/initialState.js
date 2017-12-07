@@ -45,7 +45,7 @@ export default {
       hasError: false
     }
   },
-  children: {
+  students: {
     data: {},
     loading: true,
     error: null,

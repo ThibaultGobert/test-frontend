@@ -9,7 +9,7 @@ class CourseApi {
       .then(mapToCourses);
   }
 
-  static getChildrenForCourse(courseId) {
+  static getStudentsForCourse(courseId) {
     return api
       .get(`/courses/getChildrenForCours?courseid=${courseId}`)
       .then(mapToClassList);
