@@ -4,7 +4,8 @@ import loggedIn from './auth';
 import courses from './courses';
 import lessons from './lessons';
 import organisation from './organisation';
-import users from './users';
+import children from './children';
+import teachers from './teachers';
 import slides from './slides';
 import locations from './locations';
 import application from './application';
@@ -17,7 +18,8 @@ const appReducer = combineReducers({
   courses,
   lessons,
   organisation,
-  users,
+  children,
+  teachers,
   locations,
   application,
   slides,

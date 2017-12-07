@@ -13,9 +13,9 @@ const mapStateToProps = (state, { match }) => {
     courseId,
     course: getCourseById(state, courseId),
     classlist: getChildrenByCourseId(state, courseId),
-    loading: state.users.loading,
-    error: state.users.error,
-    users: state.users.data,
+    loading: state.children.loading,
+    error: state.children.error,
+    children: state.children.data,
   };
 };
 

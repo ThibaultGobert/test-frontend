@@ -1,5 +1,5 @@
 export const getChildById = (state, childId) => {
-  return state.users.data[childId];
+  return state.children.data[childId];
 };
 
 export const getChildrenByCourseId = (state, courseId) => {
@@ -8,7 +8,7 @@ export const getChildrenByCourseId = (state, courseId) => {
   }
 
   return state.courses.data[courseId].children.map((childId) => {
-    return state.users.data[childId];
+    return state.children.data[childId];
   });
 };
 

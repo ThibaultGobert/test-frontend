@@ -10,12 +10,12 @@ class ClassGroups extends React.Component {
   }
 
   mapToPanels() {
-    const { locations, users, courses } = this.props;
+    const { locations, teachers, courses } = this.props;
 
     return courses.map(course => {
-      const headTeacher = users[course.headTeacher];
+      const headTeacher = teachers[course.headTeacher];
       const assistants = course.assistants.map(userId => {
-        return users[userId];
+        return teachers[userId];
       });
       const location = locations[course.location];
 
