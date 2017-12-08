@@ -2,9 +2,9 @@ import React from 'react';
 import moment from 'moment';
 import { Icon, Table } from 'semantic-ui-react';
 import classNames from 'classnames';
-import { isToday } from '../../../functions/dateHelpers';
+import { isToday } from '../../../../functions/dateHelpers';
 
-const renderTeacherCell = (attendance, lesson, submit) => {
+const TeacherCell = (attendance, lesson, submit) => {
   const isPresent = attendance && attendance.isPresent === true;
 
   return (
@@ -25,4 +25,4 @@ const renderTeacherCell = (attendance, lesson, submit) => {
   );
 };
 
-export default renderTeacherCell;
+export default TeacherCell;

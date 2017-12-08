@@ -2,10 +2,10 @@ import React from 'react';
 import moment from 'moment';
 import { Icon, Table } from 'semantic-ui-react';
 
-import classNames from '../../../utils/classNames';
-import { isToday, diffToday } from '../../../functions/dateHelpers';
+import classNames from '../../../../utils/classNames';
+import { isToday, diffToday } from '../../../../functions/dateHelpers';
 
-const renderStudentCell = (attendance, lesson, submit) => {
+const StudentCell = (attendance, lesson, submit) => {
   const isPresent = attendance && attendance.isPresent === true;
 
   return (
@@ -28,4 +28,4 @@ const renderStudentCell = (attendance, lesson, submit) => {
   );
 };
 
-export default renderStudentCell;
+export default StudentCell;
