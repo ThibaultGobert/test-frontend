@@ -20,7 +20,7 @@ const TeacherCell = (attendance, lesson, submit) => {
             isPresent ? 'Attendance__IconPresent' : 'Attendance__IconNotPresent',
           )}
         >
-          <Checkbox defaultChecked={isPresent} />
+          <Checkbox checked={isPresent} defaultChecked={isPresent} />
         </div>
       )}
     </Table.Cell>
