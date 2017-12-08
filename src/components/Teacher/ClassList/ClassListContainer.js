@@ -78,14 +78,14 @@ class ClassListContainer extends React.Component {
 
   componentDidMount() {
     const { courseId } = this.props;
-    const { fetchChildrenStart, fetchChildrenSuccess, fetchChildrenError } = this.props.actions;
+    const { fetchStudentsStart, fetchStudentsSuccess, fetchStudentsError } = this.props.actions;
 
-    fetchChildrenStart();
+    fetchStudentsStart();
 
     courseApi
-      .getChildrenForCourse(courseId)
-      .then(data => fetchChildrenSuccess(data, courseId))
-      .catch(fetchChildrenError);
+      .getStudentsForCourse(courseId)
+      .then(data => fetchStudentsSuccess(data, courseId))
+      .catch(fetchStudentsError);
   }
 
   redirectToClassGroups() {

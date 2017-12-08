@@ -4,7 +4,7 @@ import ClassGroups from './ClassGroups';
 function mapStateToProps(state) {
   return {
     courses: Object.values(state.courses.data),
-    users: state.users.data,
+    teachers: state.teachers.data,
     locations: state.locations.data,
   };
 }

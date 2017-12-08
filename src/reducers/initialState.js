@@ -45,7 +45,13 @@ export default {
       hasError: false
     }
   },
-  users: {
+  students: {
+    data: {},
+    loading: true,
+    error: null,
+    hasError: false
+  },
+  teachers: {
     data: {},
     loading: true,
     error: null,

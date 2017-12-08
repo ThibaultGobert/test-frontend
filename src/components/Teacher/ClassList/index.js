@@ -2,8 +2,8 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import ClassListContainer from './ClassListContainer';
 
-import { fetchChildrenStart, fetchChildrenSuccess, fetchChildrenError } from '../../../actions/courses';
-import { getCourseById, getChildrenByCourseId } from '../../../selectors';
+import { fetchStudentsStart, fetchStudentsSuccess, fetchStudentsError } from '../../../actions/courses';
+import { getCourseById, getStudentsByCourseId } from '../../../selectors';
 import mapActionCreatorsToProps from '../../../functions/mapActionCreatorsToProps';
 
 const mapStateToProps = (state, { match }) => {
@@ -12,17 +12,17 @@ const mapStateToProps = (state, { match }) => {
   return {
     courseId,
     course: getCourseById(state, courseId),
-    classlist: getChildrenByCourseId(state, courseId),
-    loading: state.users.loading,
-    error: state.users.error,
-    users: state.users.data,
+    classlist: getStudentsByCourseId(state, courseId),
+    loading: state.students.loading,
+    error: state.students.error,
+    students: state.students.data,
   };
 };
 
 const actionCreators = mapActionCreatorsToProps({
-  fetchChildrenStart,
-  fetchChildrenSuccess,
-  fetchChildrenError,
+  fetchStudentsStart,
+  fetchStudentsSuccess,
+  fetchStudentsError,
 });
 
 export default withRouter(connect(mapStateToProps, actionCreators)(ClassListContainer));

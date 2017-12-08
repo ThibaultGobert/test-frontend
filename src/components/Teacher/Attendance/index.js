@@ -12,9 +12,9 @@ import {
 } from '../../../actions/userAdministration';
 
 import {
-  fetchChildrenStart,
-  fetchChildrenSuccess,
-  fetchChildrenError,
+  fetchStudentsStart,
+  fetchStudentsSuccess,
+  fetchStudentsError,
 } from '../../../actions/courses';
 
 import AttendanceContainer from './AttendanceContainer';
@@ -38,8 +38,8 @@ const mapStateToProps = (state, { match }) => {
     };
   });
 
-  const children = course.children
-    ? course.children.map(childId => {
+  const students = course.students
+    ? course.students.map(childId => {
       return getChildById(state, childId);
     })
     : [];
@@ -47,7 +47,7 @@ const mapStateToProps = (state, { match }) => {
   return {
     course,
     lessons,
-    children,
+    students,
     loading: state.attendances.loading,
   };
 };
@@ -56,9 +56,9 @@ const actionCreators = mapActionCreatorsToProps({
   postAttendanceStart,
   postAttendanceSuccess,
   postAttendanceError,
-  fetchChildrenStart,
-  fetchChildrenSuccess,
-  fetchChildrenError,
+  fetchStudentsStart,
+  fetchStudentsSuccess,
+  fetchStudentsError,
   fetchAttendancesStart,
   fetchAttendancesSuccess,
   fetchAttendancesError,
