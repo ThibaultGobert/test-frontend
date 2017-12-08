@@ -1,6 +1,6 @@
 import React from 'react';
 import moment from 'moment';
-import { Icon, Table } from 'semantic-ui-react';
+import { Table, Checkbox } from 'semantic-ui-react';
 
 import classNames from '../../../../utils/classNames';
 import { isToday, diffToday } from '../../../../functions/dateHelpers';
@@ -21,7 +21,7 @@ const StudentCell = (attendance, lesson, submit) => {
             isPresent ? 'Attendance__IconPresent' : 'Attendance__IconNotPresent',
           )}
         >
-          <Icon name={isPresent ? 'checkmark' : 'close'} />
+          <Checkbox checked={isPresent} defaultChecked={isPresent} />
         </div>
       )}
     </Table.Cell>
