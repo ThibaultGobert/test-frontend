@@ -7,8 +7,13 @@ import { isToday } from '../../../../functions/dateHelpers';
 import classNames from '../../../../utils/classNames';
 
 const AttendanceTable = ({ lessons, users, submit, renderCell }) => {
+  if (!users) {
+    return (
+      <div>Geen personen beschikbaar</div>
+    )
+  }
   return (
-    <Table striped celled>
+    <Table striped celled className="Attendance__Table">
       <Table.Header className="Attendance__Header">
         <Table.Row>
           <Table.HeaderCell />
@@ -34,7 +39,7 @@ const AttendanceTable = ({ lessons, users, submit, renderCell }) => {
                   className="Attendance__Avatar"
                 />
                 <div className="Attendance__User__Info">
-                  <div className="Attendance__User__Name">{user.name}</div>
+                  <div className="Attendance__User__Name">{user.firstname} {user.lastname}</div>
                   <div className="Attendance__User__Extra">{user.grade}</div>
                 </div>
               </div>
