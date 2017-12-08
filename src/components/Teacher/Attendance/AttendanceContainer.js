@@ -46,7 +46,7 @@ class AttendanceContainer extends Component {
       .catch(fetchAttendancesError);
   }
 
-  submit(event, attendance, lesson) {
+  submit(event, attendance, lesson, role) {
     event.preventDefault();
 
     const { postAttendanceStart, postAttendanceSuccess, postAttendanceError } = this.props.actions;
@@ -56,7 +56,7 @@ class AttendanceContainer extends Component {
         user_id: attendance.userId,
         lesson_id: lesson.id,
         present: !attendance.isPresent,
-        role: 'CHILD', // TODO: back-end should be able to get the role based on the user_id.
+        role,
       },
     ];
 

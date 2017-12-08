@@ -9,7 +9,7 @@ const TeacherCell = (attendance, lesson, submit) => {
 
   return (
     <Table.Cell
-      onClick={event => submit(event, attendance, lesson)}
+      onClick={event => submit(event, attendance, lesson, 'TEACHER')}
       key={attendance.id}
       className={classNames(isToday(moment(lesson.start)) && 'Attendance__HeaderCell__Today')}
     >
