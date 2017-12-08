@@ -1,6 +1,6 @@
 /* global window */
 import axios from 'axios';
-import { lpfUrl } from './baseUrl';
+import lpfUrl from './baseUrl';
 import { getUser } from './storage';
 
 const request = (endpoint, { headers = {}, body, ...otherOptions }, method) => {

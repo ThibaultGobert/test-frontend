@@ -17,19 +17,14 @@ import {
   fetchStudentsError,
 } from '../../../actions/courses';
 
-<<<<<<< HEAD
 import AttendanceContainer from './AttendanceContainer';
-import { getCourseById, getLessonById, getChildById, getAttendancesByLessonId, getTeachersByCourseId } from '../../../selectors';
-=======
 import {
   getCourseById,
   getLessonById,
   getChildById,
   getAttendancesByLessonId,
+  getTeachersByCourseId,
 } from '../../../selectors';
-
-import AttendanceContainer from './AttendanceContainer';
->>>>>>> resolve merge conflicts
 
 const mapStateToProps = (state, { match }) => {
   const course = getCourseById(state, match.params.id);

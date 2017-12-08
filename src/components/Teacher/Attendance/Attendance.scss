@@ -11,11 +11,12 @@
 }
 
 td.Attendance__Edit {
-  padding: 0 !important;
-  border-left: none !important;
+  padding: 10px !important;
 
   & i {
     cursor: pointer;
+    color: darkgrey;
+    font-size: 0.8em;
   }
 }
 

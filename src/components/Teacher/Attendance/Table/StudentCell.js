@@ -24,15 +24,6 @@ const StudentCell = ({ attendance, lesson, submit, showModal }) => {
           <Checkbox checked={isPresent} defaultChecked={isPresent} />
         </div>
       )}
-      <Table.Cell className="Attendance__Edit">
-        <Icon
-          name="pencil"
-          size="large"
-          onClick={() => {
-            showModal(attendance.userId);
-          }}
-        />
-      </Table.Cell>
     </Table.Cell>
   );
 };
