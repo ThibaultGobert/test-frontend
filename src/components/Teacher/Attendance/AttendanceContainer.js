@@ -79,7 +79,7 @@ class AttendanceContainer extends Component {
   }
 
   render() {
-    const { error, course, lessons, students } = this.props;
+    const { error, course, lessons, students, teachers } = this.props;
     if (error) {
       return <ErrorMessage message="Fout bij inladen van de lesdata" />;
     }
@@ -95,6 +95,7 @@ class AttendanceContainer extends Component {
           course={course}
           lessons={lessons}
           students={students}
+          teachers={teachers}
           redirectToOverview={this.redirectToOverview}
           {...this.state}
         />
