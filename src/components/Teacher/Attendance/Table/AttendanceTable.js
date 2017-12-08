@@ -1,6 +1,6 @@
 import React from 'react';
 import moment from 'moment';
-import { Table } from 'semantic-ui-react';
+import { Table, Message } from 'semantic-ui-react';
 
 import Avatar from '../../../shared/Avatar';
 import { isToday } from '../../../../functions/dateHelpers';
@@ -9,8 +9,8 @@ import classNames from '../../../../utils/classNames';
 const AttendanceTable = ({ lessons, users, submit, renderCell }) => {
   if (!users) {
     return (
-      <div>Geen personen beschikbaar</div>
-    )
+      <Message><p>Geen personen beschikbaar</p></Message>
+    );
   }
   return (
     <Table striped celled className="Attendance__Table">
