@@ -13,6 +13,10 @@ class NotesApi {
   static addNote(data) {
     return api.put('/content/notes', {body: data});
   }
+
+  static editNote(data) {
+    return api.post('/content/notes', {body: data});
+  }
 }
 
 export default NotesApi;

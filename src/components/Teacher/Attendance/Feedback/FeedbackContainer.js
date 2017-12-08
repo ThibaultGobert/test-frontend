@@ -9,15 +9,17 @@ class FeedbackContainer extends React.Component {
     super(...props);
     this.toggleFeedbackForm = this.toggleFeedbackForm.bind(this);
     this.saveComment = this.saveComment.bind(this);
+    this.editComment = this.editComment.bind(this);
     this.toggleEditing = this.toggleEditing.bind(this);
     this.onChange = this.onChange.bind(this);
     this.state = {
+      loading: true,
       feedbackFormVisible: false,
       comment: '',
       notes: _.keyBy(this.props.notes.map(note => {
         note.isEditing = false;
         return note;
-      }), 'id')
+      }), 'id'),
     };
   }
 
@@ -41,10 +43,13 @@ class FeedbackContainer extends React.Component {
     } = this.props.actions;
 
     fetchNotesStart();
+    this.setState({loading: true});
     NotesApi.getNotes(this.props.user.id).then(data => {
       fetchNotesSuccess(data);
+      this.setState({loading: false})
     }).catch(error => {
       fetchNotesError(error);
+      this.setState({loading: false});
     })
   }
 
@@ -79,8 +84,24 @@ class FeedbackContainer extends React.Component {
     })
   }
 
-  editComment() {
+  editComment(noteId) {
+    const {
+      editNoteStart,
+      editNoteSuccess,
+      editNoteError,
+    } = this.props.actions;
 
+    editNoteStart();
+    const data = {
+      content: this.state.notes[noteId].editcontent,
+      note_id: noteId,
+    };
+    NotesApi.editNote(data).then(data => {
+      editNoteSuccess(data);
+      this.fetchNotes();
+    }).catch(error => {
+      editNoteError(error);
+    })
   }
 
   onChange(html, note, actionType) {

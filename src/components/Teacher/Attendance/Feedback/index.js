@@ -20,7 +20,7 @@ function mapStateToProps(state, ownProps) {
   const notes = getNotesByStudentId(state, studentId);
   return {
     studentId,
-    notes
+    notes,
   };
 }
 

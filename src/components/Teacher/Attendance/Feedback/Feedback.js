@@ -5,10 +5,11 @@ import { Modal, Button, Icon, Grid } from 'semantic-ui-react';
 import NotesList from './NotesList';
 import './Feedback.css';
 
-const Feedback = ({isOpen, onClose, user, course, feedbackFormVisible, toggleFeedbackForm, saveComment, notes, toggleEditing, onChange}) => {
+const Feedback = ({isOpen, onClose, user, course, feedbackFormVisible, toggleFeedbackForm, saveComment, editComment, notes, toggleEditing, onChange, loading}) => {
 
   return (
     <Modal
+      dimmer='inverted'
       open={isOpen}
       onClose={onClose}
       onActionClick={onClose}
@@ -31,7 +32,7 @@ const Feedback = ({isOpen, onClose, user, course, feedbackFormVisible, toggleFee
               />
             }
             <div className="clearfix" />
-            <NotesList notes={notes} toggleEditing={toggleEditing} onChange={onChange}/>
+            <NotesList loading={loading} notes={notes} toggleEditing={toggleEditing} editNote={editComment} onChange={onChange}/>
           </Grid.Column>
         </Grid>
       </Modal.Content>

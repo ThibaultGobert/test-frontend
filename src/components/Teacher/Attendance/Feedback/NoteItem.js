@@ -4,7 +4,7 @@ import renderHTML from 'react-render-html';
 import moment from 'moment/min/moment-with-locales';
 import FeedbackEditForm from './FeedbackEditForm';
 
-const NoteItem = ({note, editComment, toggleEditing, onChange}) => {
+const NoteItem = ({note, editNote, toggleEditing, onChange}) => {
   moment.locale('nl');
   return (
     <Item className="NoteItem">
@@ -18,7 +18,7 @@ const NoteItem = ({note, editComment, toggleEditing, onChange}) => {
           }
 
           { note.isEditing &&
-            <FeedbackEditForm note={note} editComment={editComment} toggleEditing={toggleEditing} onChange={onChange} />
+            <FeedbackEditForm note={note} editNote={editNote} toggleEditing={toggleEditing} onChange={onChange} />
           }
 
           { !note.isEditing && renderHTML(note.content)}

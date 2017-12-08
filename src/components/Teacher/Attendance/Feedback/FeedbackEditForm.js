@@ -27,7 +27,7 @@ class FeedbackEditForm extends React.Component {
 
   render()
   {
-    const {note, editComment, toggleEditing} = this.props;
+    const {note, editNote, toggleEditing} = this.props;
     return (
       <Form>
         <RichTextEditor
@@ -37,7 +37,7 @@ class FeedbackEditForm extends React.Component {
         />
         <Form.Group>
           <Form.Field control={Button} color="red" onClick={() => toggleEditing(note)}>Cancel</Form.Field>
-          <Form.Field control={Button} primary onClick={editComment}>Wijzig</Form.Field>
+          <Form.Field control={Button} primary onClick={() => editNote(note.id)}>Wijzig</Form.Field>
         </Form.Group>
       </Form>
     );
