@@ -24,9 +24,11 @@ import {
   getChildById,
   getAttendancesByLessonId,
 } from '../../../selectors';
+import { getTeachersByCourseId } from '../../../selectors/teachers';
 
 const mapStateToProps = (state, { match }) => {
   const course = getCourseById(state, match.params.id);
+  const teachers = getTeachersByCourseId(state, course.id);
 
   const lessons = course.lessons.map(lessonId => {
     const lesson = getLessonById(state, lessonId);
@@ -48,6 +50,7 @@ const mapStateToProps = (state, { match }) => {
     course,
     lessons,
     students,
+    teachers,
     loading: state.attendances.loading,
   };
 };

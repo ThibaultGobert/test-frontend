@@ -46,7 +46,7 @@ class AttendanceContainer extends Component {
       .catch(fetchAttendancesError);
   }
 
-  submit(event, attendance, lesson) {
+  submit(event, attendance, lesson, role) {
     event.preventDefault();
 
     const { postAttendanceStart, postAttendanceSuccess, postAttendanceError } = this.props.actions;
@@ -56,7 +56,7 @@ class AttendanceContainer extends Component {
         user_id: attendance.userId,
         lesson_id: lesson.id,
         present: !attendance.isPresent,
-        role: 'CHILD', // TODO: back-end should be able to get the role based on the user_id.
+        role,
       },
     ];
 
@@ -79,7 +79,7 @@ class AttendanceContainer extends Component {
   }
 
   render() {
-    const { error, course, lessons, students } = this.props;
+    const { error, course, lessons, students, teachers } = this.props;
     if (error) {
       return <ErrorMessage message="Fout bij inladen van de lesdata" />;
     }
@@ -95,6 +95,7 @@ class AttendanceContainer extends Component {
           course={course}
           lessons={lessons}
           students={students}
+          teachers={teachers}
           redirectToOverview={this.redirectToOverview}
           {...this.state}
         />
