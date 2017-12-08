@@ -1,6 +1,9 @@
 {
   "parser": "babel-eslint",
   "extends": "airbnb",
+  "env": {
+    "jest": true
+  },
   "rules": {
     "linebreak-style": 0,
     "no-return-assign": 0,
