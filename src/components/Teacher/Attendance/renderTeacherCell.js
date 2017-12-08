@@ -1,8 +1,8 @@
 import React from 'react';
-import {Icon, Table} from 'semantic-ui-react';
-import classNames from 'classnames';
-import isToday from '../../../functions/isToday';
 import moment from 'moment';
+import { Icon, Table } from 'semantic-ui-react';
+import classNames from 'classnames';
+import { isToday } from '../../../functions/dateHelpers';
 
 const renderTeacherCell = (attendance, lesson, submit) => {
   const isPresent = attendance && attendance.isPresent === true;
@@ -24,6 +24,5 @@ const renderTeacherCell = (attendance, lesson, submit) => {
     </Table.Cell>
   );
 };
-
 
 export default renderTeacherCell;

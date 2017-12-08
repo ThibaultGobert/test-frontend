@@ -3,7 +3,7 @@ import moment from 'moment';
 import { Icon, Table } from 'semantic-ui-react';
 
 import classNames from '../../../utils/classNames';
-import { isToday, diffToday } from '../../../functions/isToday';
+import { isToday, diffToday } from '../../../functions/dateHelpers';
 
 const renderStudentCell = (attendance, lesson, submit) => {
   const isPresent = attendance && attendance.isPresent === true;

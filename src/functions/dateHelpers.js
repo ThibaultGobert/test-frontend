@@ -4,8 +4,7 @@ export const diffToday = date => {
   return date.diff(moment(), 'days');
 };
 
-const isToday = date => {
+export const isToday = date => {
   return diffToday(date) === 0;
 };
 
-export default isToday;

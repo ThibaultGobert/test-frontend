@@ -3,7 +3,7 @@ import moment from 'moment';
 import { Table } from 'semantic-ui-react';
 
 import Avatar from '../../shared/Avatar';
-import isToday from '../../../functions/isToday';
+import { isToday } from '../../../functions/dateHelpers';
 import classNames from '../../../utils/classNames';
 
 const AttendanceTable = ({ lessons, users, submit, renderCell }) => {
