@@ -10,10 +10,10 @@ class NotFound extends Component {
 
     return (
       <div className={classNames('NotFound', className)} {...props}>
-        <h1>
-          404 Not Found
-        </h1>
-        <NavLink to="/">Terug naar de login pagina</NavLink>
+        <div className="NotFound__Message">
+          <h1>404</h1>
+          <NavLink to="/">terug naar de <span className="NotFound__Message__Undeline">login</span> pagina</NavLink>
+        </div>
       </div>
     );
   }
