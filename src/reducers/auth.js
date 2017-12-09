@@ -1,7 +1,7 @@
 import { LOGIN_START, LOGIN_SUCCES, LOGIN_ERROR, LOGOUT } from '../actions/types';
 import initialState from './initialState';
 
-import { setUser, removeUser } from '../api/api';
+import { setUser, removeUser } from '../api/storage';
 
 function authReducer(state = initialState.loggedIn, action) {
   switch (action.type) {

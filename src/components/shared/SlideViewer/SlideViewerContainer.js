@@ -63,6 +63,7 @@ class SlideViewerContainer extends React.Component {
               key={slideshowkey}
               metadata={metadata}
               isStudent={isStudent}
+              lesson={lesson}
             />
           </div>
         }

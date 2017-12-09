@@ -1,0 +1,34 @@
+.NotFound {
+    background: #d61f21;
+    height: 100vh;
+    text-align: center;
+
+    &__Message {
+        position: relative;
+        vertical-align: top;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #fff;
+        h1 {
+            font-size: 220px !important;  
+            color: #fff;
+            margin: 0;
+            font-size: 130px;
+            font-weight: 300;   
+        }
+
+        a {
+            font-size: 1.5em;
+            color: darken(#fff, 10%);
+
+            &:hover {
+                text-decoration: underline;
+                color: #fff; 
+            }
+        }
+
+        &__Undeline {
+            text-decoration: underline;
+        }
+    }
+}

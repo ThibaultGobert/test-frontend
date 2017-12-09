@@ -23,8 +23,8 @@ import {
   getLessonById,
   getChildById,
   getAttendancesByLessonId,
+  getTeachersByCourseId,
 } from '../../../selectors';
-import { getTeachersByCourseId } from '../../../selectors/teachers';
 
 const mapStateToProps = (state, { match }) => {
   const course = getCourseById(state, match.params.id);

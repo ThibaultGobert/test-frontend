@@ -5,7 +5,7 @@ import {Button} from 'semantic-ui-react';
 import {connect} from 'react-redux';
 import {PropTypes} from 'prop-types';
 import {bindActionCreators} from 'redux';
-import {removeUser} from "../../../api/api";
+import {removeUser} from "../../../api/storage";
 import toastr from 'toastr';
 
 class StudentHeader extends React.Component {
@@ -18,6 +18,7 @@ class StudentHeader extends React.Component {
     event.preventDefault();
     toastr.remove();
     removeUser();
+    window.location = "/";    
   }
 
   render() {

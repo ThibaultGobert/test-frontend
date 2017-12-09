@@ -1,15 +1,17 @@
 import React from 'react';
 import moment from 'moment';
-import { Table, Message } from 'semantic-ui-react';
+import { Table, Message, Icon } from 'semantic-ui-react';
 
 import Avatar from '../../../shared/Avatar';
 import { isToday } from '../../../../functions/dateHelpers';
 import classNames from '../../../../utils/classNames';
 
-const AttendanceTable = ({ lessons, users, submit, renderCell }) => {
+const AttendanceTable = ({ lessons, users, submit, renderCell, isStudent, showModal }) => {
   if (!users) {
     return (
-      <Message><p>Geen personen beschikbaar</p></Message>
+      <Message>
+        <p>Geen personen beschikbaar</p>
+      </Message>
     );
   }
   return (
@@ -26,6 +28,7 @@ const AttendanceTable = ({ lessons, users, submit, renderCell }) => {
               {isToday(moment(lesson.start))}
             </Table.HeaderCell>
           ))}
+          {isStudent && <Table.HeaderCell />}
         </Table.Row>
       </Table.Header>
       <Table.Body>
@@ -39,7 +42,9 @@ const AttendanceTable = ({ lessons, users, submit, renderCell }) => {
                   className="Attendance__Avatar"
                 />
                 <div className="Attendance__User__Info">
-                  <div className="Attendance__User__Name">{user.firstname} {user.lastname}</div>
+                  <div className="Attendance__User__Name">
+                    {user.firstname} {user.lastname}
+                  </div>
                   <div className="Attendance__User__Extra">{user.grade}</div>
                 </div>
               </div>
@@ -47,8 +52,20 @@ const AttendanceTable = ({ lessons, users, submit, renderCell }) => {
             {lessons.map(lesson => {
               const attendance =
                 lesson.attendances && lesson.attendances.find(({ userId }) => userId === user.id);
-              return renderCell(attendance, lesson, submit);
+
+              return renderCell({ attendance, lesson, submit });
             })}
+            {isStudent && (
+              <Table.Cell className="Attendance__Edit">
+                <Icon
+                  name="edit"
+                  size="large"
+                  onClick={() => {
+                    showModal(user.id);
+                  }}
+                />
+              </Table.Cell>
+            )}
           </Table.Row>
         ))}
       </Table.Body>

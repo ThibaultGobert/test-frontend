@@ -1,19 +1,7 @@
 /* global window */
 import axios from 'axios';
-import baseUrl from './baseUrl';
-
-export const getUser = () => {
-  return JSON.parse(window.localStorage.getItem('api.user'));
-};
-
-export const setUser = (newUser) => {
-  window.localStorage.setItem('api.user', JSON.stringify(newUser));
-};
-
-export const removeUser = () => {
-  window.localStorage.removeItem('api.user');
-  window.location = "/";
-};
+import lpfUrl from './baseUrl';
+import { getUser } from './storage';
 
 const request = (endpoint, { headers = {}, body, ...otherOptions }, method) => {
   const allHeaders = {
@@ -25,7 +13,7 @@ const request = (endpoint, { headers = {}, body, ...otherOptions }, method) => {
     allHeaders['x-token'] = getUser().token;
   }
 
-  return axios(`${baseUrl}${endpoint}`, {
+  return axios(`${lpfUrl}${endpoint}`, {
     ...otherOptions,
     headers: allHeaders,
     timeout: 5000,

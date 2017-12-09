@@ -4,7 +4,7 @@ import { Table, Checkbox } from 'semantic-ui-react';
 import classNames from 'classnames';
 import { isToday, diffToday } from '../../../../functions/dateHelpers';
 
-const TeacherCell = (attendance, lesson, submit) => {
+const TeacherCell = ({ attendance, lesson, submit }) => {
   const isPresent = attendance && attendance.isPresent === true;
 
   return (

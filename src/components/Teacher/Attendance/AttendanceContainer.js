@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
+import _ from 'lodash';
 
 import Attendance from './Attendance';
 import ErrorMessage from '../../shared/ErrorMessage';
 import userAdministrationApi from '../../../api/userAdministration';
 import courseApi from '../../../api/courses';
+
 import Loader from '../../shared/Loader';
+import Feedback from './Feedback';
 
 class AttendanceContainer extends Component {
   constructor(...props) {
@@ -12,10 +15,13 @@ class AttendanceContainer extends Component {
 
     this.state = {
       loading: true,
+      user: null,
+      isOpen: false,
     };
 
     this.submit = this.submit.bind(this);
     this.redirectToOverview = this.redirectToOverview.bind(this);
+    this.showModal = this.showModal.bind(this);
   }
 
   componentDidMount() {
@@ -44,6 +50,11 @@ class AttendanceContainer extends Component {
         this.setState({ loading: false });
       })
       .catch(fetchAttendancesError);
+  }
+
+  onChange({ target }) {
+    // change state on form change
+    this.setState(prevState => ({}));
   }
 
   submit(event, attendance, lesson, role) {
@@ -78,18 +89,36 @@ class AttendanceContainer extends Component {
     history.push('/teacherprofile/overview');
   }
 
+  showModal(studentId) {
+    this.setState({ isOpen: true, studentId });
+  }
+
   render() {
     const { error, course, lessons, students, teachers } = this.props;
+    const { studentId, isOpen, loading } = this.state;
+
     if (error) {
       return <ErrorMessage message="Fout bij inladen van de lesdata" />;
     }
 
-    if (this.state.loading) {
-      return <Loader active={this.state.loading} />;
+    if (loading) {
+      return <Loader active />;
     }
+
+    const user = _.find(students, { id: studentId });
 
     return (
       <div className="AttendanceContainer">
+        {isOpen && (
+          <Feedback
+            isOpen={isOpen}
+            course={course}
+            user={user}
+            onClose={() => {
+              this.setState({ isOpen: false });
+            }}
+          />
+        )}
         <Attendance
           submit={this.submit}
           course={course}
@@ -97,6 +126,7 @@ class AttendanceContainer extends Component {
           students={students}
           teachers={teachers}
           redirectToOverview={this.redirectToOverview}
+          showModal={this.showModal}
           {...this.state}
         />
       </div>
