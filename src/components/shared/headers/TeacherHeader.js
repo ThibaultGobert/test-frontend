@@ -19,6 +19,7 @@ class TeacherHeader extends React.Component {
     event.preventDefault();
     toastr.remove();
     removeUser();
+    window.location = "/";
   }
 
   render() {

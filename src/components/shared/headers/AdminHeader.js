@@ -18,6 +18,7 @@ class AdminHeader extends React.Component {
     event.preventDefault();
     toastr.remove();
     removeUser();
+    window.location = "/";    
   }
 
   render() {
