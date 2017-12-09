@@ -20,7 +20,7 @@ const Attendance = ({ course, teachers, students, redirectToOverview, ...props }
         onClick={redirectToOverview}
       />
       <h1>Aanwezigheden {course.name}</h1>
-      <h2>Duidt de aanwezigheden aan</h2>
+      <h2>Duid de aanwezigheden aan</h2>
       <h3>Leraren</h3>
       <AttendanceTable renderCell={TeacherCell} users={teachers} {...props} />
 

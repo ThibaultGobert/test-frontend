@@ -1,9 +1,10 @@
+import _ from 'lodash';
+import { Segment, Loader, Message } from 'semantic-ui-react';
+
 import React from 'react';
 import NoteItem from './NoteItem';
-import _ from 'lodash';
-import {Segment, Loader} from 'semantic-ui-react';
 
-const NotesList = ({notes, editNote, toggleEditing, onChange, loading}) => {
+const NotesList = ({notes, editNote, toggleEditing, onChange, loading, isAddingNote}) => {
   const sortedNotes = _.reverse(_.sortBy(notes, 'updated_at'));
   if (loading) {
     return (
@@ -12,7 +13,18 @@ const NotesList = ({notes, editNote, toggleEditing, onChange, loading}) => {
       </Segment>    
     );
   }
-  return (
+
+  if ((!sortedNotes || _.isEmpty(sortedNotes)) && !isAddingNote) {
+    return (
+      <Message className="NotesList__NoNotesMessage"
+        icon="info"
+        header="Geen opmerkingen"
+        content="Klik op bovenstaande knop om een opmerking toe te voegen."
+      />
+    );
+  }
+
+  return (  
     sortedNotes.map(note => {
       return (
         <NoteItem note={note} editNote={editNote} toggleEditing={toggleEditing} onChange={onChange} key={"note" + note.id}/>

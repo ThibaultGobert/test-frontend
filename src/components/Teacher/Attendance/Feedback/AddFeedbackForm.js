@@ -7,13 +7,7 @@ import RichTextEditor from 'react-rte';
 class FeedbackForm extends React.Component {
   constructor(...props) {
     super(...props);
-    const placeholder = "<p><strong>KENNIS</strong> (wis wat niet van toepassing is):</p>\n" +
-      "<p>Snapt het niet / Heeft soms moeilijkheden / Snapt het / Extreem goed&nbsp;</p>\n" +
-      "<p><strong>MOTIVATIE</strong> (geef waarde tussen 1 en 3) :</p>\n" +
-      "<p><strong>ENTHOUSIASME</strong>:&nbsp;</p>\n" +
-      "<p><strong>MEDEWERKING</strong>:&nbsp;</p>\n" +
-      "<p><strong>OPLETTEN</strong>:&nbsp;</p>\n" +
-      "<p><strong>EXTRA OPMERKINGEN:</strong></p>";
+    const placeholder = "<p>Geef op elk onderwerp (m.u.v. extra opmerkingen) een score op 5 (1 laagste, 5 hoogste score)</p><p>KENNIS:&nbsp;</p><p>MOTIVATIE:&nbsp;</p><p>ENTHOUSIASME:&nbsp;</p><p>MEDEWERKING:&nbsp;</p><p>OPLETTEN:&nbsp;</p><p>EXTRA OPMERKINGEN:&nbsp;</p>";
     this.state = {
       value: RichTextEditor.createValueFromString(placeholder, 'html')
     }
