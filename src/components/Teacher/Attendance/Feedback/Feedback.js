@@ -32,7 +32,7 @@ const Feedback = ({isOpen, onClose, user, course, feedbackFormVisible, toggleFee
               />
             }
             <div className="clearfix" />
-            <NotesList loading={loading} notes={notes} toggleEditing={toggleEditing} editNote={editComment} onChange={onChange}/>
+            <NotesList loading={loading} notes={notes} toggleEditing={toggleEditing} editNote={editComment} onChange={onChange} isAddingNote={feedbackFormVisible} />
           </Grid.Column>
         </Grid>
       </Modal.Content>
