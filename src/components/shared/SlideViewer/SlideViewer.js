@@ -128,7 +128,7 @@ class SlideViewer extends React.Component {
             </div>
           </div>
         </div>
-        <MetaSlideData slide={this.state.slide} slideType={this.props.metadata.slideType}/>
+        <MetaSlideData slide={this.state.slide} lesson={this.props.lesson} slideType={this.props.metadata.slideType}/>
         <div className="progress-bar">
           <Progress percent={((this.state.index + 1) / this.props.slides.length)*100} />
         </div>
