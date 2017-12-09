@@ -11,7 +11,7 @@ class NotesApi {
   }
 
   static addNote(data) {
-    return api.put('/content/notes', {body: data});
+    return api.post('/content/notes/create', {body: data});
   }
 
   static editNote(data) {
