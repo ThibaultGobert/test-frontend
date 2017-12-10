@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button, Form, TextArea } from 'semantic-ui-react';
-import {ADD} from './FeedbackActionType';
 import RichTextEditor from 'react-rte';
+import { Button, Form, Icon, Message } from 'semantic-ui-react';
+
+import { ADD } from './FeedbackActionType';
 
 class FeedbackForm extends React.Component {
   constructor(...props) {
@@ -32,6 +33,11 @@ class FeedbackForm extends React.Component {
     return (
       <div className="FeedbackForm">
         <Form>
+          <Message>
+            <Icon name="info" />
+            We werken verder aan een meer geavanceerd feedback systeem, we vragen je om bij het toevoegen van een nieuwe opmerking, de structuur van de template niet te wijzigen. 
+            Geef op elk onderwerp (m.u.v. extra opmerkingen) een score op 5 (1 laagste, 5 hoogste score). Een nieuwe opmerking is aanpasbaar tot 1 uur na de toevoeging ervan.
+          </Message>
           <RichTextEditor
             className="RichTextEditor"
             value={this.state.value}
