@@ -1,11 +1,12 @@
 import React from 'react';
-import {PropTypes} from 'prop-types';
-import QuestionSlide from "./QuestionSlide";
-import TextSlide from './TextSlide';
-import TagBar from "./TagBar";
 import { Progress } from 'semantic-ui-react';
-import MetaSlideData from './MetaSlideData';
 import { Scrollbars } from 'react-custom-scrollbars';
+import _ from 'lodash';
+
+import QuestionSlide from './QuestionSlide';
+import TextSlide from './TextSlide';
+import TagBar from './TagBar';
+import MetaSlideData from './MetaSlideData';
 import ErrorMessage from '../../shared/ErrorMessage';
 
 class SlideViewer extends React.Component {
@@ -13,8 +14,7 @@ class SlideViewer extends React.Component {
     super(props, context);
     this.state = {
       index: 0,
-      slide: this.props.slides[0],
-      tags: []
+      slide: this.props.slides ? this.props.slides[0] : null,
     };
 
     this.nextSlide = this.nextSlide.bind(this);
@@ -23,33 +23,28 @@ class SlideViewer extends React.Component {
     this.handleKeyPress = this.handleKeyPress.bind(this);
   }
 
-  componentWillMount() {
-    let slide = this.props.slides[this.state.index];
-    this.setState({
-      slide: slide
-    });
-  }
-
   componentDidMount() {
     // Add Event Listener on compenent mount
-    window.addEventListener("keyup", this.handleKeyPress);
+    window.addEventListener('keyup', this.handleKeyPress);
+  }
+
+  componentWillReceiveProps(newProps) {
+    if (newProps.slides && !_.isEmpty(newProps.slides)) {
+      const slide = newProps.slides[this.state.index];
+      this.setState({ slide });
+    }
   }
 
   componentWillUnmount() {
     // Remove event listener on compenent unmount
-    window.removeEventListener("keyup", this.handleKeyPress);
+    window.removeEventListener('keyup', this.handleKeyPress);
   }
 
   nextSlide() {
     if (this.state.index < this.props.slides.length - 1) {
-      let newIndex = this.state.index + 1;
-      let slide = this.props.slides[newIndex];
-      this.setState(
-        {
-          index: newIndex,
-          slide: slide
-        }
-      );
+      const index = this.state.index + 1;
+      const slide = this.props.slides[index];
+      this.setState({ index, slide });
     }
   }
 
@@ -136,11 +131,5 @@ class SlideViewer extends React.Component {
     );
   }
 }
-
-SlideViewer.propTypes = {
-  slides: PropTypes.array,
-  metadata: PropTypes.object.isRequired,
-  isStudent: PropTypes.bool
-};
 
 export default SlideViewer;
