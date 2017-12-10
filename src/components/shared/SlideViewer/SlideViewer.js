@@ -6,13 +6,14 @@ import TagBar from "./TagBar";
 import { Progress } from 'semantic-ui-react';
 import MetaSlideData from './MetaSlideData';
 import { Scrollbars } from 'react-custom-scrollbars';
+import ErrorMessage from '../../shared/ErrorMessage';
 
 class SlideViewer extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
       index: 0,
-      slide: null,
+      slide: this.props.slides[0],
       tags: []
     };
 
@@ -27,7 +28,6 @@ class SlideViewer extends React.Component {
     this.setState({
       slide: slide
     });
-
   }
 
   componentDidMount() {
@@ -55,34 +55,10 @@ class SlideViewer extends React.Component {
 
   previousSlide() {
     if (this.state.index > 0) {
-      let newIndex = this.state.index - 1;
-      let slide = this.props.slides[newIndex];
-
-      this.setState(
-        {
-          index: newIndex,
-          slide: slide
-        }
-      );
+      const index = this.state.index - 1;
+      const slide = this.props.slides[index];
+      this.setState({ index, slide });
     }
-  }
-
-  renderSlide() {
-    let slide = this.state.slide;
-    let renderedHtml;
-    if (slide.question) {
-      renderedHtml = <QuestionSlide
-        title={slide.title}
-        question={slide.question.value}
-        answers={slide.question.answers}
-        layout={slide.question.layout}
-        nextSlide={this.nextSlide}
-      />;
-    } else {
-      renderedHtml = <TextSlide title={slide.title} content={slide.content} />;
-    }
-
-    return renderedHtml;
   }
 
   mapToTags() {
@@ -93,12 +69,32 @@ class SlideViewer extends React.Component {
 
   handleKeyPress(e) {
     e.preventDefault();
-    if (e.key === "ArrowRight") {
+    if (e.key === 'ArrowRight') {
       this.nextSlide();
     }
-    if (e.key === "ArrowLeft") {
+    if (e.key === 'ArrowLeft') {
       this.previousSlide();
     }
+  }
+
+  renderSlide() {
+    let slide = this.state.slide;
+    if (slide) {
+      let renderedHtml;
+      if (slide.question) {
+        renderedHtml = <QuestionSlide
+          title={slide.title}
+          question={slide.question.value}
+          answers={slide.question.answers}
+          layout={slide.question.layout}
+          nextSlide={this.nextSlide}
+        />;
+      } else {
+        renderedHtml = <TextSlide title={slide.title} content={slide.content} />;
+      }
+      return renderedHtml;
+    }
+    return <ErrorMessage message="Geen slideinhoud gevonden" />;
   }
 
   render() {
@@ -107,14 +103,14 @@ class SlideViewer extends React.Component {
     const slideViewerClassName = "slide-viewer " + this.props.metadata.slideType;
     return (
       <div className={slideViewerClassName}>
-        <TagBar
+        {this.state.slide && <TagBar
           title={this.props.metadata.title}
           version={this.props.metadata.version}
           slideType={this.props.metadata.slideType}
           tags={this.mapToTags()}
           viewType={this.state.slide.type}
           isStudent={this.props.isStudent}
-        />
+        />}
         <div className="slide-show-content">
           <div className="slide-show-inner-content">
             <div className={hideLeftButton + " left control-button"} onClick={this.previousSlide}>
@@ -128,7 +124,11 @@ class SlideViewer extends React.Component {
             </div>
           </div>
         </div>
-        <MetaSlideData slide={this.state.slide} lesson={this.props.lesson} slideType={this.props.metadata.slideType}/>
+        <MetaSlideData 
+          slide={this.state.slide} 
+          lesson={this.props.lesson} 
+          slideType={this.props.metadata.slideType}
+          />
         <div className="progress-bar">
           <Progress percent={((this.state.index + 1) / this.props.slides.length)*100} />
         </div>
