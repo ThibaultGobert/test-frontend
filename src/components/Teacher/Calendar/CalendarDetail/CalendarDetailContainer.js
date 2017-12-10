@@ -1,9 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import lessonApi from '../../../../api/lessons';
 import _ from 'lodash';
+
+import lessonApi from '../../../../api/lessons';
 import CalendarDetail from './CalendarDetail';
-import Loader from "../../../shared/Loader";
+import Loader from '../../../shared/Loader';
 
 class CalendarDetailContainer extends React.Component {
   constructor(props) {
@@ -41,29 +41,24 @@ class CalendarDetailContainer extends React.Component {
   }
 
   render() {
-    const { event } = this.props;
     const { lessonContentLoading, contentUrl } = this.state;
     const hasLessonContent = !_.isEmpty(contentUrl);
 
     if (lessonContentLoading) {
-      return <Loader active/>
+      return <Loader active />;
     }
 
     return (
       <CalendarDetail
-        event={event}
         redirectToCalendar={this.redirectToCalendar}
         downloadLesContent={this.downloadLesContent}
         hasLessonContent={hasLessonContent}
+        {...this.props}
         {...this.state}
       />
     );
   }
 }
-
-CalendarDetailContainer.propTypes = {
-  event: PropTypes.object.isRequired,
-};
 
 export default CalendarDetailContainer;
 

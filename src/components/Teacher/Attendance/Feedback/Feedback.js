@@ -14,6 +14,7 @@ const Feedback = ({isOpen, onClose, user, course, feedbackFormVisible, toggleFee
       onClose={onClose}
       onActionClick={onClose}
       className="FeedbackModal"
+      closeIcon
     >
       <Modal.Header>Feedback</Modal.Header>
 
