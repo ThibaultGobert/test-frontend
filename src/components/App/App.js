@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import isEmpty from 'lodash/isEmpty';
+import { Label } from 'semantic-ui-react';
 import Teacher from '../Teacher';
 import Login from '../Login';
 import { getUser } from '../../api/storage';
@@ -24,6 +25,11 @@ class App extends Component {
 
     return (
       <div className="full-container">
+        {process.env.NODE_ENV !== 'production' && (
+          <Label className="App__TestBuildLabel" color="red">
+            TEST BUILD
+          </Label>
+        )}
         <Switch>
           <Route exact path="/" component={Login} />
           {!isEmpty(loggedIn) && <Route path="/teacherprofile" component={Teacher} />}
