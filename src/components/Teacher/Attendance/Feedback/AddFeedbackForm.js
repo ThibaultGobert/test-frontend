@@ -8,7 +8,7 @@ import { ADD } from './FeedbackActionType';
 class FeedbackForm extends React.Component {
   constructor(...props) {
     super(...props);
-    const placeholder = "<p>Geef op elk onderwerp (m.u.v. extra opmerkingen) een score op 5 (1 laagste, 5 hoogste score)</p><p>KENNIS:&nbsp;</p><p>MOTIVATIE:&nbsp;</p><p>ENTHOUSIASME:&nbsp;</p><p>MEDEWERKING:&nbsp;</p><p>OPLETTEN:&nbsp;</p><p>EXTRA OPMERKINGEN:&nbsp;</p>";
+    const placeholder = "<p>KENNIS:&nbsp;</p><p>MOTIVATIE:&nbsp;</p><p>ENTHOUSIASME:&nbsp;</p><p>MEDEWERKING:&nbsp;</p><p>OPLETTEN:&nbsp;</p><p>EXTRA OPMERKINGEN:&nbsp;</p>";
     this.state = {
       value: RichTextEditor.createValueFromString(placeholder, 'html')
     }
@@ -35,8 +35,14 @@ class FeedbackForm extends React.Component {
         <Form>
           <Message>
             <Icon name="info" />
-            We werken verder aan een meer geavanceerd feedback systeem, we vragen je om bij het toevoegen van een nieuwe opmerking, de structuur van de template niet te wijzigen. 
-            Geef op elk onderwerp (m.u.v. extra opmerkingen) een score op 5 (1 laagste, 5 hoogste score). Een nieuwe opmerking is aanpasbaar tot 1 uur na de toevoeging ervan.
+            We werken verder aan een meer geavanceerd feedback systeem,
+             we vragen je om bij het toevoegen van een nieuwe opmerking,
+             de structuur van de template niet te wijzigen. 
+            Geef op elk onderwerp (m.u.v. extra opmerkingen) een score op 5 (1 laagste, 5 hoogste score).
+             Bij de extra opmerkingen kan je nuttige extra info opgeven: bv. kind wil een level overslaan,
+             of gaat wellicht stoppen, ...
+            <br />
+            Een nieuwe opmerking is aanpasbaar tot 1 uur na de toevoeging ervan.
           </Message>
           <RichTextEditor
             className="RichTextEditor"
