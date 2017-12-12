@@ -15,7 +15,6 @@ const Calendar = ({ refreshCalendar, events, showEventDetails }) => {
   const views = ['month', 'week', 'day'];
   return (
     <div className="container">
-      <Reloader action={refreshCalendar} />
       <h1>Jouw kalender</h1>
       <p>Bekijk hier de lessen en klik door op een les om de details ervan te zien</p>
       <div className="calendar-wrapper">
