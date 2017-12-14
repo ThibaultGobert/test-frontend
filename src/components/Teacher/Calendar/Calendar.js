@@ -1,12 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import moment from 'moment';
+import 'moment/locale/nl';
 import BigCalendar from 'react-big-calendar';
 import Reloader from '../../shared/Reloader';
-import moment from 'moment';
 import Toolbar from './CalendarToolbar';
 
 const Calendar = ({ refreshCalendar, events, showEventDetails }) => {
-  BigCalendar.momentLocalizer(moment); // or globalizeLocalizer
+  BigCalendar.setLocalizer(BigCalendar.momentLocalizer(moment));
+  moment.locale('nl');
 
   const components = {
     toolbar: Toolbar,
@@ -22,7 +24,6 @@ const Calendar = ({ refreshCalendar, events, showEventDetails }) => {
         <div className="calendar">
           <BigCalendar
             views={views}
-            culture="nl"
             events={events}
             titleAccessor="name"
             defaultView="month"
@@ -39,11 +40,11 @@ const Calendar = ({ refreshCalendar, events, showEventDetails }) => {
 Calendar.propTypes = {
   events: PropTypes.array.isRequired,
   refreshCalendar: PropTypes.func.isRequired,
-  showEventDetails: PropTypes.func.isRequired,
+  showEventDetails: PropTypes.func.isRequired
 };
 
 Calendar.contextTypes = {
-  router: PropTypes.object,
+  router: PropTypes.object
 };
 
 export default Calendar;
