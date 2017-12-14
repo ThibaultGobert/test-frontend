@@ -1,11 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import BigCalendar from 'react-big-calendar';
-import Reloader from '../../shared/Reloader';
 import moment from 'moment';
 import Toolbar from './CalendarToolbar';
+import './Calendar.css';
 
-const Calendar = ({ refreshCalendar, events, showEventDetails }) => {
+const Calendar = ({ events, showEventDetails }) => {
   BigCalendar.momentLocalizer(moment); // or globalizeLocalizer
 
   const components = {
@@ -33,16 +32,6 @@ const Calendar = ({ refreshCalendar, events, showEventDetails }) => {
       </div>
     </div>
   );
-};
-
-Calendar.propTypes = {
-  events: PropTypes.array.isRequired,
-  refreshCalendar: PropTypes.func.isRequired,
-  showEventDetails: PropTypes.func.isRequired,
-};
-
-Calendar.contextTypes = {
-  router: PropTypes.object,
 };
 
 export default Calendar;
