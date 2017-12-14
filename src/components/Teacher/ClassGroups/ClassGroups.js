@@ -4,7 +4,6 @@ import Accordion from './Content/Accordion';
 class ClassGroups extends React.Component {
   constructor(...props) {
     super(...props);
-
     this.mapToPanels = this.mapToPanels.bind(this);
   }
 
