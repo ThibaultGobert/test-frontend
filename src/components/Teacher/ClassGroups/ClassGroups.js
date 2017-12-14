@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Accordion from './Content/Accordion';
 
 class ClassGroups extends React.Component {
@@ -59,9 +58,5 @@ class ClassGroups extends React.Component {
     );
   }
 }
-
-ClassGroups.propTypes = {
-  courses: PropTypes.arrayOf(PropTypes.object),
-};
 
 export default ClassGroups;
