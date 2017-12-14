@@ -37,7 +37,7 @@ class CalendarDetailContainer extends React.Component {
 
   downloadLesContent(e) {
     e.preventDefault();
-    window.location.assign(this.state.contentUrl);
+    window.open(this.state.contentUrl, '_blank');
   }
 
   render() {
