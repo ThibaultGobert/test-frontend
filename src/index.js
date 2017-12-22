@@ -1,15 +1,32 @@
 import 'babel-polyfill';
 import React from 'react';
 import { render } from 'react-dom';
-import configureStore from './store/configureStore';
-import './styles/styles.css';
-import '../node_modules/react-big-calendar/lib/css/react-big-calendar.css';
-import Preloader from "./Preloader";
+import { Provider } from 'react-redux';
+import { HashRouter as Router } from 'react-router-dom';
 
+import App from './components/App';
+import configureStore from './store/configureStore';
+
+import '../node_modules/semantic-ui-css/semantic.min.css';
+import '../node_modules/react-big-calendar/lib/css/react-big-calendar.css';
+import '../node_modules/toastr/build/toastr.min.css';
+import './styles/styles.css';
+
+if (process.env.NODE_ENV === 'production') {
+ window.Raven.config('https://8f8cd090fadf4a509264c7bf4092e1e3@sentry.io/253906').install();
+}
+
+/*
+ * TODO: don't export the store.
+ */
 const store = configureStore();
 export default store;
-// Provider: when store changes --> this re-renders all the necessary components
+
 render(
-  <Preloader store={store}/>,
-  document.getElementById('app')
+  <Provider store={store}>
+    <Router>
+      <App />
+    </Router>
+  </Provider>,
+  document.getElementById('root')
 );

@@ -41,4 +41,8 @@ dist
 # Mac files
 *.DS_Store
 
+build/
 
+src/**/*.css
+
+.env

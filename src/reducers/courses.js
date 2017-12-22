@@ -1,17 +1,32 @@
-import * as types from '../actions/types';
+import {
+  FETCH_COURSES_START,
+  FETCH_COURSES_SUCCESS,
+  FETCH_COURSES_ERROR,
+  FETCH_STUDENTS_SUCCESS
+} from '../actions/types';
 import initialState from './initialState';
+import merge from 'lodash/merge';
 
 export default function courseReducer(state = initialState.courses, action) {
   switch (action.type) {
-    case types.LOAD_COURSES_SUCCESS:
-      return action.courses;
+    case FETCH_COURSES_START:
+      return Object.assign({}, { data: {}, loading: true, error: null, hasError: false });
 
-    case types.LOAD_CHILDREN_SUCCESS: {
-      let course = state.filter(course => course.id === action.childrenForCourse.courseId)[0];
-      let extendedCourse = Object.assign({}, course, {"classlist": action.childrenForCourse.children});
-      let otherCourses = state.filter(course => course.id !== action.childrenForCourse.courseId);
-      return [...otherCourses, extendedCourse];
-    }
+    case FETCH_COURSES_SUCCESS:
+      return merge({}, state, {
+        data: action.data.entities.courses,
+        loading: false,
+        error: null,
+        hasError: false
+      });
+
+    case FETCH_COURSES_ERROR:
+      return Object.assign({}, { data: {}, loading: false, error: action.error, hasError: true });
+
+    case FETCH_STUDENTS_SUCCESS:
+      return merge({}, state, {
+        data: { [action.courseId]: { students: action.data.result } }
+      });
 
     default:
       return state;

@@ -1,0 +1,45 @@
+.FeedbackModal .ui.card>.content {
+  padding: 1em 1em 0.5em;
+}
+
+.FeedbackModal {
+  padding-bottom: 1em;
+}
+
+.FeedbackModal__Avatar {
+  max-height: 300px;
+}
+
+.FeedbackModal.modal > .actions {
+  border-top: none !important;
+}
+
+.FeedbackForm {
+  padding: 2em 1em 0.5em;
+  position: relative;
+  margin-bottom: 1em;
+}
+
+.RichTextEditor {
+  margin: 1em 0em;
+  border: none;
+}
+
+.NoteItem {
+  padding: 0.5em 1em;
+
+  p {
+    margin: 0;
+  }
+}
+
+.NotesList {
+
+  &__Loader {
+      margin-top: 2em !important; 
+  }
+
+  &__NoNotesMessage {
+    margin-top: 2em !important;
+  }
+}

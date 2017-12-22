@@ -1,11 +1,15 @@
 language: node_js
-cache: yarn
 node_js:
-  - "7"
-  - "6"
-  - "5"
-  - "4"
-script: yarn run test:CI
-after_success:
-  # Send coverage data to coveralls.
-  - yarn run test:cover:CI
+  - "node"
+cache:
+  yarn: true,
+  directories:
+    - node_modules
+before_script:
+  - npm install -g yarn
+  - travis_retry yarn install
+script:
+  - yarn build-css
+  - travis_retry yarn test
+  - travis_retry yarn build
+

@@ -1,57 +1,28 @@
-import axios from 'axios';
-import store from '../index';
-import baseUrl from './baseUrl';
+import api from './api';
+import mapToLessons from './mappers/mapToLessons';
 
 class LessonApi {
+  static getLessonsForStudent(lessonType, slideType) {
+    let url = `/lessons/getAllLessons?type=${lessonType}`;
 
-  static getLessons(type) {
-    return axios.request({
-      method: 'get',
-      url: baseUrl + '/webresources/v1/getAllLessons?type=' + type,
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-        'x-token': store.getState().loggedIn.token
-      }
-    }).then(response => {
-      return response.data;
-    }).catch(error => {
-      throw error;
-    });
+    if (slideType) {
+      url = `${url}&slidetype=${slideType}`;
+    }
+
+    return api.get(url).then(mapToLessons);
   }
 
-  static getLessonSlides(lessonId, lessonType, slideType) {
-    return axios.request({
-      method: 'get',
-      url: baseUrl + "/webresources/v1/getLessonForTeacher?programlessonid=" + lessonId + "&lessontype=" + lessonType + "&slidetype=" + slideType,
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-        'x-token': store.getState().loggedIn.token
-      }
-    }).then(response => {
-      let lesson =  response.data;
-      lesson.slideType = slideType;
-      return lesson;
-    }).catch(error => {
-      throw error;
-    });
-  }
 
   static getLessonMetaData(programLessonId) {
-    return axios.request({
-      method: 'get',
-      url: baseUrl + "/webresources/v1/getLessonMetaData?programlessonid=" + programLessonId,
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-        'x-token': store.getState().loggedIn.token
-      }
-    }).then(response => {
-      return response.data;
-    }).catch(error => {
-      throw error;
-    });
+    return api
+      .get('/lessons/getLessonMetaData?programlessonid=' + programLessonId);
+  }
+
+  static searchLessons(filterValues) {
+    return api
+      .post('/lessons/searchLessons', {
+        body: filterValues
+      });
   }
 }
 

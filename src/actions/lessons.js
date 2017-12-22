@@ -1,35 +1,17 @@
-import * as types from './types';
-import lessonApi from '../api/lessons';
-import {ajaxCallError, beginAjaxCall} from "./ajaxStatus";
+import {
+  FETCH_LESSONS_START,
+  FETCH_LESSONS_SUCCESS,
+  FETCH_LESSONS_ERROR,
+} from './types';
 
-export function loadLessonsSuccess(lessons) {
-  return {type: types.LOAD_LESSONS_SUCCESS, lessons };
+export function fetchLessonsStart() {
+  return { type: FETCH_LESSONS_START };
 }
 
-export function loadLessonSlidesSuccess(lesson) {
-  return {type: types.LOAD_LESSON_SLIDES_SUCCESS, lesson };
+export function fetchLessonsSuccess(lessons) {
+  return { type: FETCH_LESSONS_SUCCESS, lessons };
 }
 
-export function loadLessons(type) {
-  return function(dispatch) {
-    dispatch(beginAjaxCall());
-    return lessonApi.getLessons(type).then((lessons) => {
-      dispatch(loadLessonsSuccess(lessons));
-    }).catch(error => {
-      dispatch(ajaxCallError());
-      throw(error);
-    });
-  };
-}
-
-export function loadLessonSlides(lessonId, lessonType, slideType){
-  return function(dispatch) {
-    dispatch(beginAjaxCall());
-    return lessonApi.getLessonSlides(lessonId, lessonType, slideType).then(lessonInfo => {
-      dispatch(loadLessonSlidesSuccess(lessonInfo));
-    }).catch(error => {
-      dispatch(ajaxCallError());
-      throw(error);
-    });
-  };
+export function fetchLessonsError(error) {
+  return { type: FETCH_LESSONS_ERROR, error };
 }

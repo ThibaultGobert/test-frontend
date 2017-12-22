@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Table, Menu, Icon, Segment, Input } from "semantic-ui-react";
+import { Table, Menu, Icon, Segment, Input, Popup, Image } from "semantic-ui-react";
 import {orderBy, flatten, capitalize} from "lodash";
+import _ from 'lodash';
+import striptags from 'sanitize-html';
 
 const dataParser = (obj) => {
   if(!obj) return [{}];
@@ -115,24 +117,57 @@ class DataTable extends Component {
   defaultRenderHeaderRow(columns, onClick, classNameGenerator) {
     return (
       <Table.Row>
-        {columns.map((column, index) => (
-          <Table.HeaderCell onClick={() => onClick(column)} className={classNameGenerator(column.key)} key={index}>
-            {column.display}
-          </Table.HeaderCell>
-        ))}
+        {columns.map((column, index) => {
+          if (!_.isEmpty(column.display)) {
+            return (
+              <Table.HeaderCell onClick={() => onClick(column)} className={classNameGenerator(column.key)} key={index}>
+                {column.display}
+              </Table.HeaderCell>);
+          } else {
+            return (<Table.HeaderCell className="hide-border" />);
+          }
+        })}
       </Table.Row>
     );
   }
 
   defaultRenderBodyRow(data, index) {
-    return (<Table.Row key={index}>
-      {this.columns.map(({key, defaults, accessor, decorator}, idx) => {
+    let highlight = data.highlight ? 'highlight': '';
+
+    let hidden_info = (data.parentremark !== undefined && data.parentremark !== "") || (data.teacherremark !== undefined && data.teacherremark !== "");
+    return (
+      <Table.Row key={index} className={highlight}>
+        {this.columns.map(({key, defaults, accessor, decorator}, idx) => {
+
         if (!data) return <Table.Cell key={idx}/>;
         let value = (accessor) ? accessor(data, key) : (data[key] || defaults);
         if (decorator) value = decorator(value);
-        return (<Table.Cell key={idx}>{value}</Table.Cell>);
+        if (idx === 0) {
+          return (
+            <Table.Cell key={idx} className="avatar-lock-up">
+              <Image src={value} size="tiny" className="avatar middle aligned"/>
+            </Table.Cell>
+          );
+        }
+
+        return (
+          <Table.Cell key={idx}>
+            {(idx === 1 && hidden_info) &&
+              <Popup
+                trigger={<Icon name="info"/>}
+                content={data.hidden_info}
+                inverted
+              >
+                { data.parentremark && <p>Opmerkingen ouders: {striptags(data.parentremark)}</p>}
+                { data.teacherremark && <p>Opmerkingen leraren: {striptags(data.teacherremark)}</p>}
+              </Popup>
+            }
+            {value}
+          </Table.Cell>
+        );
       })}
-    </Table.Row>);
+      </Table.Row>
+    );
   }
 
   pageChange(index) {
@@ -228,10 +263,14 @@ class DataTable extends Component {
   render() {
     return (
       <div>
+
+
         <Segment attached="top" floated="right">
+          <h2 className="data-count">Aantal: {this.props.data.length}</h2>
+
           <Input icon="search" value={this.state.query || ""} onChange={this.onSearch} placeholder="Zoek..." />
         </Segment>
-        <Table celled attached className="sortable">
+        <Table celled compact attached className="sortable" >
           <Table.Header>
             {this.columns && this.renderHeader(this.columns, this.onSort, this.headerClass)}
           </Table.Header>
@@ -240,7 +279,7 @@ class DataTable extends Component {
           </Table.Body>
           {this.pagedData.length > 1 &&
           <Table.Footer>
-            <Table.Row>
+            <Table.Row >
               <Table.HeaderCell colSpan={this.columns.length}>
                 <Menu floated="right" pagination>
                   {this.state.index !== 0 && this.pagedData.length > 1 &&

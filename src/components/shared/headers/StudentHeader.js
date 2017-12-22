@@ -1,10 +1,11 @@
 import React from 'react';
-import { Link, IndexLink } from 'react-router';
+import { NavLink, withRouter } from 'react-router-dom';
 import * as authActions from '../../../actions/auth';
 import {Button} from 'semantic-ui-react';
 import {connect} from 'react-redux';
 import {PropTypes} from 'prop-types';
 import {bindActionCreators} from 'redux';
+import {removeUser} from "../../../api/storage";
 import toastr from 'toastr';
 
 class StudentHeader extends React.Component {
@@ -13,14 +14,18 @@ class StudentHeader extends React.Component {
     this.logOut = this.logOut.bind(this);
   }
 
-  logOut() {
+  logOut(event) {
     event.preventDefault();
-    this.props.actions.logOut();
     toastr.remove();
-    this.context.router.push('/login'); // Redirect to courses page after save
+    removeUser();
+    window.location = "/";    
   }
 
   render() {
+    const {
+      user
+    } = this.props;
+
     return (
       <div className="header">
         <div className="banner" />
@@ -28,8 +33,8 @@ class StudentHeader extends React.Component {
         <div className="header-bar">
           <div className="wrapper">
             <div className="header-lockup">
-              <img className="logo" src={require('../../../../images/logo.png')}/>
-              <span className="welcome-message">Hey {this.props.loggedIn.fullname}</span>
+              <img className="logo" src={require('../../../assets/images/logo.png')} alt=""/>
+              <span className="welcome-message">Hey {user.fullname}</span>
             </div>
 
             <Button primary onClick={this.logOut}>Uitloggen</Button>
@@ -40,13 +45,12 @@ class StudentHeader extends React.Component {
         <nav>
           <div className="ui attached stackable menu">
             <div className="ui container">
-              <Link to="/studentprofile/clan" className="item" activeClassName="active"><i
-                className="grid layout icon" />Jouw clan</Link>
-              <Link to="/studentprofile/homework" className="item" activeClassName="active"><i
-                className="grid layout icon" />Thuis</Link>
-              <Link to="/studentprofile/challenges" className="item" activeClassName="active"><i
-                className="grid layout icon" />Challenges</Link>
-
+              <NavLink to="/studentprofile/class" className="item" activeClassName="active"><i
+                className="group layout icon" />Klas</NavLink>
+              <NavLink to="/studentprofile/home" className="item" activeClassName="active"><i
+                className="home layout icon" />Thuis</NavLink>
+              { !user.isVersion2 && <NavLink to="/studentprofile/extra" className="item" activeClassName="active"><i
+                className="trophy layout icon" />Extra</NavLink>}
             </div>
           </div>
 
@@ -59,11 +63,7 @@ class StudentHeader extends React.Component {
 
 StudentHeader.propTypes = {
   actions: PropTypes.object.isRequired,
-  loggedIn: PropTypes.object.isRequired,
-};
-
-StudentHeader.contextTypes = {
-  router: PropTypes.object
+  user: PropTypes.object.isRequired,
 };
 
 function mapStateToProps(state, ownProps) {
@@ -78,4 +78,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(StudentHeader);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(StudentHeader));

@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should set user when login success 1`] = `
+Object {
+  "type": "LOGIN_SUCCESS",
+  "user": Object {
+    "name": "Simon",
+  },
+}
+`;
+
+exports[`should set user when login success 2`] = `
+Object {
+  "data": Object {
+    "name": "Simon",
+  },
+  "error": undefined,
+  "loading": false,
+}
+`;

@@ -1,0 +1,66 @@
+.Attendance__Table {
+  td {
+    background-color: white;
+  }
+}
+
+.Attendance__Header > tr > th {
+  font-weight: 400 !important;
+  font-size: 1.2em;
+  text-align: center !important;
+}
+
+td.Attendance__Edit {
+  padding: 10px !important;
+
+  & i {
+    cursor: pointer;
+    color: #3e3e3e;
+    font-size: 0.8em;
+  }
+}
+
+.Attendance__Icon {
+  text-align: center;
+  cursor: pointer;
+}
+
+.Attendance__IconPresent {
+  color: green;
+}
+
+.Attendance__IconNotPresent i {
+  color: #444;
+  font-size: 0.9em;
+}
+
+.Attendance__HeaderCell__Today {
+  background-color: #c9facb !important;
+}
+
+.Attendance__User {
+  display: flex;
+  align-items: center;
+}
+
+.Attendance__Avatar {
+  margin-right: 14px;
+}
+
+.Attendance__User__Info {
+  display: flex;
+  flex-direction: column;
+}
+
+.Attendance__User__Name {
+  font-size: 1.15em;
+  padding-bottom: 2px;
+}
+.Attendance__User__Extra {
+  font-size: 1.1em;
+  color: #72828B;
+}
+
+.Attendance__Table {
+  margin: 2em 0 !important;
+}

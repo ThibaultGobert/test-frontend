@@ -1,38 +1,32 @@
-import * as types from './types';
-import courseApi from '../api/courses';
-import {ajaxCallError, beginAjaxCall} from "./ajaxStatus";
+import {
+  FETCH_COURSES_START,
+  FETCH_COURSES_SUCCESS,
+  FETCH_COURSES_ERROR,
+  FETCH_STUDENTS_START,
+  FETCH_STUDENTS_SUCCESS,
+  FETCH_STUDENTS_ERROR
+} from './types';
 
-export function loadCoursesSuccess(courses) {
-  return {type: types.LOAD_COURSES_SUCCESS, courses };
+export function fetchCoursesStart() {
+  return { type: FETCH_COURSES_START };
 }
 
-export function loadChildrenSuccess(couseId, children) {
-  const childrenForCourse = { courseId: couseId, children: children};
-  return { type: types.LOAD_CHILDREN_SUCCESS, childrenForCourse};
+export function fetchCoursesSuccess(data) {
+  return { type: FETCH_COURSES_SUCCESS, data };
 }
 
-export function loadCourses() {
-  return function(dispatch) {
-    dispatch(beginAjaxCall());
-    return courseApi.getCourses(false).then((courses) => {
-      dispatch(loadCoursesSuccess(courses));
-    }).catch(error => {
-      dispatch(ajaxCallError());
-      throw(error);
-    });
-  };
+export function fetchCoursesError(error) {
+  return { type: FETCH_COURSES_ERROR, error };
 }
 
-export function loadChildren(courseId) {
-  return function(dispatch) {
-    dispatch(beginAjaxCall());
-    return courseApi.getChildrenForCourse(courseId).then((children) => {
-      dispatch(loadChildrenSuccess(courseId, children));
-    }).catch(error => {
-      dispatch(ajaxCallError());
-      throw(error);
-    });
-  };
+export function fetchStudentsStart() {
+  return { type: FETCH_STUDENTS_START };
 }
 
-// TODO:: hard coded false value
+export function fetchStudentsSuccess(data, courseId) {
+  return { type: FETCH_STUDENTS_SUCCESS, data, courseId };
+}
+
+export function fetchStudentsError(error) {
+  return { type: FETCH_STUDENTS_ERROR, error };
+}

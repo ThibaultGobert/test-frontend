@@ -1,4 +1,1 @@
-export default
-process.env.NODE_ENV === 'production' ?
-  'https://leerplatform.codefever.be/test' :
-  'http://localhost:8080/CodefeverWebservice';
+export default process.env.REACT_APP_API_URL;

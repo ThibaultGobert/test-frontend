@@ -1,11 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import * as authActions from '../../../actions/auth';
 import {Button} from 'semantic-ui-react';
 import {connect} from 'react-redux';
 import {PropTypes} from 'prop-types';
 import {bindActionCreators} from 'redux';
 import toastr from 'toastr';
+import {removeUser} from '../../../api/api';
 
 class AdminHeader extends React.Component {
   constructor(props) {
@@ -13,11 +14,11 @@ class AdminHeader extends React.Component {
     this.logOut = this.logOut.bind(this);
   }
 
-  logOut() {
+  logOut(event) {
     event.preventDefault();
-    this.props.actions.logOut();
     toastr.remove();
-    this.context.router.push('/login'); // Redirect to courses page after save
+    removeUser();
+    window.location = "/";    
   }
 
   render() {
@@ -27,7 +28,7 @@ class AdminHeader extends React.Component {
         <div className="header-bar">
           <div className="wrapper">
             <div className="header-lockup">
-              <img className="logo" src={require('../../../../images/logo.png')}/>
+              <img className="logo" src={require('../../../assets/images/logo.png')}/>
               <span className="welcome-message">Hey {this.props.loggedIn.fullname}</span>
             </div>
 
@@ -52,10 +53,6 @@ class AdminHeader extends React.Component {
 AdminHeader.propTypes = {
   actions: PropTypes.object.isRequired,
   loggedIn: PropTypes.object.isRequired
-};
-
-AdminHeader.contextTypes = {
-  router: PropTypes.object
 };
 
 function mapStateToProps(state, ownProps) {
