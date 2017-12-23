@@ -1,17 +1,18 @@
 /* global window */
 import axios from 'axios';
 import lpfUrl from './baseUrl';
+import merge from 'lodash/merge';
 import { getUser } from './storage';
 
 const request = (endpoint, { headers = {}, body, ...otherOptions }, method) => {
-  const allHeaders = {
-    ...headers,
+  let allHeaders = {
     'Content-Type': 'application/json',
     'Access-Control-Allow-Origin': '*',
   };
   if (getUser() !== null) {
     allHeaders['x-token'] = getUser().token;
   }
+  allHeaders = merge(allHeaders, headers);
 
   return axios(`${lpfUrl}${endpoint}`, {
     ...otherOptions,
