@@ -9,6 +9,7 @@ import Calendar from './Calendar';
 import ClassList from './ClassList';
 import Attendance from './Attendance';
 import InfoPage from './InfoPage';
+import Profile from './Profile';
 
 const Teacher = ({ isBootstrapped, user }) => {
   if (!isBootstrapped) {
@@ -24,6 +25,7 @@ const Teacher = ({ isBootstrapped, user }) => {
           <Route path="/teacherprofile/calendar" exact component={Calendar} />
           <Route path="/teacherprofile/classlist/:id" component={ClassList} />
           <Route path="/teacherprofile/feedback/:id" component={Attendance} />
+          <Route path="/teacherprofile/profile" component={Profile} />
           <Route path="/teacherprofile/info" component={InfoPage} />
         </Switch>
       </div>
