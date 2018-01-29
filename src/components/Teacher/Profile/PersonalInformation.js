@@ -24,6 +24,7 @@ class PersonalInformation extends React.Component {
           <Form>
             <Form.Input label="Naam" value="Simon De Gheselle" />
             <Form.Input label="Username" value="simondegheselle" />
+            <Form.Input label="Email" value="simon@codefever.be" />
             <Form.Input label="Adres" value="Nanofstraat 85 3590 Diepenbeek Limburg, Belgium" />
             <Form.Input label="Facturatie adres" value="Nanofstraat 85 3590 Diepenbeek Limburg, Belgium" />
             <Form.Input label="GSM" value="+32 476 28 22 06" />
@@ -51,6 +52,10 @@ class PersonalInformation extends React.Component {
           <div className="PersonalInformation__ListItem">
             <label>Username</label>
             <span>simondegheselle</span>
+          </div>
+          <div className="PersonalInformation__ListItem">
+            <label>Email</label>
+            <span>simon@codefever.be</span>
           </div>
           <div className="PersonalInformation__ListItem">
             <label>Adres</label>
