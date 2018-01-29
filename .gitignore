@@ -46,3 +46,4 @@ build/
 src/**/*.css
 
 .env
+.env.*
