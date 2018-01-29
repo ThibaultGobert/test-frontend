@@ -2,6 +2,7 @@ import React from 'react';
 import { Segment, Button, Menu } from 'semantic-ui-react';
 import './Profile.css';
 import PersonalInformation from './PersonalInformation';
+import Contract from './Contract';
 
 class Profile extends React.Component {
   constructor() {
@@ -36,6 +37,7 @@ class Profile extends React.Component {
         </Menu>
         <div className="Profile__Content">
           { activeItem === 'gegevens' && <PersonalInformation /> }
+          { activeItem === 'contracten' && <Contract /> }
         </div>
       </div>
     );
