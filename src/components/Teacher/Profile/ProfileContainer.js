@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import Profile from './Profile';
 import ErrorMessage from '../../shared/ErrorMessage';
 import userAdministrationApi from '../../../api/userAdministration';
-import Loader from '../../shared/Loader';
 
 class ProfileContainer extends Component {
   componentDidMount() {
