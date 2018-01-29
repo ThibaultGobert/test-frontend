@@ -29,7 +29,7 @@ class ProfileContainer extends Component {
     return (
       <div className="ProfileContainer">
         <h1>Jouw Profiel</h1>
-        <p>Bekijk hier jouw persoonlijke gegevens, hou deze gegevens up-to-date</p>      
+        <p>Bekijk hier jouw persoonlijke gegevens, hou deze gegevens up-to-date</p>              
         <Profile user={user} />
       </div>
     );

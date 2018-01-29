@@ -1,0 +1,33 @@
+.Profile {
+  display: grid;
+  grid-template-columns: auto minmax(min-content, 1fr);
+  grid-template-rows: auto minmax(min-content, 1fr) auto;
+
+  &__SideBar {
+    grid-column: 1;
+    grid-row: 2;
+    background-color: #f0f0f2;
+    padding: 5px 10px;
+  }
+
+  &__Content {
+    grid-column: 2;
+    grid-row: 2;
+    align-self: start;
+    margin-left: 18px;
+    box-shadow: none;
+    border: none;
+  }
+}
+
+.PersonalInformation {
+  &__ListItem {
+    font-size: 1.05em;
+    margin-bottom: 0.5em;
+    label {
+      font-weight: bold;
+      margin-right: 0.5em;
+    }
+    
+  }
+}
