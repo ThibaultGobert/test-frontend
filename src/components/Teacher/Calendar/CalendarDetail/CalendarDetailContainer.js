@@ -19,9 +19,11 @@ class CalendarDetailContainer extends React.Component {
   componentDidMount() {
     // TODO: update redux state with action and reducer
     lessonApi.getLessonMetaData(this.props.event.programlessonid).then(metadata => {
-      let contentUrls = metadata.filter(dataForLesson => {
-        return dataForLesson.ziplocation !== undefined && dataForLesson.ziplocation;
-      }).map(dataForLesson => dataForLesson.ziplocation);
+      let contentUrls = metadata
+        .filter(dataForLesson => {
+          return dataForLesson.ziplocation !== undefined && dataForLesson.ziplocation;
+        })
+        .map(dataForLesson => dataForLesson.ziplocation);
       contentUrls = _.without(contentUrls, undefined);
       this.setState({
         lessonContentLoading: false,
@@ -61,4 +63,3 @@ class CalendarDetailContainer extends React.Component {
 }
 
 export default CalendarDetailContainer;
-

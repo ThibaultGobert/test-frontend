@@ -1,0 +1,40 @@
+.Accordion {
+    margin-top: 3em;
+
+    .accordion {
+        border-radius: 0 !important;
+    }
+
+    .title .dropdown.icon {
+        display: none !important;
+    }
+
+    tbody.ui.content.active {
+        display: table-row-group;
+    }
+    
+    .title {
+        padding: 0 !important;
+    }
+
+    .grid {
+        margin: 0 !important;
+    }
+
+    .content.active {
+        background: #f2f2f2;
+    }
+    
+    .content.active .segment .row > .column {
+        padding: 0 !important;
+    }     
+
+    &__Header {
+        font-size: 1.1em;
+        padding-bottom: 3em;
+        border-radius: 0.5em 0.5em 0em 0em;
+        box-shadow: 0 1px 2px 0 rgba(34,36,38,.15), 0 0 0 1px rgba(34,36,38,.15);
+        background: #f9fafb;;
+        color: #4a4a4a;
+    }
+}
