@@ -22,15 +22,18 @@ class PersonalInformation extends React.Component {
       return (
         <Segment className="PersonalInformation" basic clearing>
           <Form>
-            <Form.Input label="Naam" value="Simon De Gheselle" />
+            <Form.Input label="Voornaam" value="Simon" />
+            <Form.Input label="Familienaam" value="De Gheselle" />
             <Form.Input label="Username" value="simondegheselle" />
+            <Form.Input label="Geboortedatum" value="07/09/1995" />
             <Form.Input label="Email" value="simon@codefever.be" />
-            <Form.Input label="Adres" value="Nanofstraat 85 3590 Diepenbeek Limburg, Belgium" />
+            <Form.Input label="Straat en huisnummer" value="Nanofstraat 85" />
+            <Form.Input label="Stad" value="Diepenbeek" />
+            <Form.Input label="Postcode" value="3568" />
             <Form.Input label="Facturatie adres" value="Nanofstraat 85 3590 Diepenbeek Limburg, Belgium" />
             <Form.Input label="GSM" value="+32 476 28 22 06" />
             <Form.Input label="Rijksregisternr." value="93.11.05-153.78" />
             <Form.Input label="Rekeningnummer" value="BE33 0014 6234 2968" />
-
             <Form.Group className="PersonalInformation__Buttons">
               <Form.Field control={Button} color="red" onClick={this.toggleEditing}>Cancel</Form.Field>
               <Form.Field control={Button} primary onClick={console.log('saving')}>Opslaan</Form.Field>
@@ -46,8 +49,12 @@ class PersonalInformation extends React.Component {
         </Button>
         <div className="PersonalInformation__List">
           <div className="PersonalInformation__ListItem">
-            <label>Naam</label>
-            <span>Simon De Gheselle</span>
+            <label>Voornaam</label>
+            <span>Simon</span>
+          </div>
+          <div className="PersonalInformation__ListItem">
+            <label>Familienaam</label>
+            <span>De Gheselle</span>
           </div>
           <div className="PersonalInformation__ListItem">
             <label>Username</label>
@@ -58,8 +65,16 @@ class PersonalInformation extends React.Component {
             <span>simon@codefever.be</span>
           </div>
           <div className="PersonalInformation__ListItem">
-            <label>Adres</label>
-            <span>Nanofstraat 85 3590 Diepenbeek Limburg, Belgium</span>
+            <label>Straat en straatnummer</label>
+            <span>Nanofstraat 85</span>
+          </div>
+          <div className="PersonalInformation__ListItem">
+            <label>Stad</label>
+            <span>Diepenbeek</span>
+          </div>
+          <div className="PersonalInformation__ListItem">
+            <label>Postcode</label>
+            <span>3587</span>
           </div>
           <div className="PersonalInformation__ListItem">
             <label>Facturatie adres</label>
