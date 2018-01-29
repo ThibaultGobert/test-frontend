@@ -1,22 +1,26 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import Calendar from './Calendar';
 import Loader from '../../shared/Loader';
 import ErrorMessage from '../../shared/ErrorMessage';
+import CelendarDetail from './CalendarDetail/CalendarDetailContainer';
 
 class CalendarContainer extends Component {
   constructor(...props) {
     super(...props);
-    this.showEventDetails = this.showEventDetails.bind(this);
+    this.toggleDetails = this.toggleDetails.bind(this);
+    this.state = {
+      calendarDetailOpen: false,
+      event: null,
+    };
   }
 
-  showEventDetails(event) {
-    const { history } = this.props;
-    history.push(`/teacherprofile/calendar/${event.id}`);
+  toggleDetails(event) {
+    this.setState({ calendarDetailOpen: !this.state.calendarDetailOpen, event });
   }
 
   render() {
     const { error, loading, lessons } = this.props;
+    const { calendarDetailOpen, event } = this.state;
 
     if (loading) {
       return <Loader active />;
@@ -28,21 +32,18 @@ class CalendarContainer extends Component {
 
     return (
       <div className="CalendarContainer">
+        { calendarDetailOpen && (
+          <CelendarDetail isOpen={calendarDetailOpen} event={event} onClose={this.toggleDetails} />
+        )}
         <Calendar
           events={lessons}
           refreshCalendar={this.fetchCourses}
-          showEventDetails={this.showEventDetails}
+          showEventDetails={this.toggleDetails}
           {...this.state}
         />
       </div>
     );
   }
 }
-
-CalendarContainer.propTypes = {
-  loading: PropTypes.bool,
-  lessons: PropTypes.arrayOf(PropTypes.object),
-  error: PropTypes.object,
-};
 
 export default CalendarContainer;
