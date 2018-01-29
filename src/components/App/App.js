@@ -25,7 +25,7 @@ class App extends Component {
 
     return (
       <div className="full-container">
-        {process.env.NODE_ENV !== 'production' && (
+        {process.env.REACT_APP_ENV !== 'production' && (
           <Label className="App__TestBuildLabel" color="red">
             TEST BUILD
           </Label>
