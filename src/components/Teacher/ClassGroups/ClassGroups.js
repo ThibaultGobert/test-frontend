@@ -1,11 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import Accordion from './Content/Accordion';
+import ClassGroupContent from './Content/ClassGroupContent';
+import Accordion from '../../shared/Accordion/Accordion';
 
 class ClassGroups extends React.Component {
   constructor(...props) {
     super(...props);
-
     this.mapToPanels = this.mapToPanels.bind(this);
   }
 
@@ -48,20 +47,26 @@ class ClassGroups extends React.Component {
     });
   }
 
+  renderContent(content) {
+    return <ClassGroupContent content={content} />;
+  }
+
   render() {
+    const headerFields = ['Naam', 'Type', 'Clan', 'Level', 'Locatie'];
+
     return (
       <div className="container">
         <h1>Klasgroepen</h1>
         <div className="subtitle">Bekijk hier je lessen en download de klaslijsten</div>
 
-        <Accordion panels={this.mapToPanels()} />
+        <Accordion
+          panels={this.mapToPanels()}
+          headerFields={headerFields}
+          renderContent={this.renderContent}
+        />
       </div>
     );
   }
 }
-
-ClassGroups.propTypes = {
-  courses: PropTypes.arrayOf(PropTypes.object),
-};
 
 export default ClassGroups;
