@@ -51,8 +51,9 @@ class PersonalInformation extends React.Component {
         </Segment>
       );
     }
+
     return (
-      <Segment className="PersonalInformation" basic clearing>
+      <Segment className="PersonalInformation" basic loading={loading}>
         <div className="PersonalInformation__List">
           <div className="PersonalInformation__ListItem">
             <label>Voornaam</label>

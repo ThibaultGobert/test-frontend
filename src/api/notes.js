@@ -1,6 +1,5 @@
 import api from './api';
 import mapToNotes from './mappers/mapToNotes';
-import { getUser } from './storage';
 
 class NotesApi {
   static getNotes(studentId) {

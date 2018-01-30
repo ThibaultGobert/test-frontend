@@ -1,5 +1,4 @@
 import merge from 'lodash/merge';
-import _ from 'lodash';
 
 import { FETCH_ATTENDANCES_START, FETCH_ATTENDANCES_SUCCESS, FETCH_ATTENDANCES_ERROR, POST_ATTENDANCE_SUCCESS } from '../actions/types';
 import initialState from './initialState';

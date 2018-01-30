@@ -1,6 +1,6 @@
 import React from 'react';
 import moment from 'moment';
-import { Table, Checkbox, Icon } from 'semantic-ui-react';
+import { Table, Checkbox } from 'semantic-ui-react';
 
 import classNames from '../../../../utils/classNames';
 import { isToday, diffToday } from '../../../../functions/dateHelpers';
