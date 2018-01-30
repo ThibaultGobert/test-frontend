@@ -51,9 +51,6 @@ class TeacherHeader extends React.Component {
               <NavLink to="/teacherprofile/info" className="item" activeClassName="active">
                 <i className="info layout icon" />Info
               </NavLink>
-              <NavLink to="/teacherprofile/profile" className="item" activeClassName="active">
-                <i className="user layout icon" />Profiel
-              </NavLink>
             </div>
           </div>
         </nav>

@@ -1,4 +1,5 @@
 import React from 'react';
+import Message from 'semantic-ui-react/dist/commonjs/collections/Message/Message';
 import ClassGroupContent from './Content/ClassGroupContent';
 import Accordion from '../../shared/Accordion/Accordion';
 
@@ -58,7 +59,13 @@ class ClassGroups extends React.Component {
       <div className="container">
         <h1>Klasgroepen</h1>
         <div className="subtitle">Bekijk hier je lessen en download de klaslijsten</div>
-
+        <Message negative>
+          <Message.Header>Deze planning is nog niet definitief</Message.Header>
+          <p>
+            Alles hangt af van de effectieve inschrijvingen. De finale planning vind je hier 5 dagen
+            voor de start van lesreeks. We weten dat dit niet ideaal is en vragen je begrip!
+          </p>
+        </Message>
         <Accordion
           panels={this.mapToPanels()}
           headerFields={headerFields}
