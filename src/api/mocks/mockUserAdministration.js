@@ -34,8 +34,14 @@ const personalInformation = {
     'Gent * Hogeschool Gent - Campus Schoonmeersen',
     'Oostakker * Edugo - Campus De Brug',
   ],
+  bankAccount: {
+    id: 1,
+    exemptVat: true,
+    accountNumber: 'BE 31...',
+    startdate: '2017-01-01',
+    enddate: '2017-12-31',
+  },
 };
-
 class UserAdministrationApi {
   static getPersonalInformation(token) {
     return new Promise(resolve => {

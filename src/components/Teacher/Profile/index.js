@@ -10,10 +10,10 @@ import {
 
 import ProfileContainer from './ProfileContainer';
 
-const mapStateToProps = () => {
-  const user = {};
+const mapStateToProps = (state) => {
+  const { personalInformation } = state.loggedIn;
   return {
-    user,
+    personalInformation,
   };
 };
 

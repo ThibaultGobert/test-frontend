@@ -21,6 +21,7 @@ class Profile extends React.Component {
     const {
       activeItem,
     } = this.state;
+
     return (
       <div className="Profile">
         <Menu secondary vertical className="Profile__SideBar">
@@ -36,7 +37,7 @@ class Profile extends React.Component {
           />
         </Menu>
         <div className="Profile__Content">
-          { activeItem === 'gegevens' && <PersonalInformation /> }
+          { activeItem === 'gegevens' && <PersonalInformation {...this.props} /> }
           { activeItem === 'contracten' && <Contract /> }
         </div>
       </div>

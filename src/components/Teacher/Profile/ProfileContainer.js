@@ -20,8 +20,8 @@ class ProfileContainer extends Component {
   }
 
   render() {
-    const { error, user } = this.props;
-    if (error) {
+    const { personalInformation } = this.props;
+    if (personalInformation.error) {
       return <ErrorMessage message="Fout bij inladen van de profiel informatie" />;
     }
 
@@ -29,7 +29,7 @@ class ProfileContainer extends Component {
       <div className="ProfileContainer">
         <h1>Jouw Profiel</h1>
         <p>Bekijk hier jouw persoonlijke gegevens, hou deze gegevens up-to-date</p>              
-        <Profile user={user} />
+        <Profile {...this.props} />
       </div>
     );
   }

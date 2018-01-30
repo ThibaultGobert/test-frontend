@@ -19,7 +19,7 @@ function authReducer(state = initialState.loggedIn, action) {
 
     case LOGIN_SUCCES: {
       setUser(action.user);
-      return { data: action.user, error: undefined, loading: false };
+      return merge(state, { data: action.user, error: undefined, loading: false });
     }
 
     case LOGIN_ERROR:
