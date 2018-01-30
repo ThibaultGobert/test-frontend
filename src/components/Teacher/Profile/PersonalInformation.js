@@ -44,9 +44,6 @@ class PersonalInformation extends React.Component {
     }
     return (
       <Segment className="PersonalInformation" basic clearing>
-        <Button floated="right" onClick={this.toggleEditing}>
-          Wijzig
-        </Button>
         <div className="PersonalInformation__List">
           <div className="PersonalInformation__ListItem">
             <label>Voornaam</label>
