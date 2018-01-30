@@ -1,16 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import moment from 'moment';
 import 'moment/locale/nl';
 import BigCalendar from 'react-big-calendar';
-import Reloader from '../../shared/Reloader';
-
-import BigCalendar from 'react-big-calendar';
-import moment from 'moment';
 import Toolbar from './CalendarToolbar';
 import './Calendar.css';
 
-const Calendar = ({ refreshCalendar, events, showEventDetails }) => {
+const Calendar = ({ events, showEventDetails }) => {
   BigCalendar.setLocalizer(BigCalendar.momentLocalizer(moment));
   moment.locale('nl');
 

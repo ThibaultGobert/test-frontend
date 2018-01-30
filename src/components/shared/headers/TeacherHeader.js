@@ -3,10 +3,9 @@ import React from 'react';
 import { NavLink, withRouter } from 'react-router-dom';
 import { Button } from 'semantic-ui-react';
 import { connect } from 'react-redux';
-import { PropTypes } from 'prop-types';
 import { bindActionCreators } from 'redux';
 import toastr from 'toastr';
-import {removeUser} from "../../../api/storage";
+import { removeUser } from '../../../api/storage';
 import * as authActions from '../../../actions/auth';
 
 class TeacherHeader extends React.Component {
@@ -19,7 +18,7 @@ class TeacherHeader extends React.Component {
     event.preventDefault();
     toastr.remove();
     removeUser();
-    window.location = "/";
+    window.location = '/';
   }
 
   render() {
@@ -52,6 +51,9 @@ class TeacherHeader extends React.Component {
               <NavLink to="/teacherprofile/info" className="item" activeClassName="active">
                 <i className="info layout icon" />Info
               </NavLink>
+              <NavLink to="/teacherprofile/profile" className="item" activeClassName="active">
+                <i className="user layout icon" />Profiel
+              </NavLink>
             </div>
           </div>
         </nav>
@@ -59,12 +61,6 @@ class TeacherHeader extends React.Component {
     );
   }
 }
-
-TeacherHeader.propTypes = {
-  actions: PropTypes.object.isRequired,
-  loggedIn: PropTypes.object.isRequired,
-  user: PropTypes.object.isRequired,
-};
 
 function mapStateToProps(state) {
   return {

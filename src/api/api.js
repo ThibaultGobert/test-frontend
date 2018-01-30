@@ -1,4 +1,3 @@
-/* global window */
 import axios from 'axios';
 import lpfUrl from './baseUrl';
 import merge from 'lodash/merge';

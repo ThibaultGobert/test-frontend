@@ -1,7 +1,7 @@
 import React from 'react';
 import FeedbackCard from './FeedbackCard';
 import AddFeedbackForm from './AddFeedbackForm';
-import { Modal, Button, Icon, Grid } from 'semantic-ui-react';
+import { Modal, Button, Grid } from 'semantic-ui-react';
 import NotesList from './NotesList';
 import './Feedback.css';
 

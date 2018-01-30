@@ -1,84 +1,89 @@
 export default {
   application: {
-    bootstrapped: false
+    bootstrapped: false,
   },
   loggedIn: {
     data: {},
     loading: false,
-    error: undefined
+    error: undefined,
+    personalInformation: {
+      data: {},
+      loading: true,
+      hasError: false,
+    },
   },
   courses: {
     data: {},
     loading: true,
     error: null,
-    hasError: false
+    hasError: false,
   },
   lessons: {
     data: {},
     loading: true,
     error: null,
-    hasError: false
+    hasError: false,
   },
   calendar: {
     data: {},
     loading: true,
     error: null,
-    hasError: false
+    hasError: false,
   },
   currentLesson: {
     data: {},
     loading: true,
     error: null,
-    hasError: false
+    hasError: false,
   },
   organisation: {
     groups: {
       data: {},
       loading: true,
       error: null,
-      hasError: false
+      hasError: false,
     },
     levels: {
       data: {},
       loading: true,
       error: null,
-      hasError: false
-    }
+      hasError: false,
+    },
   },
   students: {
     data: {},
     loading: true,
     error: null,
-    hasError: false
+    hasError: false,
   },
   teachers: {
     data: {},
     loading: true,
     error: null,
-    hasError: false
+    hasError: false,
   },
   locations: {
     data: {},
     loading: true,
     error: null,
-    hasError: false
+    hasError: false,
   },
   slides: {
     data: {},
     loading: true,
     error: null,
-    hasError: false
+    hasError: false,
   },
   attendances: {
     data: {},
     loading: true,
     error: null,
-    hasError: false
+    hasError: false,
   },
   notes: {
     data: {},
     loading: true,
     error: null,
-    hasError: false
+    hasError: false,
   },
 };

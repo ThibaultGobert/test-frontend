@@ -1,7 +1,6 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import SlideViewerContainer from './SlideViewerContainer';
-import * as userRoles from '../../../constants/roles';
 import { fetchLessonSlidesStart, fetchLessonSlidesSuccess, fetchLessonSlidesError } from '../../../actions/slides';
 import mapActionCreatorsToProps from '../../../functions/mapActionCreatorsToProps';
 import { getSlidesByLessonId, getLessonById, isStudent as isStudentSelector } from '../../../selectors';
