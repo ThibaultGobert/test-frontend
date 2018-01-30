@@ -1,5 +1,5 @@
 import React from 'react';
-import { Segment, Button, Menu } from 'semantic-ui-react';
+import { Menu } from 'semantic-ui-react';
 import './Profile.css';
 import PersonalInformation from './PersonalInformation';
 import Contract from './Contract';
