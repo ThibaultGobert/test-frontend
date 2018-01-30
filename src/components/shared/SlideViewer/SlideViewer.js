@@ -8,6 +8,7 @@ import TextSlide from './TextSlide';
 import TagBar from './TagBar';
 import MetaSlideData from './MetaSlideData';
 import ErrorMessage from '../../shared/ErrorMessage';
+import './SlideViewer.css';
 
 class SlideViewer extends React.Component {
   constructor(props, context) {
@@ -105,6 +106,7 @@ class SlideViewer extends React.Component {
           tags={this.mapToTags()}
           viewType={this.state.slide.type}
           isStudent={this.props.isStudent}
+          time={this.state.slide.time}
         />}
         <div className="slide-show-content">
           <div className="slide-show-inner-content">
@@ -119,9 +121,9 @@ class SlideViewer extends React.Component {
             </div>
           </div>
         </div>
-        <MetaSlideData 
-          slide={this.state.slide} 
-          lesson={this.props.lesson} 
+        <MetaSlideData
+          slide={this.state.slide}
+          lesson={this.props.lesson}
           slideType={this.props.metadata.slideType}
           />
         <div className="progress-bar">

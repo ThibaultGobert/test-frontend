@@ -24,7 +24,7 @@ function mapToTag(tag) {
   }
 }
 
-const TagMetaList = ({ tags, viewType }) => {
+const TagMetaList = ({ tags, viewType, time }) => {
   let isHome = _.includes(viewType, 'HOME');
   let isClass = _.includes(viewType, 'CLASS');
   let isProjection = _.includes(viewType, 'PROJECTION');
@@ -44,6 +44,7 @@ const TagMetaList = ({ tags, viewType }) => {
           }
         })}
       </ul>
+      { (time !== 0) && <span className="timing">{time} min</span>}
       <span className="view-type">
         <Icon circular className={classClassName} name="group" />
         <Icon circular className={homeClassName} name="home" />
