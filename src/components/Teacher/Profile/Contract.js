@@ -1,12 +1,12 @@
 import React from 'react';
-import { Segment, Header, Button } from 'semantic-ui-react';
+import { Segment, Message } from 'semantic-ui-react';
 
 const Contract = () => {
   return (
-    <Segment>
-      <Header as="h1" >Download hier je contract</Header>
-      <Button size="huge">Download contract</Button>
-    </Segment>
+    <Message
+      header="Download hier je contract"
+      content="Van zodra je contract klaar is, kan je hem hier downloaden."
+    />
   );
 };
 
