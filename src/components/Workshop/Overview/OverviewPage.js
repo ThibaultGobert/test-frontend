@@ -1,5 +1,4 @@
 import React from 'react';
-import {PropTypes} from 'prop-types';
 import LessonList from '../../shared/LessonList';
 import Loader from '../../shared/Loader';
 import * as slideTypes from '../../../constants/slideTypes';

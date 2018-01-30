@@ -1,0 +1,14 @@
+version: '2'
+
+services:
+  lpf:
+    build: .
+    command: npm start
+    ports:
+      - '8080:8080'
+    volumes:
+      - .:/usr/src/app
+      - lpf-deps:/usr/src/app/node_modules
+
+volumes:
+  lpf-deps: 

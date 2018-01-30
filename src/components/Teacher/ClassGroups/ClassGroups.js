@@ -1,11 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import Accordion from './Content/Accordion';
+import Message from 'semantic-ui-react/dist/commonjs/collections/Message/Message';
+import ClassGroupContent from './Content/ClassGroupContent';
+import Accordion from '../../shared/Accordion/Accordion';
 
 class ClassGroups extends React.Component {
   constructor(...props) {
     super(...props);
-
     this.mapToPanels = this.mapToPanels.bind(this);
   }
 
@@ -48,20 +48,32 @@ class ClassGroups extends React.Component {
     });
   }
 
+  renderContent(content) {
+    return <ClassGroupContent content={content} />;
+  }
+
   render() {
+    const headerFields = ['Naam', 'Type', 'Clan', 'Level', 'Locatie'];
+
     return (
       <div className="container">
         <h1>Klasgroepen</h1>
         <div className="subtitle">Bekijk hier je lessen en download de klaslijsten</div>
-
-        <Accordion panels={this.mapToPanels()} />
+        <Message negative>
+          <Message.Header>Deze planning is nog niet definitief</Message.Header>
+          <p>
+            Alles hangt af van de effectieve inschrijvingen. De finale planning vind je hier 5 dagen
+            voor de start van lesreeks. We weten dat dit niet ideaal is en vragen je begrip!
+          </p>
+        </Message>
+        <Accordion
+          panels={this.mapToPanels()}
+          headerFields={headerFields}
+          renderContent={this.renderContent}
+        />
       </div>
     );
   }
 }
-
-ClassGroups.propTypes = {
-  courses: PropTypes.arrayOf(PropTypes.object),
-};
 
 export default ClassGroups;

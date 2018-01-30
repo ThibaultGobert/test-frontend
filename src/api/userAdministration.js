@@ -1,6 +1,5 @@
 import api from './api';
 import mapToAttendances from './mappers/mapToAttendances';
-import mockAttendances from './mocks/mockAttendances';
 
 class UserAdministrationApi {
   static getUserInformation(token) {

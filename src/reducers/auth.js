@@ -1,4 +1,13 @@
-import { LOGIN_START, LOGIN_SUCCES, LOGIN_ERROR, LOGOUT } from '../actions/types';
+import merge from 'lodash/merge';
+import {
+  LOGIN_START,
+  LOGIN_SUCCES,
+  LOGIN_ERROR,
+  LOGOUT,
+  FETCH_PROFILE_START,
+  FETCH_PROFILE_SUCCESS,
+  FETCH_PROFILE_ERROR,
+} from '../actions/types';
 import initialState from './initialState';
 
 import { setUser, removeUser } from '../api/storage';
@@ -10,14 +19,30 @@ function authReducer(state = initialState.loggedIn, action) {
 
     case LOGIN_SUCCES: {
       setUser(action.user);
-      return { data: action.user, error: undefined, loading: false };
+      return merge(state, { data: action.user, error: undefined, loading: false });
     }
 
     case LOGIN_ERROR:
       return { data: {}, error: action.error, loading: false };
 
+    case FETCH_PROFILE_START:
+      return merge({}, state, {
+        personalInformation: { loading: true, error: null, hasError: false },
+      });
+
+    case FETCH_PROFILE_SUCCESS:
+      return merge({}, state, {
+        personalInformation: { loading: false, data: action.data },
+      });
+
+    case FETCH_PROFILE_ERROR:
+      return merge({}, state, {
+        personalInformation: { loading: false, error: action.error, hasError: true },
+      });
+
     case LOGOUT: {
       removeUser();
+      return state;
     }
 
     default:

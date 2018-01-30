@@ -5,6 +5,9 @@ import {
   FETCH_ATTENDANCES_START,
   FETCH_ATTENDANCES_SUCCESS,
   FETCH_ATTENDANCES_ERROR,
+  FETCH_PROFILE_START,
+  FETCH_PROFILE_SUCCESS,
+  FETCH_PROFILE_ERROR,
 } from './types';
 
 export function postAttendanceStart() {
@@ -29,4 +32,16 @@ export function fetchAttendancesSuccess(data) {
 
 export function fetchAttendancesError(error) {
   return { type: FETCH_ATTENDANCES_ERROR, error };
+}
+
+export function fetchProfileStart() {
+  return { type: FETCH_PROFILE_START };
+}
+
+export function fetchProfileSuccess(data) {
+  return { type: FETCH_PROFILE_SUCCESS, data };
+}
+
+export function fetchProfileError(error) {
+  return { type: FETCH_PROFILE_ERROR, error };
 }

@@ -1,0 +1,56 @@
+.Profile {
+  display: grid;
+  grid-template-columns: auto minmax(min-content, 1fr);
+  grid-template-rows: auto minmax(min-content, 1fr) auto;
+
+  &__SideBar {
+    grid-column: 1;
+    grid-row: 2;
+    background-color: #f0f0f2;
+    padding: 5px 10px;
+  }
+
+  &__Content {
+    grid-column: 2;
+    grid-row: 2;
+    align-self: start;
+    margin-left: 18px;
+    box-shadow: none;
+    border: none;
+  }
+}
+
+.PersonalInformation {
+
+  &__NestedList {
+    background: #fafafa;
+    padding: 1em 1em 0.5em;
+    margin-left: -1em;
+    margin-bottom: 1em;
+    position: relative;
+
+    &__Info {
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: 0.5em 1em;
+      background: #ededed;
+      color: #6b6b6b;
+      border-bottom-left-radius: 5px;
+    }
+  }
+
+  &__ListItem, &__NestedListItem {
+    font-size: 1.05em;
+    margin-bottom: 0.5em;
+    label {
+      font-weight: bold;
+      margin-right: 0.5em;
+    }    
+  }
+
+  &__Buttons {
+    margin-top: 1em;
+    float: right;
+  }
+}
