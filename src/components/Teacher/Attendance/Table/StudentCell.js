@@ -3,7 +3,7 @@ import moment from 'moment';
 import { Table, Checkbox } from 'semantic-ui-react';
 
 import classNames from '../../../../utils/classNames';
-import { isToday, diffToday } from '../../../../functions/dateHelpers';
+import { isToday } from '../../../../functions/dateHelpers';
 
 const StudentCell = ({ attendance, lesson, submit, showModal }) => {
   const isPresent = attendance && attendance.isPresent === true;
@@ -14,16 +14,14 @@ const StudentCell = ({ attendance, lesson, submit, showModal }) => {
       key={attendance.id}
       className={classNames(isToday(moment(lesson.start)) && 'Attendance__HeaderCell__Today')}
     >
-      {diffToday(moment(lesson.start)) <= 0 && (
-        <div
-          className={classNames(
-            'Attendance__Icon',
-            isPresent ? 'Attendance__IconPresent' : 'Attendance__IconNotPresent',
-          )}
-        >
-          <Checkbox checked={isPresent} defaultChecked={isPresent} />
-        </div>
-      )}
+      <div
+        className={classNames(
+          'Attendance__Icon',
+          isPresent ? 'Attendance__IconPresent' : 'Attendance__IconNotPresent'
+        )}
+      >
+        <Checkbox checked={isPresent} defaultChecked={isPresent} />
+      </div>
     </Table.Cell>
   );
 };
