@@ -3,7 +3,11 @@ import mapToAttendances from './mappers/mapToAttendances';
 
 class UserAdministrationApi {
   static getUserInformation(token) {
-    return api.get('/useradministration/getUserInformation', { headers: { 'x-token': token }});
+    let headers = {};
+    if (token) {
+      headers = { 'x-token': token };
+    }
+    return api.get('/useradministration/getUserInformation', { headers });
   }
 
   static getAttendanceForCourse(courseId) {

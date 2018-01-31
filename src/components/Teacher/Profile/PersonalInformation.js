@@ -1,12 +1,12 @@
 import React from 'react';
 import isEmpty from 'lodash/isEmpty';
-import { Segment, Button, Form } from 'semantic-ui-react';
+import { Segment, Button, Form, Label } from 'semantic-ui-react';
 
 class PersonalInformation extends React.Component {
   constructor() {
     super();
     this.state = {
-      isEditing: false
+      isEditing: false,
     };
 
     this.toggleEditing = this.toggleEditing.bind(this);
@@ -57,11 +57,11 @@ class PersonalInformation extends React.Component {
         <div className="PersonalInformation__List">
           <div className="PersonalInformation__ListItem">
             <label>Voornaam</label>
-            <span>{data.firstName}</span>
+            <span>{data.firstname}</span>
           </div>
           <div className="PersonalInformation__ListItem">
             <label>Familienaam</label>
-            <span>{data.lastName}</span>
+            <span>{data.lastname}</span>
           </div>
           <div className="PersonalInformation__ListItem">
             <label>Email</label>
@@ -84,19 +84,36 @@ class PersonalInformation extends React.Component {
             <span>{data.profession}</span>
           </div>
 
-          {!isEmpty(data.bankAccount) && (
-            <div className="PersonalInformation__NestedList">
-              <span className="PersonalInformation__NestedList__Info">Bank account</span>
-              <div className="PersonalInformation__NestedListItem">
-                <label>Rekeningnummer</label>
-                <span>{data.bankAccount.accountNumber}</span>
-              </div>
-              <div className="PersonalInformation__NestedListItem">
-                <label>geen VAT</label>
-                <span>{data.bankAccount.exemptVat}</span>
-              </div>
-            </div>
-          )}
+          {!loading &&
+            data.bankAccounts.map(bankAccount => {
+              if (!isEmpty(bankAccount)) {
+                return (
+                  <div className="PersonalInformation__NestedList">
+                    <span className="PersonalInformation__NestedList__Info">Bank account</span>
+                    <div className="PersonalInformation__NestedListItem">
+                      <label>Rekeningnummer</label>
+                      <span>{bankAccount.accountNumber}</span>
+                    </div>
+                    <div className="PersonalInformation__NestedListItem">
+                      <label>Startdatum</label>
+                      <span>{bankAccount.startDate}</span>
+                    </div>
+                    <div className="PersonalInformation__NestedListItem">
+                      <label>Einddatum</label>
+                      <span>{bankAccount.endDate}</span>
+                    </div>
+                    {bankAccount.exemptFromVat && (
+                      <div className="PersonalInformation__NestedListItem">
+                        <Label as="a" basic>
+                          NIET BTW VERPLICHT
+                        </Label>
+                      </div>
+                    )}
+                  </div>
+                );
+              }
+              return null;
+            })}
 
           {!isEmpty(data.address) && (
             <div className="PersonalInformation__NestedList">
