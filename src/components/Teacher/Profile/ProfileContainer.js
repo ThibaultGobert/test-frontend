@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import Profile from './Profile';
 import ErrorMessage from '../../shared/ErrorMessage';
-import userAdministrationApi from '../../../api/mocks/mockUserAdministration';
+import userAdministrationApi from '../../../api/userAdministration';
 
 class ProfileContainer extends Component {
   componentDidMount() {
@@ -10,7 +10,7 @@ class ProfileContainer extends Component {
 
     fetchProfileStart();
     userAdministrationApi
-      .getPersonalInformation()
+      .getUserInformation()
       .then(data => {
         fetchProfileSuccess(data);
       })
@@ -28,7 +28,7 @@ class ProfileContainer extends Component {
     return (
       <div className="ProfileContainer">
         <h1>Jouw Profiel</h1>
-        <p>Bekijk hier jouw persoonlijke gegevens, hou deze gegevens up-to-date</p>              
+        <p>Bekijk hier jouw persoonlijke gegevens, hou deze gegevens up-to-date</p>
         <Profile {...this.props} />
       </div>
     );
