@@ -5,7 +5,7 @@ const Contract = () => {
   return (
     <Message
       header="Download hier je contract"
-      content="Van zodra je contract klaar is, kan je hem hier downloaden."
+      content="Van zodra je contract klaar is, kan je het hier downloaden, tekenen en uploaden."
     />
   );
 };

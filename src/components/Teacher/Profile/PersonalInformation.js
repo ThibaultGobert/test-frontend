@@ -69,6 +69,10 @@ class PersonalInformation extends React.Component {
           </div>
           <div className="PersonalInformation__ListItem">
             <label>GSM</label>
+            <span>{data.cell}</span>
+          </div>
+          <div className="PersonalInformation__ListItem">
+            <label>Tel</label>
             <span>{data.phone}</span>
           </div>
           <div className="PersonalInformation__ListItem">
@@ -141,16 +145,12 @@ class PersonalInformation extends React.Component {
             <div className="PersonalInformation__NestedList">
               <span className="PersonalInformation__NestedList__Info">Facturatieadres</span>
               <div className="PersonalInformation__NestedListItem">
-                <label>Straat en straatnummer</label>
+                <label>Straat</label>
                 <span>{data.invoiceAddress.street}</span>
               </div>
               <div className="PersonalInformation__NestedListItem">
-                <label>Stad</label>
-                <span>{data.invoiceAddress.city}</span>
-              </div>
-              <div className="PersonalInformation__NestedListItem">
-                <label>Postcode</label>
-                <span>{data.invoiceAddress.postalcode}</span>
+                <label>Plaats</label>
+                <span>{data.invoiceAddress.postalcode} {data.invoiceAddress.city}</span>
               </div>
               <div className="PersonalInformation__NestedListItem">
                 <label>Provincie</label>
