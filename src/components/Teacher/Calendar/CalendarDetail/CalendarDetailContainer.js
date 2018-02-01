@@ -47,7 +47,7 @@ class CalendarDetailContainer extends React.Component {
     const hasLessonContent = !_.isEmpty(contentUrl);
 
     if (lessonContentLoading) {
-      return <Loader active />;
+      return null;
     }
 
     return (
