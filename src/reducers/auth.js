@@ -42,6 +42,7 @@ function authReducer(state = initialState.loggedIn, action) {
 
     case LOGOUT: {
       removeUser();
+      window.location = '/';
       return state;
     }
 

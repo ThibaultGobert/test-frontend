@@ -1,12 +1,11 @@
 import axios from 'axios';
 import merge from 'lodash/merge';
-import { sumoUrl as url } from './baseUrl';
+import { appServiceUrl as url } from './baseUrl';
 
 export default (endpoint, { headers = {}, body, ...otherOptions }, method) => {
   let allHeaders = {
     'Content-Type': 'application/json',
-    'Access-Control-Allow-Origin': '*',
-    Authorization: 'Token token=nS4riFujBdhsQPQGEU4BCwrNUd8KQKPX7F17ZhSLTsoZnA3i4ZQiMwzn87nbmNXvCP19'
+    'Authorization': 'Token token=nS4riFujBdhsQPQGEU4BCwrNUd8KQKPX7F17ZhSLTsoZnA3i4ZQiMwzn87nbmNXvCP19'
   };
   allHeaders = merge(allHeaders, headers);
 

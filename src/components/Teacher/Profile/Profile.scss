@@ -46,11 +46,21 @@
     label {
       font-weight: bold;
       margin-right: 0.5em;
-    }    
+    }
   }
 
   &__Buttons {
     margin-top: 1em;
     float: right;
+  }
+
+  &__ResetPassword {
+    margin-left: -1em;
+    margin-top: 2em !important;
+    padding: 0 !important;
+
+    &__Header {
+      display: inline-block;
+    }
   }
 }

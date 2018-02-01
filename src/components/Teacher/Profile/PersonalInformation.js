@@ -1,6 +1,8 @@
 import React from 'react';
 import isEmpty from 'lodash/isEmpty';
-import { Segment, Button, Form, Label } from 'semantic-ui-react';
+import authApi from '../../../api/auth';
+import { Segment, Button, Form, Label, Header } from 'semantic-ui-react';
+import { debug } from 'util';
 
 class PersonalInformation extends React.Component {
   constructor() {
@@ -10,11 +12,17 @@ class PersonalInformation extends React.Component {
     };
 
     this.toggleEditing = this.toggleEditing.bind(this);
+    this.resetPassword = this.resetPassword.bind(this);
   }
 
   toggleEditing() {
     const { isEditing } = this.state;
     this.setState({ isEditing: !isEditing });
+  }
+
+  resetPassword() {
+    const { logOut } = this.props.actions;
+    authApi.resetPassword().then(logOut);
   }
 
   render() {
@@ -128,7 +136,9 @@ class PersonalInformation extends React.Component {
               </div>
               <div className="PersonalInformation__NestedListItem">
                 <label>Plaats</label>
-                <span>{data.address.postalcode} {data.address.city}</span>
+                <span>
+                  {data.address.postalcode} {data.address.city}
+                </span>
               </div>
               <div className="PersonalInformation__NestedListItem">
                 <label>Provincie</label>
@@ -146,7 +156,9 @@ class PersonalInformation extends React.Component {
               </div>
               <div className="PersonalInformation__NestedListItem">
                 <label>Plaats</label>
-                <span>{data.invoiceAddress.postalcode} {data.invoiceAddress.city}</span>
+                <span>
+                  {data.invoiceAddress.postalcode} {data.invoiceAddress.city}
+                </span>
               </div>
               <div className="PersonalInformation__NestedListItem">
                 <label>Provincie</label>
@@ -154,6 +166,16 @@ class PersonalInformation extends React.Component {
               </div>
             </div>
           )}
+          <Segment className="PersonalInformation__ResetPassword" clearing basic>
+            <Header as="h3" className="PersonalInformation__ResetPassword__Header">
+              Reset paswoord
+              <Header.Subheader>
+                Er wordt een email verstuurd met daarin instructies <br /> voor het resetten van uw paswoord. Je wordt onmiddellijk uitgelogd.
+              </Header.Subheader>
+            </Header>
+
+            <Button floated="right" onClick={this.resetPassword}>Reset paswoord</Button>
+          </Segment>
         </div>
       </Segment>
     );

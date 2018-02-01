@@ -1,13 +1,14 @@
 import * as roles from '../../constants/roles';
 import userAdministrationApi from '../userAdministration';
 
-export default (data) => {
+export default (data, username) => {
+  const mappedData = data;
   if (data.role === roles.STUDENT_ROLE) {
     return userAdministrationApi.getUserInformation(data.token).then(userInfo => {
-      data.isVersion2 = userInfo.isVersion2;
-      return data;
+      mappedData.isVersion2 = userInfo.isVersion2;
+      return mappedData;
     });
   }
-
-  return data;
+  mappedData.username = username;
+  return mappedData;
 };

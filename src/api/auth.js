@@ -1,5 +1,7 @@
-import api from './api/lpfApi';
+import lpfApi from './api/lpfApi';
+import appServiceApi from './api/appServiceApi';
 import mapToUser from './mappers/mapToUser';
+import { getUser } from './storage';
 
 class AuthApi {
   static login(credentials) {
@@ -14,16 +16,18 @@ class AuthApi {
           'x-password': credentials.password
         };
 
-    return api
+    return lpfApi
       .get('/usersession/authUser', { headers })
-      .then(mapToUser)
+      .then(data => {
+        return mapToUser(data, credentials.username);
+      })
       .catch(error => {
         if (error.code === 'ECONNABORTED') {
           throw new Error('Timeout error');
         }
 
         // When the can't connect to the API we will get no response.
-        if(!error || !error.response || !error.response.data) {
+        if (!error || !error.response || !error.response.data) {
           throw new Error('Er is een onverwachte fout opgetreden');
         }
 
@@ -35,6 +39,11 @@ class AuthApi {
 
         throw error;
       });
+  }
+
+  static resetPassword() {
+    const user = getUser();
+    return lpfApi.post(`/users/${user.username}/resetpassword`);
   }
 }
 
