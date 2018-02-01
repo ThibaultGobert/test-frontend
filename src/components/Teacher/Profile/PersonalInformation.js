@@ -1,8 +1,8 @@
 import React from 'react';
+import { Segment, Button, Form, Label, Header } from 'semantic-ui-react';
 import isEmpty from 'lodash/isEmpty';
 import authApi from '../../../api/auth';
-import { Segment, Button, Form, Label, Header } from 'semantic-ui-react';
-import { debug } from 'util';
+import Loader from '../../shared/Loader';
 
 class PersonalInformation extends React.Component {
   constructor() {
@@ -60,8 +60,12 @@ class PersonalInformation extends React.Component {
       );
     }
 
+    if (loading) {
+      return (<Loader active />);
+    }
+
     return (
-      <Segment className="PersonalInformation" basic loading={loading}>
+      <Segment className="PersonalInformation" basic>
         <div className="PersonalInformation__List">
           <div className="PersonalInformation__ListItem">
             <label>Voornaam</label>

@@ -21,7 +21,7 @@ class ProfileContainer extends Component {
 
   render() {
     const { personalInformation } = this.props;
-    if (personalInformation.error) {
+    if (personalInformation && personalInformation.hasError) {
       return <ErrorMessage message="Fout bij inladen van de profiel informatie" />;
     }
 
