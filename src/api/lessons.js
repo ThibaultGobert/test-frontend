@@ -1,4 +1,4 @@
-import api from './api';
+import api from './api/lpfApi';
 import mapToLessons from './mappers/mapToLessons';
 
 class LessonApi {

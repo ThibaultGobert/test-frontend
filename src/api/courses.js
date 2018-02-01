@@ -1,4 +1,4 @@
-import api from './api';
+import api from './api/lpfApi';
 import mapToCourses from './mappers/mapToCourses';
 import mapToClassList from './mappers/mapToClassList';
 
