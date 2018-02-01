@@ -6,7 +6,7 @@ import { getUser } from './../storage';
 export default (endpoint, { headers = {}, body, ...otherOptions }, method) => {
   let allHeaders = {
     'Content-Type': 'application/json',
-    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Origin': '*'
   };
   if (getUser() !== null) {
     allHeaders['x-token'] = getUser().token;
@@ -19,5 +19,10 @@ export default (endpoint, { headers = {}, body, ...otherOptions }, method) => {
     timeout: 5000,
     data: body ? JSON.stringify(body) : undefined,
     method,
-  }).then(response => response.data);
+  }).then(response => {
+    if (!response.data) {
+      throw new Error('API returned null');
+    }
+    return response.data;
+  });
 };
