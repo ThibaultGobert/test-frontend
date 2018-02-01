@@ -7,6 +7,7 @@ import {
   fetchProfileSuccess,
   fetchProfileError,
 } from '../../../actions/userAdministration';
+import { logOut } from '../../../actions/auth';
 
 import ProfileContainer from './ProfileContainer';
 
@@ -21,6 +22,7 @@ const actionCreators = mapActionCreatorsToProps({
   fetchProfileStart,
   fetchProfileSuccess,
   fetchProfileError,
+  logOut,
 });
 
 export default withRouter(connect(mapStateToProps, actionCreators)(ProfileContainer));
