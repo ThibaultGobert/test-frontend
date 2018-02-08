@@ -6,3 +6,4 @@ export * from './userAdministration';
 export * from './application';
 export * from './slides';
 export * from './notes';
+export * from './locations';
