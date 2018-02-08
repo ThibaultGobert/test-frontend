@@ -5,10 +5,10 @@ class InfoPage extends React.Component {
     return (
       <div className="info-page">
         <h1>Hoe rapporteer je een bug?</h1>
-        <p>Als het gaat om technische problemen, mail dan naar Ingrid (<a href="mailto:ingrid@codefever.be">ingrid@codefever</a>)</p>
+        <p>Als het gaat om technische problemen, mail dan naar Ingrid (<a href="mailto:ingrid@codefever.be">ingrid@codefever.be</a>)</p>
         <p>
-          Bij inhoudelijke fouten mail je naar Fien (<a href="mailto:fien@codefever.be">fien@codefever</a>)
-          EN Jonathan (<a href="mailto:jonathan@codefever.be">jonathan@codefever</a>). Hier
+          Bij inhoudelijke fouten mail je naar Fien (<a href="mailto:fien@codefever.be">fien@codefever.be</a>)
+          EN Jonathan (<a href="mailto:jonathan@codefever.be">jonathan@codefever.be</a>). Hier
           wordt gevraagd om maximaal 1 mail te sturen per les. Dus bijvoorbeeld verschillende
           problemen ivm les B1.2 bundelen in 1 mail.
         </p>
@@ -94,10 +94,11 @@ class InfoPage extends React.Component {
         </p>
 
         <h1>Wat bij problemen</h1>
+        <p>Controleer eerst of het probleem al gemeld is in de facebook groep CodeFever team.</p>
         <h2>Niet dringend</h2>
         <p>
           Mail sturen naar <a href="mailto:kim@codefever.be">kim@codefever.be</a> met
-          <a href="mailto:kristien@codefever.be"> kristien@codefever</a> in CC
+          <a href="mailto:kristien@codefever.be"> kristien@codefever.be</a> in CC
         </p>
         <h2>Dringend</h2>
         <ul>
