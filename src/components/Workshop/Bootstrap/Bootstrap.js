@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import lessonApi from '../../../api/lessons';
-import Loader from "../../shared/Loader";
+import Loader from '../../shared/FullScreenLoader';
 import * as lessonTypes from '../../../constants/lessonTypes';
 import * as slideTypes from '../../../constants/slideTypes';
 
@@ -13,7 +13,7 @@ class Bootstrap extends Component {
   }
 
   render() {
-    return <Loader active/>;
+    return <Loader active />;
   }
 }
 

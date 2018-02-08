@@ -1,20 +1,28 @@
 import React from 'react';
+import { Segment, Button, Form, Label, Header } from 'semantic-ui-react';
 import isEmpty from 'lodash/isEmpty';
-import { Segment, Button, Form } from 'semantic-ui-react';
+import authApi from '../../../api/auth';
+import Loader from '../../shared/Loader';
 
 class PersonalInformation extends React.Component {
   constructor() {
     super();
     this.state = {
-      isEditing: false
+      isEditing: false,
     };
 
     this.toggleEditing = this.toggleEditing.bind(this);
+    this.resetPassword = this.resetPassword.bind(this);
   }
 
   toggleEditing() {
     const { isEditing } = this.state;
     this.setState({ isEditing: !isEditing });
+  }
+
+  resetPassword() {
+    const { logOut } = this.props.actions;
+    authApi.resetPassword().then(logOut);
   }
 
   render() {
@@ -52,16 +60,20 @@ class PersonalInformation extends React.Component {
       );
     }
 
+    if (loading) {
+      return (<Loader active />);
+    }
+
     return (
-      <Segment className="PersonalInformation" basic loading={loading}>
+      <Segment className="PersonalInformation" basic>
         <div className="PersonalInformation__List">
           <div className="PersonalInformation__ListItem">
             <label>Voornaam</label>
-            <span>{data.firstName}</span>
+            <span>{data.firstname}</span>
           </div>
           <div className="PersonalInformation__ListItem">
             <label>Familienaam</label>
-            <span>{data.lastName}</span>
+            <span>{data.lastname}</span>
           </div>
           <div className="PersonalInformation__ListItem">
             <label>Email</label>
@@ -69,6 +81,10 @@ class PersonalInformation extends React.Component {
           </div>
           <div className="PersonalInformation__ListItem">
             <label>GSM</label>
+            <span>{data.cellphone}</span>
+          </div>
+          <div className="PersonalInformation__ListItem">
+            <label>Tel</label>
             <span>{data.phone}</span>
           </div>
           <div className="PersonalInformation__ListItem">
@@ -84,34 +100,49 @@ class PersonalInformation extends React.Component {
             <span>{data.profession}</span>
           </div>
 
-          {!isEmpty(data.bankAccount) && (
-            <div className="PersonalInformation__NestedList">
-              <span className="PersonalInformation__NestedList__Info">Bank account</span>
-              <div className="PersonalInformation__NestedListItem">
-                <label>Rekeningnummer</label>
-                <span>{data.bankAccount.accountNumber}</span>
-              </div>
-              <div className="PersonalInformation__NestedListItem">
-                <label>geen VAT</label>
-                <span>{data.bankAccount.exemptVat}</span>
-              </div>
-            </div>
-          )}
+          {!loading &&
+            data.bankAccounts.map(bankAccount => {
+              if (!isEmpty(bankAccount)) {
+                return (
+                  <div className="PersonalInformation__NestedList">
+                    <span className="PersonalInformation__NestedList__Info">Bank account</span>
+                    <div className="PersonalInformation__NestedListItem">
+                      <label>Rekeningnummer</label>
+                      <span>{bankAccount.accountNumber}</span>
+                    </div>
+                    <div className="PersonalInformation__NestedListItem">
+                      <label>Startdatum</label>
+                      <span>{bankAccount.startDate}</span>
+                    </div>
+                    <div className="PersonalInformation__NestedListItem">
+                      <label>Einddatum</label>
+                      <span>{bankAccount.endDate}</span>
+                    </div>
+                    {bankAccount.exemptFromVat && (
+                      <div className="PersonalInformation__NestedListItem">
+                        <Label as="a" basic>
+                          NIET BTW VERPLICHT
+                        </Label>
+                      </div>
+                    )}
+                  </div>
+                );
+              }
+              return null;
+            })}
 
           {!isEmpty(data.address) && (
             <div className="PersonalInformation__NestedList">
               <span className="PersonalInformation__NestedList__Info">Adres</span>
               <div className="PersonalInformation__NestedListItem">
-                <label>Straat en straatnummer</label>
+                <label>Straat</label>
                 <span>{data.address.street}</span>
               </div>
               <div className="PersonalInformation__NestedListItem">
-                <label>Stad</label>
-                <span>{data.address.city}</span>
-              </div>
-              <div className="PersonalInformation__NestedListItem">
-                <label>Postcode</label>
-                <span>{data.address.postalcode}</span>
+                <label>Plaats</label>
+                <span>
+                  {data.address.postalcode} {data.address.city}
+                </span>
               </div>
               <div className="PersonalInformation__NestedListItem">
                 <label>Provincie</label>
@@ -124,16 +155,14 @@ class PersonalInformation extends React.Component {
             <div className="PersonalInformation__NestedList">
               <span className="PersonalInformation__NestedList__Info">Facturatieadres</span>
               <div className="PersonalInformation__NestedListItem">
-                <label>Straat en straatnummer</label>
+                <label>Straat</label>
                 <span>{data.invoiceAddress.street}</span>
               </div>
               <div className="PersonalInformation__NestedListItem">
-                <label>Stad</label>
-                <span>{data.invoiceAddress.city}</span>
-              </div>
-              <div className="PersonalInformation__NestedListItem">
-                <label>Postcode</label>
-                <span>{data.invoiceAddress.postalcode}</span>
+                <label>Plaats</label>
+                <span>
+                  {data.invoiceAddress.postalcode} {data.invoiceAddress.city}
+                </span>
               </div>
               <div className="PersonalInformation__NestedListItem">
                 <label>Provincie</label>
@@ -141,6 +170,16 @@ class PersonalInformation extends React.Component {
               </div>
             </div>
           )}
+          <Segment className="PersonalInformation__ResetPassword" clearing basic>
+            <Header as="h3" className="PersonalInformation__ResetPassword__Header">
+              Reset paswoord
+              <Header.Subheader>
+                Er wordt een email verstuurd met daarin instructies <br /> voor het resetten van uw paswoord. Je wordt onmiddellijk uitgelogd.
+              </Header.Subheader>
+            </Header>
+
+            <Button floated="right" onClick={this.resetPassword}>Reset paswoord</Button>
+          </Segment>
         </div>
       </Segment>
     );

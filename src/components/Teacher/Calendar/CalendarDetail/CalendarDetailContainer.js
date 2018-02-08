@@ -3,7 +3,6 @@ import _ from 'lodash';
 
 import lessonApi from '../../../../api/lessons';
 import CalendarDetail from './CalendarDetail';
-import Loader from '../../../shared/Loader';
 
 class CalendarDetailContainer extends React.Component {
   constructor(props) {
@@ -47,7 +46,7 @@ class CalendarDetailContainer extends React.Component {
     const hasLessonContent = !_.isEmpty(contentUrl);
 
     if (lessonContentLoading) {
-      return <Loader active />;
+      return null;
     }
 
     return (

@@ -10,6 +10,7 @@ export default {
       data: {},
       loading: true,
       hasError: false,
+      error: null,
     },
   },
   courses: {

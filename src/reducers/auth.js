@@ -15,7 +15,7 @@ import { setUser, removeUser } from '../api/storage';
 function authReducer(state = initialState.loggedIn, action) {
   switch (action.type) {
     case LOGIN_START:
-      return { ...state, loading: true };
+      return merge(state, { data: {}, loading: true });
 
     case LOGIN_SUCCES: {
       setUser(action.user);
@@ -23,7 +23,7 @@ function authReducer(state = initialState.loggedIn, action) {
     }
 
     case LOGIN_ERROR:
-      return { data: {}, error: action.error, loading: false };
+      return merge(state, { data: {}, error: action.error, loading: false });
 
     case FETCH_PROFILE_START:
       return merge({}, state, {
@@ -42,6 +42,7 @@ function authReducer(state = initialState.loggedIn, action) {
 
     case LOGOUT: {
       removeUser();
+      window.location = '/';
       return state;
     }
 

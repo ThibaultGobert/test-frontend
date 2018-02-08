@@ -4,7 +4,7 @@ import { Form, Input, Icon } from 'semantic-ui-react';
 import Header from '../shared/headers/LoginHeader';
 
 import CodeTag from './CodeTag';
-import Loader from '../shared/Loader';
+import Loader from '../shared/FullScreenLoader';
 import ErrorMessage from '../shared/ErrorMessage';
 
 import './Login.css';

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import courseApi from '../../../api/courses';
-import Loader from "../../shared/Loader";
+import Loader from '../../shared/FullScreenLoader';
 
 class Bootstrap extends Component {
   componentDidMount() {

@@ -31,7 +31,7 @@ const CalendarDetail = ({
   }
 
   return (
-    <Modal className="CalendarDetail" open={isOpen} closeIcon onClose={onClose}>
+    <Modal className="CalendarDetail" open={isOpen} closeIcon onClose={onClose} >
       <Modal.Header>
         {' '}
         {event.name} - {new Date(event.start).toLocaleDateString()}

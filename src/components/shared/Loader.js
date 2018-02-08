@@ -1,17 +1,13 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { Dimmer, Loader as SemanticLoader } from 'semantic-ui-react';
+import { Loader as SemanticLoader } from 'semantic-ui-react';
+import './Loader.css';
 
-const Loader = ({active = false, message = 'Laden...' }) => {
-    return(
-      <Dimmer active={active}>
-        <SemanticLoader size="medium">{message}</SemanticLoader>
-      </Dimmer>
-    );
-};
-
-Loader.propTypes = {
-  active: PropTypes.bool
+const Loader = ({ active = true, message = '' }) => {
+  return (
+    <div className="Loader">
+      <SemanticLoader size="medium" inline="centered" active={active}>{message}</SemanticLoader>
+    </div>
+  );
 };
 
 export default Loader;

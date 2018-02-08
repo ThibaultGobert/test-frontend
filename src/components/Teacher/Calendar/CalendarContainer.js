@@ -21,7 +21,6 @@ class CalendarContainer extends Component {
   render() {
     const { error, loading, lessons } = this.props;
     const { calendarDetailOpen, event } = this.state;
-
     if (loading) {
       return <Loader active />;
     }

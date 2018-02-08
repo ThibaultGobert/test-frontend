@@ -54,7 +54,7 @@ class ClassGroups extends React.Component {
 
   render() {
     const headerFields = ['Naam', 'Type', 'Clan', 'Level', 'Locatie'];
-
+    const { courses } = this.props;
     return (
       <div className="container">
         <h1>Klasgroepen</h1>
@@ -66,11 +66,18 @@ class ClassGroups extends React.Component {
             voor de start van lesreeks. We weten dat dit niet ideaal is en vragen je begrip!
           </p>
         </Message>
-        <Accordion
-          panels={this.mapToPanels()}
-          headerFields={headerFields}
-          renderContent={this.renderContent}
-        />
+        {courses.length > 0 && (
+          <Accordion
+            panels={this.mapToPanels()}
+            headerFields={headerFields}
+            renderContent={this.renderContent}
+          />
+        )}
+        {courses.length === 0 && (
+          <Message>
+            U bent nog niet ingepland
+          </Message>
+        )}
       </div>
     );
   }

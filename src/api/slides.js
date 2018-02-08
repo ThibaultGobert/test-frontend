@@ -1,4 +1,4 @@
-import api from './api';
+import api from './api/lpfApi';
 import mapToLessonSlides from './mappers/mapToLessonSlides';
 
 class SlidesApi {
