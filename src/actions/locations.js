@@ -12,6 +12,6 @@ export function fetchLocationSuccess(data) {
   return { type: FETCH_LOCATION_SUCCESS, data };
 }
 
-export function fetchLessonsError(error) {
+export function fetchLocationError(error) {
   return { type: FETCH_LOCATION_ERROR, error };
 }
