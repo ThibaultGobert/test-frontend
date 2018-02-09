@@ -3,7 +3,10 @@ import { schema } from 'normalizr';
 export const student = new schema.Entity('students');
 export const teacher = new schema.Entity('teachers');
 export const attendance = new schema.Entity('attendances');
-export const location = new schema.Entity('locations');
+
+export const location = new schema.Entity('locations', {
+  teachers: [teacher],
+});
 export const slide = new schema.Entity('slides');
 export const classList = [student];
 export const note = new schema.Entity('notes');

@@ -35,8 +35,12 @@ const ClassGroupContent = ({ content }) => {
           <Segment vertical>
             <h3>Locatie</h3>
             <p>
-              <strong>Organisatie</strong> {content.location.organisation}
+              <strong>Organisatie </strong>
+              <Link to={`/teacherprofile/locations/${content.location.id}`}>
+                {content.location.organisation}
+              </Link>
             </p>
+
             <p>
               <strong>Adres</strong> {content.location.address}
             </p>

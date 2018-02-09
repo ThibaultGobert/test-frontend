@@ -42,6 +42,7 @@ class ClassGroups extends React.Component {
             organisation: location.organisation,
             room: location.roomname,
             roomremark: location.roomremark,
+            id: location.id,
           },
         },
       };
