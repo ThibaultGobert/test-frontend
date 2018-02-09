@@ -1,6 +1,7 @@
 import React from 'react';
-import locationApi from '../../../api/locations';
+import locationApi from '../../../api/mocks/mockLocations';
 import Location from './Location';
+import Loader from '../../shared/Loader';
 
 class LocationsContainer extends React.Component {
   componentDidMount() {
@@ -15,7 +16,11 @@ class LocationsContainer extends React.Component {
   }
 
   render() {
-    return <Location {...this.props} />;
+    const { location, loading } = this.props;
+    if (loading) {
+      return <Loader active />;
+    }
+    return <Location location={location} {...this.props} />;
   }
 }
 
