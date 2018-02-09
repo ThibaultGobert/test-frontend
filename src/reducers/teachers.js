@@ -1,7 +1,6 @@
+import merge from 'lodash/merge';
 import * as types from '../actions/types';
 import initialState from './initialState';
-import merge from 'lodash/merge';
-import { X_OK } from 'constants';
 
 export default function teachersReducer(state = initialState.teachers, action) {
   switch (action.type) {
