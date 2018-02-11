@@ -61,7 +61,7 @@ class PersonalInformation extends React.Component {
     }
 
     if (loading) {
-      return (<Loader active />);
+      return <Loader active />;
     }
 
     return (
@@ -69,11 +69,11 @@ class PersonalInformation extends React.Component {
         <div className="PersonalInformation__List">
           <div className="PersonalInformation__ListItem">
             <label>Voornaam</label>
-            <span>{data.firstname}</span>
+            <span>{data.firstName}</span>
           </div>
           <div className="PersonalInformation__ListItem">
             <label>Familienaam</label>
-            <span>{data.lastname}</span>
+            <span>{data.lastName}</span>
           </div>
           <div className="PersonalInformation__ListItem">
             <label>Email</label>
@@ -81,7 +81,7 @@ class PersonalInformation extends React.Component {
           </div>
           <div className="PersonalInformation__ListItem">
             <label>GSM</label>
-            <span>{data.cellphone}</span>
+            <span>{data.cell}</span>
           </div>
           <div className="PersonalInformation__ListItem">
             <label>Tel</label>
@@ -89,7 +89,7 @@ class PersonalInformation extends React.Component {
           </div>
           <div className="PersonalInformation__ListItem">
             <label>Rijksregisternr.</label>
-            <span>{data.rrnr}</span>
+            <span>{data.registrationNumber}</span>
           </div>
           <div className="PersonalInformation__ListItem">
             <label>Statuut</label>
@@ -174,11 +174,15 @@ class PersonalInformation extends React.Component {
             <Header as="h3" className="PersonalInformation__ResetPassword__Header">
               Reset paswoord
               <Header.Subheader>
-                Er wordt een email verstuurd met daarin instructies <br /> voor het resetten van uw paswoord. Je wordt onmiddellijk uitgelogd.
+                {' '}
+                Er wordt een email verstuurd met daarin instructies <br /> voor het resetten van uw
+                paswoord. Je wordt onmiddellijk uitgelogd.
               </Header.Subheader>
             </Header>
 
-            <Button floated="right" onClick={this.resetPassword}>Reset paswoord</Button>
+            <Button floated="right" onClick={this.resetPassword}>
+              Reset paswoord
+            </Button>
           </Segment>
         </div>
       </Segment>
