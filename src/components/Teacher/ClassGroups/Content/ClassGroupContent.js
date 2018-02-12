@@ -31,9 +31,7 @@ const ClassGroupContent = ({ content }) => {
             <h3>Locatie</h3>
             <p>
               <strong>Organisatie </strong>
-              <Link to={`/teacherprofile/locations/${content.location.id}`}>
-                {content.location.organisation}
-              </Link>
+              {content.location.organisation}
             </p>
             <p>
               <strong>Lokaal</strong> {content.location.room}
