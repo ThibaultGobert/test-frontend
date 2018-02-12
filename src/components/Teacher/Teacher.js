@@ -10,6 +10,7 @@ import ClassList from './ClassList';
 import Attendance from './Attendance';
 import InfoPage from './InfoPage';
 import Profile from './Profile';
+import Location from './Location';
 
 const Teacher = ({ isBootstrapped, user }) => {
   if (!isBootstrapped) {
@@ -26,6 +27,7 @@ const Teacher = ({ isBootstrapped, user }) => {
           <Route path="/teacherprofile/classlist/:id" component={ClassList} />
           <Route path="/teacherprofile/feedback/:id" component={Attendance} />
           <Route path="/teacherprofile/profile" component={Profile} />
+          <Route path="/teacherprofile/locations/:id" component={Location} />
           <Route path="/teacherprofile/info" component={InfoPage} />
         </Switch>
       </div>

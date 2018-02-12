@@ -13,8 +13,10 @@ class ClassGroups extends React.Component {
     const { locations, teachers, courses } = this.props;
 
     return courses.map(course => {
-      const headTeacher = teachers[course.headTeacher];
       const assistants = course.assistants.map(userId => {
+        return teachers[userId];
+      });
+      const headTeacher = course.headTeacher.map(userId => {
         return teachers[userId];
       });
       const location = locations[course.location];
@@ -29,12 +31,7 @@ class ClassGroups extends React.Component {
         },
         content: {
           id: course.id,
-          headteacher: {
-            name: `${headTeacher.firstname} ${headTeacher.lastname}`,
-            email: headTeacher.email,
-            phone: headTeacher.phone,
-            cellphone: headTeacher.cellphone,
-          },
+          headTeacher,
           assistants,
           location: {
             address: location.address,
@@ -42,6 +39,7 @@ class ClassGroups extends React.Component {
             organisation: location.organisation,
             room: location.roomname,
             roomremark: location.roomremark,
+            id: location.id,
           },
         },
       };
