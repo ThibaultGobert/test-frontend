@@ -14,16 +14,12 @@ const ClassGroupContent = ({ content }) => {
     <Grid className="class-group-details">
       <Grid.Row className="full-width">
         <Grid.Column width={8}>
-          <Segment vertical>
-            <h3>Hoofdlesgever</h3>
-            <Grid>
-              <Grid.Row>
-                <Grid.Column width={5}>{content.headteacher.name}</Grid.Column>
-                <Grid.Column width={7}>{content.headteacher.email}</Grid.Column>
-                <Grid.Column width={4}>{content.headteacher.cellphone}</Grid.Column>
-              </Grid.Row>
-            </Grid>
-          </Segment>
+          {!_.isEmpty(content.headTeacher) && (
+            <Segment vertical>
+              <h3>Hoofdlesgever</h3>
+              <ContactList contacts={content.headTeacher} />
+            </Segment>
+          )}
           {!_.isEmpty(content.assistants) && (
             <Segment vertical>
               <h3>Assistent-lesgevers</h3>
@@ -39,10 +35,6 @@ const ClassGroupContent = ({ content }) => {
               <Link to={`/teacherprofile/locations/${content.location.id}`}>
                 {content.location.organisation}
               </Link>
-            </p>
-
-            <p>
-              <strong>Adres</strong> {content.location.address}
             </p>
             <p>
               <strong>Lokaal</strong> {content.location.room}

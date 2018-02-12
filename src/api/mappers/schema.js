@@ -19,6 +19,6 @@ export const lesson = new schema.Entity('lessons', {
 export const course = new schema.Entity('courses', {
   location,
   assistants: [teacher],
-  headTeacher: teacher,
+  headTeacher: [teacher],
   lessons: [lesson],
 });
