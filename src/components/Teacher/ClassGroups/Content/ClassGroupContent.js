@@ -9,7 +9,6 @@ import './ClassGroupContent.css';
 const ClassGroupContent = ({ content }) => {
   const classListKey = `classlist${content.id}`;
   const feedbackKey = `feedback${content.id}`;
-  // TODO Simon: use contact list for headteachers
   return (
     <Grid className="class-group-details">
       <Grid.Row className="full-width">
