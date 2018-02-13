@@ -1,0 +1,28 @@
+.Info {
+  display: grid;
+  grid-template-columns: auto minmax(min-content, 1fr);
+  grid-template-rows: auto minmax(min-content, 1fr) auto;
+
+  &__SideBar {
+    grid-column: 1;
+    grid-row: 2;
+    background-color: #f0f0f2;
+    padding: 5px 10px;
+  }
+
+  &__Content {
+    grid-column: 2;
+    grid-row: 2;
+    align-self: start;
+    margin-left: 18px;
+    box-shadow: none;
+    border: none;
+  }
+
+  .LetOpPage {
+    background-color: #fff6f6;
+    color: #9f3a38;
+    padding: 2em;
+    box-shadow: 0 0 0 1px #e0b4b4 inset, 0 0 0 0 transparent;
+  }
+}

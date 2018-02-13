@@ -1,27 +1,28 @@
 import React from 'react';
 import moment from 'moment';
-import { Table, Checkbox } from 'semantic-ui-react';
+import { Table } from 'semantic-ui-react';
+import Checkbox from './Checkbox';
 
 import classNames from '../../../../utils/classNames';
-import { isToday } from '../../../../functions/dateHelpers';
+import { isToday, diffToday } from '../../../../functions/dateHelpers';
 
-const StudentCell = ({ attendance, lesson, submit, showModal }) => {
-  const isPresent = attendance && attendance.isPresent === true;
-
+const StudentCell = ({ attendance, lesson, submit }) => {
+  const { isPresent } = attendance;
+  const disabled = diffToday(moment(lesson.start)) > 0;
   return (
     <Table.Cell
-      onClick={event => submit(event, attendance, lesson, 'CHILD')}
       key={attendance.id}
       className={classNames(isToday(moment(lesson.start)) && 'Attendance__HeaderCell__Today')}
     >
-      <div
-        className={classNames(
-          'Attendance__Icon',
-          isPresent ? 'Attendance__IconPresent' : 'Attendance__IconNotPresent'
-        )}
-      >
-        <Checkbox checked={isPresent} defaultChecked={isPresent} />
-      </div>
+      {attendance && (
+        <Checkbox
+          disabled={disabled}
+          isPresent={isPresent}
+          onClick={(event) => {
+            submit(event, attendance, lesson, 'CHILD');
+          }}
+        />
+      )}
     </Table.Cell>
   );
 };
