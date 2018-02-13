@@ -5,6 +5,10 @@ import LetOpPage from './LetOpPage';
 import WatVindJeWaarPage from './WatVindJeWaarPage';
 import AfwezighedenPage from './AfwezighedenPage';
 import FeedbackLeerlingenPage from './FeedbackLeerlingenPage';
+import HoeLoggenKinderenInPage from './HoeLoggenKinderenInPage';
+import OnbekendKindPage from './OnbekendKindPage';
+import InhoudelijkeVerbeteringPage from './InhoudelijkeVerbeteringPage';
+import WatBijProblemenPage from './WatBijProblemenPage';
 
 class Info extends React.Component {
   constructor() {
@@ -20,9 +24,7 @@ class Info extends React.Component {
   }
 
   render() {
-    const {
-      activeItem,
-    } = this.state;
+    const { activeItem } = this.state;
 
     return (
       <div className="Info">
@@ -47,12 +49,36 @@ class Info extends React.Component {
             active={activeItem === 'feedback_leerlingen'}
             onClick={this.handleItemClick}
           />
+          <Menu.Item
+            name="hoe_loggen_kinderen_in"
+            active={activeItem === 'hoe_loggen_kinderen_in'}
+            onClick={this.handleItemClick}
+          />
+          <Menu.Item
+            name="onbekend_kind"
+            active={activeItem === 'onbekend_kind'}
+            onClick={this.handleItemClick}
+          />
+          <Menu.Item
+            name="inhoudelijke_verbetering"
+            active={activeItem === 'inhoudelijke_verbetering'}
+            onClick={this.handleItemClick}
+          />
+          <Menu.Item
+            name="wat_bij_problemen"
+            active={activeItem === 'wat_bij_problemen'}
+            onClick={this.handleItemClick}
+          />
         </Menu>
         <div className="Profile__Content">
-          { activeItem === 'let_op' && <LetOpPage /> }
-          { activeItem === 'wat_vind_je_waar' && <WatVindJeWaarPage /> }
-          { activeItem === 'afwezigheden' && <AfwezighedenPage /> }
-          { activeItem === 'feedback_leerlingen' && <FeedbackLeerlingenPage /> }
+          {activeItem === 'let_op' && <LetOpPage />}
+          {activeItem === 'wat_vind_je_waar' && <WatVindJeWaarPage />}
+          {activeItem === 'afwezigheden' && <AfwezighedenPage />}
+          {activeItem === 'feedback_leerlingen' && <FeedbackLeerlingenPage />}
+          {activeItem === 'hoe_loggen_kinderen_in' && <HoeLoggenKinderenInPage />}
+          {activeItem === 'onbekend_kind' && <OnbekendKindPage />}
+          {activeItem === 'inhoudelijke_verbetering' && <InhoudelijkeVerbeteringPage />}
+          {activeItem === 'wat_bij_problemen' && <WatBijProblemenPage />}
         </div>
       </div>
     );
