@@ -11,10 +11,10 @@ export const getTeachersByCourseId = (state, courseId) => {
     });
   }
 
-  const headteacherId = state.courses.data[courseId].headTeacher;
-
-  if (headteacherId) {
-    teachers.push(state.teachers.data[headteacherId]);
+  if (state.courses.data[courseId].headTeacher) {
+    state.courses.data[courseId].headTeacher.forEach((teacherId) => {
+      teachers.push(state.teachers.data[teacherId]);
+    });
   }
 
   return teachers;
