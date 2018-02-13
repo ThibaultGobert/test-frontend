@@ -22,7 +22,6 @@ td.Attendance__Edit {
 
 .Attendance__Icon {
   text-align: center;
-  cursor: pointer;
 }
 
 .Attendance__IconPresent {
@@ -32,6 +31,10 @@ td.Attendance__Edit {
 .Attendance__IconNotPresent i {
   color: #444;
   font-size: 0.9em;
+}
+
+.Attendance__IconNotPresent .ui.checkbox input:checked~.box:after, .Attendance__IconNotPresent .ui.checkbox input:checked~label:after {
+  content: '\2044' !important;
 }
 
 .Attendance__HeaderCell__Today {
