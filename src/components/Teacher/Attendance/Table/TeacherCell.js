@@ -1,8 +1,9 @@
 import React from 'react';
 import moment from 'moment';
-import { Table, Checkbox } from 'semantic-ui-react';
+import { Table } from 'semantic-ui-react';
 import classNames from 'classnames';
 import { isToday, diffToday } from '../../../../functions/dateHelpers';
+import Checkbox from './Checkbox';
 
 const TeacherCell = ({ attendance, lesson, submit }) => {
   const { isPresent } = attendance;
@@ -14,23 +15,13 @@ const TeacherCell = ({ attendance, lesson, submit }) => {
       className={classNames(isToday(moment(lesson.start)) && 'Attendance__HeaderCell__Today')}
     >
       {attendance && (
-        <div
-          className={classNames(
-            'Attendance__Icon',
-            isPresent === null
-              ? 'Attendance__NotFilledIn'
-              : isPresent ? 'Attendance__IconPresent' : 'Attendance__IconNotPresent',
-          )}
-        >
-          <Checkbox
-            onClick={event => {
-              submit(event, attendance, lesson, 'TEACHER');
-            }}
-            disabled={disabled}
-            checked={!(isPresent === null)}
-            defaultChecked={!(isPresent === null)}
-          />
-        </div>
+        <Checkbox
+          disabled={disabled}
+          isPresent={isPresent}
+          onClick={event => {
+            submit(event, attendance, lesson, 'TEACHER');
+          }}
+        />
       )}
     </Table.Cell>
   );
