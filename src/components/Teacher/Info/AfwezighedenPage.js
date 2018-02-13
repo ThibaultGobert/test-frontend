@@ -7,7 +7,7 @@ const AfwezighedenPage = () => {
       <h2>Afwezigheid melden</h2>
       <p>
         Als je zelf niet kan aanwezig zijn voor een bepaalde les, laat dit minimum 2 weken op
-        voorhand weten via mail aan Kim (kim@codefever.be) met Kristien (kristien@codefever.be) in
+        voorhand weten via mail aan Kim (<a href="mailto:kim@codefever.be">kim@codefever.be</a>) met Kristien (<a href="mailto:kristien@codefever.be">kristien@codefever.be</a>) in
         CC. Wij gaan dan op zoek naar een vervanger.
       </p>
       <p>

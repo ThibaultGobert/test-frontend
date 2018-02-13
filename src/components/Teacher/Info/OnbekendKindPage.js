@@ -21,8 +21,10 @@ const OnbekendKindPage = () => {
           Zijn de ouders nog aanwezig? Vraag ze om het kind meteen in te schrijven op een computer
           in het lokaal.
         </li>
-        <li>Zijn de ouders er niet (meer)? Schrijf het kind in ZELF.</li>
-        <li>Heb je assistenten in je les? Laat hen het werk doen samen met de ouder of het kind</li>
+        <li>Zijn de ouders er niet (meer)? Schrijf het kind ZELF in.</li>
+        <li>
+          Heb je assistenten in je les? Laat hen het werk doen samen met de ouder of het kind.
+        </li>
       </ul>
       <h2>Hoe schrijf je een kind in?</h2>
       <ol>
@@ -39,13 +41,12 @@ const OnbekendKindPage = () => {
         <li>De ouders kunnen dan achteraf beslissen of ze definitief inschrijven of niet.</li>
       </ol>
       <p>
-        Je kan zelf een Scratchaccount maken voor dit kind, kies de clan naam als wachtwoord.
+        Je kan zelf een Scratch account maken voor dit kind, kies de clan naam als wachtwoord.
         Gelieve dit te koppelen aan scratch@codefever.be.
       </p>
+      <p>Let op: bij DigiHeroes mag dit gekoppeld worden aan hun eigen mailadres. </p>
       <p>
-        Let op: bij DigiHeroes mag dit gekoppeld worden aan hun eigen mailadres. Stuur ook zeker een
-        mailtje na de les naar Kristien (<a href="mailto:kristien@codefever.be">kristien@codefever.be</a>) met de naam en mailadres en
-        telefoonnummer van dit kind.
+        Stuur ook zeker een mailtje na de les naar Kristien (<a href="mailto:kristien@codefever.be">kristien@codefever.be</a>) met de naam en mailadres en telefoonnummer van dit kind.
       </p>
     </div>
   );

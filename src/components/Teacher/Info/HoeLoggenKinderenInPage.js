@@ -7,9 +7,9 @@ const HoeLoggenKinderenInPage = () => {
       <h2>Leerplatform</h2>
       <p>
         Check je klaslijst, je vindt er de leerplatform <b>gebruikersnaam</b> van elk leerling en
-        het
-        <b>wachtwoord</b> hint dat ze zelf (of hun ouders) ingesteld hebben via het ouderprofiel bij
-        het instellen van hun eigen wachtwoord. Het wachtwoord zelf is geëncripteerd en je vindt die
+        de {' '}
+        <b>wachtwoord hint</b> dat ze zelf (of hun ouders) ingesteld hebben via het ouderprofiel bij
+        het instellen van hun eigen wachtwoord. Het wachtwoord zelf is geëncrypteerd en je vindt die
         dus niet in je klaslijst.
       </p>
       <p>
@@ -20,15 +20,15 @@ const HoeLoggenKinderenInPage = () => {
       <p>
         Let op: het is niet de bedoeling dat je dit elke les moet doen. Stimuleer de ouders om het
         wachtwoord thuis in te stellen. Stel dat dit toch niet gebeurt …. stuur dan aub een mailtje
-        naar lieve@codefever.be.
+        naar <a href="mailto:lieve@codefever.be">lieve@codefever.be</a>.
       </p>
       <h2>Hoe werkt de impersonate functie?</h2>
       <p>
-        Deze functie laat je toe om in te loggen als de aangegeven leerlingen terwijl je gebruik
-        maakt van je eigen credentials
+        Deze functie laat je toe om in te loggen als de aangegeven leerling terwijl je gebruik
+        maakt van je eigen credentials.
       </p>
       <p>
-        Bij de login pagina klik op het slotje rechtsonder. Een nieuw veld verschijnt waar je de
+        Bij de login pagina klik op het slotje rechtsonder. Een nieuw veld verschijnt waar je de {' '}
         <b>gebruikersnaam van het kind</b> kan invullen.
       </p>
       <p>Gebruik je eigen login en password bij de velden Gebruikersnaam en Wachtwoord.</p>

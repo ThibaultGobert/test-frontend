@@ -7,10 +7,12 @@ const WatVindJeWaarPage = () => {
       <h2>Klasgroepen</h2>
       <p>
         Dit zijn de groepen waaraan je gekoppeld staat als leraar of als assistent. Klik op een
-        klasgroep om de klaslijsten te bekijken, als je de leraar bent kan je ook de aanwezigheden
-        noteren of feedback geven over je leerlingen.
+        klasgroep om de <b>klaslijsten</b> te bekijken, als je de leraar bent kan je ook de{' '}
+        <b>aanwezigheden</b> noteren of <b>feedback</b> geven over je leerlingen.
       </p>
-      <p>De planning is niet definitief tot 5 dagen voor het start van de lesreeks.</p>
+      <p>
+        <u>De planning is niet definitief tot 5 dagen voor het start van de lesreeks.</u>
+      </p>
       <p>
         Alles hangt af van de effectieve inschrijvingen, deze zijn &apos;live&apos; te zien op de
         klaslijsten. Bij groepen onder de 7 leerlingen bestaat er een kans dat de groep geannuleerd
@@ -19,8 +21,9 @@ const WatVindJeWaarPage = () => {
       </p>
       <h2>Lesdata</h2>
       <p>
-        Bekijk hier je lessen en klik door op een les om de details ervan te zien. Kies tussen de
-        vier view modus en download de lescontent.
+        Bekijk hier je lessen en klik door op een les om de <b>details</b> ervan te zien. Kies
+        tussen de {' '}
+        <b>4 view modi</b> en <b>download</b> de lescontent.
       </p>
       <h2>Profiel</h2>
       <p>
@@ -35,7 +38,7 @@ const WatVindJeWaarPage = () => {
       </ul>
       <p>
         Neem dit goed door. Dit is interessante inside info die je zeker kan helpen bij het
-        lesgeven.Bv: gescheiden ouders, papa gestorven, allergieën, labeltjes, ...
+        lesgeven. Bv: gescheiden ouders, papa gestorven, allergieën, labeltjes, ...
       </p>
       <p>
         Spreek zeker ouders aan tijdens de eerste lessen bij wie je denkt dat dit nuttig is. Ouders
