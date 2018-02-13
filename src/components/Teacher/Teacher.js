@@ -8,7 +8,7 @@ import ClassGroups from './ClassGroups';
 import Calendar from './Calendar';
 import ClassList from './ClassList';
 import Attendance from './Attendance';
-import InfoPage from './InfoPage';
+import InfoPage from './Info';
 import Profile from './Profile';
 import Location from './Location';
 
