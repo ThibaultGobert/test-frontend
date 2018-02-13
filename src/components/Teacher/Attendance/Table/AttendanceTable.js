@@ -43,7 +43,7 @@ const AttendanceTable = ({ lessons, users, submit, renderCell, isStudent, showMo
                 />
                 <div className="Attendance__User__Info">
                   <div className="Attendance__User__Name">
-                    {user.firstname} {user.lastname}
+                    {user.firstname} {user.lastname} {user.firstName} {user.lastName}
                   </div>
                   <div className="Attendance__User__Extra">{user.grade}</div>
                 </div>
