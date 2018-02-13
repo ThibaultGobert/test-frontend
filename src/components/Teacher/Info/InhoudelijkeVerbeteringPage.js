@@ -9,9 +9,7 @@ const InhoudelijkeVerbeteringPage = () => {
         vanuit elke slide op een gestructureerde en envoudige manier te laten melden.
       </p>
       <p>
-        Voorlopig wordt gevraagd om je opmerkingen te mailen naar Fien (<a href="mailto:fien@codefever.be">
-          fien@codefever.be
-        </a>) én Jonathan (<a href="jonathan@codefever.be">jonathan@codefever.be</a>). En dus niet
+        Voorlopig wordt gevraagd om je opmerkingen te mailen naar Fien (<a href="mailto:fien@codefever.be">fien@codefever.be</a>) én Jonathan (<a href="jonathan@codefever.be">jonathan@codefever.be</a>). En dus niet
         meer te melden via Facebook. Via mail kan dit eenvoudiger én sneller verwerkt worden door
         het team
       </p>
