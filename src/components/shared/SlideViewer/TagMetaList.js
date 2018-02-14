@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Label, Icon } from 'semantic-ui-react';
 import _ from 'lodash';
+import FeedBackButton from './FeedBackButton';
 
 function mapToTag(tag) {
   switch (tag) {
@@ -24,7 +25,7 @@ function mapToTag(tag) {
   }
 }
 
-const TagMetaList = ({ tags, viewType, time }) => {
+const TagMetaList = ({ tags, viewType, slide }) => {
   let isHome = _.includes(viewType, 'HOME');
   let isClass = _.includes(viewType, 'CLASS');
   let isProjection = _.includes(viewType, 'PROJECTION');
@@ -44,11 +45,12 @@ const TagMetaList = ({ tags, viewType, time }) => {
           }
         })}
       </ul>
-      { (time !== 0) && <span className="timing">{time} min</span>}
+      { (slide && slide.time !== 0) && <span className="timing">{slide.time} min</span>}
       <span className="view-type">
         <Icon circular className={classClassName} name="group" />
         <Icon circular className={homeClassName} name="home" />
         <Icon circular className={projectionClassName} name="tv" />
+        <FeedBackButton slide={slide}
       </span>
     </div>
   );

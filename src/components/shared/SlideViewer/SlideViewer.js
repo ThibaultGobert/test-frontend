@@ -106,7 +106,7 @@ class SlideViewer extends React.Component {
           tags={this.mapToTags()}
           viewType={this.state.slide.type}
           isStudent={this.props.isStudent}
-          time={this.state.slide.time}
+          slide={this.state.slide}
         />}
         <div className="slide-show-content">
           <div className="slide-show-inner-content">

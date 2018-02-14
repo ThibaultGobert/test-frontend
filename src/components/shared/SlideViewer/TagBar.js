@@ -4,7 +4,7 @@ import TagMetaList from './TagMetaList';
 import ProjectionTagList from './ProjectionTagList';
 import * as slideTypes from '../../../constants/slideTypes';
 
-const TagBar = ({ title, version, slideType, tags, viewType, time, isStudent }) => {
+const TagBar = ({ title, version, slideType, tags, viewType, slide, isStudent }) => {
   return (
     <div className="tag-bar-wrapper ">
       <div className="tag-bar wrapper">
@@ -16,7 +16,7 @@ const TagBar = ({ title, version, slideType, tags, viewType, time, isStudent }) 
         </span>
         <span className="meta-tags">
           { (slideType !== slideTypes.PROJECTION && !isStudent) &&
-            <TagMetaList tags={tags} viewType={viewType} time={time} />}
+            <TagMetaList tags={tags} viewType={viewType} slide={slide} />}
           { (slideType === slideTypes.PROJECTION && !isStudent) &&
             <ProjectionTagList viewType={viewType} />}
         </span>
