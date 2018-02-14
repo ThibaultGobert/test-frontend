@@ -37,7 +37,8 @@ class SlideViewerContainer extends React.Component {
       isStudent,
       loading,
       hasError,
-      slideType
+      slideType,
+      loggedInUser,
     } = this.props;
 
     if (loading) {
@@ -64,6 +65,7 @@ class SlideViewerContainer extends React.Component {
               metadata={metadata}
               isStudent={isStudent}
               lesson={lesson}
+              loggedInUser={loggedInUser}
             />
           </div>
         }

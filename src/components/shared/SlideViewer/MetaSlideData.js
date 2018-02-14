@@ -1,13 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import * as slideTypes from '../../../constants/slideTypes';
+import * as roles from '../../../constants/roles';
+import FeedBackButton from './FeedBackButton';
 
-const MetaSlideData = ({slide, slideType, lesson}) => {
-  return(
+const MetaSlideData = ({ slide, lesson, loggedInUser }) => {
+  return (
     <div className="meta-slide-data">
-      { slideType === slideTypes.INFO &&
-        <div className="slide-id">
-          ID: {lesson.id}_{slide.order}
+      { (loggedInUser.role === roles.TEACHER_ROLE) &&
+        <div>
+          <span className="slide-id" >
+            ID: {lesson.id}_{slide.order}
+          </span>
+          <span className="FeedBackButton">
+            <FeedBackButton slide={slide} loggedInUser={loggedInUser} lesson={lesson} />
+          </span>
         </div>
       }
     </div>
@@ -16,9 +22,8 @@ const MetaSlideData = ({slide, slideType, lesson}) => {
 
 MetaSlideData.propTypes = {
   slide: PropTypes.object.isRequired,
-  slideType: PropTypes.string.isRequired
+  slideType: PropTypes.string.isRequired,
+  lesson: PropTypes.object.isRequired,
 };
 
 export default MetaSlideData;
-
-
