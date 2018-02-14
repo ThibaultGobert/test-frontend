@@ -9,6 +9,8 @@ import HoeLoggenKinderenInPage from './HoeLoggenKinderenInPage';
 import OnbekendKindPage from './OnbekendKindPage';
 import InhoudelijkeVerbeteringPage from './InhoudelijkeVerbeteringPage';
 import WatBijProblemenPage from './WatBijProblemenPage';
+import HoeBereidIkMijnLesVoorPage from './HoeBereidIkMijnLesVoorPage';
+import HuisregelsPage from './HuisregelsPage';
 
 class Info extends React.Component {
   constructor() {
@@ -81,6 +83,20 @@ class Info extends React.Component {
           >
             Wat bij problemen
           </Menu.Item>
+          <Menu.Item
+            name="hoe_bereid_ik_mijn_les_voor"
+            active={activeItem === 'hoe_bereid_ik_mijn_les_voor'}
+            onClick={this.handleItemClick}
+          >
+            Hoe bereid ik mijn les voor
+          </Menu.Item>
+          <Menu.Item
+            name="huisregels"
+            active={activeItem === 'huisregels'}
+            onClick={this.handleItemClick}
+          >
+            Huisregels
+          </Menu.Item>
         </Menu>
         <div className="Profile__Content">
           {activeItem === 'let_op' && <LetOpPage />}
@@ -91,6 +107,8 @@ class Info extends React.Component {
           {activeItem === 'onbekend_kind' && <OnbekendKindPage />}
           {activeItem === 'inhoudelijke_verbetering' && <InhoudelijkeVerbeteringPage />}
           {activeItem === 'wat_bij_problemen' && <WatBijProblemenPage />}
+          {activeItem === 'hoe_bereid_ik_mijn_les_voor' && <HoeBereidIkMijnLesVoorPage />}
+          {activeItem === 'huisregels' && <HuisregelsPage />}
         </div>
       </div>
     );
