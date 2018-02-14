@@ -20,7 +20,7 @@ const HoeLoggenKinderenInPage = () => {
       <p>
         Let op: het is niet de bedoeling dat je dit elke les moet doen. Stimuleer de ouders om het
         wachtwoord thuis in te stellen. Stel dat dit toch niet gebeurt …. stuur dan aub een mailtje
-        naar <a href="mailto:lieve@codefever.be">lieve@codefever.be</a>.
+        naar Lieve (<a href="mailto:lieve@codefever.be">lieve@codefever.be</a>).
       </p>
       <h2>Hoe werkt de impersonate functie?</h2>
       <p>
