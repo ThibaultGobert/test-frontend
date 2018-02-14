@@ -24,6 +24,24 @@ td.Attendance__Edit {
   text-align: center;
 }
 
+.Attendance__Edit {
+  border: none !important;
+  background: #f9fafb !important;
+
+  i {
+    color: #545454:
+  }
+}
+
+.Attendance__Table .Attendance__Cell {
+  cursor: pointer;
+
+  &--Disabled {
+    cursor: auto;
+    background:#dddddd45;
+  }
+}
+
 .Attendance__IconPresent {
   color: green;
 }
