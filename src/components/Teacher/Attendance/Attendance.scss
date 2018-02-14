@@ -29,7 +29,7 @@ td.Attendance__Edit {
   background: #f9fafb !important;
 
   i {
-    color: #545454:
+    color: #545454;
   }
 }
 
@@ -44,15 +44,6 @@ td.Attendance__Edit {
 
 .Attendance__IconPresent {
   color: green;
-}
-
-.Attendance__IconNotPresent i {
-  color: #444;
-  font-size: 0.9em;
-}
-
-.Attendance__IconNotPresent .ui.checkbox input:checked~.box:after, .Attendance__IconNotPresent .ui.checkbox input:checked~label:after {
-  content: '\2044' !important;
 }
 
 .Attendance__HeaderCell__Today {
