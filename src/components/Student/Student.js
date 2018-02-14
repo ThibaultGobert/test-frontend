@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Bootstrap from './Bootstrap';
-import StudentSeason from './StudentSeasonNotActive';
+import StudentSeason from './StudentSeasonActive';
 
 
 const Student = ({ isBootstrapped, user }) => {
