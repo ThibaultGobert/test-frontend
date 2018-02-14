@@ -22,13 +22,15 @@ const AttendanceTable = ({ lessons, users, submit, renderCell, isStudent, showMo
           {lessons.map(lesson => (
             <Table.HeaderCell
               key={lesson.id}
-              className={classNames(isToday(moment(lesson.start)) && 'Attendance__HeaderCell__Today')}
+              className={classNames(
+                isToday(moment(lesson.start)) && 'Attendance__HeaderCell__Today',
+              )}
             >
               {moment(lesson.start).format('D/M')}
               {isToday(moment(lesson.start))}
             </Table.HeaderCell>
           ))}
-          {isStudent && <Table.HeaderCell />}
+          { isStudent && <Table.HeaderCell className="Attendance__Edit" />}
         </Table.Row>
       </Table.Header>
       <Table.Body>
@@ -56,7 +58,7 @@ const AttendanceTable = ({ lessons, users, submit, renderCell, isStudent, showMo
               return renderCell({ attendance, lesson, submit });
             })}
             {isStudent && (
-              <Table.Cell className="Attendance__Edit">
+              <Table.Cell className="Attendance__Edit" collapsing>
                 <Icon
                   name="edit"
                   size="large"

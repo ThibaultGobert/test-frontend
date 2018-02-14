@@ -12,17 +12,18 @@ const StudentCell = ({ attendance, lesson, submit }) => {
   return (
     <Table.Cell
       key={attendance.id}
-      className={classNames(isToday(moment(lesson.start)) && 'Attendance__HeaderCell__Today')}
-    >
-      {attendance && (
-        <Checkbox
-          disabled={disabled}
-          isPresent={isPresent}
-          onClick={(event) => {
-            submit(event, attendance, lesson, 'CHILD');
-          }}
-        />
+      className={classNames(
+        'Attendance__Cell',
+        disabled && 'Attendance__Cell--Disabled',
+        isToday(moment(lesson.start)) && 'Attendance__HeaderCell__Today',
       )}
+      onClick={event => {
+        if (!disabled) {
+          submit(event, attendance, lesson, 'CHILD');
+        }
+      }}
+    >
+      {attendance && <Checkbox isPresent={isPresent} />}
     </Table.Cell>
   );
 };
