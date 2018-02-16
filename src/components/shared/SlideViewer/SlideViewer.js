@@ -106,7 +106,7 @@ class SlideViewer extends React.Component {
           tags={this.mapToTags()}
           viewType={this.state.slide.type}
           isStudent={this.props.isStudent}
-          time={this.state.slide.time}
+          slide={this.state.slide}
         />}
         <div className="slide-show-content">
           <div className="slide-show-inner-content">
@@ -124,8 +124,8 @@ class SlideViewer extends React.Component {
         <MetaSlideData
           slide={this.state.slide}
           lesson={this.props.lesson}
-          slideType={this.props.metadata.slideType}
-          />
+          loggedInUser={this.props.loggedInUser}
+        />
         <div className="progress-bar">
           <Progress percent={((this.state.index + 1) / this.props.slides.length)*100} />
         </div>

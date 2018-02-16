@@ -24,27 +24,29 @@ function mapToTag(tag) {
   }
 }
 
-const TagMetaList = ({ tags, viewType, time }) => {
-  let isHome = _.includes(viewType, 'HOME');
-  let isClass = _.includes(viewType, 'CLASS');
-  let isProjection = _.includes(viewType, 'PROJECTION');
+const TagMetaList = ({ tags, viewType, slide }) => {
+  const isHome = _.includes(viewType, 'HOME');
+  const isClass = _.includes(viewType, 'CLASS');
+  const isProjection = _.includes(viewType, 'PROJECTION');
 
-  let homeClassName = isHome ? 'active' : '';
-  let classClassName = isClass ? 'active' : '';
-  let projectionClassName = isProjection ? 'active' : '';
+  const homeClassName = isHome ? 'active' : '';
+  const classClassName = isClass ? 'active' : '';
+  const projectionClassName = isProjection ? 'active' : '';
 
   return (
     <div className="meta-list">
       <ul>
         {tags.filter(tag => tag !== '').map(tag => {
           if (tag) {
-            return (<li key={tag}>
-              <Label>{mapToTag(tag)}</Label>
-            </li>);
+            return (
+              <li key={tag}>
+                <Label>{mapToTag(tag)}</Label>
+              </li>
+            );
           }
         })}
       </ul>
-      { (time !== 0) && <span className="timing">{time} min</span>}
+      { (slide && slide.time !== 0) && <span className="timing">{slide.time} min</span>}
       <span className="view-type">
         <Icon circular className={classClassName} name="group" />
         <Icon circular className={homeClassName} name="home" />
@@ -56,7 +58,7 @@ const TagMetaList = ({ tags, viewType, time }) => {
 
 TagMetaList.propTypes = {
   tags: PropTypes.arrayOf(PropTypes.string).isRequired,
-  viewType: PropTypes.string.isRequired
+  viewType: PropTypes.string.isRequired,
 };
 
 export default TagMetaList;
