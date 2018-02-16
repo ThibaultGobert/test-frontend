@@ -40,7 +40,6 @@ const MetaSlideData = ({ slide, lesson, loggedInUser }) => {
 
 MetaSlideData.propTypes = {
   slide: PropTypes.object.isRequired,
-  slideType: PropTypes.string.isRequired,
   lesson: PropTypes.object.isRequired,
 };
 

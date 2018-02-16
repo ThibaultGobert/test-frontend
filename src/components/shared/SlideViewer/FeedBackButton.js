@@ -1,6 +1,5 @@
 import React from 'react';
 import { Button } from 'semantic-ui-react';
-import * as roles from '../../../constants/roles';
 
 const FeedBackButton = ({ data, generateUrl, text }) => {
   return (

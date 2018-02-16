@@ -37,7 +37,6 @@ class SlideViewerContainer extends React.Component {
       isStudent,
       loading,
       hasError,
-      slideType,
       loggedInUser,
     } = this.props;
 
@@ -48,7 +47,7 @@ class SlideViewerContainer extends React.Component {
     let slideshowkey = "slideshow"+ this.props.lessonId;
     let metadata;
     if (lesson) {
-      metadata = {"title": lesson.name, "version": lesson.version, "slideType": slideType};
+      metadata = {"title": lesson.name, "version": lesson.version };
     }
 
     return (
@@ -77,7 +76,6 @@ class SlideViewerContainer extends React.Component {
 SlideViewerContainer.propTypes = {
   actions: PropTypes.object.isRequired,
   lessonId: PropTypes.string.isRequired,
-  slideType: PropTypes.string.isRequired,
   isStudent: PropTypes.bool.isRequired
 };
 
