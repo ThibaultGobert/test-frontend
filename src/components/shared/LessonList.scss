@@ -1,0 +1,13 @@
+.cardholder {
+  position: relative;
+  &__title {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    height: auto;
+    padding: 0.8em 1em;
+    background: black;
+    color: #fff;
+    font-size: 0.9em;
+  }
+}
