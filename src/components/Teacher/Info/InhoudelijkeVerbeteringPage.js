@@ -6,7 +6,7 @@ const InhoudelijkeVerbeteringPage = () => {
       <h1>Inhoudelijke verbetering</h1>
       <p>
         We werken momenteel aan een alternatieve manier om inhoudelijke verbeteringen of fouten
-        vanuit elke slide op een gestructureerde en envoudige manier te laten melden.
+        vanuit elke slide op een gestructureerde en envoudige manier te melden.
       </p>
       <p>
         Voorlopig wordt gevraagd om je opmerkingen te mailen naar Fien (<a href="mailto:fien@codefever.be">fien@codefever.be</a>) én Jonathan (<a href="jonathan@codefever.be">jonathan@codefever.be</a>). En dus niet
@@ -14,7 +14,7 @@ const InhoudelijkeVerbeteringPage = () => {
         het team
       </p>
       <p>
-        Gelieve je feedback te bunddelen in 1 mail per les en volgende regels in acht te houden:
+        Gelieve je feedback te bundelen in 1 mail per les en volgende regels in acht te houden:
       </p>
       <ol>
         <li>
