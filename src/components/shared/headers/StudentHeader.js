@@ -7,14 +7,13 @@ import { bindActionCreators } from 'redux';
 import toastr from 'toastr';
 import { removeUser } from '../../../api/storage';
 import * as authActions from '../../../actions/auth';
-import FeedBackButton from '../SlideViewer/FeedBackButton';
-import generateHashFromUsername from '../../../functions/generateHashFromUsername';
+import FeedBackButton from '../FeedBack/FeedBackButton';
+import generateUrl from '../FeedBack/generateStudentSurveyUrl';
 
 class StudentHeader extends React.Component {
   constructor(props) {
     super(props);
     this.logOut = this.logOut.bind(this);
-    this.generateUrl = this.generateUrl.bind(this);
   }
 
   logOut(event) {
@@ -22,16 +21,6 @@ class StudentHeader extends React.Component {
     toastr.remove();
     removeUser();
     window.location = '/';
-  }
-
-  generateUrl(data) {
-    const { user } = data;
-    if (user) {
-      let formUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSfJuKns1Y-fEepHUw5s7QLTvMu-FooShKnh41jOD1LqLZIouw/viewform?usp=pp_url&entry.1102385648=name';
-      formUrl = formUrl.replace('name', generateHashFromUsername(user.fullname));
-      return formUrl;
-    }
-    return null;
   }
 
   render() {
@@ -64,13 +53,14 @@ class StudentHeader extends React.Component {
               <NavLink to="/studentprofile/home" className="item" activeClassName="active">
                 <i className="home layout icon" />Thuis
               </NavLink>
-              { !user.isVersion2 &&
-              <NavLink to="/studentprofile/extra" className="item" activeClassName="active">
-                <i className="trophy layout icon" />Extra
-              </NavLink>}
-              { user.level === 1 &&
+              {!user.isVersion2 &&
+                <NavLink to="/studentprofile/extra" className="item" activeClassName="active">
+                  <i className="trophy layout icon" />Extra
+                </NavLink>
+              }
+              {user.level === 1 &&
                 <span className="FeedBackButton">
-                  <FeedBackButton data={{ user }} generateUrl={this.generateUrl} text="Enquête" />
+                  <FeedBackButton data={{ user }} generateUrl={generateUrl} text="Enquête" />
                 </span>
               }
             </div>
