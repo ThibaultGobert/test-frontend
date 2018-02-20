@@ -1,0 +1,14 @@
+.container .FeedBackButton {
+    float: right;
+    position: relative;
+    vertical-align: middle;
+    padding: .92857143em 1.14285714em;
+  }
+
+.meta-slide-data .FeedBackButton {
+    float: right;
+    button {
+        height: 28px !important;
+        margin: 0 !important;
+    }
+}
