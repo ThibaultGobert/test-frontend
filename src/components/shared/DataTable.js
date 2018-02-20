@@ -152,16 +152,6 @@ class DataTable extends Component {
 
         return (
           <Table.Cell key={idx}>
-            {(idx === 1 && hidden_info) &&
-              <Popup
-                trigger={<Icon name="info"/>}
-                content={data.hidden_info}
-                inverted
-              >
-                { data.parentremark && <p>Opmerkingen ouders: {striptags(data.parentremark)}</p>}
-                { data.teacherremark && <p>Opmerkingen leraren: {striptags(data.teacherremark)}</p>}
-              </Popup>
-            }
             {value}
           </Table.Cell>
         );

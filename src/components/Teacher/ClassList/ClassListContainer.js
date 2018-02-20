@@ -1,8 +1,10 @@
 import React from 'react';
+import _ from 'lodash';
 import ErrorMessage from '../../shared/ErrorMessage';
 import Loader from '../../shared/Loader';
 import courseApi from '../../../api/courses';
 import * as subscriptionTypes from '../../../constants/subscriptionTypes';
+import Feedback from '../../shared/Feedback';
 import ClassList from './ClassList';
 
 const columns = [
@@ -72,8 +74,9 @@ class ClassListContainer extends React.Component {
   // init state + bind functions
   constructor(props, context) {
     super(props, context);
-    this.state = { classlistLoaded: false };
+    this.state = { isOpen: false };
     this.redirectToClassGroups = this.redirectToClassGroups.bind(this);
+    this.showModal = this.showModal.bind(this);
   }
 
   componentDidMount() {
@@ -93,10 +96,13 @@ class ClassListContainer extends React.Component {
     history.push('/teacherprofile/overview');
   }
 
+  showModal(studentId) {
+    this.setState({ isOpen: true, studentId });
+  }
+
   render() {
-    const {
-      classlist, loading, error, course,
-    } = this.props;
+    const { classlist, loading, error, course } = this.props;
+    const { isOpen, studentId } = this.state;
 
     const classListWithHighlights = classlist.map(child => {
       return { ...child, highlight: child.subscription_type === subscriptionTypes.TRIAL };
@@ -110,13 +116,28 @@ class ClassListContainer extends React.Component {
       return <Loader active />;
     }
 
+    const user = _.find(classlist, { id: studentId });
+
     return (
-      <ClassList
-        data={classListWithHighlights}
-        columns={columns}
-        redirectToClassGroups={this.redirectToClassGroups}
-        course={course}
-      />
+      <div className="ClassListContainer">
+        {isOpen && (
+          <Feedback
+            isOpen={isOpen}
+            course={course}
+            user={user}
+            onClose={() => {
+              this.setState({ isOpen: false });
+            }}
+          />
+        )}
+        <ClassList
+          data={classListWithHighlights}
+          columns={columns}
+          redirectToClassGroups={this.redirectToClassGroups}
+          showModal={this.showModal}
+          course={course}
+        />
+      </div>
     );
   }
 }

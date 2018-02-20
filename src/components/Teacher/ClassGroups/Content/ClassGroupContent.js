@@ -42,7 +42,7 @@ const ClassGroupContent = ({ content }) => {
             <Button primary>Klaslijst</Button>
           </Link>
           <Link to={`/teacherprofile/feedback/${content.id}`} key={feedbackKey}>
-            <Button primary>Aanwezigheden & feedback</Button>
+            <Button primary>Aanwezigheden</Button>
           </Link>
         </Grid.Column>
       </Grid.Row>

@@ -7,7 +7,7 @@ import userAdministrationApi from '../../../api/userAdministration';
 import courseApi from '../../../api/courses';
 
 import Loader from '../../shared/Loader';
-import Feedback from './Feedback';
+import Feedback from '../../shared/Feedback';
 
 class AttendanceContainer extends Component {
   constructor(...props) {
@@ -50,11 +50,6 @@ class AttendanceContainer extends Component {
         this.setState({ loading: false });
       })
       .catch(fetchAttendancesError);
-  }
-
-  onChange({ target }) {
-    // change state on form change
-    this.setState(prevState => ({}));
   }
 
   submit(event, attendance, lesson, role) {

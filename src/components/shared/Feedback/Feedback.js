@@ -16,7 +16,7 @@ const Feedback = ({isOpen, onClose, user, course, feedbackFormVisible, toggleFee
       className="FeedbackModal"
       closeIcon
     >
-      <Modal.Header>Feedback</Modal.Header>
+      <Modal.Header>{user.name}</Modal.Header>
 
       <Modal.Content>
         <Grid>

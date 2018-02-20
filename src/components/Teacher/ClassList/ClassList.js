@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button } from 'semantic-ui-react';
 import DataTable from '../../shared/DataTable';
+import renderClassListBodyRow from './renderClassListBodyRow';
 
 const ClassList = ({
   redirectToClassGroups, course, data, columns,
@@ -14,7 +15,7 @@ const ClassList = ({
       </div>
 
       <div>
-        <DataTable data={data} columns={columns} />
+        <DataTable data={data} columns={columns} renderBodyRow={renderClassListBodyRow} />
         <div className="legende">
           <div className="legende-trial">
             <span className="symbol trial" />
