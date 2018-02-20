@@ -11,6 +11,10 @@ const WatVindJeWaarPage = () => {
         <b>aanwezigheden</b> noteren of <b>feedback</b> geven over je leerlingen.
       </p>
       <p>
+        Klik op de locatie van elke groep om meer te weten over de verzamelplaats die gecommuniceerd
+        wordt aan de ouders.
+      </p>
+      <p>
         <u>De planning is niet definitief tot 5 dagen voor het start van de lesreeks.</u>
       </p>
       <p>
@@ -19,11 +23,10 @@ const WatVindJeWaarPage = () => {
         wordt. Inschrijvingen lopen door tot (net na) het start van de lesreeks, dus niet direct
         panikeren
       </p>
-      <h2>Lesdata</h2>
+      <h2>Lesdata & Lesmateriaal</h2>
       <p>
         Bekijk hier je lessen en klik door op een les om de <b>details</b> ervan te zien. Kies
-        tussen de {' '}
-        <b>4 view modi</b> en <b>download</b> de lescontent.
+        tussen de <b>4 view modi</b> en <b>download</b> de lescontent.
       </p>
       <h2>Profiel</h2>
       <p>

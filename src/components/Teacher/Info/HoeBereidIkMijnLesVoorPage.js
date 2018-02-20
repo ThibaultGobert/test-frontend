@@ -28,7 +28,6 @@ const HoeBereidIkMijnLesVoorPage = () => {
         algemene info omtrent het voorbereiden van je les.{' '}
       </p>
       <p>Bekijk het document in het ZIP-bestand dat voor jouw les van toepassing is.</p>
-
       <Table celled>
         <Table.Header>
           <Table.Row>
@@ -58,6 +57,8 @@ const HoeBereidIkMijnLesVoorPage = () => {
         <p>E = e-Riders = gevorderden = Javascript</p>
         <p>M = MineCrafters = gevorderden = Minecraft Education</p>
       </div>
+      <h1>Wat doet een assistent?</h1>
+      <p>Vind <a href="https://extranet.codefever.be/content/?v=share/576D3A31366841878AC000CCE0921C6E">hier</a> uitgebreide informatie over het takkenpakket van een assistent.</p>
     </div>
   );
 };
