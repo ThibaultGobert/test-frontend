@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import _ from 'lodash';
 import { Grid, Segment, Button } from 'semantic-ui-react';
-import renderHtml from 'react-render-html';
 import ContactList from '../../../shared/ContactList';
 import './ClassGroupContent.css';
 
@@ -31,14 +30,10 @@ const ClassGroupContent = ({ content }) => {
             <h3>Locatie</h3>
             <p>
               <strong>Organisatie </strong>
-              {content.location.organisation}
+              <Link to={`/teacherprofile/locations/${content.location.id}`}>{content.location.organisation}</Link>
             </p>
             <p>
-              <strong>Lokaal</strong> {content.location.room}
-            </p>
-            <p>
-              <strong>Opmerkingen</strong>{' '}
-              {content.location.roomremark && renderHtml(content.location.roomremark)}
+              <strong>Lokaal</strong> {content.location.roomname}
             </p>
           </Segment>
         </Grid.Column>

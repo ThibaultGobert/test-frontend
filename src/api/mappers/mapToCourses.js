@@ -18,6 +18,7 @@ export default (data) => {
 
   data = _.values(data).map( (course) => {
     course.lessons = mapToCalendar(course.lessons);
+    course.roomname = course.location.roomname;
     return course;
   });
 

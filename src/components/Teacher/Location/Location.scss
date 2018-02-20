@@ -1,6 +1,31 @@
 .Location {
+  &__Remark {
+    padding: 2em;
+    background: #efefef;
+  }
 
-  &__Rooms, &__Teachers {
+  &__TeacherList {
     margin-top: 2em;
+
+    &Item {
+      &__Header {
+        margin-bottom: 0.3em;
+      }
+      background: #f5f5f5;
+      padding: 1em;
+    }
+  }
+
+  &__RoomList {
+    margin-top: 2em;
+    &Item {
+      padding: 1em !important;
+      margin-bottom: 1.5em;
+      background: #f5f5f5;
+      &__Header {
+        font-size: 1.2em;
+        margin-bottom: 0.8em !important;
+      }
+    }
   }
 }

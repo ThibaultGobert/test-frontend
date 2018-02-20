@@ -1,12 +1,5 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import mapActionCreatorsToProps from '../../../functions/mapActionCreatorsToProps';
-
-import {
-  fetchLocationStart,
-  fetchLocationSuccess,
-  fetchLocationError,
-} from '../../../actions/locations';
 
 import LocationContainer from './LocationContainer';
 
@@ -23,10 +16,4 @@ const mapStateToProps = (state, { match }) => {
   };
 };
 
-const actionCreators = mapActionCreatorsToProps({
-  fetchLocationStart,
-  fetchLocationSuccess,
-  fetchLocationError,
-});
-
-export default withRouter(connect(mapStateToProps, actionCreators)(LocationContainer));
+export default withRouter(connect(mapStateToProps)(LocationContainer));

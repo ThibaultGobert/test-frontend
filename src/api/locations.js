@@ -1,8 +1,10 @@
-import api from './api/lpfApi';
+import api from './api/appServiceApi';
+import { getUser } from './storage';
+import mapToLocations from './mappers/mapToLocations';
 
 class LocationApi {
-  static getLocation(locationId) {
-    return api.get(`/locations/${locationId}`);
+  static getLocations() {
+    return api.get(`/locationservice/getlocationsbyteacherid?sessionToken=${getUser().token}`).then(mapToLocations);
   }
 }
 

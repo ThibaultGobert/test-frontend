@@ -6,31 +6,25 @@ import './Location.css';
 const Location = ({ location, teachers, history }) => {
   return (
     <Container className="Location">
-      <Button
-        labelPosition="left"
-        icon="left chevron"
-        content="Terug"
-        onClick={history.goBack}
-      />
+      <Button labelPosition="left" icon="left chevron" content="Terug" onClick={history.goBack} />
 
       <h1>{location.name}</h1>
-      {location.remark && renderHtml(location.remark)}
+      {location.teacherremark && <div className="Location__Remark">{renderHtml(location.teacherremark)}</div>}
 
       {location.teachers && (
-        <div className="Location__Teachers">
+        <div className="Location__TeacherList">
           <h1>Leraren</h1>
           <List>
             {location.teachers.map(teacherId => {
               const teacher = teachers[teacherId];
               return (
                 <List.Item>
-                  <Image avatar src={teacher.avatarurlmedium} />
-                  <List.Content>
-                    <List.Header as="a">
-                      {teacher.firstname} {teacher.lastname}
+                  <List.Content className="Location__TeacherListItem">
+                    <List.Header className="Location__TeacherListItem__Header">
+                      {teacher.firstName} {teacher.lastName}
                     </List.Header>
                     <List.Description>
-                      {teacher.cellphone} - {teacher.email}
+                      {teacher.cell} - {teacher.email}
                     </List.Description>
                   </List.Content>
                 </List.Item>
@@ -41,15 +35,15 @@ const Location = ({ location, teachers, history }) => {
       )}
 
       {location.rooms && (
-        <div className="Location__Rooms">
+        <div className="Location__RoomList">
           <h1>Lokalen</h1>
-          <List divided>
+          <List>
             {location.rooms.map(room => {
               return (
-                <List.Item>
+                <List.Item className="Location__RoomListItem">
                   <List.Content>
-                    <List.Header as="a">{room.name}</List.Header>
-                    <List.Description>{room.remark}</List.Description>
+                    <List.Header className="Location__RoomListItem__Header">{room.name}</List.Header>
+                    <List.Description>{renderHtml(room.teacherRemark)}</List.Description>
                   </List.Content>
                 </List.Item>
               );
