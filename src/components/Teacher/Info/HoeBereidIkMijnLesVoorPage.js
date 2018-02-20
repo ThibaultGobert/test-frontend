@@ -58,7 +58,6 @@ const HoeBereidIkMijnLesVoorPage = () => {
         <p>M = MineCrafters = gevorderden = Minecraft Education</p>
       </div>
       <h1>Wat doet een assistent?</h1>
-      Wat doet een assistent
       <p>Vind <a href="linktogoogle">hier</a> uitgebreide informatie over het takkenpakket van een assistent.</p>
     </div>
   );
