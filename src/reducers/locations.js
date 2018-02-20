@@ -12,17 +12,17 @@ export default function locationsReducer(state = initialState.locations, action)
         hasError: false,
       });
 
-    case types.FETCH_LOCATION_START:
+    case types.FETCH_LOCATIONS_START:
       return merge({}, state, { loading: true });
 
-    case types.FETCH_LOCATION_SUCCESS: {
+    case types.FETCH_LOCATIONS_SUCCESS: {
       return merge({}, state, {
         data: action.data.entities.locations,
         loading: false,
       });
     }
 
-    case types.FETCH_LOCATION_ERROR:
+    case types.FETCH_LOCATIONS_ERROR:
       return merge({}, state, { loading: false, hasError: true, error: action.error });
 
     default:
