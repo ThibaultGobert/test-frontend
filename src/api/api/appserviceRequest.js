@@ -7,7 +7,6 @@ export default (endpoint, { headers = {}, body, ...otherOptions }, method) => {
     'Content-Type': 'application/json',
     Authorization:
       'Token token=nS4riFujBdhsQPQGEU4BCwrNUd8KQKPX7F17ZhSLTsoZnA3i4ZQiMwzn87nbmNXvCP19',
-    'Access-Control-Allow-Origin': '*',
   };
   allHeaders = merge(allHeaders, headers);
 
