@@ -21,9 +21,4 @@ const MetaSlideData = ({ slide, lesson, loggedInUser }) => {
   );
 };
 
-MetaSlideData.propTypes = {
-  slide: PropTypes.object.isRequired,
-  lesson: PropTypes.object.isRequired,
-};
-
 export default MetaSlideData;
