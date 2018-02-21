@@ -7,7 +7,7 @@ import userAdministrationApi from '../../../api/userAdministration';
 import courseApi from '../../../api/courses';
 
 import Loader from '../../shared/Loader';
-import Feedback from '../../shared/Feedback';
+import Feedback from '../../shared/FeedbackModal';
 
 class AttendanceContainer extends Component {
   constructor(...props) {

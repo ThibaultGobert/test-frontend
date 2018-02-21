@@ -4,7 +4,7 @@ import ErrorMessage from '../../shared/ErrorMessage';
 import Loader from '../../shared/Loader';
 import courseApi from '../../../api/courses';
 import * as subscriptionTypes from '../../../constants/subscriptionTypes';
-import Feedback from '../../shared/Feedback';
+import Feedback from '../../shared/FeedbackModal';
 import ClassList from './ClassList';
 
 const columns = [

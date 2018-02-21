@@ -1,8 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import * as roles from '../../../constants/roles';
-import FeedBackButton from '../FeedBack/FeedBackButton';
-import generateUrl from '../FeedBack/generateFeedBackUrl';
+import FeedBackButton from '../Feedback/FeedBackButton';
+import generateUrl from '../Feedback/generateFeedBackUrl';
 
 const MetaSlideData = ({ slide, lesson, loggedInUser }) => {
   return (
