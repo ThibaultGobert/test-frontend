@@ -56,13 +56,7 @@ class ClassGroups extends React.Component {
       <div className="container">
         <h1>Klasgroepen</h1>
         <div className="subtitle">Bekijk hier je lessen en download de klaslijsten</div>
-        <Message negative>
-          <Message.Header>Deze planning is nog niet definitief</Message.Header>
-          <p>
-            Alles hangt af van de effectieve inschrijvingen. De finale planning vind je hier 5 dagen
-            voor de start van lesreeks. We weten dat dit niet ideaal is en vragen je begrip!
-          </p>
-        </Message>
+
         {courses.length > 0 && (
           <Accordion
             panels={this.mapToPanels()}

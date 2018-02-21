@@ -15,11 +15,12 @@ const Login = ({
   credentials,
   hidden,
   error,
+  hasError,
   loading,
   submit,
   onChange,
   toggleHidden,
-  toggleImpersonate
+  toggleImpersonate,
 }) => {
   return (
     <div className="Login">
@@ -73,7 +74,7 @@ const Login = ({
             </Form.Field>
           </Form.Group>
           <CodeTag text="Start" close />
-          {error && <ErrorMessage header="Login mislukt" message={error} />}
+          {hasError && <ErrorMessage header="Login mislukt" message={error} />}
           <Form.Button primary>Login</Form.Button>
         </Form>
       </div>

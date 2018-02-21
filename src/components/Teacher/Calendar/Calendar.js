@@ -19,13 +19,7 @@ const Calendar = ({ events, showEventDetails }) => {
     <div className="container">
       <h1>Jouw kalender</h1>
       <p>Bekijk hier de lessen en klik door op een les om de details ervan te zien</p>
-      <Message negative>
-        <Message.Header>Deze planning is nog niet definitief</Message.Header>
-        <p>
-          Alles hangt af van de effectieve inschrijvingen. De finale planning vind je hier 5 dagen
-          voor de start van lesreeks. We weten dat dit niet ideaal is en vragen je begrip!
-        </p>
-      </Message>
+
       <div className="calendar-wrapper">
         <div className="calendar">
           <BigCalendar

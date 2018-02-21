@@ -43,7 +43,7 @@ const Location = ({ location, teachers, history }) => {
                 <List.Item className="Location__RoomListItem">
                   <List.Content>
                     <List.Header className="Location__RoomListItem__Header">{room.name}</List.Header>
-                    <List.Description>{renderHtml(room.teacherRemark)}</List.Description>
+                    {room.teacherRemark && <List.Description>{renderHtml(room.teacherRemark)}</List.Description>}
                   </List.Content>
                 </List.Item>
               );
