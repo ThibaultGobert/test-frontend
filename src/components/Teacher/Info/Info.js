@@ -10,6 +10,7 @@ import OnbekendKindPage from './OnbekendKindPage';
 import InhoudelijkeVerbeteringPage from './InhoudelijkeVerbeteringPage';
 import WatBijProblemenPage from './WatBijProblemenPage';
 import HoeBereidIkMijnLesVoorPage from './HoeBereidIkMijnLesVoorPage';
+import WatDoetEenAssistentPage from './WatDoetEenAssistentPage';
 import CampusverantwoordelijkePage from './CampusverantwoordelijkePage';
 import HuisregelsPage from './HuisregelsPage';
 
@@ -92,6 +93,13 @@ class Info extends React.Component {
             Hoe bereid ik mijn les voor?
           </Menu.Item>
           <Menu.Item
+            name="wat_doet_een_assistent"
+            active={activeItem === 'wat_doet_een_assistent'}
+            onClick={this.handleItemClick}
+          >
+            Wat doet een assistent?
+          </Menu.Item>
+          <Menu.Item
             name="campusverantwoordelijke"
             active={activeItem === 'campusverantwoordelijke'}
             onClick={this.handleItemClick}
@@ -116,6 +124,7 @@ class Info extends React.Component {
           {activeItem === 'inhoudelijke_verbetering' && <InhoudelijkeVerbeteringPage />}
           {activeItem === 'wat_bij_problemen' && <WatBijProblemenPage />}
           {activeItem === 'hoe_bereid_ik_mijn_les_voor' && <HoeBereidIkMijnLesVoorPage />}
+          {activeItem === 'wat_doet_een_assistent' && <WatDoetEenAssistentPage />}
           {activeItem === 'campusverantwoordelijke' && <CampusverantwoordelijkePage />}
           {activeItem === 'huisregels' && <HuisregelsPage />}
         </div>
