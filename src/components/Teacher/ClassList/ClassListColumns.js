@@ -2,16 +2,10 @@ import noUserIcon from '../../../assets/images/placeholders/no-user.png';
 
 const columns = [
   {
-    defaults: noUserIcon,
-    display: '',
-    key: 'avatarurlmedium',
-    type: 'string',
-  },
-  {
     defaults: '',
     display: 'Naam',
-    key: 'name',
-    type: 'string',
+    key: 'avatar',
+    type: 'object',
   },
   {
     defaults: '',
