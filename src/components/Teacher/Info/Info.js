@@ -10,6 +10,7 @@ import OnbekendKindPage from './OnbekendKindPage';
 import InhoudelijkeVerbeteringPage from './InhoudelijkeVerbeteringPage';
 import WatBijProblemenPage from './WatBijProblemenPage';
 import HoeBereidIkMijnLesVoorPage from './HoeBereidIkMijnLesVoorPage';
+import CampusverantwoordelijkePage from './CampusverantwoordelijkePage';
 import HuisregelsPage from './HuisregelsPage';
 
 class Info extends React.Component {
@@ -60,7 +61,7 @@ class Info extends React.Component {
             active={activeItem === 'hoe_loggen_kinderen_in'}
             onClick={this.handleItemClick}
           >
-            Hoe loggen kinderen in
+            Hoe loggen kinderen in?
           </Menu.Item>
           <Menu.Item
             name="onbekend_kind"
@@ -81,14 +82,21 @@ class Info extends React.Component {
             active={activeItem === 'wat_bij_problemen'}
             onClick={this.handleItemClick}
           >
-            Wat bij problemen
+            Wat bij problemen?
           </Menu.Item>
           <Menu.Item
             name="hoe_bereid_ik_mijn_les_voor"
             active={activeItem === 'hoe_bereid_ik_mijn_les_voor'}
             onClick={this.handleItemClick}
           >
-            Hoe bereid ik mijn les voor
+            Hoe bereid ik mijn les voor?
+          </Menu.Item>
+          <Menu.Item
+            name="campusverantwoordelijke"
+            active={activeItem === 'campusverantwoordelijke'}
+            onClick={this.handleItemClick}
+          >
+            Campusverantwoordelijke
           </Menu.Item>
           <Menu.Item
             name="huisregels"
@@ -108,6 +116,7 @@ class Info extends React.Component {
           {activeItem === 'inhoudelijke_verbetering' && <InhoudelijkeVerbeteringPage />}
           {activeItem === 'wat_bij_problemen' && <WatBijProblemenPage />}
           {activeItem === 'hoe_bereid_ik_mijn_les_voor' && <HoeBereidIkMijnLesVoorPage />}
+          {activeItem === 'campusverantwoordelijke' && <CampusverantwoordelijkePage />}
           {activeItem === 'huisregels' && <HuisregelsPage />}
         </div>
       </div>
