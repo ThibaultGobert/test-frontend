@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import { Segment, Loader, Message, Menu } from 'semantic-ui-react';
+import { Segment, Loader, Message } from 'semantic-ui-react';
 
 import React from 'react';
 import NoteItem from './NoteItem';

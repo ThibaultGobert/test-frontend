@@ -89,7 +89,7 @@ class AttendanceContainer extends Component {
   }
 
   render() {
-    const { error, course, lessons, students, teachers } = this.props;
+    const { error, course, lessons, students, teachers, loggedInUser } = this.props;
     const { studentId, isOpen, loading } = this.state;
 
     if (error) {
@@ -120,6 +120,7 @@ class AttendanceContainer extends Component {
           lessons={lessons}
           students={students}
           teachers={teachers}
+          loggedInUser={loggedInUser}
           redirectToOverview={this.redirectToOverview}
           showModal={this.showModal}
           {...this.state}

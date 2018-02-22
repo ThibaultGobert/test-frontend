@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { Table, Menu, Icon, Segment, Input, Popup, Image } from 'semantic-ui-react';
 import { orderBy, flatten, capitalize } from 'lodash';
-import _ from 'lodash';
-import striptags from 'sanitize-html';
+import PropTypes from 'prop-types';
+import { Table, Menu, Icon, Segment, Input, Image } from 'semantic-ui-react';
 
 const dataParser = obj => {
   if (!obj) return [{}];
@@ -115,9 +113,6 @@ class DataTable extends Component {
   defaultRenderBodyRow(data, index) {
     let highlight = data.highlight ? 'highlight' : '';
 
-    let hidden_info =
-      (data.parentremark !== undefined && data.parentremark !== '') ||
-      (data.teacherremark !== undefined && data.teacherremark !== '');
     return (
       <Table.Row key={index} className={highlight}>
         {this.columns.map(({ key, defaults, accessor, decorator }, idx) => {

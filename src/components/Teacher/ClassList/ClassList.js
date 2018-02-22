@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Message } from 'semantic-ui-react';
+import { Button } from 'semantic-ui-react';
 import DataTable from '../../shared/DataTable';
 import renderClassListBodyRow from './renderClassListBodyRow';
 import renderClassListHeaderRow from './renderClassListHeaderRow';

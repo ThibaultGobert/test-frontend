@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, List, Image, Button } from 'semantic-ui-react';
+import { Container, List, Button } from 'semantic-ui-react';
 import renderHtml from 'react-render-html';
 import './Location.css';
 
@@ -41,7 +41,7 @@ const Location = ({ location, teachers, history }) => {
           </List>
         </div>
       )}
-     
+
       {location.rooms && (
         <div>
           <h1>Lokalen</h1>
