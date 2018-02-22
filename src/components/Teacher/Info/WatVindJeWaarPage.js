@@ -15,9 +15,6 @@ const WatVindJeWaarPage = () => {
         wordt aan de ouders.
       </p>
       <p>
-        <u>De planning is niet definitief tot 5 dagen voor het start van de lesreeks.</u>
-      </p>
-      <p>
         Alles hangt af van de effectieve inschrijvingen, deze zijn &apos;live&apos; te zien op de
         klaslijsten. Bij groepen onder de 7 leerlingen bestaat er een kans dat de groep geannuleerd
         wordt. Inschrijvingen lopen door tot (net na) het start van de lesreeks, dus niet direct

@@ -84,7 +84,6 @@ class LoginContainer extends Component {
   }
 
   render() {
-    const { error, loading } = this.props;
     const { redirect } = this.state;
 
     if (redirect) {
@@ -93,13 +92,12 @@ class LoginContainer extends Component {
 
     return (
       <Login
-        error={error}
-        loading={loading}
         submit={this.submit}
         onChange={this.onChange}
         toggleHidden={this.toggleHidden}
         toggleImpersonate={this.toggleImpersonate}
         {...this.state}
+        {...this.props}
       />
     );
   }

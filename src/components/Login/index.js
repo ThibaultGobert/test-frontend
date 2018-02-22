@@ -7,14 +7,15 @@ import LoginContainer from './LoginContainer';
 const mapStateToProps = state => ({
   loggedIn: state.loggedIn.data,
   loading: state.loggedIn.loading,
-  error: state.loggedIn.error
+  error: state.loggedIn.error,
+  hasError: state.loggedIn.hasError,
 });
 
 const actionCreators = mapActionCreatorsToProps({
   loginStart,
   loginSuccess,
   loginError,
-  logOut
+  logOut,
 });
 
 export default withRouter(connect(mapStateToProps, actionCreators)(LoginContainer));

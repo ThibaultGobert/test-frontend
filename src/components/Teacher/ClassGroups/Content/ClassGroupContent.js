@@ -11,7 +11,7 @@ const ClassGroupContent = ({ content }) => {
   return (
     <Grid className="class-group-details">
       <Grid.Row className="full-width">
-        <Grid.Column width={8}>
+        <Grid.Column width={13}>
           {!_.isEmpty(content.headTeacher) && (
             <Segment vertical>
               <h3>Hoofdlesgever</h3>
@@ -25,24 +25,15 @@ const ClassGroupContent = ({ content }) => {
             </Segment>
           )}
         </Grid.Column>
-        <Grid.Column width={6}>
-          <Segment vertical>
-            <h3>Locatie</h3>
-            <p>
-              <strong>Organisatie </strong>
-              <Link to={`/teacherprofile/locations/${content.location.id}`}>{content.location.organisation}</Link>
-            </p>
-            <p>
-              <strong>Lokaal</strong> {content.location.roomname}
-            </p>
-          </Segment>
-        </Grid.Column>
-        <Grid.Column width={2} className="ClassGroupContent-Buttons">
+        <Grid.Column width={3} className="ClassGroupContent-Buttons">
           <Link to={`/teacherprofile/classlist/${content.id}`} key={classListKey}>
             <Button primary>Klaslijst</Button>
           </Link>
           <Link to={`/teacherprofile/feedback/${content.id}`} key={feedbackKey}>
             <Button primary>Aanwezigheden</Button>
+          </Link>
+          <Link to={`/teacherprofile/locations/${content.location.id}`}>
+            <Button primary>Locatie details</Button>
           </Link>
         </Grid.Column>
       </Grid.Row>

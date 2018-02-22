@@ -9,17 +9,25 @@ const Location = ({ location, teachers, history }) => {
       <Button labelPosition="left" icon="left chevron" content="Terug" onClick={history.goBack} />
 
       <h1>{location.name}</h1>
-      {location.teacherremark && <div className="Location__Remark">{renderHtml(location.teacherremark)}</div>}
+      {location.teacherremark && (
+        <div className="Location__Remark">
+          <p><strong>ADRES</strong></p>
+          <p>{location.address.street}</p>
+          <p>{location.address.city}</p>
+          <p>{location.address.province}</p>
+          {renderHtml(location.teacherremark)}
+        </div>
+      )}
 
       {location.teachers && (
-        <div className="Location__TeacherList">
+        <div>
           <h1>Leraren</h1>
-          <List>
+          <List className="Location__TeacherList">
             {location.teachers.map(teacherId => {
               const teacher = teachers[teacherId];
               return (
-                <List.Item>
-                  <List.Content className="Location__TeacherListItem">
+                <List.Item className="Location__TeacherListItem">
+                  <List.Content className="Location__TeacherListItem__Content">
                     <List.Header className="Location__TeacherListItem__Header">
                       {teacher.firstName} {teacher.lastName}
                     </List.Header>
@@ -33,17 +41,17 @@ const Location = ({ location, teachers, history }) => {
           </List>
         </div>
       )}
-
+     
       {location.rooms && (
-        <div className="Location__RoomList">
+        <div>
           <h1>Lokalen</h1>
-          <List>
+          <List className="Location__RoomList">
             {location.rooms.map(room => {
               return (
                 <List.Item className="Location__RoomListItem">
                   <List.Content>
                     <List.Header className="Location__RoomListItem__Header">{room.name}</List.Header>
-                    <List.Description>{renderHtml(room.teacherRemark)}</List.Description>
+                    {room.teacherRemark && <List.Description>{renderHtml(room.teacherRemark)}</List.Description>}
                   </List.Content>
                 </List.Item>
               );
