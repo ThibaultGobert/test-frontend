@@ -7,8 +7,8 @@ import { bindActionCreators } from 'redux';
 import toastr from 'toastr';
 import { removeUser } from '../../../api/storage';
 import * as authActions from '../../../actions/auth';
-import FeedBackButton from '../FeedBack/FeedBackButton';
-import generateUrl from '../FeedBack/generateStudentSurveyUrl';
+import FeedBackButton from '../Feedback/FeedBackButton';
+import generateUrl from '../Feedback/generateStudentSurveyUrl';
 
 class StudentHeader extends React.Component {
   constructor(props) {

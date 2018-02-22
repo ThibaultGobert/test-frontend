@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import mapActionCreatorsToProps from '../../../../functions/mapActionCreatorsToProps';
+import mapActionCreatorsToProps from '../../../functions/mapActionCreatorsToProps';
 import FeedbackContainer from './FeedbackContainer';
-import { getNotesByStudentId } from '../../../../selectors';
+import { getNotesByStudentId } from '../../../selectors';
 import {
   fetchNotesStart,
   fetchNotesSuccess,
@@ -13,7 +13,7 @@ import {
   addNoteStart,
   addNoteSuccess,
   addNoteError,
-} from '../../../../actions/notes';
+} from '../../../actions/notes';
 
 function mapStateToProps(state, ownProps) {
   const studentId = ownProps.user.id;

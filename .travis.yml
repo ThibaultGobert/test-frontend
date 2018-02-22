@@ -9,6 +9,7 @@ before_script:
   - npm install -g yarn
   - travis_retry yarn install
 script:
+  - yarn lint
   - yarn build-css
   - travis_retry yarn test
   - travis_retry yarn build

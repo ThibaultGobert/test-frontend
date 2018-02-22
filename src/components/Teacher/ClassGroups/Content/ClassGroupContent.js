@@ -30,7 +30,7 @@ const ClassGroupContent = ({ content }) => {
             <Button primary>Klaslijst</Button>
           </Link>
           <Link to={`/teacherprofile/feedback/${content.id}`} key={feedbackKey}>
-            <Button primary>Aanwezigheden & feedback</Button>
+            <Button primary>Aanwezigheden</Button>
           </Link>
           <Link to={`/teacherprofile/locations/${content.location.id}`}>
             <Button primary>Locatie details</Button>

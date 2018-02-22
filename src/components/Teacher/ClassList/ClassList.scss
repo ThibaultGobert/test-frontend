@@ -1,0 +1,24 @@
+
+
+.ClassList__User {
+  display: flex;
+  align-items: center;
+}
+
+.ClassList__Avatar {
+  margin-right: 14px;
+}
+
+.ClassList__User__Info {
+  display: flex;
+  flex-direction: column;
+}
+
+.ClassList__User__Name {
+  font-size: 1.15em;
+  padding-bottom: 2px;
+}
+.ClassList__User__Extra {
+  font-size: 1.1em;
+  color: #72828B;
+}

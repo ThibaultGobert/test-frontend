@@ -1,6 +1,6 @@
 import React from 'react';
 import moment from 'moment';
-import { Table, Message, Icon } from 'semantic-ui-react';
+import { Table, Message } from 'semantic-ui-react';
 
 import Avatar from '../../../shared/Avatar';
 import { isToday } from '../../../../functions/dateHelpers';
@@ -30,7 +30,6 @@ const AttendanceTable = ({ lessons, users, submit, renderCell, isStudent, showMo
               {isToday(moment(lesson.start))}
             </Table.HeaderCell>
           ))}
-          { isStudent && <Table.HeaderCell className="Attendance__Edit" />}
         </Table.Row>
       </Table.Header>
       <Table.Body>
@@ -44,9 +43,23 @@ const AttendanceTable = ({ lessons, users, submit, renderCell, isStudent, showMo
                   className="Attendance__Avatar"
                 />
                 <div className="Attendance__User__Info">
-                  <div className="Attendance__User__Name">
-                    {user.firstname} {user.lastname} {user.firstName} {user.lastName}
-                  </div>
+                  {isStudent && (
+                    <div
+                      className="Attendance__User__Name link"
+                      onClick={() => {
+                        showModal(user.id);
+                      }}
+                    >
+                      {user.firstname} {user.lastname}
+                    </div>
+                  )}
+                  {!isStudent && (
+                    <div
+                      className="Attendance__User__Name"
+                    >
+                      {user.firstName} {user.lastName}
+                    </div>
+                  )}
                   <div className="Attendance__User__Extra">{user.grade}</div>
                 </div>
               </div>
@@ -54,20 +67,8 @@ const AttendanceTable = ({ lessons, users, submit, renderCell, isStudent, showMo
             {lessons.map(lesson => {
               const attendance =
                 lesson.attendances && lesson.attendances.find(({ userId }) => userId === user.id);
-
               return renderCell({ attendance, lesson, submit });
             })}
-            {isStudent && (
-              <Table.Cell className="Attendance__Edit" collapsing>
-                <Icon
-                  name="edit"
-                  size="large"
-                  onClick={() => {
-                    showModal(user.id);
-                  }}
-                />
-              </Table.Cell>
-            )}
           </Table.Row>
         ))}
       </Table.Body>

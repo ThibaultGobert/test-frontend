@@ -1,15 +1,15 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { Table, Menu, Icon, Segment, Input, Popup, Image } from "semantic-ui-react";
-import {orderBy, flatten, capitalize} from "lodash";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { Table, Menu, Icon, Segment, Input, Popup, Image } from 'semantic-ui-react';
+import { orderBy, flatten, capitalize } from 'lodash';
 import _ from 'lodash';
 import striptags from 'sanitize-html';
 
-const dataParser = (obj) => {
-  if(!obj) return [{}];
+const dataParser = obj => {
+  if (!obj) return [{}];
 
   const nativeDefaults = {
-    string: "",
+    string: '',
     date: new Date(),
     number: 0,
     boolean: false,
@@ -61,7 +61,6 @@ const dataParser = (obj) => {
 *
 */
 class DataTable extends Component {
-
   constructor(props) {
     super(props);
     this.defaultPageLimit = 15;
@@ -79,7 +78,7 @@ class DataTable extends Component {
     this.state = {
       index: 0,
       sort: {},
-      data: data[0]
+      data: data[0],
     };
 
     this.defaultRenderHeaderRow = this.defaultRenderHeaderRow.bind(this);
@@ -109,53 +108,32 @@ class DataTable extends Component {
     this.setState({
       index: 0,
       sort: {},
-      data: data[this.state.index]
+      data: data[this.state.index],
     });
   }
 
-
-  defaultRenderHeaderRow(columns, onClick, classNameGenerator) {
-    return (
-      <Table.Row>
-        {columns.map((column, index) => {
-          if (!_.isEmpty(column.display)) {
-            return (
-              <Table.HeaderCell onClick={() => onClick(column)} className={classNameGenerator(column.key)} key={index}>
-                {column.display}
-              </Table.HeaderCell>);
-          } else {
-            return (<Table.HeaderCell className="hide-border" />);
-          }
-        })}
-      </Table.Row>
-    );
-  }
-
   defaultRenderBodyRow(data, index) {
-    let highlight = data.highlight ? 'highlight': '';
+    let highlight = data.highlight ? 'highlight' : '';
 
-    let hidden_info = (data.parentremark !== undefined && data.parentremark !== "") || (data.teacherremark !== undefined && data.teacherremark !== "");
+    let hidden_info =
+      (data.parentremark !== undefined && data.parentremark !== '') ||
+      (data.teacherremark !== undefined && data.teacherremark !== '');
     return (
       <Table.Row key={index} className={highlight}>
-        {this.columns.map(({key, defaults, accessor, decorator}, idx) => {
+        {this.columns.map(({ key, defaults, accessor, decorator }, idx) => {
+          if (!data) return <Table.Cell key={idx} />;
+          let value = accessor ? accessor(data, key) : data[key] || defaults;
+          if (decorator) value = decorator(value);
+          if (idx === 0) {
+            return (
+              <Table.Cell key={idx} className="avatar-lock-up">
+                <Image src={value} size="tiny" className="avatar middle aligned" />
+              </Table.Cell>
+            );
+          }
 
-        if (!data) return <Table.Cell key={idx}/>;
-        let value = (accessor) ? accessor(data, key) : (data[key] || defaults);
-        if (decorator) value = decorator(value);
-        if (idx === 0) {
-          return (
-            <Table.Cell key={idx} className="avatar-lock-up">
-              <Image src={value} size="tiny" className="avatar middle aligned"/>
-            </Table.Cell>
-          );
-        }
-
-        return (
-          <Table.Cell>
-            {value}
-          </Table.Cell>
-        );
-      })}
+          return <Table.Cell key={idx}>{value}</Table.Cell>;
+        })}
       </Table.Row>
     );
   }
@@ -164,8 +142,8 @@ class DataTable extends Component {
     let newIndex = this.state.index;
 
     if (index === newIndex) return null;
-    else if (index === "next") newIndex++;
-    else if (index === "back") newIndex--;
+    else if (index === 'next') newIndex++;
+    else if (index === 'back') newIndex--;
     else newIndex = index;
 
     this.setState({ data: this.pagedData[newIndex], index: newIndex });
@@ -174,14 +152,14 @@ class DataTable extends Component {
   sort(sort, key, data) {
     let newSort = false;
 
-    if(!sort[key]) {
-      sort[key] = "ascending";
+    if (!sort[key]) {
+      sort[key] = 'ascending';
       newSort = true;
     }
 
-    if (sort[key] === "ascending" && !newSort) {
-      sort[key] = "descending";
-    } else if(sort[key] === "descending"){
+    if (sort[key] === 'ascending' && !newSort) {
+      sort[key] = 'descending';
+    } else if (sort[key] === 'descending') {
       delete sort[key];
     }
 
@@ -189,38 +167,40 @@ class DataTable extends Component {
 
     const sortKeys = Object.keys(sort);
 
-    if(sortKeys.length > 0){
+    if (sortKeys.length > 0) {
       sortedData = flatten(data);
-      const direction = Object.values(sort).map(direction => direction === "ascending" ? "asc" : "desc");
+      const direction = Object.values(sort).map(
+        direction => (direction === 'ascending' ? 'asc' : 'desc'),
+      );
       return {
         sort,
-        sortedData: orderBy(sortedData, sortKeys, direction)
+        sortedData: orderBy(sortedData, sortKeys, direction),
       };
     }
-    return ({
+    return {
       sort,
-      sortedData
-    });
+      sortedData,
+    };
   }
 
-  onSort({ key }){
-    const {sort, sortedData} = this.sort(this.state.sort, key, this.pagedData);
+  onSort({ key }) {
+    const { sort, sortedData } = this.sort(this.state.sort, key, this.pagedData);
 
-    this.setState(Object.assign(this.state, {sort}));
+    this.setState(Object.assign(this.state, { sort }));
 
     return this.search(sortedData, this.state.query);
   }
 
   onSearch(event, term) {
-    this.setState(Object.assign(this.state, {query: term.value}));
+    this.setState(Object.assign(this.state, { query: term.value }));
     this.search(flatten(this.orignalPagedData), this.state.query);
   }
 
   search(data, query) {
     let searchedData = data;
 
-    if(data && Array.isArray(data) && query && query !== ""){
-      const regex = new RegExp(query, "i");
+    if (data && Array.isArray(data) && query && query !== '') {
+      const regex = new RegExp(query, 'i');
       searchedData = data.filter(row => Object.values(row).some(prop => regex.test(prop)));
     } else {
       searchedData = data;
@@ -244,57 +224,80 @@ class DataTable extends Component {
     return data;
   }
 
-  headerClass(key) {
-    return this.state.sort[key] ? `sorted ${this.state.sort[key]}` : "";
+  defaultRenderHeaderRow(columns, onClick, classNameGenerator) {
+    return (
+      <Table.Row>
+        {columns.map((column, index) => (
+          <Table.HeaderCell
+            onClick={() => onClick(column)}
+            className={classNameGenerator(column.key)}
+            key={index}
+          >
+            {column.display}
+          </Table.HeaderCell>
+        ))}
+      </Table.Row>
+    );
   }
 
-
+  headerClass(key) {
+    return this.state.sort[key] ? `sorted ${this.state.sort[key]}` : '';
+  }
 
   render() {
     return (
       <div>
-
-
         <Segment attached="top" floated="right">
           <h2 className="data-count">Aantal: {this.props.data.length}</h2>
 
-          <Input icon="search" value={this.state.query || ""} onChange={this.onSearch} placeholder="Zoek..." />
+          <Input
+            icon="search"
+            value={this.state.query || ''}
+            onChange={this.onSearch}
+            placeholder="Zoek..."
+          />
         </Segment>
-        <Table celled compact attached className="sortable" >
+        <Table celled compact attached className="sortable">
           <Table.Header>
             {this.columns && this.renderHeader(this.columns, this.onSort, this.headerClass)}
           </Table.Header>
           <Table.Body>
             {this.state.data && this.state.data.map((item, idx) => this.renderRow(item, idx))}
           </Table.Body>
-          {this.pagedData.length > 1 &&
-          <Table.Footer>
-            <Table.Row >
-              <Table.HeaderCell colSpan={this.columns.length}>
-                <Menu floated="right" pagination>
-                  {this.state.index !== 0 && this.pagedData.length > 1 &&
-                  <Menu.Item onClick={() => this.pageChange("back")} as="a" icon>
-                    <Icon name="left chevron" />
-                  </Menu.Item>
-                  }
-                  {this.pagedData.map((dataSet, index) => {
-                    const active = index === this.state.index;
-                    return (
-                      <Menu.Item key={index} active={active} onClick={() => this.pageChange(index)} as="a">
-                        {index + 1}
+          {this.pagedData.length > 1 && (
+            <Table.Footer>
+              <Table.Row>
+                <Table.HeaderCell colSpan={this.columns.length}>
+                  <Menu floated="right" pagination>
+                    {this.state.index !== 0 &&
+                      this.pagedData.length > 1 && (
+                        <Menu.Item onClick={() => this.pageChange('back')} as="a" icon>
+                          <Icon name="left chevron" />
+                        </Menu.Item>
+                      )}
+                    {this.pagedData.map((dataSet, index) => {
+                      const active = index === this.state.index;
+                      return (
+                        <Menu.Item
+                          key={index}
+                          active={active}
+                          onClick={() => this.pageChange(index)}
+                          as="a"
+                        >
+                          {index + 1}
+                        </Menu.Item>
+                      );
+                    })}
+                    {this.state.index + 1 < this.pagedData.length && (
+                      <Menu.Item onClick={() => this.pageChange('next')} as="a" icon>
+                        <Icon name="right chevron" />
                       </Menu.Item>
-                    );
-                  })}
-                  {this.state.index + 1 < this.pagedData.length &&
-                  <Menu.Item onClick={() => this.pageChange("next")} as="a" icon>
-                    <Icon name="right chevron" />
-                  </Menu.Item>
-                  }
-                </Menu>
-              </Table.HeaderCell>
-            </Table.Row>
-          </Table.Footer>
-          }
+                    )}
+                  </Menu>
+                </Table.HeaderCell>
+              </Table.Row>
+            </Table.Footer>
+          )}
         </Table>
       </div>
     );
@@ -305,14 +308,16 @@ DataTable.propTypes = {
   renderBodyRow: PropTypes.func,
   renderHeaderRow: PropTypes.func,
   pageLimit: PropTypes.number,
-  columns: PropTypes.arrayOf(PropTypes.shape({
-    key: PropTypes.string,
-    type: PropTypes.string,
-    display: PropTypes.string,
-    defaults: PropTypes.any,
-    accessor: PropTypes.func,
-    decorator: PropTypes.func,
-  })),
+  columns: PropTypes.arrayOf(
+    PropTypes.shape({
+      key: PropTypes.string,
+      type: PropTypes.string,
+      display: PropTypes.string,
+      defaults: PropTypes.any,
+      accessor: PropTypes.func,
+      decorator: PropTypes.func,
+    }),
+  ),
 };
 
 export default DataTable;
