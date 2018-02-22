@@ -30,7 +30,7 @@ export default (data, index, showModal) => {
                   >
                     {data.firstname} {data.lastname}
                     { (data.totalParentNotes !== 0) && 
-                      <Icon className="blue info circle" title="De notes van dit kind bevatten een note van de ouders"></Icon> 
+                      <Icon className="blue info circle" title="De notes van dit kind bevatten een note van de ouders"></Icon>
                     }
                   </div>
                   <div className="ClassList__User__Extra">{data.grade}</div>
