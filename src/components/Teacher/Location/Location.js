@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, List, Button } from 'semantic-ui-react';
+import { Container, List, Image, Button } from 'semantic-ui-react';
 import renderHtml from 'react-render-html';
 import './Location.css';
 
@@ -9,16 +9,12 @@ const Location = ({ location, teachers, history }) => {
       <Button labelPosition="left" icon="left chevron" content="Terug" onClick={history.goBack} />
 
       <h1>{location.name}</h1>
-      {location.address && (
-        <div className="Location__Address">
+      {location.teacherremark && (
+        <div className="Location__Remark">
           <p><strong>ADRES</strong></p>
           <p>{location.address.street}</p>
           <p>{location.address.city}</p>
           <p>{location.address.province}</p>
-        </div>
-      )}
-      {location.teacherremark && (
-        <div className="Location__Remark">
           {renderHtml(location.teacherremark)}
         </div>
       )}
@@ -45,7 +41,7 @@ const Location = ({ location, teachers, history }) => {
           </List>
         </div>
       )}
-
+     
       {location.rooms && (
         <div>
           <h1>Lokalen</h1>
@@ -55,9 +51,7 @@ const Location = ({ location, teachers, history }) => {
                 <List.Item className="Location__RoomListItem">
                   <List.Content>
                     <List.Header className="Location__RoomListItem__Header">{room.name}</List.Header>
-                    {room.teacherRemark && (
-                      <List.Description>{renderHtml(room.teacherRemark)}</List.Description>
-                    )}
+                    {room.teacherRemark && <List.Description>{renderHtml(room.teacherRemark)}</List.Description>}
                   </List.Content>
                 </List.Item>
               );
