@@ -6,8 +6,8 @@ const HoeBereidIkMijnLesVoorPage = () => {
     <div className="HoeBereidIkMijnLesVoorPage">
       <h1>Hoe bereid ik mijn les voor?</h1>
       <p>
-        Bekijk bij lesdata je lessen en klik door op een les om de <b>details</b> ervan te zien. Kies
-        tussen de <b>4 view modi</b> en <b>download</b> de lescontent.
+        Bekijk bij lesdata je lessen en klik door op een les om de <b>details</b> ervan te zien.
+        Kies tussen de <b>4 view modi</b> en <b>download</b> de lescontent.
       </p>
       <p>
         Herbekijk{' '}

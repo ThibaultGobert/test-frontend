@@ -24,10 +24,21 @@ const Attendance = ({ course, teachers, students, loggedInUser, redirectToOvervi
       <h1>Aanwezigheden {course.name}</h1>
       <h2>Duid de aanwezigheden aan</h2>
       <h3>Leraren</h3>
-      <AttendanceTable renderCell={TeacherCell} isAssistent={isAssistent} users={teachers} {...props} />
+      <AttendanceTable
+        renderCell={TeacherCell}
+        isAssistent={isAssistent}
+        users={teachers}
+        {...props}
+      />
 
       <h3>Leerlingen</h3>
-      <AttendanceTable renderCell={StudentCell} isAssistent={isAssistent} users={students} isStudent {...props} />
+      <AttendanceTable
+        renderCell={StudentCell}
+        isAssistent={isAssistent}
+        users={students}
+        isStudent
+        {...props}
+      />
     </div>
   );
 };
