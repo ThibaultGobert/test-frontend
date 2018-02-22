@@ -15,7 +15,7 @@ const StudentCell = ({ attendance, lesson, submit, isAssistent }) => {
       className={classNames(
         'Attendance__Cell',
         disabled && 'Attendance__Cell--Disabled',
-        isToday(moment(lesson.start)) && 'Attendance__HeaderCell__Today', disabled,
+        isToday(moment(lesson.start)) && 'Attendance__HeaderCell__Today',
       )}
       onClick={event => {
         if (!disabled) {
