@@ -22,7 +22,7 @@ const WatVindJeWaarPage = () => {
       </p>
       <h2>Lesdata & Lesmateriaal</h2>
       <p>
-        Bekijk hier je lessen en klik door op een les om de <b>details</b> ervan te zien. Kies
+        Bekijk bij lesdata je lessen en klik door op een les om de <b>details</b> ervan te zien. Kies
         tussen de <b>4 view modi</b> en <b>download</b> de lescontent.
       </p>
       <h2>Profiel</h2>

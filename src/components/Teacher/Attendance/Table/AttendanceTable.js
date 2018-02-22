@@ -6,7 +6,7 @@ import Avatar from '../../../shared/Avatar';
 import { isToday } from '../../../../functions/dateHelpers';
 import classNames from '../../../../utils/classNames';
 
-const AttendanceTable = ({ lessons, users, submit, renderCell, isStudent, showModal }) => {
+const AttendanceTable = ({ lessons, users, submit, isAssistent, renderCell, isStudent, showModal }) => {
   if (!users) {
     return (
       <Message>
@@ -22,9 +22,7 @@ const AttendanceTable = ({ lessons, users, submit, renderCell, isStudent, showMo
           {lessons.map(lesson => (
             <Table.HeaderCell
               key={lesson.id}
-              className={classNames(
-                isToday(moment(lesson.start)) && 'Attendance__HeaderCell__Today',
-              )}
+              className={classNames(isToday(moment(lesson.start)) && 'Attendance__HeaderCell__Today')}
             >
               {moment(lesson.start).format('D/M')}
               {isToday(moment(lesson.start))}
@@ -37,7 +35,7 @@ const AttendanceTable = ({ lessons, users, submit, renderCell, isStudent, showMo
           <Table.Row key={user.id}>
             <Table.Cell>
               <div
-                className="Attendance__User link"
+                className={`Attendance__User ${isStudent ? 'link' : ''}`}
                 onClick={() => {
                   showModal(user.id);
                 }}
@@ -48,21 +46,17 @@ const AttendanceTable = ({ lessons, users, submit, renderCell, isStudent, showMo
                   className="Attendance__Avatar"
                 />
                 <div className="Attendance__User__Info">
-                  {isStudent && (
-                    <div className="Attendance__User__Name" >
-                      {user.firstname} {user.lastname}
-                      { (user.totalParentNotes !== 0) &&
-                        <Icon className="blue info circle" title="De notes van dit kind bevatten een note van de ouders"></Icon>
-                      }
-                    </div>
-                  )}
-                  {!isStudent && (
-                    <div
-                      className="Attendance__User__Name"
-                    >
-                      {user.firstName} {user.lastName}
-                    </div>
-                  )}
+                  <div className="Attendance__User__Name" >
+                    {isStudent && (
+                      <p>
+                        {user.firstname} {user.firstname}
+                        {(user.totalParentNotes !== 0) &&
+                          <Icon className="blue info circle" title="De notes van dit kind bevatten een note van de ouders" />
+                        }
+                      </p>
+                    )}
+                    {!isStudent && <p> {user.firstName} {user.lastName} </p>}
+                  </div>
                   <div className="Attendance__User__Extra">{user.grade}</div>
                 </div>
               </div>
@@ -70,7 +64,7 @@ const AttendanceTable = ({ lessons, users, submit, renderCell, isStudent, showMo
             {lessons.map(lesson => {
               const attendance =
                 lesson.attendances && lesson.attendances.find(({ userId }) => userId === user.id);
-              return renderCell({ attendance, lesson, submit });
+              return renderCell({ attendance, lesson, submit, isAssistent });
             })}
           </Table.Row>
         ))}

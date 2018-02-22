@@ -5,9 +5,9 @@ import classNames from 'classnames';
 import { isToday, diffToday } from '../../../../functions/dateHelpers';
 import Checkbox from './Checkbox';
 
-const TeacherCell = ({ attendance, lesson, submit }) => {
+const TeacherCell = ({ attendance, lesson, submit, isAssistent }) => {
   const { isPresent } = attendance;
-  const disabled = diffToday(moment(lesson.start)) > 0;
+  const disabled = diffToday(moment(lesson.start)) > 0 || isAssistent;
 
   return (
     <Table.Cell
