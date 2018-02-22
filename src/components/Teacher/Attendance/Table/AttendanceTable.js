@@ -1,6 +1,6 @@
 import React from 'react';
 import moment from 'moment';
-import { Table, Message } from 'semantic-ui-react';
+import { Table, Message, Icon } from 'semantic-ui-react';
 
 import Avatar from '../../../shared/Avatar';
 import { isToday } from '../../../../functions/dateHelpers';
@@ -36,7 +36,12 @@ const AttendanceTable = ({ lessons, users, submit, renderCell, isStudent, showMo
         {users.map(user => (
           <Table.Row key={user.id}>
             <Table.Cell>
-              <div className="Attendance__User">
+              <div
+                className="Attendance__User link"
+                onClick={() => {
+                  showModal(user.id);
+                }}
+              >
                 <Avatar
                   url={user.avatarurlmedium}
                   gender={user.gender}
@@ -44,13 +49,11 @@ const AttendanceTable = ({ lessons, users, submit, renderCell, isStudent, showMo
                 />
                 <div className="Attendance__User__Info">
                   {isStudent && (
-                    <div
-                      className="Attendance__User__Name link"
-                      onClick={() => {
-                        showModal(user.id);
-                      }}
-                    >
+                    <div className="Attendance__User__Name" >
                       {user.firstname} {user.lastname}
+                      { (user.totalParentNotes !== 0) &&
+                        <Icon className="blue info circle" title="De notes van dit kind bevatten een note van de ouders"></Icon>
+                      }
                     </div>
                   )}
                   {!isStudent && (

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Table, Image } from 'semantic-ui-react';
+import { Table, Icon } from 'semantic-ui-react';
 import columns from './ClassListColumns';
 import Avatar from '../../shared/Avatar';
 
@@ -15,7 +15,12 @@ export default (data, index, showModal) => {
         if (idx === 0) {
           return (
             <Table.Cell singleLine>
-              <div className="ClassList__User">
+              <div
+                className="ClassList__User link"
+                onClick={() => {
+                        showModal(data.id);
+                }}
+              >
                 <Avatar
                   url={data.avatarurlmedium}
                   gender={data.gender}
@@ -23,14 +28,13 @@ export default (data, index, showModal) => {
                 />
                 <div className="ClassList__User__Info">
                   <div
-                    className="ClassList__User__Name link"
-                    onClick={() => {
-                      showModal(data.id);
-                    }}
+                    className="ClassList__User__Name "
                   >
                     {data.firstname} {data.lastname}
+                    { (data.totalParentNotes !== 0) &&
+                      <Icon className="blue info circle" title="De notes van dit kind bevatten een note van de ouders"></Icon>
+                    }
                   </div>
-
                   <div className="ClassList__User__Extra">{data.grade}</div>
                 </div>
               </div>
