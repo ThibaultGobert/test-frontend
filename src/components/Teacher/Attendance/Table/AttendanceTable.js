@@ -1,6 +1,6 @@
 import React from 'react';
 import moment from 'moment';
-import { Table, Message } from 'semantic-ui-react';
+import { Table, Message, Icon } from 'semantic-ui-react';
 
 import Avatar from '../../../shared/Avatar';
 import { isToday } from '../../../../functions/dateHelpers';
@@ -51,6 +51,9 @@ const AttendanceTable = ({ lessons, users, submit, renderCell, isStudent, showMo
                       }}
                     >
                       {user.firstname} {user.lastname}
+                      { (user.totalParentNotes !== 0) &&
+                        <Icon className="blue info circle" title="De notes van dit kind bevatten een note van de ouders"></Icon>
+                      }
                     </div>
                   )}
                   {!isStudent && (
