@@ -28,6 +28,7 @@ class ClassGroups extends React.Component {
           group: course.clan,
           level: course.level,
           location: location.name,
+          room: course.roomname,
         },
         content: {
           id: course.id,
@@ -35,9 +36,7 @@ class ClassGroups extends React.Component {
           assistants,
           location: {
             address: location.address,
-            city: location.city,
             organisation: location.organisation,
-            roomname: course.roomname,
             id: location.id,
           },
         },
@@ -50,7 +49,7 @@ class ClassGroups extends React.Component {
   }
 
   render() {
-    const headerFields = ['Naam', 'Type', 'Clan', 'Level', 'Locatie'];
+    const headerFields = ['Naam', 'Type', 'Clan', 'Level', 'Locatie', 'Lokaal'];
     const { courses } = this.props;
     return (
       <div className="container">
