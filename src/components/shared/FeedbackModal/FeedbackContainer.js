@@ -51,6 +51,8 @@ class FeedbackContainer extends React.Component {
       case ADD:
         this.setState({ comment: html });
         break;
+      default:
+        break;
     }
   }
 

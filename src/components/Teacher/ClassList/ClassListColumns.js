@@ -1,5 +1,3 @@
-import noUserIcon from '../../../assets/images/placeholders/no-user.png';
-
 const columns = [
   {
     defaults: '',

@@ -1,5 +1,4 @@
 import lpfApi from './api/lpfApi';
-import appServiceApi from './api/appServiceApi';
 import mapToUser from './mappers/mapToUser';
 import { getUser } from './storage';
 

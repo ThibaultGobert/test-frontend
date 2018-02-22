@@ -1,6 +1,5 @@
 import React from 'react';
 import moment from 'moment';
-import Message from 'semantic-ui-react/dist/commonjs/collections/Message/Message';
 import 'moment/locale/nl';
 import BigCalendar from 'react-big-calendar';
 import Toolbar from './CalendarToolbar';

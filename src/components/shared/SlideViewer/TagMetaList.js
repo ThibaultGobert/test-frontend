@@ -44,6 +44,7 @@ const TagMetaList = ({ tags, viewType, slide }) => {
               </li>
             );
           }
+          return null;
         })}
       </ul>
       { (slide && slide.time !== 0) && <span className="timing">{slide.time} min</span>}
