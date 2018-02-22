@@ -4,7 +4,6 @@ import columns from './ClassListColumns';
 import Avatar from '../../shared/Avatar';
 
 export default (data, index, showModal) => {
-  console.log(data);
   const highlight = data.highlight ? 'highlight' : '';
   return (
     <Table.Row key={index} className={highlight}>

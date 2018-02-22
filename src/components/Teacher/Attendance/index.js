@@ -29,7 +29,7 @@ import {
 const mapStateToProps = (state, { match }) => {
   const course = getCourseById(state, match.params.id);
   const teachers = getTeachersByCourseId(state, course.id);
-  const { loggedInUser } = this.state;
+  const { loggedIn } = state;
   const lessons = course.lessons.map(lessonId => {
     const lesson = getLessonById(state, lessonId);
     const attendances = getAttendancesByLessonId(state, lessonId);
@@ -51,7 +51,7 @@ const mapStateToProps = (state, { match }) => {
     lessons,
     students,
     teachers,
-    loggedInUser,
+    loggedInUser: loggedIn.data,
     loading: state.attendances.loading,
   };
 };
