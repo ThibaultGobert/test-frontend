@@ -10,6 +10,21 @@
   text-align: center !important;
 }
 
+// TODO: refactor very dirty
+.highlight {
+  .link {
+    color: #fff;
+  }
+
+  .ClassList__User__Extra {
+    color: darken(#fff, 10%);
+  }
+
+  i.blue.icon {
+    color: #fff !important;
+  }
+}
+
 td.Attendance__Edit {
   padding: 10px !important;
 

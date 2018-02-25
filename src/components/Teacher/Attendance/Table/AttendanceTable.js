@@ -49,7 +49,7 @@ const AttendanceTable = ({ lessons, users, submit, isAssistent, renderCell, isSt
                   <div className="Attendance__User__Name" >
                     {isStudent && (
                       <p>
-                        {user.firstname} {user.firstname}
+                        {user.firstname} {user.lastname}
                         {(user.totalParentNotes !== 0) &&
                           <Icon className="blue info circle" title="De notes van dit kind bevatten een note van de ouders" />
                         }
