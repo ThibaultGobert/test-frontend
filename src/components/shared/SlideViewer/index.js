@@ -11,6 +11,7 @@ function mapStateToProps(state, ownProps) {
   const slides = getSlidesByLessonId(state, lessonId);
   const lesson = getLessonById(state, lessonId);
   const isStudent = isStudentSelector(state);
+  const loggedInUser = state.loggedIn.data;
 
   return {
     slides,
@@ -21,6 +22,7 @@ function mapStateToProps(state, ownProps) {
     lessonId,
     slideType,
     isStudent,
+    loggedInUser,
   };
 }
 

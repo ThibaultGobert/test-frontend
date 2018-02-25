@@ -1,12 +1,14 @@
 import React from 'react';
 import { NavLink, withRouter } from 'react-router-dom';
-import * as authActions from '../../../actions/auth';
-import {Button} from 'semantic-ui-react';
-import {connect} from 'react-redux';
-import {PropTypes} from 'prop-types';
-import {bindActionCreators} from 'redux';
-import {removeUser} from "../../../api/storage";
+import { Button } from 'semantic-ui-react';
+import { connect } from 'react-redux';
+import { PropTypes } from 'prop-types';
+import { bindActionCreators } from 'redux';
 import toastr from 'toastr';
+import { removeUser } from '../../../api/storage';
+import * as authActions from '../../../actions/auth';
+import FeedBackButton from '../Feedback/FeedBackButton';
+import generateUrl from '../Feedback/generateStudentSurveyUrl';
 
 class StudentHeader extends React.Component {
   constructor(props) {
@@ -18,12 +20,12 @@ class StudentHeader extends React.Component {
     event.preventDefault();
     toastr.remove();
     removeUser();
-    window.location = "/";    
+    window.location = '/';
   }
 
   render() {
     const {
-      user
+      user,
     } = this.props;
 
     return (
@@ -33,7 +35,7 @@ class StudentHeader extends React.Component {
         <div className="header-bar">
           <div className="wrapper">
             <div className="header-lockup">
-              <img className="logo" src={require('../../../assets/images/logo.png')} alt=""/>
+              <img className="logo" src={require('../../../assets/images/logo.png')} alt="" />
               <span className="welcome-message">Hey {user.fullname}</span>
             </div>
 
@@ -45,16 +47,24 @@ class StudentHeader extends React.Component {
         <nav>
           <div className="ui attached stackable menu">
             <div className="ui container">
-              <NavLink to="/studentprofile/class" className="item" activeClassName="active"><i
-                className="group layout icon" />Klas</NavLink>
-              <NavLink to="/studentprofile/home" className="item" activeClassName="active"><i
-                className="home layout icon" />Thuis</NavLink>
-              { !user.isVersion2 && <NavLink to="/studentprofile/extra" className="item" activeClassName="active"><i
-                className="trophy layout icon" />Extra</NavLink>}
+              <NavLink to="/studentprofile/class" className="item" activeClassName="active">
+                <i className="group layout icon" />Klas
+              </NavLink>
+              <NavLink to="/studentprofile/home" className="item" activeClassName="active">
+                <i className="home layout icon" />Thuis
+              </NavLink>
+              {!user.isVersion2 &&
+                <NavLink to="/studentprofile/extra" className="item" activeClassName="active">
+                  <i className="trophy layout icon" />Extra
+                </NavLink>
+              }
+              {user.level === 1 &&
+                <span className="FeedBackButton">
+                  <FeedBackButton data={{ user }} generateUrl={generateUrl} text="Enquête" />
+                </span>
+              }
             </div>
           </div>
-
-
         </nav>
       </div>
     );
@@ -68,13 +78,13 @@ StudentHeader.propTypes = {
 
 function mapStateToProps(state, ownProps) {
   return {
-    loggedIn: state.loggedIn
+    loggedIn: state.loggedIn,
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(authActions, dispatch)
+    actions: bindActionCreators(authActions, dispatch),
   };
 }
 

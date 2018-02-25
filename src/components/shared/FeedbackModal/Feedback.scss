@@ -1,4 +1,4 @@
-.FeedbackModal .ui.card>.content {
+.FeedbackModal .ui.card > .content {
   padding: 1em 1em 0.5em;
 }
 
@@ -34,9 +34,25 @@
 }
 
 .NotesList {
+  margin-top: 1em;
+
+  &__Item {
+    padding: 1em;
+    padding-top: 0.5em;
+    margin-bottom: 1em;
+    border-left: 5px solid #f2f2f2;
+
+    &__Header {
+      font-weight: bold;
+      margin-bottom: 0.5em;
+    }
+    p {
+      margin-bottom: 0em;
+    }
+  }
 
   &__Loader {
-      margin-top: 2em !important; 
+    margin-top: 2em !important;
   }
 
   &__NoNotesMessage {

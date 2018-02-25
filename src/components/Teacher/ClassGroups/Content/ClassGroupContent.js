@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import _ from 'lodash';
 import { Grid, Segment, Button } from 'semantic-ui-react';
-import renderHtml from 'react-render-html';
 import ContactList from '../../../shared/ContactList';
 import './ClassGroupContent.css';
 
@@ -12,7 +11,7 @@ const ClassGroupContent = ({ content }) => {
   return (
     <Grid className="class-group-details">
       <Grid.Row className="full-width">
-        <Grid.Column width={8}>
+        <Grid.Column width={13}>
           {!_.isEmpty(content.headTeacher) && (
             <Segment vertical>
               <h3>Hoofdlesgever</h3>
@@ -26,28 +25,15 @@ const ClassGroupContent = ({ content }) => {
             </Segment>
           )}
         </Grid.Column>
-        <Grid.Column width={6}>
-          <Segment vertical>
-            <h3>Locatie</h3>
-            <p>
-              <strong>Organisatie </strong>
-              {content.location.organisation}
-            </p>
-            <p>
-              <strong>Lokaal</strong> {content.location.room}
-            </p>
-            <p>
-              <strong>Opmerkingen</strong>{' '}
-              {content.location.roomremark && renderHtml(content.location.roomremark)}
-            </p>
-          </Segment>
-        </Grid.Column>
-        <Grid.Column width={2} className="ClassGroupContent-Buttons">
+        <Grid.Column width={3} className="ClassGroupContent-Buttons">
           <Link to={`/teacherprofile/classlist/${content.id}`} key={classListKey}>
             <Button primary>Klaslijst</Button>
           </Link>
           <Link to={`/teacherprofile/feedback/${content.id}`} key={feedbackKey}>
-            <Button primary>Aanwezigheden & feedback</Button>
+            <Button primary>Aanwezigheden</Button>
+          </Link>
+          <Link to={`/teacherprofile/locations/${content.location.id}`}>
+            <Button primary>Locatie details</Button>
           </Link>
         </Grid.Column>
       </Grid.Row>

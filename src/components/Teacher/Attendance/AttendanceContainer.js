@@ -7,7 +7,7 @@ import userAdministrationApi from '../../../api/userAdministration';
 import courseApi from '../../../api/courses';
 
 import Loader from '../../shared/Loader';
-import Feedback from './Feedback';
+import Feedback from '../../shared/FeedbackModal';
 
 class AttendanceContainer extends Component {
   constructor(...props) {
@@ -52,11 +52,6 @@ class AttendanceContainer extends Component {
       .catch(fetchAttendancesError);
   }
 
-  onChange({ target }) {
-    // change state on form change
-    this.setState(prevState => ({}));
-  }
-
   submit(event, attendance, lesson, role) {
     event.preventDefault();
 
@@ -94,7 +89,7 @@ class AttendanceContainer extends Component {
   }
 
   render() {
-    const { error, course, lessons, students, teachers } = this.props;
+    const { error, course, lessons, students, teachers, loggedInUser } = this.props;
     const { studentId, isOpen, loading } = this.state;
 
     if (error) {
@@ -125,6 +120,7 @@ class AttendanceContainer extends Component {
           lessons={lessons}
           students={students}
           teachers={teachers}
+          loggedInUser={loggedInUser}
           redirectToOverview={this.redirectToOverview}
           showModal={this.showModal}
           {...this.state}

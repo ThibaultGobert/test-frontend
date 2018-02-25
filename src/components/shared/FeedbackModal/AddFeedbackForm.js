@@ -37,7 +37,7 @@ class FeedbackForm extends React.Component {
             <Icon name="info" />
             We werken verder aan een meer geavanceerd feedback systeem,
              we vragen je om bij het toevoegen van een nieuwe opmerking,
-             de structuur van de template niet te wijzigen. 
+             de structuur van de template niet te wijzigen.
             Geef op elk onderwerp (m.u.v. extra opmerkingen) een score op 5 (1 laagste, 5 hoogste score).
              Bij de extra opmerkingen kan je nuttige extra info opgeven: bv. kind wil een level overslaan,
              of gaat wellicht stoppen, ...

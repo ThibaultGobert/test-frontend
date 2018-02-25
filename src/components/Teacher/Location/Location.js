@@ -1,36 +1,38 @@
 import React from 'react';
-import { Container, List, Image, Button } from 'semantic-ui-react';
+import { Container, List, Button } from 'semantic-ui-react';
 import renderHtml from 'react-render-html';
 import './Location.css';
 
 const Location = ({ location, teachers, history }) => {
   return (
     <Container className="Location">
-      <Button
-        labelPosition="left"
-        icon="left chevron"
-        content="Terug"
-        onClick={history.goBack}
-      />
+      <Button labelPosition="left" icon="left chevron" content="Terug" onClick={history.goBack} />
 
       <h1>{location.name}</h1>
-      {location.remark && renderHtml(location.remark)}
+      {location.teacherremark && (
+        <div className="Location__Remark">
+          <p><strong>ADRES</strong></p>
+          <p>{location.address.street}</p>
+          <p>{location.address.city}</p>
+          <p>{location.address.province}</p>
+          {renderHtml(location.teacherremark)}
+        </div>
+      )}
 
       {location.teachers && (
-        <div className="Location__Teachers">
+        <div>
           <h1>Leraren</h1>
-          <List>
+          <List className="Location__TeacherList">
             {location.teachers.map(teacherId => {
               const teacher = teachers[teacherId];
               return (
-                <List.Item>
-                  <Image avatar src={teacher.avatarurlmedium} />
-                  <List.Content>
-                    <List.Header as="a">
-                      {teacher.firstname} {teacher.lastname}
+                <List.Item className="Location__TeacherListItem">
+                  <List.Content className="Location__TeacherListItem__Content">
+                    <List.Header className="Location__TeacherListItem__Header">
+                      {teacher.firstName} {teacher.lastName}
                     </List.Header>
                     <List.Description>
-                      {teacher.cellphone} - {teacher.email}
+                      {teacher.cell} - {teacher.email}
                     </List.Description>
                   </List.Content>
                 </List.Item>
@@ -41,15 +43,15 @@ const Location = ({ location, teachers, history }) => {
       )}
 
       {location.rooms && (
-        <div className="Location__Rooms">
+        <div>
           <h1>Lokalen</h1>
-          <List divided>
+          <List className="Location__RoomList">
             {location.rooms.map(room => {
               return (
-                <List.Item>
+                <List.Item className="Location__RoomListItem">
                   <List.Content>
-                    <List.Header as="a">{room.name}</List.Header>
-                    <List.Description>{room.remark}</List.Description>
+                    <List.Header className="Location__RoomListItem__Header">{room.name}</List.Header>
+                    {room.teacherRemark && <List.Description>{renderHtml(room.teacherRemark)}</List.Description>}
                   </List.Content>
                 </List.Item>
               );

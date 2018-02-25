@@ -9,6 +9,10 @@ import HoeLoggenKinderenInPage from './HoeLoggenKinderenInPage';
 import OnbekendKindPage from './OnbekendKindPage';
 import InhoudelijkeVerbeteringPage from './InhoudelijkeVerbeteringPage';
 import WatBijProblemenPage from './WatBijProblemenPage';
+import HoeBereidIkMijnLesVoorPage from './HoeBereidIkMijnLesVoorPage';
+import WatDoetEenAssistentPage from './WatDoetEenAssistentPage';
+import CampusverantwoordelijkePage from './CampusverantwoordelijkePage';
+import HuisregelsPage from './HuisregelsPage';
 
 class Info extends React.Component {
   constructor() {
@@ -58,7 +62,7 @@ class Info extends React.Component {
             active={activeItem === 'hoe_loggen_kinderen_in'}
             onClick={this.handleItemClick}
           >
-            Hoe loggen kinderen in
+            Hoe loggen kinderen in?
           </Menu.Item>
           <Menu.Item
             name="onbekend_kind"
@@ -79,7 +83,35 @@ class Info extends React.Component {
             active={activeItem === 'wat_bij_problemen'}
             onClick={this.handleItemClick}
           >
-            Wat bij problemen
+            Wat bij problemen?
+          </Menu.Item>
+          <Menu.Item
+            name="hoe_bereid_ik_mijn_les_voor"
+            active={activeItem === 'hoe_bereid_ik_mijn_les_voor'}
+            onClick={this.handleItemClick}
+          >
+            Hoe bereid ik mijn les voor?
+          </Menu.Item>
+          <Menu.Item
+            name="wat_doet_een_assistent"
+            active={activeItem === 'wat_doet_een_assistent'}
+            onClick={this.handleItemClick}
+          >
+            Wat doet een assistent?
+          </Menu.Item>
+          <Menu.Item
+            name="campusverantwoordelijke"
+            active={activeItem === 'campusverantwoordelijke'}
+            onClick={this.handleItemClick}
+          >
+            Campusverantwoordelijke
+          </Menu.Item>
+          <Menu.Item
+            name="huisregels"
+            active={activeItem === 'huisregels'}
+            onClick={this.handleItemClick}
+          >
+            Huisregels
           </Menu.Item>
         </Menu>
         <div className="Profile__Content">
@@ -91,6 +123,10 @@ class Info extends React.Component {
           {activeItem === 'onbekend_kind' && <OnbekendKindPage />}
           {activeItem === 'inhoudelijke_verbetering' && <InhoudelijkeVerbeteringPage />}
           {activeItem === 'wat_bij_problemen' && <WatBijProblemenPage />}
+          {activeItem === 'hoe_bereid_ik_mijn_les_voor' && <HoeBereidIkMijnLesVoorPage />}
+          {activeItem === 'wat_doet_een_assistent' && <WatDoetEenAssistentPage />}
+          {activeItem === 'campusverantwoordelijke' && <CampusverantwoordelijkePage />}
+          {activeItem === 'huisregels' && <HuisregelsPage />}
         </div>
       </div>
     );

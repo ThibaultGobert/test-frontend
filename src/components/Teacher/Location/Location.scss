@@ -1,6 +1,42 @@
 .Location {
+  &__Remark {
+    padding: 2em 2em 0 2em;
+    background: #f5f5f5d4;
+    margin-bottom: 2em;
+    border-radius: 3px;
+  }
 
-  &__Rooms, &__Teachers {
-    margin-top: 2em;
+  &__TeacherList {
+    display: grid;
+    grid-template-columns: 50% 50% ;
+    &Item {
+      padding-top: 0 !important;
+      margin: 1.5em 1.5em 1.5em 0;
+      border-radius: 3px;
+      border: 1px solid #eaeaea;
+
+      &__Header {
+        margin-bottom: 0.3em;
+      }
+
+      &__Content {
+        padding: 1em;
+      }
+    }
+  }
+
+  &__RoomList {
+    display: grid;
+    grid-template-columns: 50% 50% ;
+    &Item {
+      padding: 1em !important;
+      margin: 1.5em 1.5em 1.5em 0;
+      border-radius: 3px;
+      border: 1px solid #eaeaea;
+      &__Header {
+        font-size: 1.2em;
+        margin-bottom: 0.8em !important;
+      }
+    }
   }
 }

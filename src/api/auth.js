@@ -1,15 +1,15 @@
 import lpfApi from './api/lpfApi';
-import appServiceApi from './api/appServiceApi';
 import mapToUser from './mappers/mapToUser';
 import { getUser } from './storage';
 
 class AuthApi {
   static login(credentials) {
+    const isImpersonate = credentials.child_username;
     const headers = credentials.child_username
       ? {
           'x-username': credentials.username,
           'x-password': credentials.password,
-          'x-impersonateuser': credentials.child_username
+          'x-impersonateuser': credentials.child_username,
         }
       : {
           'x-username': credentials.username,
@@ -19,7 +19,7 @@ class AuthApi {
     return lpfApi
       .get('/usersession/authUser', { headers })
       .then(data => {
-        return mapToUser(data, credentials.username);
+        return mapToUser(data, credentials, isImpersonate);
       })
       .catch(error => {
         if (error.code === 'ECONNABORTED') {

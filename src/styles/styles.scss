@@ -548,12 +548,16 @@ i.eye-icon {
   top: -1.5em;
 }
 
-.meta-slide-data .slide-id {
+.meta-slide-data  {
+  width: 90px;
   position: absolute;
   right: 10px;
   bottom: 30px;
-  font-size: 0.9em;
-  color: #333;
+  .slide-id {
+    float: right;
+    font-size: 0.9em;
+    color: #333;
+  }
 }
 
 td.avatar-lock-up {
@@ -635,4 +639,9 @@ h3 {
   position: absolute;
   right: 10px;
   top: 10px;
+}
+
+.link {
+  cursor: pointer;
+  color: #3c80c3;
 }

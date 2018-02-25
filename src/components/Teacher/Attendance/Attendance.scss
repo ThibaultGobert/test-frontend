@@ -10,6 +10,21 @@
   text-align: center !important;
 }
 
+// TODO: refactor very dirty
+.highlight {
+  .link {
+    color: #fff;
+  }
+
+  .ClassList__User__Extra {
+    color: darken(#fff, 10%);
+  }
+
+  i.blue.icon {
+    color: #fff !important;
+  }
+}
+
 td.Attendance__Edit {
   padding: 10px !important;
 
@@ -24,17 +39,26 @@ td.Attendance__Edit {
   text-align: center;
 }
 
+.Attendance__Edit {
+  border: none !important;
+  background: #f9fafb !important;
+
+  i {
+    color: #545454;
+  }
+}
+
+.Attendance__Table .Attendance__Cell {
+  cursor: pointer;
+
+  &--Disabled {
+    cursor: auto;
+    background:#dddddd45;
+  }
+}
+
 .Attendance__IconPresent {
   color: green;
-}
-
-.Attendance__IconNotPresent i {
-  color: #444;
-  font-size: 0.9em;
-}
-
-.Attendance__IconNotPresent .ui.checkbox input:checked~.box:after, .Attendance__IconNotPresent .ui.checkbox input:checked~label:after {
-  content: '\2044' !important;
 }
 
 .Attendance__HeaderCell__Today {

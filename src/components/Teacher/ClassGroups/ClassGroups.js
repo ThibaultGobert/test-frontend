@@ -28,6 +28,7 @@ class ClassGroups extends React.Component {
           group: course.clan,
           level: course.level,
           location: location.name,
+          room: course.roomname,
         },
         content: {
           id: course.id,
@@ -35,10 +36,7 @@ class ClassGroups extends React.Component {
           assistants,
           location: {
             address: location.address,
-            city: location.city,
             organisation: location.organisation,
-            room: location.roomname,
-            roomremark: location.roomremark,
             id: location.id,
           },
         },
@@ -51,19 +49,13 @@ class ClassGroups extends React.Component {
   }
 
   render() {
-    const headerFields = ['Naam', 'Type', 'Clan', 'Level', 'Locatie'];
+    const headerFields = ['Naam', 'Type', 'Clan', 'Level', 'Locatie', 'Lokaal'];
     const { courses } = this.props;
     return (
       <div className="container">
         <h1>Klasgroepen</h1>
         <div className="subtitle">Bekijk hier je lessen en download de klaslijsten</div>
-        <Message negative>
-          <Message.Header>Deze planning is nog niet definitief</Message.Header>
-          <p>
-            Alles hangt af van de effectieve inschrijvingen. De finale planning vind je hier 5 dagen
-            voor de start van lesreeks. We weten dat dit niet ideaal is en vragen je begrip!
-          </p>
-        </Message>
+
         {courses.length > 0 && (
           <Accordion
             panels={this.mapToPanels()}

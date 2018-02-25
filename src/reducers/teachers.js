@@ -12,7 +12,7 @@ export default function teachersReducer(state = initialState.teachers, action) {
         hasError: false,
       });
 
-    case types.FETCH_LOCATION_SUCCESS:
+    case types.FETCH_LOCATIONS_SUCCESS:
       return merge({}, state, { data: action.data.entities.teachers });
 
     default:
