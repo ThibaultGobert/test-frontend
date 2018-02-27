@@ -64,3 +64,32 @@
     }
   }
 }
+
+.Contract {
+  &__NestedList {
+    background: #fafafa;
+    padding: 1em 1em 0.5em;
+    margin-left: -1em;
+    margin-bottom: 1em;
+    position: relative;
+  }
+
+  &__Info {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0.5em 1em;
+    background: #ededed;
+    color: #6b6b6b;
+    border-bottom-left-radius: 5px;
+  }
+
+  &__ListItem{
+    font-size: 1.05em;
+    margin-bottom: 0.5em;
+    label {
+      font-weight: bold;
+      margin-right: 0.5em;
+    }
+  }
+}

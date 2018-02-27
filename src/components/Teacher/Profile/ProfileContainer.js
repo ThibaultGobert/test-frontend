@@ -3,10 +3,14 @@ import React, { Component } from 'react';
 import Profile from './Profile';
 import ErrorMessage from '../../shared/ErrorMessage';
 import userAdministrationApi from '../../../api/userAdministration';
+import contractsApi from '../../../api/contracts';
 
 class ProfileContainer extends Component {
   componentDidMount() {
-    const { fetchProfileStart, fetchProfileSuccess, fetchProfileError } = this.props.actions;
+    const {
+      fetchProfileStart, fetchProfileSuccess, fetchProfileError,
+      fetchContractsStart, fetchContractsSuccess, fetchContractsError,
+    } = this.props.actions;
 
     fetchProfileStart();
     userAdministrationApi
@@ -16,6 +20,16 @@ class ProfileContainer extends Component {
       })
       .catch(error => {
         fetchProfileError(error);
+      });
+
+    fetchContractsStart();
+    contractsApi
+      .getContracts()
+      .then(data => {
+        fetchContractsSuccess(data);
+      })
+      .catch(error => {
+        fetchContractsError(error);
       });
   }
 
