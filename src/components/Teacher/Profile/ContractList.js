@@ -1,5 +1,7 @@
 import React from 'react';
 import { Message, Button } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
+import generatePDFLink from '../../../functions/generatePDFLink';
 
 const ContractList = (props) => {
   const { contracts } = props;
@@ -30,8 +32,30 @@ const ContractList = (props) => {
                 {contract.end_date}
               </span>
             </div>
-            <Button primary >Download</Button>
-            <Button primary >Upload</Button>
+            {contract.unsigned_pdf != null &&
+            <div>
+              <a
+                id={contract.id}
+                href={generatePDFLink(contract)}
+                download={contract.unsigned_pdf.file_name}
+              >
+                <Button primary>Download</Button>
+                <Button primary >Upload</Button>
+              </a>
+            </div>
+            }
+            {contract.signed_pdf != null &&
+            <div>
+              <a
+                id={contract.id}
+                href={generatePDFLink(contract)}
+                download={contract.signed_pdf.file_name}
+              >
+                <Button primary>Download</Button>
+                <Button primary >Upload</Button>
+              </a>
+            </div>
+            }
           </div>
         );
       })}
