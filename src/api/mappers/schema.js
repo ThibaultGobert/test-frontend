@@ -22,3 +22,5 @@ export const course = new schema.Entity('courses', {
   headTeacher: [teacher],
   lessons: [lesson],
 });
+
+export const contract = new schema.Entity('contracts');

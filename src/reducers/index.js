@@ -1,5 +1,6 @@
 // Set up your root reducer here...
 import { combineReducers } from 'redux';
+import contracts from './contracts';
 import loggedIn from './auth';
 import courses from './courses';
 import lessons from './lessons';
@@ -26,6 +27,7 @@ const appReducer = combineReducers({
   slides,
   attendances,
   notes,
+  contracts,
 });
 
 const rootReducer = (state, action) => {
