@@ -11,11 +11,16 @@ export default function contractsReducer(state = initialState.contracts, action)
       return merge({}, state, {
         data: action.data.entities.contracts,
         loading: false,
+        error: null,
+        hasError: false,
       });
     }
 
     case types.FETCH_CONTRACTS_ERROR:
-      return merge({}, state, { loading: false, hasError: true, error: action.error });
+      return merge({}, state, {
+        loading: false,
+        hasError: true,
+        error: action.error });
 
     default:
       return state;

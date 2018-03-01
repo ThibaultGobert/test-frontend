@@ -10,7 +10,7 @@ class ContractApi {
     return api.get(`/userservice/contract/${contractId}?sessionToken=${getUser().token}&includeFile=true`).then(mapToContracts);
   }
   static postContract(file, contractId) {
-    const pdfFile = { file_name: file[0].name, content_type: 'application/pdf', data: file[0].base64 };
+    const pdfFile = { file_name: file.name, content_type: 'application/pdf', data: file.base64 };
     const response = api.post(`/userservice/contract/${contractId}?sessionToken=${getUser().token}`, {
       body: pdfFile,
     });

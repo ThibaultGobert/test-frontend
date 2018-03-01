@@ -18,7 +18,7 @@ import ProfileContainer from './ProfileContainer';
 
 const mapStateToProps = (state) => {
   const { personalInformation } = state.loggedIn;
-  const { data: contracts } = state.contracts;
+  const { contracts } = state;
   return {
     personalInformation,
     contracts,
