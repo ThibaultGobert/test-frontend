@@ -1,6 +1,3 @@
-/* global File */
-/* global atob */
-/* global Blob */
 import api from './api/appServiceApi';
 import { getUser } from './storage';
 import mapToContracts from './mappers/mapToContracts';
