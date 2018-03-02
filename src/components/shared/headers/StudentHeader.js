@@ -2,13 +2,10 @@ import React from 'react';
 import { NavLink, withRouter } from 'react-router-dom';
 import { Button } from 'semantic-ui-react';
 import { connect } from 'react-redux';
-import { PropTypes } from 'prop-types';
 import { bindActionCreators } from 'redux';
 import toastr from 'toastr';
 import { removeUser } from '../../../api/storage';
 import * as authActions from '../../../actions/auth';
-import FeedBackButton from '../Feedback/FeedBackButton';
-import generateUrl from '../Feedback/generateStudentSurveyUrl';
 
 class StudentHeader extends React.Component {
   constructor(props) {
@@ -58,11 +55,6 @@ class StudentHeader extends React.Component {
                   <i className="trophy layout icon" />Extra
                 </NavLink>
               }
-              {user.level === 1 &&
-                <span className="FeedBackButton">
-                  <FeedBackButton data={{ user }} generateUrl={generateUrl} text="Enquête" />
-                </span>
-              }
             </div>
           </div>
         </nav>
@@ -70,11 +62,6 @@ class StudentHeader extends React.Component {
     );
   }
 }
-
-StudentHeader.propTypes = {
-  actions: PropTypes.object.isRequired,
-  user: PropTypes.object.isRequired,
-};
 
 function mapStateToProps(state, ownProps) {
   return {
