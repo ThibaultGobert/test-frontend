@@ -83,7 +83,7 @@
       border-bottom-left-radius: 5px;
     }
 
-    &__Name{
+    &__NestedItem {
       font-size: 1.05em;
       margin-bottom: 0.5em;
       label {
@@ -91,5 +91,24 @@
         margin-right: 0.5em;
       }
     }
+
+    &__Buttons {
+      width: 100%;
+      &__Download {
+        float: left;
+      }
+      &__Upload {
+        float: left;
+        button {
+          visibility: visible;
+        }
+        div > div {
+          visibility: hidden;
+          display: none;
+          width: 50%  !important;
+        }
+      }
+    }
   }
 }
+

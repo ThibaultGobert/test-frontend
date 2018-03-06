@@ -1,5 +1,6 @@
 import React from 'react';
 import { Segment, Button, Form, Label, Header } from 'semantic-ui-react';
+import { upperFirst } from 'lodash';
 import isEmpty from 'lodash/isEmpty';
 import authApi from '../../../api/auth';
 import Loader from '../../shared/Loader';
@@ -93,7 +94,7 @@ class PersonalInformation extends React.Component {
           </div>
           <div className="PersonalInformation__ListItem">
             <label>Statuut</label>
-            <span>{data.statute}</span>
+            <span>{upperFirst(data.statute)}</span>
           </div>
           <div className="PersonalInformation__ListItem">
             <label>Beroep</label>
