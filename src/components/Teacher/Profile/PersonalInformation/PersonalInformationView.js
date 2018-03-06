@@ -91,25 +91,6 @@ const PersonalInformationView = ({ loading, data, toggleEditing, resetPassword }
           </div>
         )}
 
-        {!isEmpty(data.invoiceAddress) && (
-          <div className="PersonalInformation__NestedList">
-            <span className="PersonalInformation__NestedList__Info">Facturatieadres</span>
-            <div className="PersonalInformation__NestedListItem">
-              <label>Straat</label>
-              <span>{data.invoiceAddress.street}</span>
-            </div>
-            <div className="PersonalInformation__NestedListItem">
-              <label>Plaats</label>
-              <span>
-                {data.invoiceAddress.postalcode} {data.invoiceAddress.city}
-              </span>
-            </div>
-            <div className="PersonalInformation__NestedListItem">
-              <label>Provincie</label>
-              <span>{data.invoiceAddress.province}</span>
-            </div>
-          </div>
-        )}
         <Segment className="PersonalInformation__ResetPassword" clearing basic>
           <Header as="h3" className="PersonalInformation__ResetPassword__Header">
             Reset paswoord
