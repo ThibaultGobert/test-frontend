@@ -1,5 +1,6 @@
 import React from 'react';
 import merge from 'lodash/merge';
+import toastr from 'toastr';
 import authApi from '../../../../api/auth';
 import Loader from '../../../shared/Loader';
 import userAdministrationApi from '../../../../api/userAdministration';
@@ -20,12 +21,6 @@ class PersonalInformation extends React.Component {
     this.onChange = this.onChange.bind(this);
   }
 
-  componentWillReceiveProps(newProps) {
-    this.setState({
-      editData: newProps.personalInformation.data,
-    });
-  }
-
   onChange(e, { name, value }) {
     this.setState(prevState => merge({}, prevState, { editData: { [name]: value } }));
   }
@@ -41,25 +36,22 @@ class PersonalInformation extends React.Component {
   }
 
   updateTeacher() {
-    const {
-      updateProfileStart,
-      updateTeacherSuccess,
-      updateTeacherError,
-      fetchProfile,
-    } = this.props;
+    const { updateProfileStart, updateTeacherSuccess, updateTeacherError } = this.props.actions;
+    const { fetchProfile } = this.props;
 
     updateProfileStart();
     userAdministrationApi
-      .updateTeacher()
-      .then((data) => {
+      .updateTeacher(this.state.editData)
+      .then(data => {
         updateTeacherSuccess(data);
         fetchProfile();
+        toastr.success('Gegevens zijn opgeslagen');
       })
       .catch(updateTeacherError);
   }
 
   render() {
-    const { isEditing, editData } = this.state;
+    const { isEditing } = this.state;
     const { data, loading } = this.props.personalInformation;
 
     if (loading) {
@@ -69,9 +61,10 @@ class PersonalInformation extends React.Component {
     if (isEditing) {
       return (
         <PersonalInformationForm
-          data={editData}
+          data={data}
           toggleEditing={this.toggleEditing}
           onChange={this.onChange}
+          updateTeacher={this.updateTeacher}
         />
       );
     }

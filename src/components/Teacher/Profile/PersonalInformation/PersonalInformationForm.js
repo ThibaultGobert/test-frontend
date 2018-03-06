@@ -9,21 +9,21 @@ const PersonalInformationForm = ({ data, toggleEditing, updateTeacher, onChange 
         <Form.Input name="email" label="Email" defaultValue={data.email} onChange={onChange} />
         <Form.Input name="cell" label="GSM" defaultValue={data.cell} onChange={onChange} />
         <Form.Input name="phone" label="Tel" defaultValue={data.phone} onChange={onChange} />
-        <Form.Input label="Rijksregisternr." defaultValue={data.registrationNumber} onChange={onChange} />
-        <Form.Input label="Beroep" defaultValue={data.profession} onChange={onChange} />
+        <Form.Input name="registrationNumber" label="Rijksregisternr." defaultValue={data.registrationNumber} onChange={onChange} />
+        <Form.Input name="profession" label="Beroep" defaultValue={data.profession} onChange={onChange} />
         {data.bankAccounts.map(bankAccount => {
           if (!isEmpty(bankAccount)) {
-            return <Form.Input label="Rekeningnummer" defaultValue={bankAccount.accountNumber} onChange={onChange} />;
+            return <Form.Input name="accountNumber" label="Rekeningnummer" defaultValue={bankAccount.accountNumber} onChange={onChange} />;
           }
           return null;
         })}
 
         {!isEmpty(data.address) &&
           <div className="PersonalInformation__Address">
-            <Form.Input label="Straat" defaultValue={data.address.street} onChange={onChange} />
-            <Form.Input label="Postcode" defaultValue={data.address.postalCode} onChange={onChange} />
-            <Form.Input label="Stad" defaultValue={data.address.city} onChange={onChange} />
-            <Form.Input label="Provincie" defaultValue={data.address.province} onChange={onChange} />
+            <Form.Input name="address.street" label="Straat" defaultValue={data.address.street} onChange={onChange} />
+            <Form.Input name="address.postalCode" label="Postcode" defaultValue={data.address.postalCode} onChange={onChange} />
+            <Form.Input name="address.city" label="Stad" defaultValue={data.address.city} onChange={onChange} />
+            <Form.Input name="address.province" label="Provincie" defaultValue={data.address.province} onChange={onChange} />
           </div>
         }
         <Form.Group className="PersonalInformation__Buttons">
