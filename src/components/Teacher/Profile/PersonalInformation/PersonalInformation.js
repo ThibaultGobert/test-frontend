@@ -2,6 +2,7 @@ import React from 'react';
 import merge from 'lodash/merge';
 import authApi from '../../../../api/auth';
 import Loader from '../../../shared/Loader';
+import userAdministrationApi from '../../../../api/userAdministration';
 import PersonalInformationForm from './PersonalInformationForm';
 import PersonalInformationView from './PersonalInformationView';
 
@@ -40,7 +41,21 @@ class PersonalInformation extends React.Component {
   }
 
   updateTeacher() {
+    const {
+      updateProfileStart,
+      updateTeacherSuccess,
+      updateTeacherError,
+      fetchProfile,
+    } = this.props;
 
+    updateProfileStart();
+    userAdministrationApi
+      .updateTeacher()
+      .then((data) => {
+        updateTeacherSuccess(data);
+        fetchProfile();
+      })
+      .catch(updateTeacherError);
   }
 
   render() {

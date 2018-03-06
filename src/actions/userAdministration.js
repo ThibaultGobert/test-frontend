@@ -8,6 +8,9 @@ import {
   FETCH_PROFILE_START,
   FETCH_PROFILE_SUCCESS,
   FETCH_PROFILE_ERROR,
+  UPDATE_PROFILE_START,
+  UPDATE_PROFILE_SUCCESS,
+  UPDATE_PROFILE_ERROR,
 } from './types';
 
 export function postAttendanceStart() {
@@ -44,4 +47,16 @@ export function fetchProfileSuccess(data) {
 
 export function fetchProfileError(error) {
   return { type: FETCH_PROFILE_ERROR, error };
+}
+
+export function updateProfileStart() {
+  return { type: UPDATE_PROFILE_START };
+}
+
+export function updateProfileSuccess(data) {
+  return { type: UPDATE_PROFILE_SUCCESS, data };
+}
+
+export function updateProfileError(error) {
+  return { type: UPDATE_PROFILE_ERROR, error };
 }

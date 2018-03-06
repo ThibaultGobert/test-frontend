@@ -5,7 +5,16 @@ import ErrorMessage from '../../shared/ErrorMessage';
 import userAdministrationApi from '../../../api/userAdministration';
 
 class ProfileContainer extends Component {
+  constructor(props) {
+    super(props);
+    this.fetchProfile = this.fetchProfile.bind(this);
+  }
+
   componentDidMount() {
+    this.fetchProfile();
+  }
+
+  fetchProfile() {
     const { fetchProfileStart, fetchProfileSuccess, fetchProfileError } = this.props.actions;
 
     fetchProfileStart();
@@ -29,7 +38,7 @@ class ProfileContainer extends Component {
       <div className="ProfileContainer">
         <h1>Jouw Profiel</h1>
         <p>Bekijk hier jouw persoonlijke gegevens, hou deze gegevens up-to-date</p>
-        <Profile {...this.props} />
+        <Profile {...this.props} fetchProfile={this.fetchProfile} />
       </div>
     );
   }

@@ -16,15 +16,18 @@ class UserAdministrationApi {
     return appServiceApi.get(`/userservice/getteacher?sessionToken=${getUser().token}`);
   }
 
+  static updateTeacher(data) {
+    const body = data;
+    body.sessionToken = getUser().token;
+    return appServiceApi.post('/userservice/updateteacher', { body });
+  }
+
   static getAttendanceForCourse(courseId) {
-    return api
-      .get(`/courses/getAttendanceForCourse?courseid=${courseId}`)
-      .then(mapToAttendances);
+    return api.get(`/courses/getAttendanceForCourse?courseid=${courseId}`).then(mapToAttendances);
   }
 
   static postAttendance(body) {
-    return api
-      .post('/useradministration/markpresence', { body });
+    return api.post('/useradministration/markpresence', { body });
   }
 }
 

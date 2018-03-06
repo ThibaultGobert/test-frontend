@@ -6,6 +6,9 @@ import {
   fetchProfileStart,
   fetchProfileSuccess,
   fetchProfileError,
+  updateProfileStart,
+  updateProfileSuccess,
+  updateProfileError,
 } from '../../../actions/userAdministration';
 import { logOut } from '../../../actions/auth';
 
@@ -22,6 +25,9 @@ const actionCreators = mapActionCreatorsToProps({
   fetchProfileStart,
   fetchProfileSuccess,
   fetchProfileError,
+  updateProfileStart,
+  updateProfileSuccess,
+  updateProfileError,
   logOut,
 });
 
