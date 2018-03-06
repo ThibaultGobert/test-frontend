@@ -53,14 +53,16 @@ const ContractList = ({ contracts }) => {
                   </a>
                 </Grid.Column>
                 <Grid.Column className="ContractList__Item__Buttons__Upload" >
-                  <FileUpload
-                    labelText=""
-                    parentStyle={{ margin: 0 }}
-                    callbackFunction={(file) => contractUploadCallback(file, contract.id)}
-                    accept="application/pdf"
-                    textFieldComponent={<input placeholder="Selecteer een file" type="text" />}
-                    buttonComponent={<Button primary>Upload</Button>}
-                  />
+                  { !contract.signed_ok &&
+                    <FileUpload
+                      labelText=""
+                      parentStyle={{ margin: 0 }}
+                      callbackFunction={(file) => contractUploadCallback(file, contract.id)}
+                      accept="application/pdf"
+                      textFieldComponent={<input placeholder="Selecteer een file" type="text" />}
+                      buttonComponent={<Button primary>Upload</Button>}
+                    />
+                  }
                 </Grid.Column>
               </Grid>
             </div>
