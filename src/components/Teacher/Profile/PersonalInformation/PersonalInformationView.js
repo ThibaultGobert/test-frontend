@@ -5,7 +5,9 @@ import { Segment, Header, Button, Label } from 'semantic-ui-react';
 const PersonalInformationView = ({ data, toggleEditing, resetPassword }) => {
   return (
     <Segment className="PersonalInformation" basic>
-      <Button onClick={toggleEditing} primary floated="right">Wijzig</Button>
+      <Button onClick={toggleEditing} primary floated="right">
+        Wijzig
+      </Button>
       <div className="PersonalInformation__List">
         <div className="PersonalInformation__ListItem">
           <label>Voornaam</label>
@@ -40,35 +42,17 @@ const PersonalInformationView = ({ data, toggleEditing, resetPassword }) => {
           <span>{data.profession}</span>
         </div>
 
-        { data.bankAccounts.map(bankAccount => {
-            if (!isEmpty(bankAccount)) {
-              return (
-                <div className="PersonalInformation__NestedList">
-                  <span className="PersonalInformation__NestedList__Info">Bank account</span>
-                  <div className="PersonalInformation__NestedListItem">
-                    <label>Rekeningnummer</label>
-                    <span>{bankAccount.accountNumber}</span>
-                  </div>
-                  <div className="PersonalInformation__NestedListItem">
-                    <label>Startdatum</label>
-                    <span>{bankAccount.startDate}</span>
-                  </div>
-                  <div className="PersonalInformation__NestedListItem">
-                    <label>Einddatum</label>
-                    <span>{bankAccount.endDate}</span>
-                  </div>
-                  {bankAccount.exemptFromVat && (
-                    <div className="PersonalInformation__NestedListItem">
-                      <Label as="a" basic>
-                        NIET BTW VERPLICHT
-                      </Label>
-                    </div>
-                  )}
-                </div>
-              );
-            }
-            return null;
-          })}
+        {data.bankAccounts.map(bankAccount => {
+          if (!isEmpty(bankAccount)) {
+            return (
+              <div className="PersonalInformation__ListItem">
+                <label>Rekeningnummer</label>
+                <span>{bankAccount.accountNumber}</span>
+              </div>
+            );
+          }
+          return null;
+        })}
 
         {!isEmpty(data.address) && (
           <div className="PersonalInformation__NestedList">

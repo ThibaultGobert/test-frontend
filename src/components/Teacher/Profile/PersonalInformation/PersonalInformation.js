@@ -1,5 +1,6 @@
 import React from 'react';
 import merge from 'lodash/merge';
+import set from 'lodash/set';
 import toastr from 'toastr';
 import authApi from '../../../../api/auth';
 import Loader from '../../../shared/Loader';
@@ -8,11 +9,11 @@ import PersonalInformationForm from './PersonalInformationForm';
 import PersonalInformationView from './PersonalInformationView';
 
 class PersonalInformation extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       isEditing: false,
-      editData: null,
+      editData: { id: props.personalInformation.data.id },
     };
 
     this.toggleEditing = this.toggleEditing.bind(this);
@@ -21,8 +22,15 @@ class PersonalInformation extends React.Component {
     this.onChange = this.onChange.bind(this);
   }
 
+  componentWillReceiveProps(newProps) {
+    this.setState({
+      editData: { id: newProps.personalInformation.data.id },
+    });
+  }
+
   onChange(e, { name, value }) {
-    this.setState(prevState => merge({}, prevState, { editData: { [name]: value } }));
+    const dataset = set(this.state.editData, name, value);
+    this.setState(prevState => merge({}, prevState, { editData: dataset }));
   }
 
   resetPassword() {
@@ -36,18 +44,19 @@ class PersonalInformation extends React.Component {
   }
 
   updateTeacher() {
-    const { updateProfileStart, updateTeacherSuccess, updateTeacherError } = this.props.actions;
+    const { updateProfileStart, updateProfileSuccess, updateProfileError } = this.props.actions;
     const { fetchProfile } = this.props;
 
     updateProfileStart();
     userAdministrationApi
       .updateTeacher(this.state.editData)
       .then(data => {
-        updateTeacherSuccess(data);
+        updateProfileSuccess(data);
         fetchProfile();
+        this.toggleEditing();
         toastr.success('Gegevens zijn opgeslagen');
       })
-      .catch(updateTeacherError);
+      .catch(updateProfileError);
   }
 
   render() {

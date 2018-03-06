@@ -18,7 +18,7 @@ class UserAdministrationApi {
 
   static updateTeacher(data) {
     const body = data;
-    body.sessionToken = getUser().token;
+    body.session_token = getUser().token;
     return appServiceApi.post('/userservice/updateteacher', { body });
   }
 
