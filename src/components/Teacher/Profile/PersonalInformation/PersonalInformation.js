@@ -26,8 +26,7 @@ class PersonalInformation extends React.Component {
   }
 
   onChange(e, { name, value }) {
-    const newValue = { [name]: value };
-    this.setState(prevState => merge({}, prevState, { editData: newValue }));
+    this.setState(prevState => merge({}, prevState, { editData: { [name]: value } }));
   }
 
   resetPassword() {
