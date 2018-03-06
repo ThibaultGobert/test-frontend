@@ -1,7 +1,7 @@
 import React from 'react';
 import { Menu } from 'semantic-ui-react';
 import './Profile.css';
-import PersonalInformation from './PersonalInformation';
+import PersonalInformation from './PersonalInformation/PersonalInformation';
 import Contract from './Contract';
 
 class Profile extends React.Component {
