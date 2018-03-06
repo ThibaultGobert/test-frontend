@@ -1,4 +1,6 @@
 import api from './api/lpfApi';
+import appServiceApi from './api/appServiceApi';
+import { getUser } from './storage';
 import mapToAttendances from './mappers/mapToAttendances';
 
 class UserAdministrationApi {
@@ -8,6 +10,10 @@ class UserAdministrationApi {
       headers = { 'x-token': token };
     }
     return api.get('/useradministration/getUserInformation', { headers });
+  }
+
+  static getTeacher() {
+    return appServiceApi.get(`/userservice/getteacher?sessionToken=${getUser().token}`);
   }
 
   static getAttendanceForCourse(courseId) {

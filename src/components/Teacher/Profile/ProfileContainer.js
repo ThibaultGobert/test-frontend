@@ -10,7 +10,7 @@ class ProfileContainer extends Component {
 
     fetchProfileStart();
     userAdministrationApi
-      .getUserInformation()
+      .getTeacher()
       .then(data => {
         fetchProfileSuccess(data);
       })
