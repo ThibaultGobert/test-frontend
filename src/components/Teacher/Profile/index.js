@@ -6,6 +6,9 @@ import {
   fetchProfileStart,
   fetchProfileSuccess,
   fetchProfileError,
+  updateProfileStart,
+  updateProfileSuccess,
+  updateProfileError,
 } from '../../../actions/userAdministration';
 import {
   fetchContractsStart,
@@ -32,6 +35,9 @@ const actionCreators = mapActionCreatorsToProps({
   fetchContractsStart,
   fetchContractsSuccess,
   fetchContractsError,
+  updateProfileStart,
+  updateProfileSuccess,
+  updateProfileError,
   logOut,
 });
 
