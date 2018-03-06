@@ -93,13 +93,18 @@
     }
 
     &__Buttons {
+      width: 100%;
+      &__Download {
+        float: left;
+      }
       &__Upload {
+        float: left;
         button {
-          float: left
+          visibility: visible;
         }
         div > div {
+          visibility: hidden;
           display: none;
-          float: right;
           width: 50%  !important;
         }
       }
