@@ -1,4 +1,5 @@
 import React from 'react';
+import merge from 'lodash/merge';
 import authApi from '../../../../api/auth';
 import Loader from '../../../shared/Loader';
 import PersonalInformationForm from './PersonalInformationForm';
@@ -9,15 +10,24 @@ class PersonalInformation extends React.Component {
     super();
     this.state = {
       isEditing: false,
+      editData: null,
     };
 
     this.toggleEditing = this.toggleEditing.bind(this);
     this.resetPassword = this.resetPassword.bind(this);
+    this.updateTeacher = this.updateTeacher.bind(this);
+    this.onChange = this.onChange.bind(this);
   }
 
-  toggleEditing() {
-    const { isEditing } = this.state;
-    this.setState({ isEditing: !isEditing });
+  componentWillReceiveProps(newProps) {
+    this.setState({
+      editData: newProps.personalInformation.data,
+    });
+  }
+
+  onChange(e, { name, value }) {
+    const newValue = { [name]: value };
+    this.setState(prevState => merge({}, prevState, { editData: newValue }));
   }
 
   resetPassword() {
@@ -25,8 +35,17 @@ class PersonalInformation extends React.Component {
     authApi.resetPassword().then(logOut);
   }
 
-  render() {
+  toggleEditing() {
     const { isEditing } = this.state;
+    this.setState({ isEditing: !isEditing });
+  }
+
+  updateTeacher() {
+
+  }
+
+  render() {
+    const { isEditing, editData } = this.state;
     const { data, loading } = this.props.personalInformation;
 
     if (loading) {
@@ -35,14 +54,17 @@ class PersonalInformation extends React.Component {
 
     if (isEditing) {
       return (
-        <PersonalInformationForm data={data} loading={loading} toggleEditing={this.toggleEditing} />
+        <PersonalInformationForm
+          data={editData}
+          toggleEditing={this.toggleEditing}
+          onChange={this.onChange}
+        />
       );
     }
 
     return (
       <PersonalInformationView
         data={data}
-        loading={loading}
         toggleEditing={this.toggleEditing}
         resetPassword={this.resetPassword}
       />

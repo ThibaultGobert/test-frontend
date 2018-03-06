@@ -2,7 +2,7 @@ import React from 'react';
 import isEmpty from 'lodash/isEmpty';
 import { Segment, Header, Button, Label } from 'semantic-ui-react';
 
-const PersonalInformationView = ({ loading, data, toggleEditing, resetPassword }) => {
+const PersonalInformationView = ({ data, toggleEditing, resetPassword }) => {
   return (
     <Segment className="PersonalInformation" basic>
       <Button onClick={toggleEditing} primary floated="right">Wijzig</Button>
@@ -40,8 +40,7 @@ const PersonalInformationView = ({ loading, data, toggleEditing, resetPassword }
           <span>{data.profession}</span>
         </div>
 
-        {!loading &&
-          data.bankAccounts.map(bankAccount => {
+        { data.bankAccounts.map(bankAccount => {
             if (!isEmpty(bankAccount)) {
               return (
                 <div className="PersonalInformation__NestedList">
@@ -81,7 +80,7 @@ const PersonalInformationView = ({ loading, data, toggleEditing, resetPassword }
             <div className="PersonalInformation__NestedListItem">
               <label>Plaats</label>
               <span>
-                {data.address.postalcode} {data.address.city}
+                {data.address.postalCode} {data.address.city}
               </span>
             </div>
             <div className="PersonalInformation__NestedListItem">

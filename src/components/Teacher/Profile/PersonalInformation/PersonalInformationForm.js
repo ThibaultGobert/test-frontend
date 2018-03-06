@@ -1,30 +1,36 @@
 import React from 'react';
+import isEmpty from 'lodash/isEmpty';
 import { Segment, Form, Button } from 'semantic-ui-react';
 
-const PersonalInformationForm = ({ data, loading, toggleEditing }) => {
+const PersonalInformationForm = ({ data, toggleEditing, updateTeacher, onChange }) => {
   return (
-    <Segment className="PersonalInformation" basic clearing loading={loading}>
+    <Segment className="PersonalInformation" basic clearing>
       <Form>
-        <Form.Input label="Voornaam" value={data.firstName} />
-        <Form.Input label="Familienaam" value="De Gheselle" />
-        <Form.Input label="Username" value="simondegheselle" />
-        <Form.Input label="Geboortedatum" value="07/09/1995" />
-        <Form.Input label="Email" value="simon@codefever.be" />
-        <Form.Input label="Straat en huisnummer" value="Nanofstraat 85" />
-        <Form.Input label="Stad" value="Diepenbeek" />
-        <Form.Input label="Postcode" value="3568" />
-        <Form.Input
-          label="Facturatie adres"
-          value="Nanofstraat 85 3590 Diepenbeek Limburg, Belgium"
-        />
-        <Form.Input label="GSM" value="+32 476 28 22 06" />
-        <Form.Input label="Rijksregisternr." value="93.11.05-153.78" />
-        <Form.Input label="Rekeningnummer" value="BE33 0014 6234 2968" />
+        <Form.Input name="email" label="Email" defaultValue={data.email} onChange={onChange} />
+        <Form.Input name="cell" label="GSM" defaultValue={data.cell} onChange={onChange} />
+        <Form.Input name="phone" label="Tel" defaultValue={data.phone} onChange={onChange} />
+        <Form.Input label="Rijksregisternr." defaultValue={data.registrationNumber} onChange={onChange} />
+        <Form.Input label="Beroep" defaultValue={data.profession} onChange={onChange} />
+        {data.bankAccounts.map(bankAccount => {
+          if (!isEmpty(bankAccount)) {
+            return <Form.Input label="Rekeningnummer" defaultValue={bankAccount.accountNumber} onChange={onChange} />;
+          }
+          return null;
+        })}
+
+        {!isEmpty(data.address) &&
+          <div className="PersonalInformation__Address">
+            <Form.Input label="Straat" defaultValue={data.address.street} onChange={onChange} />
+            <Form.Input label="Postcode" defaultValue={data.address.postalCode} onChange={onChange} />
+            <Form.Input label="Stad" defaultValue={data.address.city} onChange={onChange} />
+            <Form.Input label="Provincie" defaultValue={data.address.province} onChange={onChange} />
+          </div>
+        }
         <Form.Group className="PersonalInformation__Buttons">
           <Form.Field control={Button} color="red" onClick={toggleEditing}>
             Cancel
           </Form.Field>
-          <Form.Field control={Button} primary onClick={console.log('saving')}>
+          <Form.Field control={Button} primary onClick={updateTeacher}>
             Opslaan
           </Form.Field>
         </Form.Group>
