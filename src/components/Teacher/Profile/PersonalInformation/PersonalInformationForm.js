@@ -1,6 +1,7 @@
 import React from 'react';
 import isEmpty from 'lodash/isEmpty';
 import { Segment, Form, Button } from 'semantic-ui-react';
+import provinceOptions from './provinceOptions';
 
 const PersonalInformationForm = ({ data, toggleEditing, updateTeacher, onChange }) => {
   return (
@@ -23,7 +24,7 @@ const PersonalInformationForm = ({ data, toggleEditing, updateTeacher, onChange 
             <Form.Input name="teacher.address.street" label="Straat" defaultValue={data.address.street} onChange={onChange} />
             <Form.Input name="teacher.address.postal_code" label="Postcode" defaultValue={data.address.postalCode} onChange={onChange} />
             <Form.Input name="teacher.address.city" label="Stad" defaultValue={data.address.city} onChange={onChange} />
-            <Form.Input name="teacher.address.province" label="Provincie" defaultValue={data.address.province} onChange={onChange} />
+            <Form.Dropdown name="teacher.address.province" label="Provincie" search selection options={provinceOptions} onChange={onChange} defaultValue={data.address.province} />
           </div>
         }
         <Form.Group className="PersonalInformation__Buttons">
