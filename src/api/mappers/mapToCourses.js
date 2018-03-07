@@ -1,27 +1,33 @@
 import { normalize } from 'normalizr';
+import values from 'lodash/values';
 import * as schema from './schema';
 import createDate from '../../functions/createDate';
-import mapToCalendar from "./mapToCalendar";
-import _ from 'lodash';
+import mapToCalendar from './mapToCalendar';
 
-export default (data) => {
+export default (data, replacement) => {
   data = data.sort((a, b) => {
-    let lessonDateA = createDate(a.lessons[0].courseStartdate);
-    let lessonDateB = createDate(b.lessons[0].courseEnddate);
-    let hoursDateA = parseInt(a.starttime.split(':')[0], 10);
-    let hoursDateB = parseInt(b.starttime.split(':')[0], 10);
-    if(lessonDateA.getDay() === lessonDateB.getDay()) {
-      return hoursDateA - hoursDateB;
+    if (!a.lessons[0] || !b.lessons[0]) {
+      return -1;
+    }
+
+    const dateA = a.lessons[0].courseStartdate;
+    const dateB = b.lessons[0].courseStartdate;
+
+    const lessonDateA = createDate(dateA);
+    const lessonDateB = createDate(dateB);
+    if (lessonDateA.getDay() === lessonDateB.getDay()) {
+      return lessonDateA.getHours() - lessonDateB.getHours();
     }
     return lessonDateA.getDay() - lessonDateB.getDay();
   });
 
-  data = _.values(data).map( (course) => {
+  data = values(data).map((course) => {
     course.lessons = mapToCalendar(course.lessons);
     course.roomname = course.location.roomname;
+    course.replacement = replacement;
     return course;
   });
 
-  data = normalize(data, [ schema.course ]);
+  data = normalize(data, [schema.course]);
   return data;
 };
