@@ -3,6 +3,7 @@ import moment from 'moment';
 import 'moment/locale/nl';
 import BigCalendar from 'react-big-calendar';
 import Toolbar from './CalendarToolbar';
+import eventPropGetter from './eventPropGetter';
 import './Calendar.css';
 
 const Calendar = ({ events, showEventDetails }) => {
@@ -29,6 +30,7 @@ const Calendar = ({ events, showEventDetails }) => {
             components={components}
             defaultDate={new Date()}
             onSelectEvent={event => showEventDetails(event)}
+            eventPropGetter={eventPropGetter}
           />
         </div>
       </div>
