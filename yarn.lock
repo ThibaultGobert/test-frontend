@@ -5879,6 +5879,12 @@ react-error-overlay@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-3.0.0.tgz#c2bc8f4d91f1375b3dad6d75265d51cd5eeaf655"
 
+react-file-input-previews-base64@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/react-file-input-previews-base64/-/react-file-input-previews-base64-1.0.6.tgz#50521e12c5339aa61fd32c65725767d5eebf1fd9"
+  dependencies:
+    prop-types "^15.5.10"
+
 react-keydown@^1.9.4:
   version "1.9.5"
   resolved "https://registry.yarnpkg.com/react-keydown/-/react-keydown-1.9.5.tgz#5119c7f332f80b298e82eb82e021282cd71a9840"

@@ -1,8 +1,8 @@
 import React from 'react';
 import { Menu } from 'semantic-ui-react';
 import './Profile.css';
-import PersonalInformation from './PersonalInformation';
-import Contract from './Contract';
+import ContractList from './Contract/ContractList';
+import PersonalInformation from './PersonalInformation/PersonalInformation';
 
 class Profile extends React.Component {
   constructor() {
@@ -38,7 +38,7 @@ class Profile extends React.Component {
         </Menu>
         <div className="Profile__Content">
           { activeItem === 'gegevens' && <PersonalInformation {...this.props} /> }
-          { activeItem === 'contracten' && <Contract /> }
+          { activeItem === 'contracten' && <ContractList {...this.props} /> }
         </div>
       </div>
     );

@@ -3,19 +3,42 @@ import React, { Component } from 'react';
 import Profile from './Profile';
 import ErrorMessage from '../../shared/ErrorMessage';
 import userAdministrationApi from '../../../api/userAdministration';
+import contractsApi from '../../../api/contracts';
 
 class ProfileContainer extends Component {
+  constructor(props) {
+    super(props);
+    this.fetchProfile = this.fetchProfile.bind(this);
+  }
+
   componentDidMount() {
-    const { fetchProfileStart, fetchProfileSuccess, fetchProfileError } = this.props.actions;
+    this.fetchProfile();
+  }
+
+  fetchProfile() {
+    const {
+      fetchProfileStart, fetchProfileSuccess, fetchProfileError,
+      fetchContractsStart, fetchContractsSuccess, fetchContractsError,
+    } = this.props.actions;
 
     fetchProfileStart();
     userAdministrationApi
-      .getUserInformation()
+      .getTeacher()
       .then(data => {
         fetchProfileSuccess(data);
       })
       .catch(error => {
         fetchProfileError(error);
+      });
+
+    fetchContractsStart();
+    contractsApi
+      .getContracts()
+      .then(data => {
+        fetchContractsSuccess(data);
+      })
+      .catch(error => {
+        fetchContractsError(error);
       });
   }
 
@@ -29,7 +52,7 @@ class ProfileContainer extends Component {
       <div className="ProfileContainer">
         <h1>Jouw Profiel</h1>
         <p>Bekijk hier jouw persoonlijke gegevens, hou deze gegevens up-to-date</p>
-        <Profile {...this.props} />
+        <Profile {...this.props} fetchProfile={this.fetchProfile} />
       </div>
     );
   }

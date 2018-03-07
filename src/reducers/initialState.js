@@ -87,4 +87,10 @@ export default {
     error: null,
     hasError: false,
   },
+  contracts: {
+    data: {},
+    loading: true,
+    error: null,
+    hasError: false,
+  },
 };

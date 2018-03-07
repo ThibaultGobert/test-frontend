@@ -49,6 +49,10 @@
     }
   }
 
+  &__Address {
+    margin-bottom: 2em;
+  }
+
   &__Buttons {
     margin-top: 1em;
     float: right;
@@ -64,3 +68,51 @@
     }
   }
 }
+
+.ContractList {
+  &__Item {
+    background: #fafafa;
+    padding: 1em 1em 0.5em;
+    margin-left: -1em;
+    margin-bottom: 1em;
+    position: relative;
+
+    &__Period {
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: 0.5em 1em;
+      background: #ededed;
+      color: #6b6b6b;
+      border-bottom-left-radius: 5px;
+    }
+
+    &__NestedItem {
+      font-size: 1.05em;
+      margin-bottom: 0.5em;
+      label {
+        font-weight: bold;
+        margin-right: 0.5em;
+      }
+    }
+
+    &__Buttons {
+      width: 100%;
+      &__Download {
+        float: left;
+      }
+      &__Upload {
+        float: left;
+        button {
+          visibility: visible;
+        }
+        div > div {
+          visibility: hidden;
+          display: none;
+          width: 50%  !important;
+        }
+      }
+    }
+  }
+}
+

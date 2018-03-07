@@ -1,11 +1,12 @@
+import merge from 'lodash/merge';
+import initialState from './initialState';
 import {
   FETCH_COURSES_START,
   FETCH_COURSES_SUCCESS,
   FETCH_COURSES_ERROR,
-  FETCH_STUDENTS_SUCCESS
+  FETCH_STUDENTS_SUCCESS,
 } from '../actions/types';
-import initialState from './initialState';
-import merge from 'lodash/merge';
+
 
 export default function courseReducer(state = initialState.courses, action) {
   switch (action.type) {
@@ -17,7 +18,7 @@ export default function courseReducer(state = initialState.courses, action) {
         data: action.data.entities.courses,
         loading: false,
         error: null,
-        hasError: false
+        hasError: false,
       });
 
     case FETCH_COURSES_ERROR:
@@ -25,7 +26,7 @@ export default function courseReducer(state = initialState.courses, action) {
 
     case FETCH_STUDENTS_SUCCESS:
       return merge({}, state, {
-        data: { [action.courseId]: { students: action.data.result } }
+        data: { [action.courseId]: { students: action.data.result } },
       });
 
     default:
