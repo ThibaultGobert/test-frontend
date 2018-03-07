@@ -11,6 +11,9 @@ export default (event) => {
   if (event.lessonTypeEnum === eventTypes.STATUS_TEACHERDOESREPLACEMENT) {
     newStyle.backgroundColor = '#ef6c00';
   }
+  if (event.lessonTypeEnum === eventTypes.STATUS_TEACHERISREPLACED) {
+    newStyle.backgroundColor = '#ff0000';
+  }
 
   return {
     className: '',

@@ -8,12 +8,17 @@ class ClassGroups extends React.Component {
     return (
       <div className="container">
         <h1>Klasgroepen</h1>
-        <div className="subtitle">Bekijk hier je lessen en download de klaslijsten</div>
+        <div className="subtitle">Bekijk hier je lessen en klaslijsten</div>
         <CoursesAccordion courses={plannedCourses} {...this.props} />
 
-        <h1>Vervangingen</h1>
-        <div className="subtitle">Bekijk hier je vervangingen</div>
-        <CoursesAccordion courses={replacements} {...this.props} />
+        { replacements.length !== 0 &&
+          <div>
+            <h1>Vervangingen</h1>
+            <div className="subtitle">Bekijk hier je vervangingen</div>
+            <CoursesAccordion courses={replacements} {...this.props} />
+          </div>
+        }
+
       </div>
     );
   }

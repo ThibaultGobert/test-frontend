@@ -1,10 +1,10 @@
 import React from 'react';
-import {Table, Icon, Button} from 'semantic-ui-react';
-import * as slideTypes from '../../constants/slideTypes';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import _ from 'lodash';
+import { Table, Icon, Button } from 'semantic-ui-react';
+import * as slideTypes from '../../constants/slideTypes';
 
-const ManageLessonList = ({lessons}) => {
+const ManageLessonList = ({ lessons }) => {
   return (
     <div className="manage-lesson-list">
       <Table columns={10}>
@@ -26,7 +26,7 @@ const ManageLessonList = ({lessons}) => {
 
         <Table.Body>
           { _.map(lessons, (lesson) => {
-            let slideviewerUrl = "/slideviewer/" + lesson.id;
+            const slideviewerUrl = `/slideviewer/${lesson.id}`;
 
             return (
               <Table.Row key={lesson.id}>
@@ -37,14 +37,14 @@ const ManageLessonList = ({lessons}) => {
                 <Table.Cell>{lesson.name}</Table.Cell>
                 <Table.Cell>{lesson.type}</Table.Cell>
                 <Table.Cell>{lesson.order}</Table.Cell>
-                <Table.Cell>{lesson.activateTeacher ? <Icon name="checkmark"/> : <Icon name="x"/> }</Table.Cell>
-                <Table.Cell>{lesson.activateStudent ? <Icon name="checkmark"/> : <Icon name="x"/> }</Table.Cell>
+                <Table.Cell>{lesson.activateTeacher ? <Icon name="checkmark" /> : <Icon name="x" /> }</Table.Cell>
+                <Table.Cell>{lesson.activateStudent ? <Icon name="checkmark" /> : <Icon name="x" /> }</Table.Cell>
                 <Table.Cell>{lesson.modifiedby}</Table.Cell>
                 <Table.Cell collapsing={false} className="manage-lesson-list-icons">
-                  <Button as={Link} to={slideviewerUrl + "/" + slideTypes.CLASS} primary icon="group" size="mini"/>
-                  <Button as={Link} to={slideviewerUrl + "/" + slideTypes.HOME} primary icon="home" size="mini"/>
-                  <Button as={Link} to={slideviewerUrl + "/" + slideTypes.PROJECTION} primary icon="tv" size="mini"/>
-                  <Button as={Link} to={slideviewerUrl + "/" + slideTypes.INFO} primary icon="info" size="mini"/>
+                  <Button as={Link} to={`${slideviewerUrl}/${slideTypes.CLASS}`} primary icon="group" size="mini" />
+                  <Button as={Link} to={`${slideviewerUrl}/${slideTypes.HOME}`} primary icon="home" size="mini" />
+                  <Button as={Link} to={`${slideviewerUrl}/${slideTypes.PROJECTION}`} primary icon="tv" size="mini" />
+                  <Button as={Link} to={`${slideviewerUrl}/${slideTypes.INFO}`} primary icon="info" size="mini" />
                 </Table.Cell>
               </Table.Row>
             );
