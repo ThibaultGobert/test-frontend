@@ -3,10 +3,10 @@ import merge from 'lodash/merge';
 import { lpfUrl as url } from './baseUrl';
 import { getUser } from './../storage';
 
-export default (endpoint, { headers = {}, body, ...otherOptions }, method) => {
+export default (endpoint, { headers = {}, body, ...options }, method) => {
   let allHeaders = {
     'Content-Type': 'application/json',
-    'Access-Control-Allow-Origin': '*'
+    'Access-Control-Allow-Origin': '*',
   };
   if (getUser() !== null) {
     allHeaders['x-token'] = getUser().token;
@@ -14,9 +14,9 @@ export default (endpoint, { headers = {}, body, ...otherOptions }, method) => {
   allHeaders = merge(allHeaders, headers);
 
   return axios(`${url}${endpoint}`, {
-    ...otherOptions,
+    ...options,
     headers: allHeaders,
-    timeout: 5000,
+    timeout: options.timeout ? options.timeout : 5000,
     data: body ? JSON.stringify(body) : undefined,
     method,
   }).then(response => {
