@@ -1,6 +1,7 @@
 import React from 'react';
 import isEmpty from 'lodash/isEmpty';
 import { Segment, Header, Button, Message } from 'semantic-ui-react';
+import { formatBirthdate } from '../../../../functions/formatBirthdate';
 
 const PersonalInformationView = ({ data, toggleEditing, resetPassword }) => {
   return (
@@ -29,6 +30,10 @@ const PersonalInformationView = ({ data, toggleEditing, resetPassword }) => {
         <div className="PersonalInformation__ListItem">
           <label>Tel</label>
           <span>{data.phone}</span>
+        </div>
+        <div className="PersonalInformation__ListItem">
+          <label>Geboortedatum</label>
+          <span>{formatBirthdate(data.birthdate)}</span>
         </div>
         <div className="PersonalInformation__ListItem">
           <label>Rijksregisternr.</label>
