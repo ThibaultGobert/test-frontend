@@ -3,10 +3,10 @@ import mapToCourses from './mappers/mapToCourses';
 import mapToClassList from './mappers/mapToClassList';
 
 class CourseApi {
-  static getCourses(replacementsIncluded) {
+  static getCourses(replacements) {
     return api
-      .get(`/courses/getTeacherCourse?replacements=${replacementsIncluded}`)
-      .then(mapToCourses);
+      .get(`/courses/getTeacherCourse?replacements=${replacements}`)
+      .then((data) => mapToCourses(data, replacements));
   }
 
   static getStudentsForCourse(courseId) {

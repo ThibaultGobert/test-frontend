@@ -15,10 +15,15 @@ class Bootstrap extends Component {
 
     fetchLocationsStart();
     fetchCoursesStart();
-    Promise.all([courseApi.getCourses(false), locationApi.getLocations()])
+    Promise.all([
+      courseApi.getCourses(false),
+      courseApi.getCourses(true),
+      locationApi.getLocations(),
+    ])
       .then(results => {
         fetchCoursesSuccess(results[0]);
-        fetchLocationsSuccess(results[1]);
+        fetchCoursesSuccess(results[1]);
+        fetchLocationsSuccess(results[2]);
       })
       .then(this.props.actions.finishBootstrap);
   }

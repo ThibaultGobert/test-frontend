@@ -16,10 +16,13 @@ const ContractList = ({ contracts }) => {
 
   return (
     <div className="ContractList">
-      <Message
-        header="Download hier je contract"
-        content="Van zodra je contract klaar is, kan je het hier downloaden en getekend terug uploaden. File download wordt niet ondersteund door Safari."
-      />
+      <Message>
+        <Message.Header>Download hier je contract</Message.Header>
+        <Message.List>
+          <Message.Item>Van zodra je contract klaar is, kan je het hier downloaden en getekend terug uploaden. File download wordt niet ondersteund door Safari.</Message.Item>
+          <Message.Item>Klopt er iets niet in je contract(en) stuur een mail naar Kim (kim@codefever.be).</Message.Item>
+        </Message.List>
+      </Message>
       <Table celled>
         <Table.Header>
           <Table.Row>
@@ -34,6 +37,12 @@ const ContractList = ({ contracts }) => {
         <Table.Body>
           {contractsArray.map(contract => {
             const pdf = getActivePDFFile(contract);
+            let uploadButtonText;
+            if (contract.signed) {
+              uploadButtonText = 'Upload opnieuw';
+            } else {
+              uploadButtonText = 'Upload';
+            }
             return (
               <Table.Row>
                 <Table.Cell>
@@ -71,7 +80,11 @@ const ContractList = ({ contracts }) => {
                         callbackFunction={(file) => contractUploadCallback(file, contract.id)}
                         accept="application/pdf"
                         textFieldComponent={<input placeholder="Selecteer een file" type="text" />}
-                        buttonComponent={<Button primary>Upload</Button>}
+                        buttonComponent={
+                          <Button primary>
+                            {uploadButtonText}
+                          </Button>
+                        }
                       />
                     </span>
                   </Table.Cell>
