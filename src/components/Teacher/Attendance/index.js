@@ -24,6 +24,7 @@ import {
   getChildById,
   getAttendancesByLessonId,
   getTeachersByCourseId,
+  isAssistentOnCourse,
 } from '../../../selectors';
 
 const mapStateToProps = (state, { match }) => {
@@ -46,11 +47,14 @@ const mapStateToProps = (state, { match }) => {
     })
     : [];
 
+  const isAssitent = isAssistentOnCourse(state, course);
+
   return {
     course,
     lessons,
     students,
     teachers,
+    isAssitent,
     loggedInUser: loggedIn.data,
     loading: state.attendances.loading,
   };

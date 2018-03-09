@@ -1,73 +1,24 @@
 import React from 'react';
-import Message from 'semantic-ui-react/dist/commonjs/collections/Message/Message';
-import ClassGroupContent from './Content/ClassGroupContent';
-import Accordion from '../../shared/Accordion/Accordion';
+import CoursesAccordion from './CoursesAccordion.js/CoursesAccordion';
+import './ClassGroups.css';
 
 class ClassGroups extends React.Component {
-  constructor(...props) {
-    super(...props);
-    this.mapToPanels = this.mapToPanels.bind(this);
-  }
-
-  mapToPanels() {
-    const { locations, teachers, courses } = this.props;
-
-    return courses.map(course => {
-      const assistants = course.assistants.map(userId => {
-        return teachers[userId];
-      });
-      const headTeacher = course.headTeacher.map(userId => {
-        return teachers[userId];
-      });
-      const location = locations[course.location];
-
-      return {
-        title: {
-          name: course.name,
-          type: course.type,
-          group: course.clan,
-          level: course.level,
-          location: location.name,
-          room: course.roomname,
-        },
-        content: {
-          id: course.id,
-          headTeacher,
-          assistants,
-          location: {
-            address: location.address,
-            organisation: location.organisation,
-            id: location.id,
-          },
-        },
-      };
-    });
-  }
-
-  renderContent(content) {
-    return <ClassGroupContent content={content} />;
-  }
-
   render() {
-    const headerFields = ['Naam', 'Type', 'Clan', 'Level', 'Locatie', 'Lokaal'];
-    const { courses } = this.props;
+    const { plannedCourses, replacements } = this.props;
     return (
       <div className="container">
         <h1>Klasgroepen</h1>
-        <div className="subtitle">Bekijk hier je lessen en download de klaslijsten</div>
+        <div className="subtitle">Bekijk hier je lessen en klaslijsten</div>
+        <CoursesAccordion courses={plannedCourses} {...this.props} />
 
-        {courses.length > 0 && (
-          <Accordion
-            panels={this.mapToPanels()}
-            headerFields={headerFields}
-            renderContent={this.renderContent}
-          />
-        )}
-        {courses.length === 0 && (
-          <Message>
-            U bent nog niet ingepland
-          </Message>
-        )}
+        { replacements.length !== 0 &&
+          <div>
+            <h1>Vervangingen</h1>
+            <div className="subtitle">Bekijk hier je vervangingen</div>
+            <CoursesAccordion courses={replacements} {...this.props} />
+          </div>
+        }
+
       </div>
     );
   }

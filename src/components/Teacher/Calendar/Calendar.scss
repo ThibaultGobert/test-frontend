@@ -1,3 +1,10 @@
 .rbc-event.rbc-selected  {
-    background-color: #3174ad !important;
+    filter: brightness(85%);
+}
+
+.Calender {
+    &__Legend{
+        width: 235.21px;
+        float: right;
+    }
 }

@@ -1,10 +1,12 @@
 import React from 'react';
 import isEmpty from 'lodash/isEmpty';
-import { Segment, Header, Button } from 'semantic-ui-react';
+import { Segment, Header, Button, Message } from 'semantic-ui-react';
+import { formatBirthdate } from '../../../../functions/formatBirthdate';
 
 const PersonalInformationView = ({ data, toggleEditing, resetPassword }) => {
   return (
     <Segment className="PersonalInformation" basic>
+      <Message header="Jouw profiel" content="Bekijk hier jouw persoonlijke gegevens, hou deze gegevens up-to-date" />
       <Button onClick={toggleEditing} primary floated="right">
         Wijzig
       </Button>
@@ -28,6 +30,10 @@ const PersonalInformationView = ({ data, toggleEditing, resetPassword }) => {
         <div className="PersonalInformation__ListItem">
           <label>Tel</label>
           <span>{data.phone}</span>
+        </div>
+        <div className="PersonalInformation__ListItem">
+          <label>Geboortedatum</label>
+          <span>{formatBirthdate(data.birthdate)}</span>
         </div>
         <div className="PersonalInformation__ListItem">
           <label>Rijksregisternr.</label>

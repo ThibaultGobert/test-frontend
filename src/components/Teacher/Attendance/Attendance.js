@@ -6,12 +6,18 @@ import { Button } from 'semantic-ui-react';
 import StudentCell from './Table/StudentCell';
 import TeacherCell from './Table/TeacherCell';
 import AttendanceTable from './Table/AttendanceTable';
-import CheckIfLoggedInUserIsAssistent from './CheckIfLoggedInUserIsAssistent';
 
 import './Attendance.css';
 
-const Attendance = ({ course, teachers, students, loggedInUser, redirectToOverview, ...props }) => {
-  const isAssistent = CheckIfLoggedInUserIsAssistent(course, teachers, loggedInUser);
+const Attendance = ({
+  course,
+  teachers,
+  students,
+  loggedInUser,
+  redirectToOverview,
+  isAssistent,
+  ...props
+}) => {
   return (
     <div className="Attendance">
       <Button
