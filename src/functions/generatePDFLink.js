@@ -5,5 +5,5 @@ export default (contract) => {
   } else if (contract.unsigned_pdf != null) {
     ({ data } = contract.unsigned_pdf);
   }
-  return `data:application/octect-stream;base64,${data}`;
+  return `data:application/octet-stream;base64,${data}`;
 };
